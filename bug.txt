@@ -1,0 +1,50 @@
+Error: One or more models did not validate:
+moteur.texte: Accessor for m2m field 'Categorie' clashes with field 'Texte_contenu.Categorie'. Add a related_name argument to the definition for 'Categorie'.
+moteur.texte: Reverse query name for m2m field 'Categorie' clashes with field 'Texte_contenu.Categorie'. Add a related_name argument to the definition for 'Categorie'.
+moteur.texte: 'Skills' has an m2m relation with model skill.Skill, which has either not been installed or is abstract.
+moteur.texte: 'Tag' has an m2m relation with model tag.Tag, which has either not been installed or is abstract.
+moteur.post: 'Lien' has a relation with model Notation, which has either not been installed or is abstract.
+moteur.post: Accessor for field 'NiveauPost' clashes with related field 'NiveauPost.post_set'. Add a related_name argument to the definition for 'NiveauPost'.
+moteur.post: Accessor for field 'NiveauReponse' clashes with related field 'NiveauPost.post_set'. Add a related_name argument to the definition for 'NiveauReponse'.
+moteur.reponse: 'Lien' has a relation with model Notation, which has either not been installed or is abstract.
+note.Note_divers: 'Tags' has a relation with model Tags, which has either not been installed or is abstract.
+stats.stat: 'Avis' has an m2m relation with model moteur.Avis, which has either not been installed or is abstract.
+membre.Membre: 'Fiche' has a relation with model fiche.Fiche, which has either not been installed or is abstract.
+membre.Membre: 'Gallery' has a relation with model gallerie.Gallerie, which has either not been installed or is abstract.
+membre.Membre: 'Skills' has an m2m relation with model skill.Skill, which has either not been installed or is abstract.
+membre.Membre: 'Lieux' has an m2m relation with model lieux.Lieux, which has either not been installed or is abstract.
+membre.Membre: 'Liens' has an m2m relation with model lien.Lien, which has either not been installed or is abstract.
+membre.liste: Accessor for field 'Membre' clashes with related m2m field 'Membre.liste_set'. Add a related_name argument to the definition for 'Membre'.
+membre.liste: Accessor for m2m field 'Amis' clashes with related field 'Membre.liste_set'. Add a related_name argument to the definition for 'Amis'.
+pages.page: 'Avis' has an m2m relation with model moteur.Avis, which has either not been installed or is abstract.
+horaire.ouverture: Accessor for m2m field 'Note' clashes with related m2m field 'Note_divers.ouverture_set'. Add a related_name argument to the definition for 'Note'.
+horaire.ouverture: Accessor for m2m field 'Notation' clashes with related m2m field 'Note_divers.ouverture_set'. Add a related_name argument to the definition for 'Notation'.
+lieux.avis: 'Tags' has a relation with model Tags, which has either not been installed or is abstract.
+lieux.typelieux: 'Tags' has a relation with model Tags, which has either not been installed or is abstract.
+lieux.lieux: 'Horaire' has a relation with model Horaire, which has either not been installed or is abstract.
+lieux.lieux: 'Tags' has a relation with model Tags, which has either not been installed or is abstract.
+lieux.lieux: 'Localisation' has an m2m relation with model localisation.localisation, which has either not been installed or is abstract.
+lieux.lieux: The model Lieux has two manually-defined m2m relations through the model Lieux_Note, which is not permitted. Please consider using an extra field on your intermediary model instead.
+localisation.pays: Accessor for field 'GoogleMaps' clashes with related field 'Lien.pays_set'. Add a related_name argument to the definition for 'GoogleMaps'.
+localisation.pays: Accessor for field 'Liens' clashes with related field 'Lien.pays_set'. Add a related_name argument to the definition for 'Liens'.
+localisation.pays: 'Nom' has an m2m relation with model Nom, which has either not been installed or is abstract.
+localisation.etat: Accessor for field 'GoogleMaps' clashes with related field 'Lien.etat_set'. Add a related_name argument to the definition for 'GoogleMaps'.
+localisation.etat: Accessor for field 'Liens' clashes with related field 'Lien.etat_set'. Add a related_name argument to the definition for 'Liens'.
+localisation.etat: 'Nom' has an m2m relation with model Nom, which has either not been installed or is abstract.
+localisation.region: Accessor for field 'GoogleMaps' clashes with related field 'Lien.region_set'. Add a related_name argument to the definition for 'GoogleMaps'.
+localisation.region: Accessor for field 'Liens' clashes with related field 'Lien.region_set'. Add a related_name argument to the definition for 'Liens'.
+localisation.region: 'Nom' has an m2m relation with model Nom, which has either not been installed or is abstract.
+localisation.ville: Accessor for field 'GoogleMaps' clashes with related field 'Lien.ville_set'. Add a related_name argument to the definition for 'GoogleMaps'.
+localisation.ville: Accessor for field 'Liens' clashes with related field 'Lien.ville_set'. Add a related_name argument to the definition for 'Liens'.
+localisation.ville: 'Nom' has an m2m relation with model Nom, which has either not been installed or is abstract.
+localisation.adresse: Accessor for field 'GoogleMaps' clashes with related field 'Lien.adresse_set'. Add a related_name argument to the definition for 'GoogleMaps'.
+localisation.adresse: Accessor for field 'Liens' clashes with related field 'Lien.adresse_set'. Add a related_name argument to the definition for 'Liens'.
+localisation.adresse: 'Nom' has an m2m relation with model Nom, which has either not been installed or is abstract.
+localisation.localisation: Accessor for field 'GoogleMaps' clashes with related field 'Lien.localisation_set'. Add a related_name argument to the definition for 'GoogleMaps'.
+localisation.localisation: Accessor for field 'Liens' clashes with related field 'Lien.localisation_set'. Add a related_name argument to the definition for 'Liens'.
+localisation.localisation: 'Tags' has a relation with model Tags, which has either not been installed or is abstract.
+pm.pm: Accessor for field 'Sender' clashes with related m2m field 'Membre.pm_set'. Add a related_name argument to the definition for 'Sender'.
+pm.pm: Accessor for m2m field 'Dest' clashes with related field 'Membre.pm_set'. Add a related_name argument to the definition for 'Dest'.
+skill.Skill: 'Tag' has an m2m relation with model tag.Tag, which has either not been installed or is abstract.
+skill.Skill: 'FamilleTag' has an m2m relation with model tag.FamilleTag, which has either not been installed or is abstract.
+
