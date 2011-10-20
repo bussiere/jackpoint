@@ -1,0 +1,14 @@
+<html>
+<body>
+<img src="/media/haruhi.jpg" /><br>
+<img src="{{ STATIC_URL }}haruhi.jpg" /><br>
+
+{% if user != 'AnonymousUser' %}
+{% include "login.html" %}
+{% else %}
+{% include "panier.html" %}
+{% endif %}
+
+</body>
+</html>
+

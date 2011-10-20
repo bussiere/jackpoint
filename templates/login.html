@@ -1,0 +1,19 @@
+<p>
+<h3>Login</h3>
+<hr>
+
+{% if form.errors %}
+	<p style="color: red;">
+		Merci de corriger les erreurs {{form.errors|pluralize }} ci-dessous.
+	</p>
+{% endif %}
+
+<form action="." method="POST">
+
+<strong>Courriel</strong> : <input type="text" name="email"> </br>
+<strong>Mot de passe</strong> : <input type="password" name="password"> </br>
+
+<input type="submit" value="Connexion">
+</form>
+
+</p>

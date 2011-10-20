@@ -1,0 +1,13 @@
+<html>
+<body>
+{% if panier %}
+	{% for film in panier.Films %}
+		{{ film.Nom }} <br/>
+	{% endfor %}
+{% else %}
+	Aucun article dans le panier
+{% endif %}
+
+</body>
+</html>
+
