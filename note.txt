@@ -1,7 +1,21 @@
+https://github.com/bussiere/jackpoint
+Image grand format ici : http://dl.dropbox.com/u/19753332/vrac/jackpointmini.jpg
+
+C'est un site privé ou vous rentrez sur invitation et le but est de remplir vos competences et quand quelqu'un a besoin d'un coup de main 
+il taggue des competences et si vous les avez ca vous previent.
+
+Sachant que le site permet aussi de partager les lieux sympas (pharmacie ouverte tards) les evenements (concerts).
+Et qu'il y aura un wall sms.
+J'explique : Vous avez une galere (ou trouver un serrurier a 2h du mat sur paris ?)
+Vous envoyez un sms (non surtaxé) au site et votre message s'affiche sur un wall et tout
+les messages des personnes qui repondront vous seront envoyés par sms.
+
 Bon alors voila le schema généré d'apres mon modele django pour le site.
 Il est assez sympas et c'est du geekporn.
 Bon par contre il est assez complexe et du coup il a fait planter le soft de generation de modele
 (graphviz et pygraphviz) donc si quelqu'un peut me le re générer des que j'ai foutu le site en GNU sur un git.
 Sinon j'hesite pour le nom entre lebiencollectif (classique) ou jackpoint (thematique cyberpunk a la shadowrun).
 
+Ce site sera non marchand
+Githud du site : https://github.com/bussiere/jackpoint
 Bussiere
