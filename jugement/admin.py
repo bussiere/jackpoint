@@ -1,4 +1,7 @@
 #coding: utf-8
-    from django.contrib import admin
-    from lebiencollectif.jugement.models import *
+from django.contrib import admin
+from jackpoint.jugement.models import *
     
+admin.site.register(NoteBoulet)
+admin.site.register(NoteDangerosite)
+admin.site.register(Jugement)

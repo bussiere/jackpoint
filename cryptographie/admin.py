@@ -1,4 +1,4 @@
 #coding: utf-8
-    from django.contrib import admin
-    from lebiencollectif.cryptographie.models import *
+from django.contrib import admin
+from jackpoint.cryptographie.models import *
     

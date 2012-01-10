@@ -14,8 +14,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-    (r'^$', 'pages.views.Index'),
-    (r'^films/', 'pages.films.Index'),
 )
 
 if settings.DEBUG:

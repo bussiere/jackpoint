@@ -7,7 +7,7 @@ def liste_app():
         for subdirname in dirnames:
             result = os.path.join(dirname, subdirname)
             if ( result.find("templates") == -1) and  ( result.find("media") == -1)  and  ( result.find("static") == -1) and  ( result.find("admin") == -1):
-                liste.append("./lebiencollectif/"+result.replace(".\\",""))
+                liste.append("./jackpoint/"+result.replace(".\\",""))
     return liste
 
     
@@ -19,8 +19,8 @@ def generate_admin(prjname,appname):
     fp = open("%s/%s/admin.py" % (prjname,appname), "w")
 
     print >> fp,  '''#coding: utf-8
-    from django.contrib import admin
-    from %s.%s.models import *
+from django.contrib import admin
+from %s.%s.models import *
     ''' % (prjname,appname)
 
     for name, klazz in models.__dict__.items():

@@ -1,4 +1,4 @@
 #coding: utf-8
-    from django.contrib import admin
-    from lebiencollectif.scripts.models import *
+from django.contrib import admin
+from jackpoint.scripts.models import *
     

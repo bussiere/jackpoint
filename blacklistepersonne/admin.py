@@ -1,4 +1,5 @@
 #coding: utf-8
-    from django.contrib import admin
-    from lebiencollectif.blacklistepersonne.models import *
+from django.contrib import admin
+from jackpoint.blacklistepersonne.models import *
     
+admin.site.register(BlacklisteMembre)

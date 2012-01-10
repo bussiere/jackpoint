@@ -1,4 +1,5 @@
 #coding: utf-8
-    from django.contrib import admin
-    from lebiencollectif.poigneemain.models import *
+from django.contrib import admin
+from jackpoint.poigneemain.models import *
     
+admin.site.register(Poignee)

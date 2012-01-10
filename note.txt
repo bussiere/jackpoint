@@ -14,8 +14,12 @@ Bon alors voila le schema généré d'apres mon modele django pour le site.
 Il est assez sympas et c'est du geekporn.
 Bon par contre il est assez complexe et du coup il a fait planter le soft de generation de modele
 (graphviz et pygraphviz) donc si quelqu'un peut me le re générer des que j'ai foutu le site en GNU sur un git.
-Sinon j'hesite pour le nom entre lebiencollectif (classique) ou jackpoint (thematique cyberpunk a la shadowrun).
+Sinon j'hesite pour le nom entre jackpoint (classique) ou jackpoint (thematique cyberpunk a la shadowrun).
 
 Ce site sera non marchand
 Githud du site : https://github.com/bussiere/jackpoint
+
+
+Bisous
+
 Bussiere

@@ -1,4 +1,5 @@
 #coding: utf-8
-    from django.contrib import admin
-    from lebiencollectif.gallerie.models import *
+from django.contrib import admin
+from jackpoint.gallerie.models import *
     
+admin.site.register(Gallerie)

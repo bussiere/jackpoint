@@ -1,4 +1,5 @@
 #coding: utf-8
-    from django.contrib import admin
-    from lebiencollectif.importance.models import *
+from django.contrib import admin
+from jackpoint.importance.models import *
     
+admin.site.register(Importance)
