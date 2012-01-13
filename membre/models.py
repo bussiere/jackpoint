@@ -107,7 +107,7 @@ class Skill_user(models.Model):
 )
     
     Skills = models.ManyToManyField('skill.Skill',related_name='Membre_Skills_skills_Skills)',null=True,blank=True)
-    Niveau = models.IntegerField(max_length=2, choices=Niveau)
+    Niveau = models.IntegerField(max_length=2, choices=NIVEAU)
 
 	
 
@@ -238,7 +238,7 @@ class Membre(models.Model):
 
 
 
-
+    PointRealite = models.IntegerField()
 
 
 

@@ -97,7 +97,15 @@ class NiveauReponse(models.Model):
 class Post(models.Model):
 
 
-
+    Age =  (
+                     
+    ('0', 'Tout le monde'),
+    ('1', '26+'),
+    ('2', '18+'),
+   
+)
+    
+    CategorieAge = models.IntegerField(choices=Age)
     Notation = models.ManyToManyField('notation.Notation',related_name="post_notation",null=True,blank=True)
 
 
