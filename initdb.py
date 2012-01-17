@@ -7,17 +7,17 @@ if not model_cache.loaded:
 from pages.models import Page, Template
 import settings
 
-t = Template(Nom="template_index",contenu="""bienvenue<br>
+t1 = Template(Nom="template_index",contenu="""bienvenue<br>
 <a href="../logout/">logout</a>""")
-t.save()
-p = Page(Nom="index",Template=Template.objects.get("template_index"))
+t1.save()
+p = Page(Nom="index",Template=t1)
 p.save()
 
-t = Template(Nom="template_indexvide",contenu="""   <form method="post" action=".">{% csrf_token %}
+t2 = Template(Nom="template_indexvide",contenu="""   <form method="post" action=".">{% csrf_token %}
     <input type="text" name="username">
     <input type="password" name="password">
     <input type="submit" value="login" />
     </form>""")
-t.save()
-p = Page(Nom="indexvide",Template=Template.objects.get("template_indexvide"))
+t2.save()
+p = Page(Nom="indexvide",Template=t2)
 p.save()

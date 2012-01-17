@@ -51,7 +51,7 @@ def invitation(request):
     
     
     try :
-        if (request.POST['codeinvitation']):
+        if (request.POST['codeinvitation'] and request.POST['login'] and request.POST['password']):
             codeinvitation = request.POST['codeinvitation']
             output = Page.objects.get(Nom="invitation")
             
