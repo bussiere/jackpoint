@@ -100,7 +100,7 @@ class Post(models.Model):
     Age =  (
                      
     ('0', 'Tout le monde'),
-    ('1', '26+'),
+    ('1', '16+'),
     ('2', '18+'),
    
 )

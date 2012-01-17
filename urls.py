@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
     (r'^$','pages.views.index'),
+    (r'^invitation','pages.views.invitation'),
     url(r'^(?P<logouts>\w{0,50})/$', 'pages.views.index'),
 )
 

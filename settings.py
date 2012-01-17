@@ -173,6 +173,7 @@ INSTALLED_APPS = (
 'signalisation_membre',
 'skill',
 'statistic',
+'south',
 'tag',
 'tips',
 'tutorial',

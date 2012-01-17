@@ -42,3 +42,37 @@ def index(request,logouts=""):
     t = Template(t)
     c = RequestContext(request)
     return HttpResponse(t.render(c))# Create your views here.
+
+
+
+def invitation(request):
+    
+    
+    
+    
+    try :
+        if (request.POST['codeinvitation']):
+            codeinvitation = request.POST['codeinvitation']
+            output = Page.objects.get(Nom="invitation")
+        else :
+            pass
+            
+    except :
+        output = Page.objects.get(Nom="invitationvide")
+    
+    
+    t = ""
+    for template in output.Template.all() :
+        t += recursif_template(template.contenu)  
+    t = Template(t)
+    c = RequestContext(request)
+    return HttpResponse(t.render(c))
+
+def inscription(request):
+    output = Page.objects.get(Nom="inscription")
+    t = ""
+    for template in output.Template.all() :
+        t += recursif_template(template.contenu)  
+    t = Template(t)
+    c = RequestContext(request)
+    return HttpResponse(t.render(c))
