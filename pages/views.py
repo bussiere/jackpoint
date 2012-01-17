@@ -54,11 +54,15 @@ def invitation(request):
         if (request.POST['codeinvitation']):
             codeinvitation = request.POST['codeinvitation']
             output = Page.objects.get(Nom="invitation")
+            
+            
         else :
             pass
             
     except :
         output = Page.objects.get(Nom="invitationvide")
+        
+        
     
     
     t = ""
