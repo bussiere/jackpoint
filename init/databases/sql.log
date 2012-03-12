@@ -1,0 +1,111 @@
+timestamp: 2012-03-12T18:13:07.328000
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(128) UNIQUE,
+    password CHAR(512),
+    Skills TEXT,
+    Items TEXT,
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2012-03-12T18:13:07.609000
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-03-12T18:13:07.781000
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-03-12T18:13:07.906000
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2012-03-12T18:13:08.031000
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-03-12T18:13:08.109000
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2012-03-12T18:14:22.031000
+CREATE TABLE Skill(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nom CHAR(512) UNIQUE
+);
+success!
+timestamp: 2012-03-12T18:14:22.156000
+CREATE TABLE Item(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nom CHAR(512) UNIQUE
+);
+success!
+timestamp: 2012-03-12T18:14:22.296000
+CREATE TABLE SkillUser(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Skill INTEGER REFERENCES Skill(id) ON DELETE CASCADE,
+    User INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    Niveau INTEGER
+);
+success!
+timestamp: 2012-03-12T18:15:13.421000
+CREATE TABLE SkillDemande(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Skill INTEGER REFERENCES Skill(id) ON DELETE CASCADE,
+    Niveau INTEGER
+);
+success!
+timestamp: 2012-03-12T18:15:45.171000
+CREATE TABLE Demande(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Topic CHAR(512) UNIQUE,
+    Texte CHAR(512),
+    Skills TEXT,
+    Items TEXT,
+    auth_user INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-03-12T18:15:45.296000
+CREATE TABLE Popup(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Demande INTEGER REFERENCES Demande(id) ON DELETE CASCADE,
+    User INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-03-12T18:15:45.421000
+CREATE TABLE Suggestion(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Topic CHAR(512) UNIQUE,
+    Texte CHAR(512),
+    Skills TEXT,
+    Items TEXT,
+    auth_user INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
