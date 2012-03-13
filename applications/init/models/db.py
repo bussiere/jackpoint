@@ -109,6 +109,10 @@ db.define_table('Demande',
    Field('auth_user',db.auth_user),
    format = '%(Topic)s')
 
+db.define_table('Invitation',
+   Field('Code', unique=True),
+   format = '%(Topic)s')
+
 db.define_table('Popup',
    Field('Demande', db.Demande),
    Field('User', db.auth_user),

@@ -109,3 +109,9 @@ CREATE TABLE Suggestion(
     auth_user INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
 );
 success!
+timestamp: 2012-03-13T04:57:22.619000
+CREATE TABLE Invitation(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Code CHAR(512) UNIQUE
+);
+success!
