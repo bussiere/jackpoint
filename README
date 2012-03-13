@@ -1,0 +1,80 @@
+English Francais en dessous :
+The Jackpoint project
+Who has never needed help for something, and had no idea where to look for it? Who has never been through his entire list of contacts, looking for someone able to fix a computer on short notice, lend a sewing machine, or who knows where to find a locksmith at 11 PM on a Sunday? We have all had to deal with a friend’s friend who knows a guy who could help us, and the stress that goes with such situations. 
+Jackpoint is a community website project that focuses on mutual aid and putting people in contact, in order to make these situations all the more easier. Te idea was born of two friends, who realised they each had very wide and heteroclite networks, and often asked each other for help. Jackpoint would be able to put people in contact directly via a website. By getting rid of middlemen, all that is left the people’s skills and knowledge, accessible to all. More than this, one of Jackpoint’s ambitions would be to get different communities that don’t often communicate (such as Goths, geeks and so on) together, around themes and discussions they all care for.
+Jackpoint is inspired by projects such as Metafilter, Stackoverflow or Parano.be. 
+How does it work?
+Jackpoint will be accessible by invitation only. Invited members will fill in their profile with their skills, spoken languages and any special equipment they would possess (this information will be, by default, private, and it will be their choice to show it publicly or not), and will then be able to interact with others. 
+Users will be able to visualise how people on the site are connected to each other through a “handshake” system. A direct connection will be one handshake away. His or her connections will be two handshakes away, and so on.
+Asking for a hand
+When a member needs some help, he will need to post a message, tagging in it the skill or skills required to help him out. All the users who have the required skills will receive a note informing them that someone needs them on the site, and be able to answer easily. Users will then vote for the most accurate answer. 
+After helping someone out, if the helper is not in need of any of the skills the person he has helped possesses, he will be able to receive a “help token” instead, that he will be able to use later, or transfer to another user. 
+Messages can be posted anonymously, for example in the event of organising a party for one of the registered members.
+A “karma” system will reward the most helpful members of the site.
+Group purchases
+A part of the site will be dedicated to group purchases. Members will be able to get together to buy items. For example, if a promotion offers 100m of fabric for €100, which is a lot of money to take out at once. The person interested in buying can ask other users if anyone would like to split the costs and share the fabric.
+Announcements
+In another part of the website, users will be able to post classified ads to buy and sell things and job offers. 
+Text Wall
+What can one do if, on a Sunday at 11 PM, one breaks his key in the lock whilst coming home? Not everyone can access the Internet constantly, or have enough phone credit to call for information. Jackpoint may be the answer:
+The server will have a dedicated phone number, to which users can send a text message in case of emergency. It will appear on the website on a special page, and online members will be able to answer the cry for help. These answers will be sent back to the mobile phone that first sent the message.
+Places and events
+With Jackpoint, it will also be possible to share information about places to go, or events under way. 
+Through a tagging system, members will have the possibility of entering places in the Jackpoint database and give feedback. For example, where to find a pharmacy open at night, or which shop to go to for specific products. It will also come in handy to warn people about places to avoid.
+Jackpoint also gives user the possibility of organising events, or tagging conventions, fairs or any other event people could be interested in, without knowing where to look.
+Groups, workshops and tutorials
+One of the site’s goal is gathering together the users’ knowledge, and sharing it with others. People will have the possibility of creating groups to discuss on a theme they enjoy, or a project that needs a variety of skills to see the day. This will make it easier to have different points of view on one subject.
+Users will be able to post tutorials online to share their passions with other Jackpoint users, and even organise workshops, to show what they like in real life, with the help of equipment and demonstrations. They will also have the possibility of posting news articles on subjects they really enjoy.
+Mechanics
+Jackpoint will be based on a tagging system in each message. Tags will refer to skills, places or themes the users discuss, in order to index everything easily. 
+Although Jackpoint will be a private website, questions and answers will be accessible from Google. Guests will only be able to see the text, though, and have no information on who wrote what.
+Users will also be able to download a part of the database on their computer so it can be accessed even offline. In case of server breakdown, this saved data could come in very useful to get the website working again.
+The webmaster is also thinking about creating a Jackpoint mobile application, in order to make it accessible from virtually anywhere.
+Jackpoint is a non profit, free of rights project. It will be an open source website with a downloadable database. Anyone will be able to use the code to create their own Jackpoint network. If something happens to the webmaster, the downloaded database will act as a security, so the website can run without him. Members can rest assured, their personal messages will keep safe even if someone exports the data, as they will be encrypted using their password as key.
+
+
+Francais :
+Projet Jackpoint
+
+Qui n’a jamais eu besoin d’un coup de main, et aucune idée d’où trouver de l’aide ? Qui n’a jamais fait le tour de tous ses contacts pour dépanner un ordinateur en urgence, emprunter une machine à coudre ou demander si quelqu’un a le numéro d’un serrurier ouvert un dimanche à 23h ? Tout le monde a déjà eu affaire à l’ami d’un ami qui connaît un gars qui peut nous aider, et tout le monde connaît l’angoisse qui va avec. 
+Jackpoint est un projet de réseau social d’entraide et de mise en relation, dont le but est de simplifier ces petites démarches. Né du constat de deux amis aux carnets d’adresses étendus et aux contacts variés qui faisaient souvent appel l’un à l’autre, Jackpoint est un projet de site internet où les membres pourront échanger coups de pouce et conseils en supprimant les intermédiaires, pour qu’il ne reste qu’un ensemble de compétences accessible à tous. Plus encore, Jackpoint espère pouvoir rassembler diverses communautés aux thématiques communes, qui ne partagent pas forcément entre eux (goths, geeks…). Le projet s’inspire de sites comme Metafilter, Stackoverflow ou encore Parano.be.
+En quoi ça consiste ?
+Jackpoint fonctionnera sur un système d’invitations. Les invités rempliront un profil où il faudra renseigner leurs compétences, les langues parlées et le matériel spécifique dont ils disposent (informations privées par défaut, libre à eux de les montrer aux autres utilisateurs ou non), et pourront ensuite poser des questions et demander conseil aux autres utilisateurs. 
+Un système de « poignées de main » permettra de visualiser comment les membres sont reliés entre eux. Un membre invité sera à une poignée de main de celui qui envoie l’invitation, et aura accès au réseau de ce dernier en tant que contacts à deux poignées de main, et ainsi de suite.
+Demandes de coups de main
+Lorsqu’un membre aura besoin d’un service, il mettra dans son message les tags des compétences dont, selon lui, son problème relève. Tous les utilisateurs disposant de cette compétence seront alertés du message et pourront y répondre. Il sera ensuite possible de voter pour la réponse la plus pertinente. 
+Dans le cas d’un échange de service, il est possible de recevoir, en échange d’un coup de main, un jeton de service, correspondant aux compétences que possède le demandeur, mais qui ne sont pas utiles pour l’instant. Ces jetons sont transférables d’un utilisateur à un autre.
+Il sera possible de demander un coup de main ouvertement, ou en tant qu’anonyme, si, par exemple, cela concerne l’anniversaire surprise d’un membre inscrit.
+Un système de karma permettra de récompenser les utilisateurs les plus actifs.
+Achats groupés
+Une rubrique du site permettra aux membres de se rassembler pour faire un achat ensemble. 
+Par exemple, si une promotion propose 100m de tissu pour 100€ mais qu’une seule personne ne peut pas mettre autant d’argent en jeu d’un coup, elle peut proposer à d’autres de partager le coût et le stock de tissu.
+Annonces
+Une autre rubrique permettra aux utilisateurs de passer des annonces d’achat ou vente, mais aussi proposer des offres d’emplois, demander un stage… 
+Wall SMS
+Que faire si, un dimanche soir, à 23h, on casse une clé dans sa serrure en rentrant chez soi ? Tout le monde n’a pas Internet sous la main, ou le crédit de communication nécessaire pour appeler les informations. Jackpoint a peut-être la solution :
+Un numéro de téléphone relié au serveur permettra, en cas de souci urgent, d’envoyer un SMS qui sera publié sur le site. Les membres connectés pourront y répondre, réponses qui seront transférées au téléphone d’où vient l’appel au secours.
+Lieux et évènements
+Jackpoint permettra, en plus de permettre de s’entraider et trouver facilement une solution à ses problèmes, de partager ses bonnes adresses, ou organiser des évènements.
+Un système de tag donnera la possibilité aux membres d’entrer des lieux dans la base de données, en donnant son avis. Pratique, pour savoir où trouver une pharmacie ouverte la nuit, ou quel magasin aura le produit qu’on cherche. De même un avis négatif permettra aux membres de rester prudents quant à tel ou tel service. 
+Organiser une soirée, prévenir d’une convention ou d’un concert devient très simple grâce à Jackpoint. Le site permettra d’avertir les utilisateurs d’un évènement qui peut intéresser, mais dont on n’entend pas forcément parler. Par exemple, une foire organisée par une commune qui n’a pas fait de publicité en dehors.
+Groupes, Workshops et tutoriaux
+Le site ayant pour ambition de mettre en commun des connaissances, il sera possible de faire partager ses passions aux autres utilisateurs, qui pourront créer des groupes pour se rassembler et discuter autour d’un thème, ou d’un projet rapprochant plusieurs thèmes ou compétences, afin d’avoir une vue d’ensemble et apporter des points de vue variés.
+Les utilisateurs pourront mettre en ligne des tutoriaux pour faire découvrir une de leurs passions ou domaines de compétence. De plus, ils pourront organiser des « workshop », pour se retrouver IRL et partager leur savoir, avec du matériel et des démonstrations à l’appui. Enfin, ils pourront aussi partager des articles sur un sujet qui les passionne et réagir dessus avec les autres membres.
+Mécaniques
+Jackpoint fonctionnera sur un système de « tags » inclus à chaque message, qui fera référence aux compétences, lieux ou thèmes évoqués dans chaque message pour un indexage facilité. 
+Même si le site ne sera accessible que sur invitation, les questions et réponses seront libres d’accès et indexées par Google. Seuls les utilisateurs pourront interagir, et de l’extérieur on ne saura pas qui est l’auteur des messages, mais quelqu’un avec un problème similaire pourra trouver, via les moteurs de recherche, les réponses données sur Jackpoint.
+Chaque utilisateur pourra aussi télécharger une partie de la base de données sur son ordinateur, pour pouvoir y accéder sans connexion internet. Cette sauvegarde pourra servir en cas de panne informatique, pour remonter le site. 
+Un client mobile est aussi à l’étude, pour que Jackpoint soit accessible depuis les téléphones portables.
+Ce projet est non marchand et libre de droits. Le site sera open source, et la base de données téléchargeable. N’importe qui pourra réutiliser le code pour monter son propre carnet d’adresses Jackpoint. 
+Le but de cette démarche est que, en cas de problème, le site puisse tourner sans le webmaster. La base de données pourra donc être téléchargée et remontée ailleurs, avec un système de cryptage basé sur les mots de passe des utilisateurs, qui garantira que les messages privés ne restent accessibles que par eux. 
+Interface
+L’interface aura un thème steampunk qui fait référence à l’origine du nom du projet : dans Shadowrun, ce nom désigne un rendez-vous de hackers et centre d’échange d’informations en tout genre. Il y a également une référence à l’expression américaine « Jack of all trades ; master of none », qui qualifie les gens capables de tout faire, un petit peu, et qui caractérise l’esprit du site.
+En se connectant, l’utilisateur verra les notifications qu’il a reçues de la part de ceux qui ont besoin de résoudre un problème. Une banderole d’astuces (« tips ») défilera sur toutes les pages du site, pour donner de petits conseils qui peuvent toujours servir. Par exemple : « toujours garder un vieux téléphone portable dans sa voiture, qui sera plus résistant qu’un smartphone en cas d’accident »
+Avancement du projet :
+Le webmaster espère pouvoir proposer une version beta du site fin mars, et lancer Jackpoint d’ici au mois de juillet. C’est un travail long et prenant qu’il effectue en plus de son emploi à plein temps, et de l’aide serait la bienvenue !
+Le moteur du site est fini, reste à coder l’interface utilisateurs. Seront lancés en premier :
+L’inscription des membres et le rajout des compétences
+La demande de coups de main
+Le rajout de lieux et d’évènements
+Le Wall SMS
