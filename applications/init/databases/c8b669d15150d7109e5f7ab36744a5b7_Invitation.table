@@ -1,5 +1,5 @@
 (dp1
-S'Code'
+S'code'
 p2
 (dp3
 S'type'
@@ -13,14 +13,59 @@ sS'sql'
 p7
 S'CHAR(512) UNIQUE'
 p8
-ssS'id'
+ssS'used'
 p9
 (dp10
 g4
-g9
+S'boolean'
+p11
+sg6
+I6
+sg7
+S'CHAR(1)'
+p12
+ssS'receveur'
+p13
+(dp14
+g4
+S'reference auth_user'
+p15
+sg6
+I5
+sg7
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p16
+ssS'usage'
+p17
+(dp18
+g4
+S'reference Usage_Db'
+p19
+sg6
+I3
+sg7
+S'INTEGER REFERENCES Usage_Db(id) ON DELETE CASCADE'
+p20
+ssS'id'
+p21
+(dp22
+g4
+S'id'
+p23
 sg6
 I1
 sg7
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
-p11
+p24
+ssS'donneur'
+p25
+(dp26
+g4
+S'reference auth_user'
+p27
+sg6
+I4
+sg7
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p28
 ss.

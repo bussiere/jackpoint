@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S'missing "pass" in view'
+p3
+sS'layer'
+p4
+S'ParserContainer'
+p5
+sS'code'
+p6
+S'response.write(\'<div id="login_form">\\n \\nPlease fill the form\\n \\n \\n\', escape=False)\nresponse.write(form)\nresponse.write(\'\\n \\n</div>\\n  <a href="\', escape=False)\nresponse.write(URL(args=\'register\'))\nresponse.write(\'">\', escape=False)\nresponse.write(T(\'Register\'))\nresponse.write(\'</a>\\n  \', escape=False)\npass\nresponse.write(\'\\n  \', escape=False)\nif not \'request_reset_password\' in auth.settings.actions_disabled:\n    response.write(\'\\n  <br/>\\n  <a href="\', escape=False)\n    response.write(URL(args=\'request_reset_password\'))\n    response.write(\'">\', escape=False)\n    response.write(T(\'Lost Password\'))\n    response.write(\'</a>\\n<a href="invitation">Vous avez une invitation ? Fallow the rabbit ...</a>\\n\\n\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'None\n'
+p11
+s.

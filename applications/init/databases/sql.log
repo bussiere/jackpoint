@@ -115,3 +115,50 @@ CREATE TABLE Invitation(
     Code CHAR(512) UNIQUE
 );
 success!
+timestamp: 2012-03-14T15:43:03.609000
+CREATE TABLE web2py_session_init(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    locked CHAR(1),
+    client_ip CHAR(64),
+    created_datetime TIMESTAMP,
+    modified_datetime TIMESTAMP,
+    unique_key CHAR(64),
+    session_data BLOB
+);
+success!
+timestamp: 2012-03-14T16:08:37.609000
+CREATE TABLE Father(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    father INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    sons TEXT
+);
+success!
+timestamp: 2012-03-14T16:08:37.687000
+CREATE TABLE Son(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    father INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    sons INTEGER REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-03-14T16:08:37.937000
+CREATE TABLE Usage_Db(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nom CHAR(512) UNIQUE
+);
+success!
+timestamp: 2012-03-14T16:08:38.046000
+ALTER TABLE Invitation ADD usage INTEGER REFERENCES Usage_Db(id) ON DELETE CASCADE;
+timestamp: 2012-03-14T19:51:14.998000
+ALTER TABLE Invitation ADD receveur INTEGER REFERENCES auth_user(id) ON DELETE CASCADE;
+timestamp: 2012-03-14T19:51:15.111000
+ALTER TABLE Invitation ADD donneur INTEGER REFERENCES auth_user(id) ON DELETE CASCADE;
+timestamp: 2012-03-14T19:51:15.119000
+ALTER TABLE Invitation ADD used CHAR(1);
+timestamp: 2012-03-14T19:51:15.218000
+CREATE TABLE Tip(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Texte CHAR(512),
+    User INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    Validation CHAR(1)
+);
+success!
