@@ -1,4 +1,4 @@
-string = ["totot","titigsgsgsgsgsgsgs","tata"]
+string = ["totosdjfsdfsdfdsfsdfsdfsdfsdfsdft","titigsgsgsgsgsgsgs","tata"]
 
 def encadrement(string,hauteur="#",largeurg="#",largeurd="#"):
 	h = 0

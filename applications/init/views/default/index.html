@@ -6,5 +6,10 @@ Please fill the form
 {{=form}}
  
 </div>
+  <a href="{{=URL(args='register')}}">{{=T('Register')}}</a>
+  {{pass}}
+  {{if not 'request_reset_password' in auth.settings.actions_disabled:}}
+  <br/>
+  <a href="{{=URL(args='request_reset_password')}}">{{=T('Lost Password')}}</a>
 <a href="invitation">Vous avez une invitation ? Fallow the rabbit ...</a>
 

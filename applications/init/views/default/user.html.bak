@@ -1,3 +1,4 @@
+
 <body bgcolor="000f00" text="b7d14e">
 <pre>
    __             _                _       _   
@@ -13,11 +14,15 @@
   {{if request.args(0)=='login':}}
   {{if not 'register' in auth.settings.actions_disabled:}}
   <br/>
+  <a href="{{=URL(args='register')}}">{{=T('Register')}}</a>
+  {{pass}}
+  {{if not 'request_reset_password' in auth.settings.actions_disabled:}}
+  <br/>
+  <a href="{{=URL(args='request_reset_password')}}">{{=T('Lost Password')}}</a>
   {{pass}}
   {{pass}}
 </div>
-<a href="../invitation">Vous avez une invitation ? Follow the rabbit ...</a><br>
-<a href="../faq">FAQ</a>
+<a href="../invitation">Vous avez une invitation ? Follow the rabbit ...</a>
 <script language="javascript"><!--
       jQuery("#web2py_user_form input:visible:enabled:first").focus();
       //--></script>

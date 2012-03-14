@@ -21,7 +21,7 @@ def index():
 def invitation():
     return dict(form=SQLFORM(db.Invitation))
 def faq():
-    return dict()
+    pass
 def user():
     """
     exposes:
