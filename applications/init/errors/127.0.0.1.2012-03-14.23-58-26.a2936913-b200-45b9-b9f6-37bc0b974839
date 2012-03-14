@@ -1,0 +1,312 @@
+(dp1
+S'output'
+p2
+S'missing "pass" in view'
+p3
+sS'layer'
+p4
+S'ParserContainer'
+p5
+sS'code'
+p6
+S'response.write(\'<div id="login_form">\\n \\nPlease fill the form\\n \\n \\n\', escape=False)\nresponse.write(form)\nresponse.write(\'\\n \\n</div>\\n  <a href="\', escape=False)\nresponse.write(URL(args=\'register\'))\nresponse.write(\'">\', escape=False)\nresponse.write(T(\'Register\'))\nresponse.write(\'</a>\\n  \', escape=False)\npass\nresponse.write(\'\\n  \', escape=False)\nif not \'request_reset_password\' in auth.settings.actions_disabled:\n    response.write(\'\\n  <br/>\\n  <a href="\', escape=False)\n    response.write(URL(args=\'request_reset_password\'))\n    response.write(\'">\', escape=False)\n    response.write(T(\'Lost Password\'))\n    response.write(\'</a>\\n<a href="invitation">Vous avez une invitation ? Fallow the rabbit ...</a>\\n\\n\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of SocketTimeout object at 0x03CF5C60>"
+p13
+sS'__module__'
+p14
+S"'gluon.rocket'"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of SocketTimeout object at 0x03CF5C60>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of SocketTimeout object at 0x03CF5C60>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of SocketTimeout object at 0x03CF5C60>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of SocketTimeout object at 0x03CF5C60>'
+p23
+sS'__reduce__'
+p24
+S'<built-in method __reduce__ of SocketTimeout object at 0x03CF5C60>'
+p25
+sS'__str__'
+p26
+S"<method-wrapper '__str__' of SocketTimeout object at 0x03CF5C60>"
+p27
+sS'args'
+p28
+S"('Socket timed out before request.',)"
+p29
+sS'__getattribute__'
+p30
+S"<method-wrapper '__getattribute__' of SocketTimeout object at 0x03CF5C60>"
+p31
+sS'__class__'
+p32
+S"<class 'gluon.rocket.SocketTimeout'>"
+p33
+sS'__delattr__'
+p34
+S"<method-wrapper '__delattr__' of SocketTimeout object at 0x03CF5C60>"
+p35
+sS'__repr__'
+p36
+S"<method-wrapper '__repr__' of SocketTimeout object at 0x03CF5C60>"
+p37
+sS'__setattr__'
+p38
+S"<method-wrapper '__setattr__' of SocketTimeout object at 0x03CF5C60>"
+p39
+sS'__dict__'
+p40
+S'{}'
+p41
+sS'__weakref__'
+p42
+S'None'
+p43
+sS'__doc__'
+p44
+S"'Exception for when a socket times out between requests.'"
+p45
+sS'__init__'
+p46
+S"<method-wrapper '__init__' of SocketTimeout object at 0x03CF5C60>"
+p47
+sS'__new__'
+p48
+S'<built-in method __new__ of type object at 0x1E1CCBE8>'
+p49
+ssS'evalue'
+p50
+S'Socket timed out before request.'
+p51
+sS'frames'
+p52
+(lp53
+(dp54
+S'file'
+p55
+S'C:\\Users\\Bussiere\\Dropbox\\Projets\\jackpoint\\web2py\\gluon\\rocket.py'
+p56
+sS'dump'
+p57
+(dp58
+sS'lnum'
+p59
+I1302
+sS'lines'
+p60
+(dp61
+I1297
+S'            # Enter connection serve loop'
+p62
+sI1298
+S'            while True:'
+p63
+sI1299
+S'                if __debug__:'
+p64
+sI1300
+S"                    self.err_log.debug('Serving a request')"
+p65
+sI1301
+S'                try:'
+p66
+sI1302
+S'                    self.run_app(conn)'
+p67
+sI1303
+S'                    log_info = dict(client_ip = conn.client_addr,'
+p68
+sI1304
+S"                                    time = datetime.now().strftime('%c'),"
+p69
+sI1305
+S"                                    status = self.status.split(' ')[0],"
+p70
+sI1306
+S'                                    size = self.size,'
+p71
+ssS'call'
+p72
+S'(self=<WSGIWorker(Thread-9, started daemon)>)'
+p73
+sS'func'
+p74
+S'run'
+p75
+sa(dp76
+g55
+S'C:\\Users\\Bussiere\\Dropbox\\Projets\\jackpoint\\web2py\\gluon\\rocket.py'
+p77
+sg57
+(dp78
+sg59
+I1986
+sg60
+(dp79
+I1984
+S'        try:'
+p80
+sI1985
+S'            # Read the headers and build our WSGI environment'
+p81
+sI1986
+S'            self.environ = environ = self.build_environ(sock_file, conn)'
+p82
+sI1987
+S''
+sI1988
+S'            # Handle 100 Continue'
+p83
+sI1989
+S"            if environ.get('HTTP_EXPECT', '') == '100-continue':"
+p84
+sI1990
+S"                res = environ['SERVER_PROTOCOL'] + ' 100 Continue\\r\\n\\r\\n'"
+p85
+sI1981
+S'        else:'
+p86
+sI1982
+S'            sock_file = conn.makefile(BUF_SIZE)'
+p87
+sI1983
+S''
+ssg72
+S'(self=<WSGIWorker(Thread-9, started daemon)>, conn=<gluon.rocket.Connection object at 0x03EB6D40>)'
+p88
+sg74
+S'run_app'
+p89
+sa(dp90
+g55
+S'C:\\Users\\Bussiere\\Dropbox\\Projets\\jackpoint\\web2py\\gluon\\rocket.py'
+p91
+sg57
+(dp92
+sg59
+I1807
+sg60
+(dp93
+I1802
+S'                                      "wsgiorg.futures": executor.futures})'
+p94
+sI1803
+S''
+sI1804
+S'    def build_environ(self, sock_file, conn):'
+p95
+sI1805
+S'        """ Build the execution environment. """'
+p96
+sI1806
+S'        # Grab the request line'
+p97
+sI1807
+S'        request = self.read_request_line(sock_file)'
+p98
+sI1808
+S''
+sI1809
+S'        # Copy the Base Environment'
+p99
+sI1810
+S'        environ = self.base_environ.copy()'
+p100
+sI1811
+S''
+ssg72
+S'(self=<WSGIWorker(Thread-9, started daemon)>, sock_file=<socket._fileobject object at 0x040F0E30>, conn=<gluon.rocket.Connection object at 0x03EB6D40>)'
+p101
+sg74
+S'build_environ'
+p102
+sa(dp103
+g55
+S'C:\\Users\\Bussiere\\Dropbox\\Projets\\jackpoint\\web2py\\gluon\\rocket.py'
+p104
+sg57
+(dp105
+sg59
+I1376
+sg60
+(dp106
+I1376
+S'            raise SocketTimeout("Socket timed out before request.")'
+p107
+sI1377
+S''
+sI1378
+S'        d = d.strip()'
+p108
+sI1379
+S''
+sI1380
+S'        if not d:'
+p109
+sI1371
+S''
+sI1372
+S'                d = sock_file.readline()'
+p110
+sI1373
+S'                if PY3K:'
+p111
+sI1374
+S"                    d = d.decode('ISO-8859-1')"
+p112
+sI1375
+S'        except socket.timeout:'
+p113
+ssg72
+S'(self=<WSGIWorker(Thread-9, started daemon)>, sock_file=<socket._fileobject object at 0x040F0E30>)'
+p114
+sg74
+S'read_request_line'
+p115
+sasS'pyver'
+p116
+S'Python 2.5.4: C:\\Users\\Bussiere\\Dropbox\\Projets\\jackpoint\\web2py\\web2py.exe'
+p117
+sS'etype'
+p118
+S"<class 'gluon.rocket.SocketTimeout'>"
+p119
+sS'date'
+p120
+S'Wed Mar 14 23:58:27 2012'
+p121
+sS'locals'
+p122
+(dp123
+S'sock_file'
+p124
+S'<socket._fileobject object at 0x040F0E30>'
+p125
+sS'self'
+p126
+S'<WSGIWorker(Thread-9, started daemon)>'
+p127
+sssS'traceback'
+p128
+S'Traceback (most recent call last):\n  File "gluon/rocket.py", line 1302, in run\n  File "gluon/rocket.py", line 1986, in run_app\n  File "gluon/rocket.py", line 1807, in build_environ\n  File "gluon/rocket.py", line 1376, in read_request_line\nSocketTimeout: Socket timed out before request.\n'
+p129
+s.

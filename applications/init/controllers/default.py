@@ -140,7 +140,7 @@ def index():
     if auth.is_logged_in() :
         return "You get the blue pills"
     else :
-        return dict(form=auth.login())
+        return dict(form=auth.login(),faq=URL('faq'))
 
 
 
@@ -187,6 +187,7 @@ def invitation():
     return dict(form=SQLFORM(db.Invitation))
 
 def faq():
+
     return dict()
 def user():
     """
