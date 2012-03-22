@@ -144,7 +144,11 @@ def index():
 
 
 
-def generate_invitation(number,word=4,num=1,numdigit=5):
+def generate_invitation(form):
+    number =  form.vars.nmbreinvit
+    word=4
+    num=1
+    numdigit=5
     code = [
 ['BELCHER', 'FIX', 'EEL', 'PANZERBOY', 'DESK_JOCKEY', 'CHILLED', 'ENFORCER', 'CHERRY_PICKING', 'COUNTRY_CLUB', 'BOMBSHELL', 'PLUGGED_IN', 'FINI', 'LEGIT', 'JAM', 'BONED_OUT', 'BLADE', 'ROUST', 'SAMURAI', 'DISK', 'INPUT', 'POST_TIME', 'SOUNDS', 'SKIP', 'FLATBACKER', 'WILSON', 'SHOEMAKER', 'DELTA_SIERRA', 'HEART', 'CROAK', 'HEAD_HUNTER', 'HOSHO_KAISHA', "DELTA'D", "'FACE_(also,_FACE,_EYE-FACE,_I-FACE)", 'WEEFLE', 'DIRTGIRL', 'KEYBOARD', 'BRAIN_BUCKET', 'DRYING_OUT', 'OVERCOOK', 'PIG', 'COLD_TEA', 'RECONFIG', 'PAD', 'LIT_UP', 'WRAITH', 'HANDLE', 'L.P.', 'PINCH', 'TAKE_A_CAB', 'SPILL', 'ACE_KOOL', 'DO', 'BIZ', 'BROWNIE', 'CANDLE_AND_BLOOD', 'BLUEBOY', 'UP_ON_IT', 'BURN', 'USER_INTERFACE', 'HOB', 'GYRO', 'STUFFIT', 'THATCH', 'ICEBREAKER', 'ZIP_GUN', 'PETERMAN', 'PLAY_DOUGH', 'TREY-EIGHT', 'SETTLE', "CHIPPIN'_IN", 'MEATBALL', 'RAFFLES', 'YUBITSUME', 'CROAKER', 'SUCKER_POCKETS', 'L.A.M.A.', 'GEEK', 'BUTTONHEAD'],
 ['TAKE', 'TEKIYA', 'KURUMAKU', 'BLOC', 'GAT', 'JOHATSU', 'CRYSTAL', 'A.I.', 'ZEROED', 'OVER_THE_SHOULDER', 'GRAB_GEE', 'PANZER', 'GO_LEO', 'WASHED', 'I.C.E.', 'COPSHOP', 'COLLATERAL_DAMAGE', 'BIG_DARK', 'DOUBLE-DEUCE', 'ZONEDANCE', 'MARK', 'COBBERS', 'CHIMPIRA', 'TRIADS', 'SHANK', 'FRAG', 'BREATH_VAC', "CHARLIE'S_ANGEL", 'MULE', 'BURNER', "PACKIN'", 'HOTDOGGER', 'BOSOZOKU', 'RIPPERDOC', 'THIRDMAN', 'MAXIMUM,_MAX', 'CHOOH2_("CHOO")', 'CRYO_MAX', 'HEATER', 'SHARK', 'JOYGIRL', 'GURENTAI', 'BANDIT', 'VENICE', 'MIZU_SHOBAI', 'PASTA_BOYS', 'SQUID', 'CYBERED_UP', 'DEAD_RECKONING', 'POPSICLE', 'FAUST', 'COLLARBOY', 'SHOES', 'TORCH', 'DELTAJOCK', 'BUTTERFLY_MAN', 'WISE_GUYS', 'BOOST', 'CAIN', 'FOUR-FIVE', 'BREAK-DOWN', 'POLYMER_ONE-SHOT', 'FLAG', 'CALL_GIRL', 'IN_THE_HUNT', 'HYDRO', 'DOCK', 'FENCE', 'SHAIKUJIN', 'GOMI', 'FILTER', 'SAINT_NICK', 'LINEFOOT', 'CAVALRY', 'PUKE', 'CONVERSION', 'FINGER', 'CONTRACT'],
@@ -171,7 +175,7 @@ def generate_invitation(number,word=4,num=1,numdigit=5):
         if invit not in invits :
             invits.append(invit[:-1])
             print invit
-    return invits
+    form.vars.invits = invits
         
 def randomdig(number):
     max = "9"*number
@@ -192,10 +196,8 @@ def liste_invitations():
 #@auth.requires_membership('manager')
 def generate_invitationpage():
    form=FORM("Nombre d'invit a générer:", INPUT(_name='nmbreinvit'), INPUT(_type='submit'))
-   if form.process().accepted:
-       i = form.vars.nmbreinvit
-       invitsgenere = generate_invitation(i)
-       for invit in invitsgenere :
+   if form.process(onvalidation=generate_invitation).accepted:
+       for invit in form.vars.invits :
            db.Invitation.insert(Code=invit)
            db.commit()
        session.flash = 'invitation inserted'

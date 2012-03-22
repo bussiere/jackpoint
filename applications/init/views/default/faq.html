@@ -84,6 +84,33 @@
 		</ul>
 	</br>
 	</br>
+	<pre>
+	Petites Precisions sur le systeme de cryptage :
+	La db sera telechargeable par tout le monde.
+j'ai en DB la clef publique PGP et la clef prive PGP ( crypte en  AES).
+
+Je suis Alice, je veux pm Bob.
+Je requete sa clef publique de la bd, j'encode le message avec la clef publique.
+
+
+Je suisBOB :
+Je me connecte : a ce moment la ma clef privee PGP est decodee en aes avec mon dmp et passe en RAM.
+La mes mps sont decodes avec ma clef privee decodee.
+
+
+Je suis Mallory, je retourne la DB.
+bah j'ai quoi :
+Les mps de BOB encodes en pgp et la clef privee de bob encode en AES je peux rien faire.
+
+Je suis Eve admin indiscret :
+Je regarde dans la DB je ne peux pas lire les MPS de bob.
+
+
+La clef PGP est crypte en AES symetrique. Donc DEUX cryptages dessus.
+Le premier interne au systeme PGP et un deuxieme en AES.
+
+Ha oui et les DDS des serveurs seront cryptes en cas de vol chez moi.
+	</pre>
 	<table>
 		<tr>
 			<td>

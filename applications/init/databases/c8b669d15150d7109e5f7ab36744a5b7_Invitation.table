@@ -20,7 +20,7 @@ g4
 S'boolean'
 p11
 sg6
-I6
+I7
 sg7
 S'CHAR(1)'
 p12
@@ -68,4 +68,14 @@ I4
 sg7
 S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
 p28
+ssS'email'
+p29
+(dp30
+g4
+g5
+sg6
+I6
+sg7
+S'CHAR(512)'
+p31
 ss.

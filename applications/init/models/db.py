@@ -211,23 +211,29 @@ db.define_table('Skill',
  Field('Nom', unique=True),
  format = '%(Nom)s')
 
+db.define_table('SkillUse',
+ Field('Skill', db.Skill),
+ Field('Niveau','integer'),
+ format = '%(Skill)s')
+
+db.define_table('SkillUser',
+ Field('SkillUse', db.SkillUse),
+ Field('User', db.auth_user),
+ format = '%(User)s')
+
 db.define_table('Item',
  Field('Nom', unique=True),
  format = '%(Nom)s')
 
 
-db.define_table('SkillUser',
- Field('Skill', db.Skill),
- Field('User', db.auth_user),
- Field('Niveau','integer'),
- format = '%(Demande)s')
+
  
-db.SkillUser.Niveau.requires=IS_INT_IN_RANGE(0, 5)
+db.SkillUse.Niveau.requires=IS_INT_IN_RANGE(0, 5)
 
 db.define_table('SkillDemande',
  Field('Skill', db.Skill),
  Field('Niveau','integer'),
- format = '%(Demande)s') 
+ format = '%(Niveau)s') 
 
 
 db.SkillDemande.Niveau.requires=IS_INT_IN_RANGE(0, 5)
@@ -252,6 +258,7 @@ db.define_table('Invitation',
  Field('Usage', db.Usage_Db),
  Field('Donneur', db.auth_user),
  Field('Receveur', db.auth_user),
+ Field('Email'),
  Field('Used', 'boolean'),
  format = '%(Topic)s')
 

@@ -101,6 +101,7 @@
 'Services': 'Services',
 'Stylesheet': 'Feuille de style',
 'Submit': 'Soumettre',
+'Success!': 'Success!',
 'Support': 'Support',
 'Sure you want to delete this object?': 'Êtes-vous sûr de vouloir supprimer cet objet?',
 'Table name': 'Nom du tableau',
