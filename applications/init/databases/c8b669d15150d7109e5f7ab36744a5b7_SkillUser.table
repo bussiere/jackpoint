@@ -2,13 +2,13 @@
 S'niveau'
 p2
 (dp3
-S'type'
+S'sortable'
 p4
-S'integer'
-p5
-sS'sortable'
-p6
 I4
+sS'type'
+p5
+S'integer'
+p6
 sS'sql'
 p7
 S'INTEGER'
@@ -17,10 +17,10 @@ ssS'skill'
 p9
 (dp10
 g4
+I2
+sg5
 S'reference Skill'
 p11
-sg6
-I2
 sg7
 S'INTEGER REFERENCES Skill(id) ON DELETE CASCADE'
 p12
