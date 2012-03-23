@@ -1,0 +1,3 @@
+ruby -pe '$_.gsub! /[^\x00-\x7F]/, ""' -i test.py
+
+Donc oui merdagde dans l'encodage du coup voila la soltuoin et les caracteres a remplacer
