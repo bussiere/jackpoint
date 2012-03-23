@@ -265,13 +265,14 @@ def verif_invitation(form):
 
 
 def invitation():
-    form=FORM("Code Invitation :", INPUT(_name='invitation'),INPUT(_name='email'),  INPUT(_type='submit'))
-    if form.process(onvalidation=verif_invitation) :
-        user = "" #ensure_first_user("john","doe",form.vars.email,form.vars.invitation)​
-        auth.user = Storage(auth.settings.table_user._filter_fields(user, id=True))
-        auth.environment.session.auth = Storage(user=user, last_visit=request.now,
-                                            expiration=auth.settings.expiration)
-        redirect(URL('inscription'))
+    form=FORM("Code Invitation :", INPUT(_name='invitation'),"<br>Email :",INPUT(_name='email'),  INPUT(_type='submit'))
+    if form.vars.invitation != None :
+        if form.process(onvalidation=verif_invitation) :
+            user = ensurefirstuser("john","doe",form.vars.email,form.vars.invitation)
+            auth.user = Storage(auth.settings.table_user._filter_fields(user, id=True))
+            auth.environment.session.auth = Storage(user=user, last_visit=request.now,
+                                                expiration=auth.settings.expiration)
+            redirect(URL('inscription'))
     return dict(form=form)
 
 def faq():
