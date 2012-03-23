@@ -183,9 +183,7 @@ writable=False, readable=False, default=''))
 
 ## do not forget validators
 custom_auth_table = db[auth.settings.table_user_name] # get the custom_auth_table
-custom_auth_table.first_name.requires = \
-IS_NOT_EMPTY(error_message=auth.messages.is_empty)
-custom_auth_table.last_name.requires = \
+custom_auth_table.Surnom.requires = \
 IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 custom_auth_table.password.requires = [CRYPT()]
 custom_auth_table.email.requires = [
