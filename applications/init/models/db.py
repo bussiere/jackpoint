@@ -166,14 +166,37 @@ response.generic_patterns = ['*'] if request.is_local else []
 from gluon.tools import Auth, Crud, Service, PluginManager, prettydate
 auth = Auth(db, hmac_key=Auth.get_or_create_key())
 crud, service, plugins = Crud(db), Service(), PluginManager()
+
+
+db.define_table('Skill',
+ Field('Nom', unique=True),
+ format = '%(Nom)s')
+
+db.define_table('SkillUse',
+ Field('Skill', db.Skill),
+ Field('Niveau','integer'),
+ format = '%(Skill)s')
+
+db.define_table('Item',
+ Field('Nom', unique=True),
+ Field('SkillUse', db.SkillUse),
+ format = '%(Nom)s')
+
+
+
+
+db.define_table('SkillUser',
+ Field('SkillUse', db.SkillUse),
+ format = '%(SkillUse)s')
+
 db.define_table(
 auth.settings.table_user_name,
 Field('Surnom', length=128, default=''),
 Field('email', length=128, default='', unique=True), # required
 Field('password', 'password', length=512,# required
 readable=False, label='Password'),
-Field('Skills','list:reference SkillUser'),
-Field('Items','list:reference Item'),
+Field('Skills','list:reference SkillUser',default=None),
+Field('Items','list:reference Item',default=None),
 Field('registration_key', length=512,# required
 writable=False, readable=False, default=''),
 Field('reset_password_key', length=512,# required
@@ -204,23 +227,9 @@ Field('father', db.auth_user),
 Field('sons', db.auth_user),
 format = '%(Nom)s')
 
-db.define_table('Skill',
- Field('Nom', unique=True),
- format = '%(Nom)s')
 
-db.define_table('SkillUse',
- Field('Skill', db.Skill),
- Field('Niveau','integer'),
- format = '%(Skill)s')
 
-db.define_table('SkillUser',
- Field('SkillUse', db.SkillUse),
- Field('User', db.auth_user),
- format = '%(User)s')
 
-db.define_table('Item',
- Field('Nom', unique=True),
- format = '%(Nom)s')
 
 
 

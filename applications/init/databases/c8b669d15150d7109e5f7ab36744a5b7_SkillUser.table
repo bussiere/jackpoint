@@ -52,12 +52,15 @@ p23
 ssS'user'
 p24
 (dp25
-g15
-S'reference auth_user'
+S'sortable'
 p26
-sg17
 I3
-sg18
-S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+sS'type'
 p27
+S'reference auth_user'
+p28
+sS'sql'
+p29
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p30
 ss.

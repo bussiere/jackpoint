@@ -1,5 +1,5 @@
 (dp1
-S'Nom'
+S'nom'
 p2
 (dp3
 S'type'
@@ -13,14 +13,26 @@ sS'sql'
 p7
 S'CHAR(512) UNIQUE'
 p8
-ssS'id'
+ssS'skilluse'
 p9
 (dp10
 g4
-g9
+S'reference SkillUse'
+p11
+sg6
+I3
+sg7
+S'INTEGER REFERENCES SkillUse(id) ON DELETE CASCADE'
+p12
+ssS'id'
+p13
+(dp14
+g4
+S'id'
+p15
 sg6
 I1
 sg7
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
-p11
+p16
 ss.

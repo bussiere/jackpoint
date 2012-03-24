@@ -149,7 +149,7 @@ def index():
 
 
 
-def ensurefirstuser(firstname, lastname, email, password):
+def ensurefirstuser(Surnom, email, password):
   users = db(db.auth_user.email == email).select()
   if users:
     user_id = users[0].id
@@ -162,10 +162,11 @@ def ensurefirstuser(firstname, lastname, email, password):
     my_crypt = CRYPT(key=auth.settings.hmac_key)
     crypt_pass = my_crypt(password)[0]    
     id_user = db.auth_user.insert(
-                   first_name=firstname,
-                   last_name=lastname,
+                   Surnom=Surnom,
                    email=email,
-                   password=crypt_pass
+                   Items = None,
+                   Skills = None,
+                   password=crypt_pass,
                                    )
     created = True
     if settings.debug_ensure_first_user == True:
@@ -247,7 +248,7 @@ def liste_invitations():
 #@auth.requires_membership('manager')
 def generate_invitationpage():
    form=FORM("Nombre d'invit a générer:", INPUT(_name='nmbreinvit'), INPUT(_type='submit'))
-   if form.process().accepted:
+   if form.process().accepted and form.vars.nmbreinvit != None :
        i = form.vars.nmbreinvit
        invitsgenere = generate_invitation(int(i))
        for invit in invitsgenere :
@@ -260,19 +261,23 @@ def generate_invitationpage():
    return dict(form=form)
 
 def verif_invitation(form):
-    if len(db(db.Invitation.Code==form.vars.invitation).select()) != 1 :
-        form.errors('code invitation incorrect')
+    print form.vars.invitation
+    if db.Invitation(db.Invitation.Code==form.vars.invitation) == None :
+        form.errors.invitation = 'code invitation incorrect'
+        print "mauvais"
+    else :
+        print "bon"
 
 
 def invitation():
-    form=FORM("Code Invitation :", INPUT(_name='invitation'),"<br>Email :",INPUT(_name='email'),  INPUT(_type='submit'))
-    if form.vars.invitation != None :
-        if form.process(onvalidation=verif_invitation) :
-            user = ensurefirstuser("john","doe",form.vars.email,form.vars.invitation)
-            auth.user = Storage(auth.settings.table_user._filter_fields(user, id=True))
-            auth.environment.session.auth = Storage(user=user, last_visit=request.now,
-                                                expiration=auth.settings.expiration)
-            redirect(URL('inscription'))
+    form=FORM("Code Invitation :", INPUT(_name='invitation'),"<Email :",INPUT(_name='email'),  INPUT(_type='submit'))
+    if form.process(onvalidation=verif_invitation).accepted and  form.vars.invitation != None  :
+        print "toto"
+        user = ensurefirstuser("john_doe",form.vars.email,form.vars.invitation)
+        auth.user = Storage(auth.settings.table_user._filter_fields(user, id=True))
+        auth.environment.session.auth = Storage(user=user, last_visit=request.now,
+                                            expiration=auth.settings.expiration)
+        redirect(URL('inscription'))
     return dict(form=form)
 
 def faq():
