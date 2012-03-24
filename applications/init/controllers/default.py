@@ -168,6 +168,7 @@ def ensurefirstuser(Surnom, email, password):
                    Skills = None,
                    password=crypt_pass,
                                    )
+    db.commit()
     created = True
     if settings.debug_ensure_first_user == True:
       print ('creating user_id')
@@ -274,6 +275,7 @@ def invitation():
     if form.process(onvalidation=verif_invitation).accepted and  form.vars.invitation != None  :
         print "toto"
         user = ensurefirstuser("john_doe",form.vars.email,form.vars.invitation)
+        print user
         auth.user = Storage(auth.settings.table_user._filter_fields(user, id=True))
         auth.environment.session.auth = Storage(user=user, last_visit=request.now,
                                             expiration=auth.settings.expiration)

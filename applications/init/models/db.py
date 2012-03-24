@@ -175,7 +175,22 @@ db.define_table('Skill',
 db.define_table('SkillUse',
  Field('Skill', db.Skill),
  Field('Niveau','integer'),
+Field('Private','boolean'),
  format = '%(Skill)s')
+
+
+db.define_table('Carac',
+ Field('Nom', unique=True),
+ format = '%(Nom)s')
+
+
+db.define_table('CaracUse',
+ Field('Carac', db.Skill),
+ Field('Niveau','integer'),
+ Field('Private','boolean'),
+ format = '%(Skill)s')
+
+
 
 db.define_table('Item',
  Field('Nom', unique=True),

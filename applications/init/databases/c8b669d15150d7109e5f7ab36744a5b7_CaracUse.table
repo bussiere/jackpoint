@@ -1,0 +1,37 @@
+(dp1
+S'Niveau'
+p2
+(dp3
+S'type'
+p4
+S'integer'
+p5
+sS'sortable'
+p6
+I3
+sS'sql'
+p7
+S'INTEGER'
+p8
+ssS'Carac'
+p9
+(dp10
+g4
+S'reference Skill'
+p11
+sg6
+I2
+sg7
+S'INTEGER REFERENCES Skill(id) ON DELETE CASCADE'
+p12
+ssS'id'
+p13
+(dp14
+g4
+g13
+sg6
+I1
+sg7
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p15
+ss.
