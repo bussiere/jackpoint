@@ -278,7 +278,8 @@ def invitation():
         session.auth = Storage(user=user, last_visit=request.now,
                                    expiration=auth.settings.expiration,
                                    hmac_key = str(uuid4())
-        redirect(URL('inscription'))
+        #redirect(URL('inscription'))
+        print "youpi"
     return dict(form=form)
 
 def faq():
