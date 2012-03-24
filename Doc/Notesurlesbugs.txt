@@ -1,3 +1,9 @@
 ruby -pe '$_.gsub! /[^\x00-\x7F]/, ""' -i test.py
 
 Donc oui merdagde dans l'encodage du coup voila la soltuoin et les caracteres a remplacer
+
+exmple de nouveau :
+last_visit=request.now,expiration=auth.settings.expiration,hmac_key = str(uuid4())
+last_visit=request.now,expiration=auth.settings.expiration,hmac_key = str(uuid4())
+
+fils de ****

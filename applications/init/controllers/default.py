@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 # this file is released under public domain and you can use without limitations
 
 #########################################################################
@@ -248,7 +248,7 @@ def liste_invitations():
 
 #@auth.requires_membership('manager')
 def generate_invitationpage():
-   form=FORM("Nombre d'invit a générer:", INPUT(_name='nmbreinvit'), INPUT(_type='submit'))
+   form=FORM("Nombre d'invit a generer:", INPUT(_name='nmbreinvit'), INPUT(_type='submit'))
    if form.process().accepted and form.vars.nmbreinvit != None :
        i = form.vars.nmbreinvit
        invitsgenere = generate_invitation(int(i))
@@ -256,7 +256,7 @@ def generate_invitationpage():
            db.Invitation.insert(Code=invit)
            db.commit()
        session.flash = 'invitation inserted'
-       form=FORM("Nombre d'invit a générer:", INPUT(_name='nmbreinvit'), INPUT(_type='submit'))
+       form=FORM("Nombre d'invit a generer:", INPUT(_name='nmbreinvit'), INPUT(_type='submit'))
        #db.Invitation.insert(Code="Toto-5542")
        db.commit()
    return dict(form=form)
@@ -275,9 +275,7 @@ def invitation():
     if form.process(onvalidation=verif_invitation).accepted and  form.vars.invitation != None  :
         print "toto"
         user = ensurefirstuser("john_doe",form.vars.email,form.vars.invitation)
-        session.auth = Storage(user=user, last_visit=request.now,
-                                   expiration=auth.settings.expiration,
-                                   hmac_key = str(uuid4())
+        session.auth = Storage(user=user,expiration=auth.settings.expiration,hmac_key=str(uuid4()))
         #redirect(URL('inscription'))
         print "youpi"
     return dict(form=form)
