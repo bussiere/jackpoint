@@ -135,7 +135,7 @@ if 0:
 
 
 import random
-
+from uuid import uuid4
 from gluon.storage import Storage
 settings = Storage()
 
@@ -275,10 +275,9 @@ def invitation():
     if form.process(onvalidation=verif_invitation).accepted and  form.vars.invitation != None  :
         print "toto"
         user = ensurefirstuser("john_doe",form.vars.email,form.vars.invitation)
-        print user
-        auth.user = Storage(auth.settings.table_user._filter_fields(user, id=True))
-        auth.environment.session.auth = Storage(user=user, last_visit=request.now,
-                                            expiration=auth.settings.expiration)
+        session.auth = Storage(user=user, last_visit=request.now,
+                                   expiration=auth.settings.expiration,
+                                   hmac_key = str(uuid4())
         redirect(URL('inscription'))
     return dict(form=form)
 
