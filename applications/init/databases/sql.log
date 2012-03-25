@@ -194,3 +194,5 @@ timestamp: 2012-03-24T23:52:42.719000
 ALTER TABLE SkillUse ADD private CHAR(1);
 timestamp: 2012-03-24T23:52:42.981000
 ALTER TABLE CaracUse ADD private CHAR(1);
+timestamp: 2012-03-25T03:17:52.440000
+ALTER TABLE auth_user ADD username CHAR(128);

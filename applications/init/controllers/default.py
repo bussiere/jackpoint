@@ -140,6 +140,9 @@ from gluon.storage import Storage
 settings = Storage()
 
 
+def logout():
+    auth.logout()
+
 
 def index():
     if auth.is_logged_in() :
@@ -154,6 +157,7 @@ def ensurefirstuser(Surnom, email, password):
   if users:
     user_id = users[0].id
     created = False
+    print ('found user_id so created equals %s') % created
     if settings.debug_ensure_first_user == True:
       print ('found user_id so created equals %s') % created
     return (user_id, created)
@@ -170,6 +174,7 @@ def ensurefirstuser(Surnom, email, password):
                                    )
     db.commit()
     created = True
+    print ('creating user_id')
     if settings.debug_ensure_first_user == True:
       print ('creating user_id')
     return (id_user, created)
@@ -239,7 +244,7 @@ def randomdig(number):
     return rand
 
 @auth.requires_login()
-def inscription():
+def inscriptioninvit():
     form = SQLFORM(db[auth.settings.table_user_name])
     return dict(form=form)
 
@@ -274,10 +279,10 @@ def invitation():
     form=FORM("Code Invitation :", INPUT(_name='invitation'),"<Email :",INPUT(_name='email'),  INPUT(_type='submit'))
     if form.process(onvalidation=verif_invitation).accepted and  form.vars.invitation != None  :
         print "toto"
-        user = ensurefirstuser("john_doe",form.vars.email,form.vars.invitation)
+        user = ensurefirstuser(form.vars.email,form.vars.email,form.vars.invitation)
         session.auth = Storage(user=user,expiration=auth.settings.expiration,hmac_key=str(uuid4()))
-        #redirect(URL('inscription'))
-        print "youpi"
+        auth.login_bare(form.vars.email,form.vars.invitation)
+        redirect(URL('inscriptioninvit'))
     return dict(form=form)
 
 def faq():
