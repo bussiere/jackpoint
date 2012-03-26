@@ -168,6 +168,7 @@ def ensurefirstuser(Surnom, email, password):
     id_user = db.auth_user.insert(
                    Surnom=Surnom,
                    email=email,
+                   username=email,
                    Items = None,
                    Skills = None,
                    password=crypt_pass,
@@ -251,6 +252,9 @@ def inscriptioninvit():
 def liste_invitations():
     return dict(rows = db().select(db.Invitation.ALL))
 
+def liste_user():
+    return dict(rows = db().select(db.auth_user.ALL))
+
 #@auth.requires_membership('manager')
 def generate_invitationpage():
    form=FORM("Nombre d'invit a generer:", INPUT(_name='nmbreinvit'), INPUT(_type='submit'))
@@ -275,13 +279,46 @@ def verif_invitation(form):
         print "bon"
 
 
+def test():
+    password="toto"
+    my_crypt = CRYPT(key=auth.settings.hmac_key)
+    crypt_pass = my_crypt(password)[0]    
+    if db(db.auth_user.email == 'emai8@toto').count() == 0:
+        db.auth_user.insert(
+           Surnom="Surnom",
+           email="emai8@toto",
+           username="titi",
+           password=crypt_pass,
+        )
+        db.commit()  
+        user = db(db.auth_user.email=="emai8@toto").select().first()
+        auth.user = Storage(auth.settings.table_user._filter_fields(user, id=True))
+        auth.environment.session.auth = Storage(user=user, last_visit=request.now,
+                                            expiration=auth.settings.expiration)
+    redirect(URL(request.controller, 'inscriptioninvit2'))
+
+
+@auth.requires_login()
+def inscriptioninvit2():
+     return "hello"
+
 def invitation():
     form=FORM("Code Invitation :", INPUT(_name='invitation'),"<Email :",INPUT(_name='email'),  INPUT(_type='submit'))
     if form.process(onvalidation=verif_invitation).accepted and  form.vars.invitation != None  :
         print "toto"
-        user = ensurefirstuser(form.vars.email,form.vars.email,form.vars.invitation)
+        password="toto"
+        my_crypt = CRYPT(key=auth.settings.hmac_key)
+        crypt_pass = my_crypt(password)[0]    
+        user = db.auth_user.insert(
+           Surnom="Surnom",
+           email="email5@toto",
+           username="titi",
+           password=crypt_pass,
+                           )
+        db.commit()
+        
+        user = auth.login_bare("titi",password)
         session.auth = Storage(user=user,expiration=auth.settings.expiration,hmac_key=str(uuid4()))
-        auth.login_bare(form.vars.email,form.vars.invitation)
         redirect(URL('inscriptioninvit'))
     return dict(form=form)
 
