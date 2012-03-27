@@ -1,26 +1,26 @@
 (dp1
-S'nom'
+S'Niveau'
 p2
 (dp3
 S'type'
 p4
-S'string'
+S'integer'
 p5
 sS'sortable'
 p6
-I2
+I3
 sS'sql'
 p7
-S'CHAR(512) UNIQUE'
+S'INTEGER'
 p8
-ssS'skilluse'
+ssS'Skill'
 p9
 (dp10
 g4
 S'reference SkillLevel'
 p11
 sg6
-I3
+I2
 sg7
 S'INTEGER REFERENCES SkillLevel(id) ON DELETE CASCADE'
 p12
@@ -28,11 +28,21 @@ ssS'id'
 p13
 (dp14
 g4
-S'id'
-p15
+g13
 sg6
 I1
 sg7
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p15
+ssS'Private'
 p16
+(dp17
+g4
+S'boolean'
+p18
+sg6
+I4
+sg7
+S'CHAR(1)'
+p19
 ss.

@@ -196,3 +196,29 @@ timestamp: 2012-03-24T23:52:42.981000
 ALTER TABLE CaracUse ADD private CHAR(1);
 timestamp: 2012-03-25T03:17:52.440000
 ALTER TABLE auth_user ADD username CHAR(128);
+timestamp: 2012-03-27T16:36:55.140000
+CREATE TABLE SkillLevel(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Level INTEGER,
+    Skill INTEGER REFERENCES Skill(id) ON DELETE CASCADE,
+    Parent INTEGER REFERENCES Skill(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-03-27T16:36:55.656000
+CREATE TABLE SkillLevelUser(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Skill INTEGER REFERENCES SkillLevel(id) ON DELETE CASCADE,
+    Niveau INTEGER,
+    Private CHAR(1)
+);
+success!
+timestamp: 2012-03-27T16:59:12.203000
+ALTER TABLE auth_user ADD validated CHAR(1);
+timestamp: 2012-03-27T16:59:12.484000
+CREATE TABLE Suggestion_Skills(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    User INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    Texte CHAR(512),
+    Done CHAR(1)
+);
+success!

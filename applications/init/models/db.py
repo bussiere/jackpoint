@@ -172,10 +172,18 @@ db.define_table('Skill',
  Field('Nom', unique=True),
  format = '%(Nom)s')
 
-db.define_table('SkillUse',
+db.define_table('SkillLevel',
+ Field('Level', 'integer'),
  Field('Skill', db.Skill),
+ Field('Parent', db.Skill),
+ format = '%(Skill)s')
+
+
+
+db.define_table('SkillLevelUser',
+ Field('Skill', db.SkillLevel),
  Field('Niveau','integer'),
-Field('Private','boolean'),
+ Field('Private','boolean'),
  format = '%(Skill)s')
 
 
@@ -194,24 +202,20 @@ db.define_table('CaracUse',
 
 db.define_table('Item',
  Field('Nom', unique=True),
- Field('SkillUse', db.SkillUse),
+ Field('SkillUse', db.SkillLevel),
  format = '%(Nom)s')
 
 
 
 
-db.define_table('SkillUser',
- Field('SkillUse', db.SkillUse),
- format = '%(SkillUse)s')
-
 db.define_table(
 auth.settings.table_user_name,
-Field('Surnom', length=128, default=''),
 Field('username', length=128, default=''),
 Field('email', length=128, default='', unique=True), # required
 Field('password', 'password', length=512,# required
 readable=False, label='Password'),
-Field('Skills','list:reference SkillUser',default=None),
+Field('Skills','list:reference SkillLevelUser',default=None),
+Field('validated','boolean',default=False),
 Field('Items','list:reference Item',default=None),
 Field('registration_key', length=512,# required
 writable=False, readable=False, default=''),
@@ -222,7 +226,7 @@ writable=False, readable=False, default=''))
 
 ## do not forget validators
 custom_auth_table = db[auth.settings.table_user_name] # get the custom_auth_table
-custom_auth_table.Surnom.requires = \
+custom_auth_table.username.requires = \
 IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 custom_auth_table.password.requires = [CRYPT()]
 custom_auth_table.email.requires = [
@@ -245,12 +249,17 @@ format = '%(Nom)s')
 
 
 
+db.define_table('Suggestion_Skills',
+ Field('User',db.auth_user),
+ Field('Texte'),
+ Field('Done','boolean',default=False),
+ format = '%(Skill)s')
 
 
 
 
  
-db.SkillUse.Niveau.requires=IS_INT_IN_RANGE(0, 5)
+db.SkillLevelUser.Niveau.requires=IS_INT_IN_RANGE(0, 5)
 
 db.define_table('SkillDemande',
  Field('Skill', db.Skill),
