@@ -1,1 +1,21 @@
 if (db(db.Skill).select(join=db.SkillLevel.on(db.Skill.id==db.SkillLevel.Skill),Nom = level1)).count() == 0:
+
+
+    tab =  LI( Nom," : ",TABLE(
+                    TR(
+
+                TD(LABEL('%s : '%Nom)),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='0',value='0'),"0 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='1'),"1 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='2'),"2 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='3'),"3 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='4'),"4 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='5'),"5        "),
+
+                TD(LABEL('Private: ')),
+                TD(INPUT(_type='radio',_name='%s_private'%Nom,_value='1'),"oui "),
+                TD(INPUT(_type='radio',_name='%s_private'%Nom,_value='0',value='0'),"non ")
+                )
+
+                )
+    )

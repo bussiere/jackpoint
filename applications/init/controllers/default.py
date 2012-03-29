@@ -302,27 +302,64 @@ def inscriptioninvit():
     form.append(TR(LABEL('0 = Inconnu, 1 = mauvais, 2 = bof, 3 = Moyen,4 = Bon , 5 = Moyen')))
     
     #TODO a revoir algo crade :
-    skills1 = db(db.SkillLevel.Level==1).select()
-    skills2 = db(db.SkillLevel.Level==2).select()
-    skills3 = db(db.SkillLevel.Level==3).select()
-    skills4 = db(db.SkillLevel.Level==4).select()
-    skills5 = db(db.SkillLevel.Level==5).select()
-    skil1 = UL()
-    for skill in skills1 :
-        skil1.append(
-            LI(
+    skills1 = db(db.SkillLevel.Level==0).select()
+    skills2 = db(db.SkillLevel.Level==1).select()
+    skills3 = db(db.SkillLevel.Level==2).select()
+    skills4 = db(db.SkillLevel.Level==3).select()
+    skills5 = db(db.SkillLevel.Level==4).select()
+    Listeskill = UL()
+    for skill1 in skills1 :
+        Nom1 = db.Skill(skill1.Skill.id).Nom
+        retour1 = skillstab(Nom1)
+        for skill2 in skills2 :
+            if (skill2.Parent.id == skill1.Skill.id) :
+                Nom2 = db.Skill(skill2.Skill.id).Nom
+                retour2 = skillstab(Nom2)
+                for skill3 in skills3 :
+                    if (skill3.Parent.id == skill2.Skill.id) :
+                        Nom3 = db.Skill(skill3.Skill.id).Nom
+                        retour3 = skillstab(Nom3)
+                        for skill4 in skills4 :
+                            if (skill4.Parent.id == skill3.Skill.id) :
+                                Nom4 = db.Skill(skill4.Skill.id).Nom
+                                retour4 = skillstab(Nom4)
+                                for skill5 in skills5 :
+                                    if (skill5.Parent.id == skill4.Skill.id) :
+                                        Nom5 = db.Skill(skill5.Skill.id).Nom
+                                        retour5 = skillstab(Nom5)
+                                        retour4.append(UL(retour5))
+                                retour3.append(UL(retour4))
+                        retour2.append(UL(retour3))
+                retour1.append(UL(retour2))
+        Listeskill.append(retour1)
+       
 
-                )
-            )
 
 
-
-
-
+    form.append(TR(Listeskill))
     form.append(TR(INPUT(_type='submit')))
     form = FORM(TABLE(form)) 
     return dict(form=form)
 
+
+def skillstab(Nom) :
+    tab =  LI( Nom," : ",TABLE(
+                    TR(
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='0',value='0'),"0 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='1'),"1 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='2'),"2 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='3'),"3 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='4'),"4 "),
+                TD(INPUT(_type='radio',_name='%s'%Nom,_value='5'),"5        "),
+
+                TD(LABEL('Private: ')),
+                TD(INPUT(_type='radio',_name='%s_private'%Nom,_value='1'),"oui "),
+                TD(INPUT(_type='radio',_name='%s_private'%Nom,_value='0',value='0'),"non ")
+                )
+
+                )
+    )
+    return tab
 
 def userstuff():
     return dict(rows1 = db().select(db.Carac.ALL),rows2 = db().select(db.SkillLevel.ALL) )
