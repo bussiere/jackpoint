@@ -247,11 +247,13 @@ def randomdig(number):
 @auth.requires_login()
 def inscriptioninvit():
     user = auth.environment.session.auth.user
-    form=FORM("UserName:", INPUT(_name='Username'),
-     "Email : ", INPUT(_name='email',_value=user.email),
+    caracs = db.Carac.ALL
+    skills = db.Skill.ALL
+    form=FORM( TR(LABEL('Username : '), INPUT(_name='Username')),"<br>",
+     TR(LABEL('Email: '), INPUT(_name='email',_value=user.email)),
       INPUT(_type='submit'))
-    form.insert(-1,INPUT(_name='titi',_value='titi'))
-    form.insert(-1,INPUT(_name='toto',_value='toto'))
+    form.insert(-1, TR(LABEL('titi : '),INPUT(_name='titi',_value='titi'))
+    form.insert(-1, TR(LABEL('toto : '),INPUT(_name='toto',_value='toto'))
     return dict(form=form)
 
 
