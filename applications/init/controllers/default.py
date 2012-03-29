@@ -246,7 +246,12 @@ def randomdig(number):
 
 @auth.requires_login()
 def inscriptioninvit():
-    form = SQLFORM(db[auth.settings.table_user_name])
+    user = auth.environment.session.auth.user
+    form=FORM("UserName:", INPUT(_name='Username'),
+     "Email : ", INPUT(_name='email',_value=user.email),
+      INPUT(_type='submit'))
+    form.insert(-1,INPUT(_name='titi',_value='titi'))
+    form.insert(-1,INPUT(_name='toto',_value='toto'))
     return dict(form=form)
 
 
@@ -316,22 +321,42 @@ def initdbjack():
         if db(db.Skill.Nom == level1).count() == 0:
             Skill1 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level1)),Level = i)
 
-            for level2 in level1.keys() :
+            for level2 in skills[level1].keys() :
                 i = 1
                 if db(db.Skill.Nom == level2).count() == 0:
-                    Skill2 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level2)),Level = i,parent = Skill1)
-                    for level3 in level2.keys() :
+                    #Todo
+                    # c'est crade a revoir :
+                    for row in db((db.Skill.Nom==level1) & (db.Skill.id)).select() :
+                        parent = row.id
+                    #fin du truc a revoir
+                    Skill2 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level2)),Level = i,Parent = parent )
+                    for level3 in skills[level1][level2].keys() :
                         i = 2
                         if db(db.Skill.Nom == level3).count() == 0:
-                            Skill3 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level3)),Level = i,parent = Skill2)
-                            for level4 in level3.keys() :
+                            #Todo
+                            # c'est crade a revoir :
+                            for row in db((db.Skill.Nom==level2) & (db.Skill.id)).select() :
+                                parent = row.id
+                            #fin du truc a revoir
+                            Skill3 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level3)),Level = i,Parent = parent)
+                            for level4 in skills[level1][level2][level3].keys() :
                                 i = 3
-                            if db(db.Skill.Nom == level4).count() == 0:
-                                Skill3 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level4)),Level = i,parent = Skill3)
-                                for level5 in level4.keys() :
-                                    i = 4
-                                    if db(db.Skill.Nom == level5).count() == 0:
-                                        Skill3 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level4)),Level = i,parent = Skill4)
+                                if db(db.Skill.Nom == level4).count() == 0:
+                                #Todo
+                                # c'est crade a revoir :
+                                    for row in db((db.Skill.Nom==level3) & (db.Skill.id)).select() :
+                                        parent = row.id
+                                #fin du truc a revoir
+                                    Skill3 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level4)),Level = i,Parent = parent)
+                                    for level5 in skills[level1][level2][level3][level4].keys() :
+                                        i = 4
+                                        if db(db.Skill.Nom == level5).count() == 0:
+                                        #Todo
+                                        # c'est crade a revoir :
+                                            for row in db((db.Skill.Nom==level4) & (db.Skill.id)).select() :
+                                                parent = row.id
+                                        #fin du truc a revoir
+                                            Skill4 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level5)),Level = i,Parent = parent)
     db.commit() 
 
 
