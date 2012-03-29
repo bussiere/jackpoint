@@ -247,13 +247,80 @@ def randomdig(number):
 @auth.requires_login()
 def inscriptioninvit():
     user = auth.environment.session.auth.user
-    caracs = db.Carac.ALL
-    skills = db.Skill.ALL
-    form=FORM( TR(LABEL('Username : '), INPUT(_name='Username')),"<br>",
-     TR(LABEL('Email: '), INPUT(_name='email',_value=user.email)),
-      INPUT(_type='submit'))
-    form.insert(-1, TR(LABEL('titi : '),INPUT(_name='titi',_value='titi'))
-    form.insert(-1, TR(LABEL('toto : '),INPUT(_name='toto',_value='toto'))
+    caracs = db().select(db.Carac.ALL)
+    form=TABLE(
+        TR(
+            TD(
+                TABLE(
+        TR(
+
+                TD(
+                    LABEL('Username : ')
+                    ),
+                TD( 
+                    INPUT(_name='Username')
+                    )
+            ),
+    TR(
+        TD(
+            LABEL('Email: ')
+            ), 
+        TD(
+            INPUT(_name='email',_value=user.email)
+            )
+        )
+    
+    )
+                )
+            )
+        )
+            
+
+
+    
+    form.append(TR(LABEL('1 = mauvais, 2 = bof, 3 = Moyen,4 = Bon , 5 = Tres Bon')))
+    for carac in caracs :
+        form.append(
+            TR(
+
+                TD(LABEL('%s : '%carac.Nom)),
+                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='1',value='1'),"1 "),
+                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='2'),"2 "),
+                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='3'),"3 "),
+                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='4'),"4 "),
+                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='5'),"5        "),
+
+                TD(LABEL('Private: ')),
+                TD(INPUT(_type='radio',_name='%s_private'%carac.Nom,_value='1'),"oui "),
+                TD(INPUT(_type='radio',_name='%s_private'%carac.Nom,_value='0',value='0'),"non ")
+                )
+        )
+ 
+    # form.insert(-1, TR(LABEL('titi : '),INPUT(_name='titi',_value='titi'))
+    # form.insert(-1, TR(LABEL('toto : '),INPUT(_name='toto',_value='toto'))
+
+    form.append(TR(LABEL('0 = Inconnu, 1 = mauvais, 2 = bof, 3 = Moyen,4 = Bon , 5 = Moyen')))
+    
+    #TODO a revoir algo crade :
+    skills1 = db(db.SkillLevel.Level==1).select()
+    skills2 = db(db.SkillLevel.Level==2).select()
+    skills3 = db(db.SkillLevel.Level==3).select()
+    skills4 = db(db.SkillLevel.Level==4).select()
+    skills5 = db(db.SkillLevel.Level==5).select()
+    skil1 = UL()
+    for skill in skills1 :
+        skil1.append(
+            LI(
+
+                )
+            )
+
+
+
+
+
+    form.append(TR(INPUT(_type='submit')))
+    form = FORM(TABLE(form)) 
     return dict(form=form)
 
 
