@@ -313,24 +313,24 @@ def initdbjack():
 
     for level1 in skills.keys() :
         i = 0
-        if db(db.SkillLevel.Skill.Nom == level1).count() == 0:
+        if db(db.Skill.Nom == level1).count() == 0:
             Skill1 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level1)),Level = i)
 
             for level2 in level1.keys() :
                 i = 1
-                if db(db.SkillLevel.Skill.Nom == level2).count() == 0:
+                if db(db.Skill.Nom == level2).count() == 0:
                     Skill2 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level2)),Level = i,parent = Skill1)
                     for level3 in level2.keys() :
                         i = 2
-                        if db(db.SkillLevel.Skill.Nom == level3).count() == 0:
+                        if db(db.Skill.Nom == level3).count() == 0:
                             Skill3 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level3)),Level = i,parent = Skill2)
                             for level4 in level3.keys() :
                                 i = 3
-                            if db(db.SkillLevel.Skill.Nom == level4).count() == 0:
+                            if db(db.Skill.Nom == level4).count() == 0:
                                 Skill3 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level4)),Level = i,parent = Skill3)
                                 for level5 in level4.keys() :
                                     i = 4
-                                    if db(db.SkillLevel.Skill.Nom == level5).count() == 0:
+                                    if db(db.Skill.Nom == level5).count() == 0:
                                         Skill3 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level4)),Level = i,parent = Skill4)
     db.commit() 
 
