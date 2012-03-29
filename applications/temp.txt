@@ -1,0 +1,1 @@
+if (db(db.Skill).select(join=db.SkillLevel.on(db.Skill.id==db.SkillLevel.Skill),Nom = level1)).count() == 0:

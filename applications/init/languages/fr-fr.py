@@ -45,6 +45,7 @@
 'Forms and Validators': 'Formulaires et Validateurs',
 'Free Applications': 'Applications gratuites',
 'Function disabled': 'Fonction désactivée',
+'Group %(group_id)s created': 'Group %(group_id)s created',
 'Group ID': 'Groupe ID',
 'Groups': 'Groups',
 'Hello World': 'Bonjour le monde',

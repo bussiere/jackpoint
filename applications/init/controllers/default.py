@@ -250,13 +250,16 @@ def inscriptioninvit():
     return dict(form=form)
 
 
-def initdb():
+def userstuff():
+    return dict(rows1 = db().select(db.Carac.ALL),rows2 = db().select(db.SkillLevel.ALL) )
+
+def initdbjack():
     if db(db.auth_user.username == "bussiere").count() == 0:
             password= "titi" 
             my_crypt = CRYPT(key=auth.settings.hmac_key)
             crypt_pass = my_crypt(password)[0]  
             buss = db.auth_user.insert(
-               email= "bussiere@gmail.com",
+               email= "bussiere2@gmail.com",
                username="bussiere",
                password=crypt_pass,
             )
@@ -265,7 +268,7 @@ def initdb():
             db.commit()  
     db.commit() 
     carac = ["Force","Logique","Volonte","Charisme","Apparence","Dexterite"]
-    skillls = { 
+    skills = { 
     "Physique":{
                 "Sport":{
                          "Capoeira" :{ 
