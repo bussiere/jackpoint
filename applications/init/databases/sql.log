@@ -222,3 +222,5 @@ CREATE TABLE Suggestion_Skills(
     Done CHAR(1)
 );
 success!
+timestamp: 2012-03-29T23:20:27.348000
+ALTER TABLE Item ADD skill INTEGER REFERENCES Skill(id) ON DELETE CASCADE;

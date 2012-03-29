@@ -268,7 +268,26 @@ def inscriptioninvit():
         TD(
             INPUT(_name='email',_value=user.email)
             )
-        )
+        ),
+             
+    TR(
+        TD(
+            LABEL('Password : ')
+            ), 
+        TD(
+            INPUT(_name='password1',_type='password')
+            )
+        ),
+
+     TR(
+        TD(
+            LABEL('Password verification : ')
+            ), 
+        TD(
+            INPUT(_name='password2',_type='password')
+            )
+        ),
+    
     
     )
                 )
@@ -337,6 +356,20 @@ def inscriptioninvit():
 
 
     form.append(TR(Listeskill))
+
+    Items = db().select(db.Item.ALL)
+    for item in Items :
+        form.append(
+            TR(
+                TD(item.Nom),
+                TD(item.Skill),
+                TD(INPUT(_type='checkbox',_name='%s'%item.Nom)), 
+                TD(LABEL('Private: ')),
+                TD(INPUT(_type='radio',_name='%s_private'%item.Nom,_value='1'),"oui "),
+                TD(INPUT(_type='radio',_name='%s_private'%item.Nom,_value='0',value='0'),"non ")
+            )
+        )
+
     form.append(TR(INPUT(_type='submit')))
     form = FORM(TABLE(form)) 
     return dict(form=form)
@@ -362,7 +395,7 @@ def skillstab(Nom) :
     return tab
 
 def userstuff():
-    return dict(rows1 = db().select(db.Carac.ALL),rows2 = db().select(db.SkillLevel.ALL) )
+    return dict(rows1 = db().select(db.Carac.ALL),rows2 = db().select(db.SkillLevel.ALL),rows3 = db().select(db.Item.ALL) )
 
 def initdbjack():
     if db(db.auth_user.username == "bussiere").count() == 0:
@@ -398,6 +431,12 @@ def initdbjack():
                                  "Forge" : {},
                                   
                                   },
+                 "Couture" : {
+                                  
+                                  },
+                "Conduite" : {
+                                  
+                                  },
                  
     },
 
@@ -422,6 +461,7 @@ def initdbjack():
         if db(db.Carac.Nom == c).count() == 0:
             db.Carac.insert(Nom=c)
 
+    #TODO a revoir tout pourris on peut rien rajouter de nouveau
     for level1 in skills.keys() :
         i = 0
         if db(db.Skill.Nom == level1).count() == 0:
@@ -463,6 +503,19 @@ def initdbjack():
                                                 parent = row.id
                                         #fin du truc a revoir
                                             Skill4 = db.SkillLevel.insert(Skill = (db.Skill.insert(Nom=level5)),Level = i,Parent = parent)
+
+
+
+    Item = {
+    "Machine a Coudre" : "Couture",
+    "Voiture" : "Conduite",
+    "Decoupeuse a plasma" : "Mettalerrie",
+    }
+
+
+    for row in Item.keys() :
+        if db(db.Item.Nom == Item[row]).count() == 0:
+            db.Item.insert(Nom=row,Skill=db.Skill(Nom=Item[row]))                                       
     db.commit() 
 
 

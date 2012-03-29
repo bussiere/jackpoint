@@ -202,7 +202,7 @@ db.define_table('CaracUse',
 
 db.define_table('Item',
  Field('Nom', unique=True),
- Field('SkillUse', db.SkillLevel),
+ Field('Skill', db.Skill),
  format = '%(Nom)s')
 
 
