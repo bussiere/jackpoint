@@ -1,13 +1,12 @@
 /* CSS3 TYPE RULES */
 @font-face {
 	font-family: "DX";
-	src: url("Square 721 BT.ttf") format('truetype'),
-	     url('square_721_bt-webfont.eot?#iefix') format('embedded-opentype');
+	src: url("{{=URL('static','Square 721 BT.ttf')}}") format('truetype'),
+	     url("{{=URL('static','square_721_bt-webfont.eot?#iefix')}}") format('embedded-opentype');
 }
 
 * {
 	margin: 0;
-	outline: none;
 }
 
 html {
@@ -18,53 +17,23 @@ body {
 	font-family: inherit;
 	overflow:hidden;
 	/*background-color: #1e1e1e;*/
-	background-image: url(gfx/World_Map_Black_by_rubasu.jpg);
+	background-image: url("{{=URL('static','gfx/World_Map_Black_by_rubasu.jpg')}}");
 	background-size: 100% 100%;
 	color: #00ff32;
-}
-
-input[type=text], input[type=password] {
-	border: 0px solid black;
-	border-radius: 0;
-	background-color: rgba(10,138,35,0.2);
-	width: 329px;
-	height: 37px;
-	color: #00ff32;
-	padding-left: 20px;
-	margin-bottom: 20px;
-	font-size: 16px;
-	font-family: inherit;
-	-moz-box-sizing: 	border-box;
-	-ms-box-sizing: 	border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: 		border-box;
-	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3) inset;
-	-moz-box-shadow: 	0 0 1px 1px rgba(0, 0, 0, 0.3) inset;
-	box-shadow: 		0 0 1px 1px rgba(0, 0, 0, 0.3) inset;
 }
 
 #wrapper {
 	overflow:hidden;
 }
 
-a:link {
-	color: #00ff32;
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:visited {
-	color: #00ff32;
+.green-border {
+	border: 1px solid rgba(0, 255, 50, 0.75) !important;
 }
 
 .jp-winhandle {
 	border-left: 10px solid rgba(0, 255, 50, 0.75);
 	border-top: 25px solid rgba(0, 255, 50, 0.75);
 	border-radius: 6px;
-	position:relative;
 }
 
 .jp-winhandle-left {
@@ -191,71 +160,35 @@ a:visited {
 	height: 85%;
 }
 
-/*
+.log-input {
+	border: 0px solid black;
+	border-radius: 0;
+	background-color: rgba(10,138,35,0.2);
+	width: 100%;
+	height: 20%;
+	color: #00ff32;
+	padding-left: 20px;
+	font-size: 16px;
+	font-family: inherit;
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3) inset;
+	-moz-box-shadow: 	0 0 1px 1px rgba(0, 0, 0, 0.3) inset;
+	box-shadow: 		0 0 1px 1px rgba(0, 0, 0, 0.3) inset;
+}
+
 #password_input {
 	position:relative;
 	top: 10%;
 }
-*/
 
 #loginbtn_wrapper {
 	height: 40%;
-	/*
     position: relative;
     top: 20%;
-	*/
     width: 100%;
-}
-
-
-
-/* Invite */
-
-#invite_wrapper {
-	/*width: 50%;
-	height: 50%;*/
-	width: 640px;
-	height: 375px;
-	position:absolute;
-	top: 5%;
-	left: 5%;
-	display:none;
-}
-
-#invite_window {
-	
-}
-
-#invite_rabbit {
-	position:relative;
-	width: 40%;
-	height: 50%;
-	top: 20%;
-	left: 2.5%;
-	display:inline-block;
-}
-
-#invite_form {
-    float: right;
-    height: 90%;
-    position: relative;
-    right: 2.5%;
-    top: 5%;
-    width: 52.5%;
-}
-
-#invite_title {
-	font-size: 18px;
-	text-align: left;
-}
-
-#invite_input_wrapper {
-	width: 100%;
-	margin-top: 10px;
-}
-
-#invite_btn {
-
 }
 
 

@@ -1,0 +1,28 @@
+{{extend 'layout.html'}}
+<body>
+<pre>
+   __             _                _       _   
+   \ \  __ _  ___| | ___ __   ___ (_)_ __ | |_ 
+    \ \/ _` |/ __| |/ / '_ \ / _ \| | '_ \| __|
+ /\_/ / (_| | (__|   <| |_) | (_) | | | | | |_ 
+ \___/ \__,_|\___|_|\_\ .__/ \___/|_|_| |_|\__|
+                      |_|   
+</pre>
+<div id="web2py_user_form">
+  {{=form}}
+  {{if request.args(0)=='login':}}
+  {{if not 'register' in auth.settings.actions_disabled:}}
+  <br/>
+  {{pass}}
+  {{pass}}
+
+
+
+</div>
+<a href="../init/default/invitation">Vous avez une invitation ? Follow the rabbit ...</a><br>
+<a href="../init/default/faq">FAQ</a>
+<script language="javascript"><!--
+      jQuery("#web2py_user_form input:visible:enabled:first").focus();
+      //--></script>
+
+</body>

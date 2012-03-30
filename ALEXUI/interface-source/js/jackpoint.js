@@ -3,28 +3,65 @@ $('#wrapper').css({width: screen.width, height: window.innerHeight});
 
 $(document).ready(function() {
 
-	setupLogin();
+	initializePage();
 
 });
 
-function setupLogin() {
-	// draw logo
-	var Logo = drawsvg($('#logo'));
-	
-	// IE does not support HTML5 placeholders, use manual input values
-	checkPlaceholders();
-	
-	// Set drag and animation
-	//$('#login_window').animate({'clip': 'rect(0px, 657px, 257px, 0px)'}, 750);
-	$('#login_wrapper').draggable({cancel: '#login_window, #login_faq'});
-	$('#copyright_wrapper').draggable({cancel: '#copyright_window'});
+function initializePage() {
+	switch ( GLOBAL_PAGE ) {
+		case 'INDEX':
+			setupLogin();
+			break;
+	}
 }
 
-function checkPlaceholders() {
+
+
+/*================================================================================================*/
+/* Login Page */
+
+function setupLogin() {
+	// Draw Logo
+	DRAW.logo($('#logo'));
+	
+	// IE does not support HTML5 placeholders, use manual input values
+	var $inputs = $('#login_inputs input.log-input').add('#invite_input_wrapper input');
+	checkPlaceholders($inputs);
+	
+	// Set window drag
+	$('#login_wrapper').draggable({cancel: '#login_window, #login_faq'});
+	$('#copyright_wrapper').draggable({cancel: '#copyright_window'});
+	$('#invite_wrapper').draggable({cancel: '#invite_window'});
+	
+	// Set drag z-index manager
+	$('#wrapper div.jp-wrapper').draggable('option', 'stack', '#wrapper div.jp-wrapper');
+	
+	// Show the dialog when the user click the invitation link
+	$('#invitation_link').click(function(e) {
+		e.preventDefault();
+		$('#invite_wrapper').show();
+		
+		// only draw rabbit once
+		if ( $('#invite_rabbit').html() == '' ) {
+			DRAW.rabbit($('#invite_rabbit'));
+		}
+	});
+	
+	// Hide the dialog
+	$('#invite_cancel').click(function() {
+		// Clear values before hiding
+		$('#invite_input_wrapper input[type=text]').val('');
+		$('#invite_wrapper').hide();
+	});
+	
+	//$('#login_window').animate({'clip': 'rect(0px, 657px, 257px, 0px)'}, 750);
+}
+
+function checkPlaceholders($elements) {
 	test = document.createElement('input');
 
 	if(!('placeholder' in test)) {
-		var inputs = $('#login_inputs input.log-input');
+		var inputs = $elements;
 		
 		inputs.each(function() {
 			$(this).val($(this).attr('placeholder'));
@@ -42,34 +79,46 @@ function checkPlaceholders() {
 	}
 }
 
-function drawsvg(container) {
-	//var offset = container.offset();
-	//var w = container.width();
+
+
+/*================================================================================================*/
+/* Draw Object */
+
+var DRAW = {
+	rabbit: function(container) {
+		var offset = container.offset();
+		var h = container.height();
+		var w = container.width();
+		
+		var paper = Raphael(offset.left, offset.top, w, h);
+		
+		var path = paper.path('M20,60v-5h5v-5h5v-5h5v-5h10v-10h5v-15h5v-5h15v5h10v25h-5v5h-10v10h5v15h15v5h30v5h15v5h5v5h5v5h5v5h5v5h5v5h5v10h5v30h-5v5h-5v5h5v15h-20v-5h-15v5h-60v-15h25v-5h-5v-5h-5v-5h-5v-5h-5v15h-15v5h-5v5h-25v-5h10v-5h5v-10h5v-10h-5v-5h-5v-5h-5v-20h-5v-20h-5v-5h-5v-5h-5v-10h5m20,0h10v-10h-10v10m-20,0v-5h5')
+		.attr({stroke: 'none', fill: '#fff', 'fill-opacity': 0.5})
+		.transform('s-1,1t-25,0');
+		
+		container.append($(path.node).parent().css({top:0,left:0}));
+	},
 	
-	// Setup paper viewport
-	var h 		= container.height();
-	var paper 	= Raphael(container, container.width(), h);
-	
-	// Draw logo and get scale ratio
-	var path 	= paper.path('M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7');
-	var bb 		= path.getBBox(false);
-	var ratio 	= h / bb.height;
-	
-	// Set scale/transform/color and set hover/click listener
-	path.attr({fill:'#00ff32', stroke:'none', 'fill-opacity':0.5})
-	.transform('T-7,-7S'+ratio+','+ratio+'t'+bb.width*0.55+','+bb.height*0.45);
-	/*.hover(function() {
-		this.attr('stroke', '#00ff32');
-	}, function() {
-		this.attr('stroke', 'none');
-	})*///;
-	//translate(-7,-7).scale(ratio,ratio).translate(bb.width*0.55, bb.height*0.45);
-	
-	// Append the svg drawing to the parent element
-	container.append($(path.node).parent().css({top:0,left:0}));
-	
-	return path;
-}
+	logo: function(container) {
+		// Setup paper viewport
+		var h 		= container.height();
+		var paper 	= Raphael(container, container.width(), h);
+		
+		// Draw logo and get scale ratio
+		var path 	= paper.path('M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7');
+		var bb 		= path.getBBox(false);
+		var ratio 	= h / bb.height;
+		
+		// Set scale/transform/color and set hover/click listener
+		path.attr({fill:'#00ff32', stroke:'none', 'fill-opacity':0.5})
+		.transform('T-7,-7S'+ratio+','+ratio+'t'+bb.width*0.55+','+bb.height*0.45);
+		
+		// Append the svg drawing to the parent element
+		container.append($(path.node).parent().css({top:0,left:0}));
+		
+		return path;
+	}
+};
 
 
 
@@ -82,6 +131,7 @@ function drawsvg(container) {
  * idea spawned from jquery.color.js by John Resig
  * Released under the MIT license.
  */
+ /*
 (function(jQuery){
 	jQuery.fx.step.clip = function(fx){
 		if ( fx.state == 0 ) {
@@ -100,3 +150,4 @@ function drawsvg(container) {
 			parseInt( ( fx.pos * ( earr[3] - sarr[3] ) ) + sarr[3] ) + 'px)';
 	}
 })(jQuery);
+*/

@@ -14,7 +14,8 @@
 </head>
 <body>
 	<div id="wrapper">
-		<div id="login_wrapper">
+		<!-- Original Login Windows -->
+		<div id="login_wrapper" class="jp-wrapper">
 			<div id="login_container" class="jp-winhandle">
 				<div id="login_window" class="jp-window"><!--style="clip: rect(0px, 657px, 0px, 0px);"-->
 					<div id="logo">
@@ -23,23 +24,26 @@
 					<div id="login_inputs_c">
 						<div id="login_title">LOGIN</div>
 						<div id="login_inputs">
+							<!-- <form action="" method=""> -->
 							<input type="text" placeholder="Username" id="username_input" class="log-input" />
 							<input type="password" placeholder="Password" id="password_input" class="log-input" />
 							<div id="loginbtn_wrapper">
 								<input type="checkbox" id="remember_input" style="margin-right:10px;"/>Remember me for 30 days<br/><br/>
 								<button id="login_submit" class="jp-button">Login</button>
 							</div>
+							<!-- </form> -->
 						</div>
 					</div>
 				</div>
 			</div>
 			<div id="login_faq_wrapper" class="jp-winhandle-left">
 				<div id="login_faq" class="jp-window-left">
-					<span style="padding:0 50px;">FAQ</span><span>Vous avez une invitation? Follow the rabbit...</span>
+					<span style="padding: 0 50px 0 40px"><a id="faq_link" href="faq.html">FAQ</a></span>
+					<span><a id="invitation_link" href="invitation.html">Vous avez une invitation? Follow the rabbit...</a></span>
 				</div>
 			</div>
 		</div>
-		<div id="copyright_wrapper" class="jp-winhandle-left">
+		<div id="copyright_wrapper" class="jp-winhandle-left jp-wrapper">
 			<div id="copyright_window" class="jp-window-left">
 				<div id="copyright">
 					copyright &copy; 2012 JackPoint<br/>
@@ -47,7 +51,35 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- Hidden FAQ and Invitation window -->
+		<div id="invite_wrapper" class="jp-wrapper jp-winhandle">
+			<div id="invite_window" class="jp-window">
+				<div id="invite_rabbit"></div>
+				<div id="invite_form">
+					<div id="invite_title">PLEASE FILL THE FORM</div>
+					<div id="invite_input_wrapper">
+						<!-- <form action="" method=""> -->
+						<input type="text" id="invite_icode" placeholder="Code"/>
+						<input type="text" id="invite_iusage" placeholder="Usage"/>
+						<input type="text" id="invite_iDonneur" placeholder="Donneur"/>
+						<input type="text" id="invite_iReceveur" placeholder="Receveur"/>
+						<input type="checkbox" id="invite_iUsed" style="margin-right: 10px;"/>Used
+						<br/><br/>
+						<!-- <input type="submit" id="invite_btn"/> -->
+						<button id="invite_btn" class="jp-button">Submit</button>
+						<button id="invite_cancel" class="jp-button">Cancel</button>
+						<!-- </form> -->
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+	<script>
+		// This is used to determine which javascript code segment to initialize in jackpoint.js
+		/* NOTE: this technique will not work with ajax */
+		var GLOBAL_PAGE = 'INDEX';
+	</script>
 	<!--
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
