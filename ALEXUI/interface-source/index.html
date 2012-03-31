@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+	<title>Project JackPoint</title>
 	<link rel="stylesheet" href="stylesheet.css" />
 	<link rel="icon" type="image/png" href="gfx/favicon.ico"/>
 	<!--[if gte IE 9]>
@@ -17,21 +18,30 @@
 		<!-- Original Login Windows -->
 		<div id="login_wrapper" class="jp-wrapper">
 			<div id="login_container" class="jp-winhandle">
-				<div id="login_window" class="jp-window"><!--style="clip: rect(0px, 657px, 0px, 0px);"-->
-					<div id="logo">
-						<!-- Do not put anything here -->
+				<div id="login_window" class="jp-window" style="background-color:transparent"><!--style="clip: rect(0px, 657px, 0px, 0px);"-->
+					<div class="filler" style="border-radius: 4px 0 0 4px;width:270px;height:100%;float:left;">
+						<div id="logo">
+							<svg xmlns="http://www.w3.org/2000/svg" width="270" height="257" id="logosvg" version="1.1">
+							   <path style="fill-opacity: 0.5;" fill="#00ff32" stroke="none" d="M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7" fill-opacity="0.5" transform="matrix(11.0476,0,0,11.0476,-56.2857,-78.4333)" stroke-width="0.09051724137931035">
+							</svg>
+						</div>
 					</div>
-					<div id="login_inputs_c">
-						<div id="login_title">LOGIN</div>
-						<div id="login_inputs">
-							<!-- <form action="" method=""> -->
-							<input type="text" placeholder="Username" id="username_input" class="log-input" />
-							<input type="password" placeholder="Password" id="password_input" class="log-input" />
-							<div id="loginbtn_wrapper">
-								<input type="checkbox" id="remember_input" style="margin-right:10px;"/>Remember me for 30 days<br/><br/>
-								<button id="login_submit" class="jp-button">Login</button>
+					<div style="float: right;height: 100%;width: 357px;">
+						<div id="login_inputs_c" class="filler">
+							<div id="login_title">LOGIN</div>
+							<div id="login_inputs">
+								<!-- <form action="" method=""> -->
+								<input type="text" placeholder="Username" id="username_input" class="log-input" />
+								<input type="password" placeholder="Password" id="password_input" class="log-input" />
+								<div id="loginbtn_wrapper">
+									<input type="checkbox" id="remember_input" style="margin-right:10px;"/>Remember me for 30 days<br/><br/>
+								</div>
+								<!-- </form> -->
 							</div>
-							<!-- </form> -->
+						</div>
+						<div>
+							<div class="filler" style="border-radius: 0 0 4px 0;float: left;height: 65px;width: 247px;"></div>
+							<div id="login_btn" class="jp-custom-btn">Login</div>
 						</div>
 					</div>
 				</div>
@@ -43,6 +53,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- copyright window -->
 		<div id="copyright_wrapper" class="jp-winhandle-left jp-wrapper">
 			<div id="copyright_window" class="jp-window-left">
 				<div id="copyright">
@@ -55,7 +67,11 @@
 		<!-- Hidden FAQ and Invitation window -->
 		<div id="invite_wrapper" class="jp-wrapper jp-winhandle">
 			<div id="invite_window" class="jp-window">
-				<div id="invite_rabbit"></div>
+				<div id="invite_rabbit">
+					<svg height="192" version="1.1" width="213" xmlns="http://www.w3.org/2000/svg">
+						<path style="fill-opacity: 0.5;" fill="#ffffff" stroke="#008000" d="M20,60V55H25V50H30V45H35V40H45V30H50V15H55V10H70V15H80V40H75V45H65V55H70V70H85V75H115V80H130V85H135V90H140V95H145V100H150V105H155V110H160V120H165V150H160V155H155V160H160V175H140V170H125V175H65V160H90V155H85V150H80V145H75V140H70V155H55V160H50V165H25V160H35V155H40V145H45V135H40V130H35V125H30V105H25V85H20V80H15V75H10V65H15M35,65H45V55H35V65M15,65V60H20" stroke-width="2" fill-opacity="0.5" transform="matrix(-1,0,0,1,200,0)"/>
+					</svg>
+				</div>
 				<div id="invite_form">
 					<div id="invite_title">PLEASE FILL THE FORM</div>
 					<div id="invite_input_wrapper">
@@ -65,16 +81,23 @@
 						<input type="text" id="invite_iDonneur" placeholder="Donneur"/>
 						<input type="text" id="invite_iReceveur" placeholder="Receveur"/>
 						<input type="checkbox" id="invite_iUsed" style="margin-right: 10px;"/>Used
-						<br/><br/>
-						<!-- <input type="submit" id="invite_btn"/> -->
+	
+						<!-- <input type="submit" id="invite_btn"/> 
 						<button id="invite_btn" class="jp-button">Submit</button>
 						<button id="invite_cancel" class="jp-button">Cancel</button>
-						<!-- </form> -->
+						 </form> -->
 					</div>
 				</div>
 			</div>
+			<div id="invite_button_wrapper">
+				<div class="filler" style="border-radius: 0 0 4px 4px;display: inline-block;float: left;height: 64px;width: 387px;">
+				</div>
+				<div id="invite_cancel" class="jp-custom-btn">Cancel</div>
+				<div id="invite_btn" class="jp-custom-btn">Submit</div>
+			</div>
 		</div>
 	</div>
+	
 	<script>
 		// This is used to determine which javascript code segment to initialize in jackpoint.js
 		/* NOTE: this technique will not work with ajax */
@@ -90,8 +113,9 @@
 	<script src="js/jquery.mousewheel.js"></script>
 	<script src="js/mwheelIntent.js"></script>
 	<script src="js/jquery.jscrollpane.min.js"></script>
-	-->
+	
 	<script src="js/raphael-min.js"></script>
+	-->
 	<script src="js/jackpoint.js"></script>
 </body>
 </html>

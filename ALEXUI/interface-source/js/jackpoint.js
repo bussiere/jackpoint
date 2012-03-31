@@ -12,6 +12,9 @@ function initializePage() {
 		case 'INDEX':
 			setupLogin();
 			break;
+		case 'FAQ':
+			setupFAQ();
+			break;
 	}
 }
 
@@ -22,8 +25,8 @@ function initializePage() {
 
 function setupLogin() {
 	// Draw Logo
-	DRAW.logo($('#logo'));
-	
+	//DRAW.logo($('#logo'));
+
 	// IE does not support HTML5 placeholders, use manual input values
 	var $inputs = $('#login_inputs input.log-input').add('#invite_input_wrapper input');
 	checkPlaceholders($inputs);
@@ -42,9 +45,9 @@ function setupLogin() {
 		$('#invite_wrapper').show();
 		
 		// only draw rabbit once
-		if ( $('#invite_rabbit').html() == '' ) {
-			DRAW.rabbit($('#invite_rabbit'));
-		}
+		//if ( $('#invite_rabbit').html() == '' ) {
+			//DRAW.rabbit($('#invite_rabbit'));
+		//}
 	});
 	
 	// Hide the dialog
@@ -57,33 +60,48 @@ function setupLogin() {
 	//$('#login_window').animate({'clip': 'rect(0px, 657px, 257px, 0px)'}, 750);
 }
 
-function checkPlaceholders($elements) {
-	test = document.createElement('input');
 
-	if(!('placeholder' in test)) {
-		var inputs = $elements;
+
+
+
+/*================================================================================================*/
+/* FAQ */
+
+function setupFAQ() {
+	// Set scrollbar for faq
+	$('#faq_wrapper').jScrollPane({"verticalGutter": 10, "hijackInternalLinks": true});
+	
+	// Fix weird bug with scrollbar
+	var x=$('#faq_wrapper').data('jsp');
+	x.getContentPane().height(x.getContentHeight());
+	
+	// Check placeholders
+	var $inputs = $('#qlogin_inputs input');
+	checkPlaceholders($inputs);
+	
+	// Set ajax listener for login input
+	$('#qlogin_btn').click(function() {
+		// For testing
+		var text = '';
 		
-		inputs.each(function() {
-			$(this).val($(this).attr('placeholder'));
-		})
-		.focus(function() {
-			if ( $(this).val() == $(this).attr('placeholder') ) {
-				$(this).val('');
-			}
-		})
-		.blur(function() {
-			if ( $(this).val() == '' ) {
-				$(this).val($(this).attr('placeholder'));
-			}
+		$inputs.each(function() {
+			text += $(this).val();
 		});
-	}
+		
+		alert(text);
+	});
+	
+	// Scale font on buttons
+	//console.log($('#faq_navigation .jp-window-button p').height());
+	//var $btn = $('#faq_navigation .jp-window-button p');
+	//$btn.css({'font-size': $btn.height()*0.35});
 }
 
 
 
 /*================================================================================================*/
 /* Draw Object */
-
+/*
 var DRAW = {
 	rabbit: function(container) {
 		var offset = container.offset();
@@ -93,7 +111,7 @@ var DRAW = {
 		var paper = Raphael(offset.left, offset.top, w, h);
 		
 		var path = paper.path('M20,60v-5h5v-5h5v-5h5v-5h10v-10h5v-15h5v-5h15v5h10v25h-5v5h-10v10h5v15h15v5h30v5h15v5h5v5h5v5h5v5h5v5h5v5h5v10h5v30h-5v5h-5v5h5v15h-20v-5h-15v5h-60v-15h25v-5h-5v-5h-5v-5h-5v-5h-5v15h-15v5h-5v5h-25v-5h10v-5h5v-10h5v-10h-5v-5h-5v-5h-5v-20h-5v-20h-5v-5h-5v-5h-5v-10h5m20,0h10v-10h-10v10m-20,0v-5h5')
-		.attr({stroke: 'none', fill: '#fff', 'fill-opacity': 0.5})
+		.attr({stroke: 'green', 'stroke-width': 2, fill: '#fff', 'fill-opacity': 0.5})
 		.transform('s-1,1t-25,0');
 		
 		container.append($(path.node).parent().css({top:0,left:0}));
@@ -119,6 +137,34 @@ var DRAW = {
 		return path;
 	}
 };
+*/
+
+
+
+/*================================================================================================*/
+/* Useful functions */
+
+function checkPlaceholders($elements) {
+	test = document.createElement('input');
+
+	if(!('placeholder' in test)) {
+		var inputs = $elements;
+		
+		inputs.each(function() {
+			$(this).val($(this).attr('placeholder'));
+		})
+		.focus(function() {
+			if ( $(this).val() == $(this).attr('placeholder') ) {
+				$(this).val('');
+			}
+		})
+		.blur(function() {
+			if ( $(this).val() == '' ) {
+				$(this).val($(this).attr('placeholder'));
+			}
+		});
+	}
+}
 
 
 
