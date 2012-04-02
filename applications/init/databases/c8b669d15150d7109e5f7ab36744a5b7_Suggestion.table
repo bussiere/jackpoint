@@ -1,5 +1,5 @@
 (dp1
-S'Texte'
+S'texte'
 p2
 (dp3
 S'type'
@@ -13,7 +13,7 @@ sS'sql'
 p7
 S'CHAR(512)'
 p8
-ssS'Skills'
+ssS'skills'
 p9
 (dp10
 g4
@@ -24,7 +24,7 @@ I4
 sg7
 S'TEXT'
 p12
-ssS'Items'
+ssS'items'
 p13
 (dp14
 g4
@@ -34,7 +34,7 @@ sg6
 I5
 sg7
 g12
-ssS'Topic'
+ssS'topic'
 p16
 (dp17
 g4
@@ -44,25 +44,51 @@ I2
 sg7
 S'CHAR(512) UNIQUE'
 p18
-ssS'auth_user'
+ssS'done'
 p19
 (dp20
+S'sortable'
+p21
+I4
+sS'type'
+p22
+S'boolean'
+p23
+sS'sql'
+p24
+S'CHAR(1)'
+p25
+ssS'user'
+p26
+(dp27
+g21
+I2
+sg22
+S'reference auth_user'
+p28
+sg24
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+p29
+ssS'auth_user'
+p30
+(dp31
 g4
 S'reference auth_user'
-p21
+p32
 sg6
 I6
 sg7
 S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
-p22
+p33
 ssS'id'
-p23
-(dp24
+p34
+(dp35
 g4
-g23
+S'id'
+p36
 sg6
 I1
 sg7
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
-p25
+p37
 ss.

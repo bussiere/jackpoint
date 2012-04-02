@@ -249,7 +249,7 @@ format = '%(Nom)s')
 
 
 
-db.define_table('Suggestion_Skills',
+db.define_table('Suggestion',
  Field('User',db.auth_user),
  Field('Texte'),
  Field('Done','boolean',default=False),

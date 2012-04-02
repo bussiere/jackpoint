@@ -309,15 +309,15 @@ def inscriptioninvit():
             TR(
 
                 TD(LABEL('%s : '%carac.Nom)),
-                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='1',value='1'),"1 "),
-                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='2'),"2 "),
-                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='3'),"3 "),
-                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='4'),"4 "),
-                TD(INPUT(_type='radio',_name='%s'%carac.Nom,_value='5'),"5        "),
+                TD(INPUT(_type='radio',_name='carac_%d'%carac.id,_value='1',value='1'),"1 "),
+                TD(INPUT(_type='radio',_name='carac_%d'%carac.id,_value='2'),"2 "),
+                TD(INPUT(_type='radio',_name='carac_%d'%carac.id,_value='3'),"3 "),
+                TD(INPUT(_type='radio',_name='carac_%d'%carac.id,_value='4'),"4 "),
+                TD(INPUT(_type='radio',_name='carac_%d'%carac.id,_value='5'),"5        "),
 
                 TD(LABEL('Private: ')),
-                TD(INPUT(_type='radio',_name='%s_private'%carac.Nom,_value='1'),"oui "),
-                TD(INPUT(_type='radio',_name='%s_private'%carac.Nom,_value='0',value='0'),"non ")
+                TD(INPUT(_type='radio',_name='carac_%d_private'%carac.id,_value='1'),"oui "),
+                TD(INPUT(_type='radio',_name='carac_%d_private'%carac.id,_value='0',value='0'),"non ")
                 )
         )
  
@@ -364,28 +364,47 @@ def inscriptioninvit():
     form.append(TR(Listeskill))
 
     Items = db().select(db.Item.ALL)
+    
+    #TODO
+    # crade a revoir
+
     for item in Items :
+        try :
+            SkillNom = db.Skill(item.Skill.id).Nom
+        except :
+            SkillNom = ""
         form.append(
             TR(
                 TD(item.Nom),
-                TD(item.Skill),
-                TD(INPUT(_type='checkbox',_name='%s'%item.Nom)), 
+                TD(SkillNom),
+                TD(INPUT(_type='checkbox',_name='item_%d'%item.id)), 
                 TD(LABEL('Private: ')),
-                TD(INPUT(_type='radio',_name='%s_private'%item.Nom,_value='1'),"oui "),
-                TD(INPUT(_type='radio',_name='%s_private'%item.Nom,_value='0',value='0'),"non ")
+                TD(INPUT(_type='radio',_name='item_%d_private'%item.id,_value='1'),"oui "),
+                TD(INPUT(_type='radio',_name='item_%d_private'%item.id,_value='0',value='0'),"non ")
             )
         )
 
 
     form.append(TR(
-        TD("Suggestion (Rajout,skills,caracs,items"),
-            TD(_type='textarea',_name='suggestion', _rows="4", _cols="140")
+        TD(
+            TABLE(
+        TR(
+        TD("Suggestion (Rajout,skills,caracs,items):"),
+           
+            ),
+    TR(
+        TD(
+            TEXTAREA(_name='suggestion', _rows="4", _cols="140"),
             )
+        )
+    )
+    ,_colspan=6)
+    )
     )
 
     form.append(TR(INPUT(_type='submit')))
     form = FORM(TABLE(form)) 
-     if form.process(onvalidation=forminscription_processing).accepted:
+    if form.process(onvalidation=forminscription_processing).accepted:
        session.flash = 'record inserted'
        redirect(URL('interfaceuser'))
     return dict(form=form)
@@ -395,26 +414,33 @@ def demandecoupdemain():
     pass
 
 #process de la validation de l'utilisateur
-def forminscription_processing():
-    pass
+def forminscription_processing(form):
+    for var in form.vars :
+        #TODO
+        #MEGA CRADE LE EVAL
+        print eval("form.vars."+var)
+        print var
 
 @auth.requires_login()
 def interfaceuser():
     pass
 
 def skillstab(Nom) :
+    skills = db(db.Skill.Nom==Nom).select()
+    for skill in skills :
+        idskill = skill.id 
     tab =  LI( Nom," : ",TABLE(
                     TR(
-                TD(INPUT(_type='radio',_name='%s'%Nom,_value='0',value='0'),"0 "),
-                TD(INPUT(_type='radio',_name='%s'%Nom,_value='1'),"1 "),
-                TD(INPUT(_type='radio',_name='%s'%Nom,_value='2'),"2 "),
-                TD(INPUT(_type='radio',_name='%s'%Nom,_value='3'),"3 "),
-                TD(INPUT(_type='radio',_name='%s'%Nom,_value='4'),"4 "),
-                TD(INPUT(_type='radio',_name='%s'%Nom,_value='5'),"5        "),
+                TD(INPUT(_type='radio',_name='skill_%d'%idskill,_value='0',value='0'),"0 "),
+                TD(INPUT(_type='radio',_name='skill_%d'%idskill,_value='1'),"1 "),
+                TD(INPUT(_type='radio',_name='skill_%d'%idskill,_value='2'),"2 "),
+                TD(INPUT(_type='radio',_name='skill_%d'%idskill,_value='3'),"3 "),
+                TD(INPUT(_type='radio',_name='skill_%d'%idskill,_value='4'),"4 "),
+                TD(INPUT(_type='radio',_name='skill_%d'%idskill,_value='5'),"5        "),
 
                 TD(LABEL('Private: ')),
-                TD(INPUT(_type='radio',_name='%s_private'%Nom,_value='1'),"oui "),
-                TD(INPUT(_type='radio',_name='%s_private'%Nom,_value='0',value='0'),"non ")
+                TD(INPUT(_type='radio',_name='skill_%d_private'%idskill,_value='1'),"oui "),
+                TD(INPUT(_type='radio',_name='skill_%d_private'%idskill,_value='0',value='0'),"non ")
                 )
 
                 )

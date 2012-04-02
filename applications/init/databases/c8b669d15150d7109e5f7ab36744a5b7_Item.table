@@ -27,13 +27,13 @@ p12
 ssS'skilluse'
 p13
 (dp14
-S'sortable'
+S'type'
 p15
-I3
-sS'type'
-p16
 S'reference SkillLevel'
+p16
+sS'sortable'
 p17
+I3
 sS'sql'
 p18
 S'INTEGER REFERENCES SkillLevel(id) ON DELETE CASCADE'
