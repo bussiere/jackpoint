@@ -211,6 +211,7 @@ db.define_table('Item',
 db.define_table(
 auth.settings.table_user_name,
 Field('username', length=128, default=''),
+Field('invitation'),
 Field('email', length=128, default='', unique=True), # required
 Field('password', 'password', length=512,# required
 readable=False, label='Password'),

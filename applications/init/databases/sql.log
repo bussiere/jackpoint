@@ -228,3 +228,5 @@ timestamp: 2012-04-02T16:42:30.888000
 ALTER TABLE Suggestion ADD user INTEGER REFERENCES auth_user(id) ON DELETE CASCADE;
 timestamp: 2012-04-02T16:42:31.011000
 ALTER TABLE Suggestion ADD done CHAR(1);
+timestamp: 2012-04-02T23:36:42.573000
+ALTER TABLE auth_user ADD invitation CHAR(512);

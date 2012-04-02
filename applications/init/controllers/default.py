@@ -415,15 +415,31 @@ def demandecoupdemain():
 
 #process de la validation de l'utilisateur
 def forminscription_processing(form):
+    caracs = {}
+    skills = {}
+    items = {}
     for var in form.vars :
         #TODO
         #MEGA CRADE LE EVAL
         print eval("form.vars."+var)
         print var
-        carac = {}
-        skills = {}
-        items = {}
+
         split =  var.split("_")
+        if split[0] == "carac" :
+            if len(split) == 2 :
+                try :
+                    caracs[split[1]]["level"] =  (eval("form.vars."+var))
+                except :
+                    caracs[split[1]] = {}
+                    caracs[split[1]]["level"] =  (eval("form.vars."+var))
+
+            else :
+                try :
+                        caracs[split[1]]["private"] =  (eval("form.vars."+var))
+                except :
+                        caracs[split[1]] = {}
+                        caracs[split[1]]["private"] =  (eval("form.vars."+var))
+
         if split[0] == "skill" :
             if len(split) == 2 :
                 if int(eval("form.vars."+var)) > 0 :
@@ -439,6 +455,27 @@ def forminscription_processing(form):
                 except :
                         skills[split[1]] = {}
                         skills[split[1]]["private"] =  (eval("form.vars."+var))
+
+        if split[0] == "item" :
+            if len(split) == 2 :
+                if int(eval("form.vars."+var)) > 0 :
+                    try :
+                        items[split[1]]["level"] =  (eval("form.vars."+var))
+                    except :
+                        items[split[1]] = {}
+                        items[split[1]]["level"] =  (eval("form.vars."+var))
+
+            else :
+                try :
+                        items[split[1]]["private"] =  (eval("form.vars."+var))
+                except :
+                        items[split[1]] = {}
+                        items[split[1]]["private"] =  (eval("form.vars."+var))
+    print caracs
+    print skills
+    print items
+
+
 
 
 
@@ -641,6 +678,7 @@ def invitation():
                email= email,
                username="John_Doe",
                password=crypt_pass,
+               invitation = form.vars.invitation,
             )
             db.commit()  
             user = db(db.auth_user.email==email).select().first()
