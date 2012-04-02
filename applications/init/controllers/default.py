@@ -146,11 +146,17 @@ def logout():
 
 def index():
     if auth.is_logged_in() :
-        return "You get the blue pills"
+       redirect(URL('interfaceuser'))
     else :
         return dict(form=auth.login(),faq=URL('faq'))
 
 
+
+def index2():
+    if auth.is_logged_in() :
+        return "You get the blue pills"
+    else :
+        return dict(form=auth.login(),faq=URL('faq'))
 
 def ensurefirstuser(Surnom, email, password):
   users = db(db.auth_user.email == email).select()
@@ -370,10 +376,31 @@ def inscriptioninvit():
             )
         )
 
+
+    form.append(TR(
+        TD("Suggestion (Rajout,skills,caracs,items"),
+            TD(_type='textarea',_name='suggestion', _rows="4", _cols="140")
+            )
+    )
+
     form.append(TR(INPUT(_type='submit')))
     form = FORM(TABLE(form)) 
+     if form.process(onvalidation=forminscription_processing).accepted:
+       session.flash = 'record inserted'
+       redirect(URL('interfaceuser'))
     return dict(form=form)
 
+@auth.requires_login()
+def demandecoupdemain():
+    pass
+
+#process de la validation de l'utilisateur
+def forminscription_processing():
+    pass
+
+@auth.requires_login()
+def interfaceuser():
+    pass
 
 def skillstab(Nom) :
     tab =  LI( Nom," : ",TABLE(
@@ -398,6 +425,8 @@ def userstuff():
     return dict(rows1 = db().select(db.Carac.ALL),rows2 = db().select(db.SkillLevel.ALL),rows3 = db().select(db.Item.ALL) )
 
 def initdbjack():
+    auth.add_group('UserValide', 'User ayant valide l inscription')
+    auth.add_group('UserTemp', 'User ayant pas valide l inscription')
     if db(db.auth_user.username == "bussiere").count() == 0:
             password= "titi" 
             my_crypt = CRYPT(key=auth.settings.hmac_key)
