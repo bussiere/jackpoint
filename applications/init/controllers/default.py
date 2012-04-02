@@ -420,6 +420,27 @@ def forminscription_processing(form):
         #MEGA CRADE LE EVAL
         print eval("form.vars."+var)
         print var
+        carac = {}
+        skills = {}
+        items = {}
+        split =  var.split("_")
+        if split[0] == "skill" :
+            if len(split) == 2 :
+                if int(eval("form.vars."+var)) > 0 :
+                    try :
+                        skills[split[1]]["level"] =  (eval("form.vars."+var))
+                    except :
+                        skills[split[1]] = {}
+                        skills[split[1]]["level"] =  (eval("form.vars."+var))
+
+            else :
+                try :
+                        skills[split[1]]["private"] =  (eval("form.vars."+var))
+                except :
+                        skills[split[1]] = {}
+                        skills[split[1]]["private"] =  (eval("form.vars."+var))
+
+
 
 @auth.requires_login()
 def interfaceuser():
