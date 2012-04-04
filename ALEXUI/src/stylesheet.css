@@ -1,0 +1,1035 @@
+/* Original Design by: Alexander Ip */
+
+/* CSS3 TYPE RULES */
+@font-face {
+	font-family: "DX";
+	src: url("Square 721 BT.ttf") format('truetype'),
+	     url('square_721_bt-webfont.eot?#iefix') format('embedded-opentype');
+}
+
+@font-face {
+	font-family: "Loaded";
+	src: url("loaded.ttf") format('truetype');
+	   /*  url('square_721_bt-webfont.eot?#iefix') format('embedded-opentype');*/
+}
+
+* {
+	margin: 0;
+	outline: none;
+}
+
+html {
+	font-family: "DX", "Courier New", "Segoe UI", Verdana;
+}
+
+body {
+	font-family: inherit;
+	overflow:hidden;
+	/*background-color: #1e1e1e;*/
+	background-image: url(gfx/World_Map_Black_by_rubasu.jpg);
+	background-size: 100% 100%;
+	color: #00ff32;
+}
+
+input[type=text], input[type=password], textarea {
+	border: 1px solid rgba(0, 150, 25, 0.5);
+	border-radius: 0;
+	background-color: rgba(10,138,35,0.2);
+	width: 329px;
+	height: 37px;
+	color: #00ff32;
+	padding-left: 20px;
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-family: inherit;
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+	-webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3) inset;
+	-moz-box-shadow: 	0 0 1px 1px rgba(0, 0, 0, 0.3) inset;
+	box-shadow: 		0 0 1px 1px rgba(0, 0, 0, 0.3) inset;
+	overflow: auto;
+}
+
+
+#wrapper {
+	overflow:hidden;
+}
+
+a:link {
+	color: #29dbe8;
+	text-decoration: none;
+}
+
+a:hover {
+	/*text-decoration: underline;*/
+}
+
+a:visited {
+	color: #29dbe8;
+}
+
+/*=====================================================================================*/
+
+.vcenter {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.empty {
+	border: 0 !important;
+}
+
+.jp-winhandle {
+	border-left: 10px solid rgba(0, 255, 50, 0.75);
+	border-top: 25px solid rgba(0, 255, 50, 0.75);
+	border-radius: 6px;
+	position:relative;
+}
+
+.jp-winhandle-left {
+	border-left: 10px solid rgba(0, 255, 50, 0.75);
+}
+
+.jp-winhandle-top {
+	border-top: 10px solid rgba(0, 255, 50, 0.75);
+}
+
+.jp-winhandle-top-yellow {
+	border-top: 5px solid rgba(255, 234, 0, 0.75);
+}
+
+.jp-winhandle-bottom {
+	border-bottom: 10px solid rgba(0, 255, 50, 0.75);
+}
+
+.jp-window {
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+    background-color: rgba(0, 0, 0, 0.5);
+    float: right;
+    height: 96%;
+    /*margin: 0 auto;*/
+    position: relative;
+    top: 4%;
+    width: 98%;
+}
+
+.jp-window-left {
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+    background-color: rgba(0, 0, 0, 0.5);
+    float: right;
+    height: 100%;
+    position: relative;
+    width: 98%;
+	border-radius: 4px;
+}
+
+.jp-window-top {
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 95%;
+	border-radius: 4px;
+	position:relative;
+	top: 5%;
+}
+
+.jp-window-button {
+	background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px 4px 4px 4px;
+    height: 7.2%;
+	margin-top: 3.2%;
+    width: 100%;
+	position:relative;
+	display: table;
+}
+
+.jp-window-button p {
+	display: table-cell;
+	text-align: left;
+	vertical-align: middle;
+	padding-left: 20px;
+}
+
+.jp-window-button:hover {
+	background-color: rgba(41,219,232, 0.75);
+	color: black;
+	cursor: pointer;
+	left: 3%;
+}
+
+.jp-button {
+	height: 45%;
+    width: 25%;
+	border: 0;
+	border-radius: 4px;
+	font-family: inherit;
+	font-size: 16px;
+
+	background: rgb(52,220,80); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzM0ZGM1MCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzQ4ZGM2MyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iIzEzYzczNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwOWJkMjciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(52,220,80,0.75) 0%, rgba(72,220,99,0.75) 50%, rgba(19,0.7599,52,0.75) 51%, rgba(9,0.7589,39,0.75) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(52,220,80,0.75)), color-stop(50%,rgba(72,220,99,0.75)), color-stop(51%,rgba(19,0.7599,52,0.75)), color-stop(100%,rgba(9,0.7589,39,0.75))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(52,220,80,0.75) 0%,rgba(72,220,99,0.75) 50%,rgba(19,0.7599,52,0.75) 51%,rgba(9,0.7589,39,0.75) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(52,220,80,0.75) 0%,rgba(72,220,99,0.75) 50%,rgba(19,0.7599,52,0.75) 51%,rgba(9,0.7589,39,0.75) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(52,220,80,0.75) 0%,rgba(72,220,99,0.75) 50%,rgba(19,0.7599,52,0.75) 51%,rgba(9,0.7589,39,0.75) 100%); /* IE10+ */
+	background: linear-gradient(top,  rgba(52,220,80,0.75) 0%,rgba(72,220,99,0.75) 50%,rgba(19,0.7599,52,0.75) 51%,rgba(9,0.7589,39,0.75) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34dc50', endColorstr='#09bd27',GradientType=0 ); /* IE6-8 */
+
+}
+
+/* Custom jackpoint button on right side */
+.jp-custom-btn {	
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+    background-color: rgba(0, 255, 50, 0.5);
+    color: black;
+	float: right;
+    height: 54px;
+    margin-left: 10px;
+    /*padding-top: 17px;*/
+    position: relative;
+    text-align: center;
+    top: 10px;
+    width: 100px;
+	cursor: pointer;
+	border-radius: 4px;
+	display: table;
+}
+
+/* Custom jackpoint that use no filler */
+.jp-custom-btn-full {
+	-moz-box-sizing: border-box;
+    background-color: rgba(0, 255, 50, 0.5);
+    border-radius: 4px 4px 4px 4px;
+    color: black;
+    cursor: pointer;
+    height: 20%;
+    position: relative;
+    text-align: center;
+    top: 7.5%;
+    width: 100%;
+	display: table;
+}
+
+.jp-nav-btn {
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+    color: #00FF32;
+    cursor: pointer;
+    display: table;
+    height: 14.28%;
+    padding-left: 20px;
+    width: 100%;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.jp-nav-btn:hover {
+	color: black;
+	background-color: rgba(0, 255, 50, 0.75);
+}
+
+/* For vertical center */
+.jp-custom-btn-full p, 
+.jp-custom-btn p, 
+.jp-nav-btn p {
+	display:table-cell;
+	vertical-align: middle;
+}
+
+/* For button effect */
+.jp-custom-btn:hover, 
+.jp-custom-btn-full:hover {
+	background-color: rgba(41,219,232, 0.75);
+}
+
+.jp-radio-wrapper {
+	width: 16%;
+	float:left;
+	height:100%;
+}
+
+.jp-radio-btn {
+	background-color: rgba(10,138,35,0.2);
+	border: 1px solid rgba(0, 255, 50, 0.5);
+    border-radius: 4px 4px 4px 4px;
+    cursor: pointer;
+    display: table;
+    float: left;
+    height: 75%;
+    position: relative;
+    text-align: center;
+    top: 11%;
+    width: 12%;
+	margin-left: 4.0%;
+}
+
+.jp-radio-btn-selected {
+	color: black;
+	background-color: rgba(41,219,232, 0.75);
+	border: 1px solid rgba(41, 219, 232, 0.75);
+}
+
+.jp-radio-btn:hover {
+	background-color: rgba(41, 219, 232, 0.75);
+    border: 1px solid rgba(41, 219, 232, 0.75);
+    color: black;
+}
+
+.jp-radio-label {
+	display: table;
+    float: left;
+	text-align: center;
+	height: 58%;
+	margin-left: 10px;
+}
+
+.jp-radio-btn p, 
+.jp-radio-label p {
+	display:table-cell;
+	vertical-align: middle;
+}
+/*
+.jp-custom-btn:active {
+	position:relative;
+	margin-top: 10px;
+	left: 1%;
+}
+*/
+
+.filler {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*=====================================================================================*/
+
+
+/* Login Box */
+
+#login_wrapper {
+	width: 640px;
+	height: 335px;
+	margin: 0 auto;
+	position:relative;
+	top: 25%;
+}
+
+#login_container {
+	width: 640px;
+	height: 268px;
+	position:relative;
+	border-radius: 6px 6px 0 0;
+}
+
+#login_faq_wrapper {
+	height: 30px;
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+}
+
+#login_faq {
+	padding-top: 5px;
+}
+
+#login_window {
+    left: 13px;
+    position: absolute;
+}
+
+#logo {
+    display: inline-block;
+    float: left;
+    height: 90%;
+    left: 2.5%;
+    position: relative;
+    top: 5%;
+    width: 40%;
+}
+
+#login_title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+	padding-top: 10px;
+}
+
+#login_inputs_c {
+	height: 193px;
+	border-radius: 0 4px 4px 0;
+}
+
+#login_inputs {
+	width: 100%;
+	height: 85%;
+	padding-left: 15px;
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+}
+
+#loginbtn_wrapper {
+	height: 40%;
+    width: 100%;
+}
+
+
+
+/* Invite */
+
+#invite_wrapper {
+	/*width: 50%;
+	height: 50%;*/
+	width: 620px;
+	height: 355px;
+	position:absolute;
+	top: 5%;
+	left: 5%;
+	display:none;
+}
+
+#invite_window {
+	height: 78%;
+	border-radius: 4px 4px 4px 0;
+}
+
+#invite_button_wrapper {
+	float: right;
+    height: 18%;
+    position: relative;
+    top: 4%;
+    width: 98%;
+}
+
+#invite_rabbit {
+	/*
+	position:relative;
+	width: 40%;
+	height: 50%;
+	top: 20%;
+	left: 2.5%;
+	display:inline-block;
+	*/
+	display: inline-block;
+    height: 60%;
+    left: 2.5%;
+    position: relative;
+    top: 20%;
+    width: 35%;
+}
+
+#invite_form {
+    float: right;
+    height: 90%;
+    position: relative;
+    right: 5%;
+    top: 5%;
+    width: 52.5%;
+}
+
+#invite_title {
+	font-size: 18px;
+	text-align: left;
+}
+
+#invite_input_wrapper {
+	width: 100%;
+	margin-top: 10px;
+}
+
+/* Youtube Video Dialog */
+
+#youtube_video_wrapper {
+    bottom: 12%;
+    height: 30%;
+    left: 1%;
+    position: absolute;
+    width: 20%;
+}
+
+
+
+/* FAQ */
+
+#faq_navigation {
+	position:absolute;
+	top: 2.5%;
+	left: 1%;
+	width: 22%;
+	height: 82.5%;
+	border-radius: 2px;
+}
+
+#faq_wrapper {
+	height: 95%;
+    margin: 0 auto;
+    position: relative;
+    width: 50%;
+	top: 2.5%;
+}
+
+#faq_window {
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	padding: 20px 20px 0 20px;
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+	border-radius: 4px 4px 0 4px;
+	-moz-outline-radius: 4px;
+}
+
+.faq-section {
+	margin-bottom: 40px;
+}
+
+.faq-header {
+	font-size: 22px;
+    font-weight: bold;
+	color: white;
+}
+
+#faq_sig {
+	/*margin-top: 60px;*/
+	margin: 60px auto;
+	font-size: 24px;
+	width: 90%;
+}
+
+
+
+/* login dialog on faq page */
+
+#qlogin_wrapper {
+	position: absolute;
+	top: 2.5%;
+	right: 1%;
+	width: 22%;
+	height: 30%
+}
+
+#qlogin_title {
+	padding: 10px 0 0 0;
+	font-size: 18px;
+	text-align: center;
+	height: 17%;
+}
+
+#qlogin_inputs {
+	padding: 10px 0 0 10px;
+	height: 85%;
+}
+
+#qlogin_inputs input {
+	width: 96.5%;
+	height: 32.5%;
+	margin-bottom: 3%;
+}
+
+
+
+/* Navigation */
+
+#navigation_wrapper {
+    height: 60%;
+    left: 1%;
+    position: absolute;
+    top: 12.5%;
+    width: 15%;
+}
+
+#navigation_window {
+	float: right;
+    height: 100%;
+    width: 98%;
+}
+
+
+
+/* Jackpoint Banner */
+
+#jackpoint_banner_wrapper {
+	height: 10%;
+    left: 1%;
+    position: absolute;
+    top: 1%;
+    width: 97%;
+}
+
+#jackpoint_banner_window {
+	width: 99.5%; 
+	height: 100%; 
+	float:right;
+}
+
+#jackpoint_logo {
+	background-color: rgba(0,0,0,0.5); 
+	float:left; 
+	width: 74%; 
+	height: 100%; 
+}
+
+#jackpoint_word {
+	float:left;
+	display:table;
+	height:100%;
+	font-size:32px;
+	font-family: "Loaded", "DX", "Verdana";
+}
+
+#jackpoint_word p {
+	display:table-cell;
+	vertical-align:middle;
+}
+
+#jackpoint_word a {
+	color: #00ff32;
+}
+
+#notification_box {
+	background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid black;
+    float: right;
+    height: 100%;
+    position: relative;
+    right: 1%;
+    width: 8%;
+}
+
+#user_wrapper {
+	float:right; 
+	width: 25%; 
+	height: 100%; 
+	background-color: rgba(0, 255, 50, 0.5);
+}
+
+#user_image {
+    display: inline-block;
+    height: 90%;
+    left: 1%;
+    position: relative;
+    top: 5%;
+}
+
+#user_choice {
+	color: black;
+    display: inline-block;
+    font-size: 14px;
+    height: 100%;
+    position: relative;
+    vertical-align: top;
+    width: 60%;
+	left: 5%;
+}
+
+#tip_of_the_day {
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+	
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px 4px 4px 4px;
+    bottom: 6%;
+    display: table;
+    font-style: italic;
+    height: 20%;
+    left: 1%;
+    padding: 1%;
+    position: absolute;
+    width: 15.75%;
+}
+
+#tip_of_the_day span {
+	font-style: normal;
+}
+
+
+
+/*================================================================================================*/
+/* Help Window */
+
+.nav-btn {
+	background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px 4px 4px 4px;
+    height: 7.2%;
+	margin-top: 3.2%;
+    width: 100%;
+	position:relative;
+	display: table;
+}
+
+.nav-btn p {
+	display: table-cell;
+	text-align: left;
+	vertical-align: middle;
+	padding-left: 20px;
+}
+
+.nav-btn-current {
+	border: 1px solid green;
+}
+
+#skill_wrapper {
+    height: 78%;
+    left: 18%;
+    position: absolute;
+    top: 12.5%;
+    width: 65%;
+}
+
+#skill_window {
+	height: 98%;
+    right: 2%;
+    top: 2%;
+    width: 83%;
+}
+
+#skill_progress_window {
+    float: right;
+    height: 98%;
+    position: relative;
+    right: 1%;
+    top: 2%;
+    width: 14%;
+}
+
+#skill_percentage_wrapper {
+	height: 15%;
+	border-top-width: 5px;
+}
+
+#skill_percentage {
+	display: table;
+	width: 100%;
+	height: 100%;
+	/*color: #ffea00;*/
+}
+
+#skill_percentage p {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#skill_navigation_wrapper {
+	height: 25%;
+	border-top-width: 5px;
+	position: relative;
+    top: 5%;
+}
+
+#skill_navigation_wrapper div {
+	height: 25%;
+    margin-top: 5%;
+}
+
+#skill_navigation_wrapper p {
+	padding-left: 5%;
+}
+
+#skill_nextback_wrapper {
+    height: 20%;
+    position: relative;
+    top: 38%;
+}
+
+#skill_nextback_wrapper div {
+	float: none;
+	margin-left: 0;
+	width: 100%;
+	height: 40%;
+}
+
+#skill_back_btn {
+	top: 20%;
+}
+
+#skill_title {
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px 4px 4px 4px;
+    display: table;
+    font-size: 24px;
+    height: 10%;
+    padding-left: 5%;
+    width: 100%;
+}
+
+#skill_title p {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#skill_content {
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 87.5%;
+    position: relative;
+    top: 2.5%;
+	font-size: 16px;
+	border-radius: 4px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+
+/*================================================================================================*/
+/* Request Help 1 */
+
+#skill_description {
+	left: 5%;
+    position: relative;
+    top: 5%;
+	width: 90%;
+	height: 90%;
+}
+
+#skill_description textarea {
+	resize: none;
+	margin-top: 10px;
+	width: 100%;
+	padding: 10px 0 0 10px;
+}
+
+
+
+/*================================================================================================*/
+/* Request Help 2 */
+
+.radio-legend {
+	color: black;
+	background-color: rgba(0, 255, 50, 0.5);
+	border: 1px solid rgba(0, 255, 50, 0.5);
+    border-radius: 4px 4px 4px 4px;
+    display: table;
+    float: left;
+    width: 28%;
+	height: 55%;
+	text-align: center;
+}
+
+.radio-legend p {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.skill_row {
+	width: 100%;
+	height: 13.3%;
+}
+
+.skill_label {
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 50%;
+	height: 100%;
+	float: left;
+	display: table;
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+	padding-left: 2.5%;
+}	
+
+.skill_label p {
+	display: table-cell;
+	text-align: left;
+	vertical-align: middle;
+	font-size: 24px;
+	border-bottom: 1px solid #00ff32;
+}
+
+.skill_radio_group {
+	float: right;
+	width: 50%;
+	height: 100%;
+}
+
+#skill_legend_wrapper {
+	background-color:  rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 20%;
+	border-radius: 4px 4px 4px 0;
+}
+
+#skill_legend {
+	width: 97.5%;
+	height: 60%;
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+	position: relative;
+	top: 18%;
+	left: 2.5%;
+}
+
+
+/*================================================================================================*/
+/* Request Help 3 */
+
+#skill_row_wrapper {
+	width: 100%;
+	height: 100%;
+	overflow:auto;
+}
+
+
+
+/*================================================================================================*/
+/* Request Help 4 */
+
+#skill_objects {
+	width: 90%;
+	height: 90%;
+	position:relative;
+	left: 5%;
+	top: 5%;
+}
+
+.clabel {
+	float:left;
+	width:30%;
+}
+
+
+
+/*================================================================================================*/
+/* Request Help 5 */
+
+#skill_confirm {
+	width: 90%;
+	height: 90%;
+	position:relative;
+	left: 5%;
+	top: 5%;
+}
+
+.confirm-label {
+	width:100%;
+	border-bottom: 1px solid #00ff32;
+	color: white;
+	font-size: 18px;
+	margin-bottom: 1.5%;
+}
+
+
+
+/*================================================================================================*/
+/* Add Place 1 */
+
+.address-row div:first-child {
+	border-bottom: 1px solid #00ff32;
+    position: relative;
+    top: 7px;
+    width: 35%;
+}
+
+.address-row div:last-child {
+	width:64%;
+}
+
+.address-row div {
+	display:inline-block;
+}
+
+.address-row input {
+	width:100%;
+}
+
+#place_postal {
+	width: 30%;
+}
+
+#place_city, #place_region, #place_country, #place_telephone {
+	width: 60%;
+}
+
+
+
+/*================================================================================================*/
+/* Add Place 1 */
+
+.addr-row div {
+	display:inline-block;
+}
+
+.addr-row div:first-child {
+	width: 40%;
+}
+
+.addr-row div:last-child {
+	width: 59%;
+	vertical-align: top;
+}
+
+
+/*================================================================================================*/
+/* sidebar */
+
+#sidebar {
+	height: 80%;
+    position: absolute;
+    right: 1%;
+    top: 12.5%;
+    width: 14%;
+}
+
+#sidebar_window {
+	width: 100%;
+	height: 99%;
+	border-radius: 0 0 4px 4px;
+    top: 1%;
+}
+
+
+/*================================================================================================*/
+/* Copyright Notice */
+
+#copyright_compact {
+	display:table;
+	text-align:center;
+	position:absolute;
+	background-color:rgba(0,0,0,0.5);
+	width:100%;
+	height:4%;
+	bottom:0;
+}
+
+#copyright_wrapper {
+	width: 20%;
+	height: 7.5%;
+	position:absolute;
+	bottom: 2.5%;
+	left: 1%;
+}
+
+#copyright_window {
+	display:table;
+}
+
+#copyright {
+	display: table-cell;
+	vertical-align:middle;
+	padding-left: 20px;
+}
