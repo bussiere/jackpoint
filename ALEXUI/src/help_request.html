@@ -6,36 +6,17 @@
 	<link rel="stylesheet" href="stylesheet.css" />
 	<link rel="icon" type="image/png" href="gfx/favicon.ico"/>
 	<link rel="stylesheet" href="jquery.jscrollpane.jp.css"/>
-	<!--[if gte IE 9]>
-	<style>
-		.jp-button {
-			filter:none !important;
-		}
-	</style>
-	<![endif]-->
 </head>
 <body>
 	<div id="wrapper">
 		
 		<div id="jackpoint_banner_wrapper" class="jp-winhandle-left">
-			<div id="jackpoint_banner_window">
-				<div id="user_wrapper">
-					<div id="user_image">
-						<img src="gfx/avatar.png" width="100%" height="100%"/>
-					</div>
-					<div id="user_choice">
-						<div>Adam Jenson</div>
-					</div>
-				</div>
-				<div id="jackpoint_logo">
-					<div style="float:left;width:7%;height:100%;">
-						<svg xmlns="http://www.w3.org/2000/svg" id="logosvg" version="1.1">
-							<path style="fill-opacity: 0.75;" fill="#00ff32" stroke="none" d="M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7" fill-opacity="0.5" transform="matrix(1,0,0,1,0,0)" stroke-width="0.09051724137931035">
-						</svg>
-					</div>
-					<div id="jackpoint_word">
-						<p><a href="index.html">JackPoint</a></p>
-					</div>
+			<div id="jackpoint_banner_window" class="jp-window-left">
+				<svg xmlns="http://www.w3.org/2000/svg" id="logosvg" version="1.1">
+					<path style="fill-opacity: 0.75;" fill="#00ff32" stroke="none" d="M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7" fill-opacity="0.5" transform="matrix(1,0,0,1,0,0)" stroke-width="0.09051724137931035">
+				</svg>
+				<div>
+					<p class="vcenter"><a href="index.html">JackPoint</a></p>
 				</div>
 			</div>
 		</div>
@@ -189,16 +170,10 @@
 		</div>
 	
 	<script>
-		// This is used to determine which javascript code segment to initialize in jackpoint.js
-		/* NOTE: this technique will not work with ajax */
 		var GLOBAL_PAGE = 'HELP_1';
 	</script>
-	<!--
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-	-->
-	<script src="js/jquery-1.7.1.min.js"></script>
-	<script src="js/jquery-ui-1.8.18.custom.min.js"></script>
 	
 	<script src="js/jquery.mousewheel.js"></script>
 	<script src="js/mwheelIntent.js"></script>

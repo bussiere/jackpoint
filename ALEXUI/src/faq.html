@@ -8,9 +8,6 @@
 	<link rel="icon" type="image/png" href="gfx/favicon.ico"/>
 	<!--[if gte IE 9]>
 	<style>
-		.jp-button {
-			filter:none !important;
-		}
 	</style>
 	<![endif]-->
 </head>
@@ -291,11 +288,11 @@
 		</div>
 		
 		<div id="qlogin_wrapper" class="jp-winhandle-top">
-			<div id="qlogin_window" class="jp-window-top" style="height:67%;">
+			<div id="qlogin_window" class="jp-window-top">
 				<div id="qlogin_title">LOGIN</div>
 				<div id="qlogin_inputs">
-					<input type="text" placeholder="Username" id="username_input" class="log-input" />
-					<input type="password" placeholder="Password" id="password_input" class="log-input" />
+					<input type="text" placeholder="Username" id="username_input" />
+					<input type="password" placeholder="Password" id="password_input" />
 				</div>
 			</div>
 			<div id="qlogin_btn" class="jp-custom-btn-full">
@@ -306,31 +303,20 @@
 		<!-- copyright window -->
 		<div id="copyright_wrapper" class="jp-winhandle-left jp-wrapper">
 			<div id="copyright_window" class="jp-window-left">
-				<div id="copyright">
-					copyright &copy; 2012 JackPoint<br/>
-					Your name here
-				</div>
+				<p class="vcenter">Copyright &copy; 2012 JackPoint<p>
 			</div>
 		</div>
-		
-		
+
 	<script>
-		// This is used to determine which javascript code segment to initialize in jackpoint.js
-		/* NOTE: this technique will not work with ajax */
 		var GLOBAL_PAGE = 'FAQ';
 	</script>
-	<!--
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-	-->
 	<script src="js/jquery-1.7.1.min.js"></script>
-	<!--<script src="js/jquery-ui-1.8.18.custom.min.js"></script>-->
-	
+
 	<script src="js/jquery.mousewheel.js"></script>
 	<script src="js/mwheelIntent.js"></script>
 	<script src="js/jquery.jscrollpane.min.js"></script>
-	
-	<!--<script src="js/raphael-min.js"></script>-->
+
 	<script src="js/jackpoint.js"></script>
 </body>
 </html>

@@ -48,22 +48,24 @@ function upkeep() {
 
 function setupLogin() {
 	// IE does not support HTML5 placeholders, use manual input values
-	var $inputs = $('#login_inputs input.log-input').add('#invite_input_wrapper input');
+	var $inputs = $('#login_inputs input[type=text]').add('#login_inputs input[type=password]').add('#invite_input_wrapper input');
 	checkPlaceholders($inputs);
 	
 	// Set window drag
 	$('#login_wrapper').draggable({cancel: '#login_window, #login_faq'});
 	$('#copyright_wrapper').draggable({cancel: '#copyright_window'});
 	$('#invite_wrapper').draggable({cancel: '#invite_window'});
-	$('#youtube_video_wrapper').draggable();
+	$('#youtube_wrapper').draggable({cancel: '#youtube_control'});
 	
 	// Set drag z-index manager
 	$('#wrapper div.jp-wrapper').draggable('option', 'stack', '#wrapper div.jp-wrapper');
 	
+	DRAW.banner($('#banner_wrapper'));
+	
 	// Show the dialog when the user click the invitation link
 	$('#invitation_link').click(function(e) {
 		e.preventDefault();
-		$('#invite_wrapper').show();
+		$('#invite_wrapper').show('blind');
 	});
 	
 	// Hide the dialog
@@ -72,8 +74,6 @@ function setupLogin() {
 		$('#invite_input_wrapper input[type=text]').val('');
 		$('#invite_wrapper').hide();
 	});
-	
-	//$('#login_window').animate({'clip': 'rect(0px, 657px, 257px, 0px)'}, 750);
 }
 
 
@@ -82,14 +82,14 @@ function setupLogin() {
 /* FAQ */
 
 function setupFAQ() {
-	// Set scrollbar for faq
-	$('#faq_wrapper').jScrollPane({"verticalGutter": 10, "hijackInternalLinks": true});
-	
 	// Fix weird bug with scrollbar
 	$('#faq_window section.faq-section').each(function() {
 		$(this).height($(this).height());
 	});
-	
+
+	// Set scrollbar for faq
+	$('#faq_wrapper').jScrollPane({"verticalGutter": 10, "hijackInternalLinks": true});
+
 	// Check placeholders
 	var $inputs = $('#qlogin_inputs input');
 	checkPlaceholders($inputs);
@@ -105,11 +105,6 @@ function setupFAQ() {
 		
 		alert(text);
 	});
-	
-	// Scale font on buttons
-	//console.log($('#faq_navigation .jp-window-button p').height());
-	//var $btn = $('#faq_navigation .jp-window-button p');
-	//$btn.css({'font-size': $btn.height()*0.35});
 }
 
 
@@ -129,31 +124,29 @@ function setupHelp() {
 		switch ( GLOBAL_PAGE ) {
 		
 			case 'HELP_1':
-			if ( help_description.save() ) {
-				help_min.load();
-			}
+			if ( help_description.save() ) help_min.load();
 			break;
 			
 			case 'HELP_2':
-			if ( help_min.save() ) {
-				help_skills.load();
-			}
+			if ( help_min.save() ) help_skills.load();
 			break;
 			
 			case 'HELP_3':
-			if ( help_skills.save() ) {
-				help_object.load();
-			}
+			if ( help_skills.save() ) help_object.load();
 			break;
 			
 			case 'HELP_4':
-			if ( help_object.save() ) {
-				help_confirm.load();
-			}
+			if ( help_object.save() ) help_confirm.load();
 			break;
 			
 			case 'HELP_5':
+			
 				// PUT DATA INTO DATABASE OR SOMETHING
+				console.log(help_description);
+				console.log(help_min);
+				console.log(help_skills);
+				console.log(help_object);
+				
 			break;
 		}
 	});
@@ -502,7 +495,13 @@ function setupPlaces() {
 			break;
 			
 			case 'PLACE_2':
+			
 				// PUT DATA INTO DATABASE OR SOMETHING
+				console.log(place_address);
+				console.log(help_min);
+				console.log(help_skills);
+				console.log(help_object);
+				
 			break;
 		}
 	});
@@ -559,11 +558,10 @@ var place_address = {
 		
 			$('#skill_percentage').html('<p>0%</p>');
 
-			//var $d = $('#skill_content').jScrollPane();
-			//$('.address-row').css({height: $('.address-row:first').height()});
 			$('#skill_content div.address-row').each(function() {
 				$(this).height($(this).height());
 			});
+			
 			if ( callback ) {
 				callback();
 			}
@@ -737,9 +735,9 @@ function createScrollBar() {
 		var $e = $d.data('jsp').getContentPane();
 		
 		if ( $e.next().hasClass('jspVerticalBar') ) {
-			$e.addClass('filler').css({'border-radius': '4px'});
+			$e.addClass('filler');
 		} else {
-			$d.css({'background-color': 'rgba(0,0,0,0.5)', 'border-radius': '4px'});
+			$d.css({'background-color': 'rgba(0,0,0,0.5)'});
 		}
 	}
 }
@@ -779,43 +777,107 @@ function changeIndicator(n) {
 
 /*================================================================================================*/
 /* Draw Object */
-/*
+
 var DRAW = {
-	rabbit: function(container) {
-		var offset = container.offset();
-		var h = container.height();
-		var w = container.width();
+	banner: function(a) {
+		var b 		= a.offset();
+		var paper 	= Raphael(b.left, b.top, a.width(), a.height());
+		var path 	= paper.path('m2,67h15l15,-66h-15l-15,66').attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none'});
+		var path2 	= paper.path('m40,1h340l-15,66h-340z').attr({fill: 'rgba(0,0,0,0.5)', stroke: 'none'});
 		
-		var paper = Raphael(offset.left, offset.top, w, h);
+		// Jackpoint Text
+		var text	= paper.text(70, 29, 'JackPoint')
+		.attr({'text-anchor': 'start', 'font-family': 'loaded', 'font-size': 42, stroke: 'none', fill: 'rgba(0, 255, 50, 0.75)', href: 'index.html'})
 		
-		var path = paper.path('M20,60v-5h5v-5h5v-5h5v-5h10v-10h5v-15h5v-5h15v5h10v25h-5v5h-10v10h5v15h15v5h30v5h15v5h5v5h5v5h5v5h5v5h5v5h5v10h5v30h-5v5h-5v5h5v15h-20v-5h-15v5h-60v-15h25v-5h-5v-5h-5v-5h-5v-5h-5v15h-15v5h-5v5h-25v-5h10v-5h5v-10h5v-10h-5v-5h-5v-5h-5v-20h-5v-20h-5v-5h-5v-5h-5v-10h5m20,0h10v-10h-10v10m-20,0v-5h5')
-		.attr({stroke: 'green', 'stroke-width': 2, fill: '#fff', 'fill-opacity': 0.5})
-		.transform('s-1,1t-25,0');
+		// Background for youtube icon
+		var path3	= paper.path('m390,1h100l-15,66h-100l15,-66')
+		.attr({fill: 'rgba(0, 0, 0, 0.5)', stroke: 'none', cursor: 'pointer', title: 'Youtube Video'})
+		.hover(function() {
+			yticon.attr('fill', '#000');
+			this.attr('fill', 'rgba(0, 255, 50, 0.75)');
+		}, function() {
+			yticon.attr('fill', 'rgba(0, 255, 50, 0.75)');
+			this.attr('fill', 'rgba(0, 0, 0, 0.5)');
+		})
+		.click(function() {
+			var a = $('#youtube_wrapper');
+			
+			if ( !a.is(':visible') )
+				a.show('blind', DRAW.ytcontrol($('#youtube_close'), $('#youtube_external')));
+		});
+	
+		// Youtube Icon
+		var yticon	= paper.path('m406,14h50s5,0,5,5v30s0,5,-5,5h-50s-5,0,-5,-5v-30s0,-5,5,-5m16,5v28l20,-13l-20,-15')
+		.attr({fill:'rgba(0, 255, 50, 0.75)', stroke: 'none', cursor: 'pointer', title: 'Youtube Video'})
+		.hover(function() {
+			this.attr('fill', '#000');
+			path3.attr('fill', 'rgba(0, 255, 50, 0.75)');
+		}, function() {
+			this.attr('fill', 'rgba(0, 255, 50, 0.75)');
+			path3.attr('fill', 'rgba(0, 0, 0, 0.5)');
+		})
+		.click(function() {
+			var a = $('#youtube_wrapper');
+			
+			if ( !a.is(':visible') )
+				a.show('blind', DRAW.ytcontrol($('#youtube_close'), $('#youtube_external')));
+		});
 		
-		container.append($(path.node).parent().css({top:0,left:0}));
+		// Background for facebook icon
+		var path4 = paper.path('m500,1h100l-15,66h-100z')
+		.attr({fill: 'rgba(0, 0, 0, 0.5)', stroke: 'none', cursor: 'pointer', title: 'Facebook', href: 'www.facebook.com'})
+		.hover(function() {
+			fbicon.attr('fill', '#000');
+			this.attr('fill', 'rgba(0, 255, 50, 0.75)');
+		}, function() {
+			fbicon.attr('fill', 'rgba(0, 255, 50, 0.75)');
+			this.attr('fill', 'rgba(0, 0, 0, 0.5)');
+		});
+		
+		var fbicon = paper.path('m520,9h40s5,0,5,5v40s0,5,-5,5h-40s-5,0,-5,-5v-40s0,-5,5,-5m18,19v7h5v21h8v-21h5l3,-7h-7v-7h5l3,-8h-14s-2.5,0,-5,6v9z')
+		.attr({fill:'rgba(0, 255, 50, 0.75)', stroke: 'none', cursor: 'pointer', title: 'Facebook', href: 'www.facebook.com'})
+		.hover(function() {
+			this.attr('fill', '#000');
+			path4.attr('fill', 'rgba(0, 255, 50, 0.75)');
+		}, function() {
+			this.attr('fill', 'rgba(0, 255, 50, 0.75)');
+			path4.attr('fill', 'rgba(0, 0, 0, 0.5)');
+		});
+		
+		// scale
+		var ratio = a.height() / 67;
+		
+		var set = paper.set();
+		set.push(path, path2, text, path3, yticon, path4, fbicon).scale(ratio, ratio, 0, 0);
 	},
 	
-	logo: function(container) {
-		// Setup paper viewport
-		var h 		= container.height();
-		var paper 	= Raphael(container, container.width(), h);
+	ytcontrol: function(a, b) {
+		// close button
+		if ( a.html() == '' ) {
+			var o 		= a.offset();
+			var paper 	= Raphael(o.left, o.top, a.width(), a.height());
+			
+			var cross 	= paper.path('m12,9l12,12l12,-12l6,6l-12,12l12,12l-6,6l-12,-12l-12,12l-6,-6l12,-12l-12,-12z')
+			.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'rgba(0, 255, 50, 0.75)', title: 'Close', cursor: 'pointer'})
+			.click(function() {
+				$('#youtube_wrapper').hide();
+			});
+			
+			a.append($(cross.node).parent().parent().css({top:0,left:0}));
+		}
 		
-		// Draw logo and get scale ratio
-		var path 	= paper.path('M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7');
-		var bb 		= path.getBBox(false);
-		var ratio 	= h / bb.height;
-		
-		// Set scale/transform/color and set hover/click listener
-		path.attr({fill:'#00ff32', stroke:'none', 'fill-opacity':0.5})
-		.transform('T-7,-7S'+ratio+','+ratio+'t'+bb.width*0.55+','+bb.height*0.45);
-		
-		// Append the svg drawing to the parent element
-		container.append($(path.node).parent().css({top:0,left:0}));
-		
-		return path;
+		// external button
+		if ( b.html() == '' ) {
+			var o 		= b.offset();
+			var paper 	= Raphael(o.left, o.top, b.width(), b.height());
+			
+			var arrow	= paper.path('m5,20v10h20v10l20,-15l-20,-15v10z')
+			.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'rgba(0, 255, 50, 0.75)', title: 'Video', cursor: 'pointer', href: 'http://youtu.be/CEGfDjdow9k', target: '_blank'});
+			
+			b.append($(arrow.node).parent().parent().css({top:0,left:0}));
+		}
 	}
 };
-*/
 
 
 
