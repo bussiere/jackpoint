@@ -86,8 +86,9 @@ function setupFAQ() {
 	$('#faq_wrapper').jScrollPane({"verticalGutter": 10, "hijackInternalLinks": true});
 	
 	// Fix weird bug with scrollbar
-	var x=$('#faq_wrapper').data('jsp');
-	x.getContentPane().height(x.getContentHeight());
+	$('#faq_window section.faq-section').each(function() {
+		$(this).height($(this).height());
+	});
 	
 	// Check placeholders
 	var $inputs = $('#qlogin_inputs input');
@@ -472,7 +473,7 @@ function setupPlaces() {
 	// Do important setup
 	upkeep();
 	radioButtonEvent();
-	
+
 	place_address.load(createScrollBar);
 
 	$('#skill_next_btn').click(function() {
@@ -557,7 +558,12 @@ var place_address = {
 			place_address.recall();
 		
 			$('#skill_percentage').html('<p>0%</p>');
-			
+
+			//var $d = $('#skill_content').jScrollPane();
+			//$('.address-row').css({height: $('.address-row:first').height()});
+			$('#skill_content div.address-row').each(function() {
+				$(this).height($(this).height());
+			});
 			if ( callback ) {
 				callback();
 			}
@@ -673,7 +679,7 @@ var place_confirm = {
 		};
 	
 		var d = place_address.getArray();
-		var e = '<div>'+d[0]+'</div>\
+		var e = '<div>'+d[0]+'<br/></div>\
 		<div class="addr-row">\
 			<div>Adresse du nouveau lieu:</div>\
 			<div>'+d[1]+'</div>\
@@ -731,7 +737,7 @@ function createScrollBar() {
 		var $e = $d.data('jsp').getContentPane();
 		
 		if ( $e.next().hasClass('jspVerticalBar') ) {
-		$e.addClass('filler').css({'border-radius': '4px'});
+			$e.addClass('filler').css({'border-radius': '4px'});
 		} else {
 			$d.css({'background-color': 'rgba(0,0,0,0.5)', 'border-radius': '4px'});
 		}

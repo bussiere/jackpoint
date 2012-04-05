@@ -29,6 +29,7 @@ body {
 	background-image: url(gfx/World_Map_Black_by_rubasu.jpg);
 	background-size: 100% 100%;
 	color: #00ff32;
+	font-size: 14px;
 }
 
 input[type=text], input[type=password], textarea {
@@ -507,7 +508,7 @@ a:visited {
 
 #faq_sig {
 	/*margin-top: 60px;*/
-	margin: 60px auto;
+	margin: 0 auto;
 	font-size: 24px;
 	width: 90%;
 }
@@ -938,15 +939,25 @@ a:visited {
 /*================================================================================================*/
 /* Add Place 1 */
 
+.address-row {
+	height: 10%;
+	margin-bottom: 10px;
+}
+
+.address-row input {
+	margin: 0;
+	height: 100%;
+}
+
 .address-row div:first-child {
 	border-bottom: 1px solid #00ff32;
-    position: relative;
-    top: 7px;
+	vertical-align: bottom;
     width: 35%;
 }
 
 .address-row div:last-child {
 	width:64%;
+	height: 100%;
 }
 
 .address-row div {
