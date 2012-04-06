@@ -1,0 +1,24 @@
+
+<!-- saved from url=(0188)https://stackauth.com/auth/global/read?request=g%2Fbmbf%2Fq%2FUXp1Dh8m6T%2B%2BBtoGOdZ817JPNZdKC1%2BkAoJVgMV9Rm8AM1G8eP4P6C7MGT8UmespcckIPKIJP4ToQ%3D%3D&nonce=fDZ%2BTwAAAADWrBhuEZZJ0g%3D%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                  <script type="text/javascript">
+                  var data = {"ReadSession":"https://stackauth.com/auth/global/read-session","Request":"g/bmbf/q/UXp1Dh8m6T++BtoGOdZ817JPNZdKC1+kAoJVgMV9Rm8AM1G8eP4P6C7MGT8UmespcckIPKIJP4ToQ==","Nonce":"fDZ+TwAAAADWrBhuEZZJ0g==","Referrer":"http://stackoverflow.com/questions/44109/extending-the-user-model-with-custom-fields-in-django","StorageName":"GlobalLogin"};
+
+                  var toMsg = window.parent;
+
+                  var obj = localStorage.getItem(data.StorageName);
+                  if(obj != null) {
+                  var req = new XMLHttpRequest();
+                  req.open('POST', data.ReadSession+'?request='+encodeURIComponent(data.Request)+'&nonce='+encodeURIComponent(data.Nonce)+'&seriesAndToken='+encodeURIComponent(obj), false);
+                  req.send(null);
+                  
+                    if(req.status == 200){
+                      toMsg.postMessage(req.responseText, data.Referrer);
+                    }else{
+                      toMsg.postMessage('No Session', data.Referrer);
+                    }
+                  }else{
+                    toMsg.postMessage('No Local Storage', data.Referrer);
+                  }
+                  </script>
+                  <link type="text/css" rel="stylesheet" href="data:text/css,"></head><body></body><link rel="stylesheet" type="text/css" href="data:text/css,"></html>
