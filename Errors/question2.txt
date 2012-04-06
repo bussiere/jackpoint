@@ -1,0 +1,5 @@
+    form=FORM( TR(LABEL('Username : '), INPUT(_name='Username')),"<br>",
+     TR(LABEL('Email: '), INPUT(_name='email',_value=user.email)),
+      INPUT(_type='submit'))
+    form.insert(-1, TR(LABEL('titi : '),INPUT(_name='titi',_value='titi'))
+    form.insert(-1, TR(LABEL('toto : '),INPUT(_name='toto',_value='toto'))

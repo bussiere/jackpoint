@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Project JackPoint</title>
+	<link rel="stylesheet" href="stylesheet.css" />
+	<link rel="icon" type="image/png" href="gfx/favicon.ico"/>
+	<link rel="stylesheet" href="jquery.jscrollpane.jp.css"/>
+</head>
+<body>
+	<div id="wrapper">
+		
+		<div id="jackpoint_banner_wrapper" class="jp-winhandle-left">
+			<div id="jackpoint_banner_window" class="jp-window-left">
+				<svg xmlns="http://www.w3.org/2000/svg" id="logosvg" version="1.1">
+					<path style="fill-opacity: 0.75;" fill="#00ff32" stroke="none" d="M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7" fill-opacity="0.5" transform="matrix(1,0,0,1,0,0)" stroke-width="0.09051724137931035">
+				</svg>
+				<div>
+					<p class="vcenter"><a href="index.html">JackPoint</a></p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- navigation window / navigation fenetre -->
+		<div id="navigation_wrapper" class="jp-winhandle-left">
+			<div id="navigation_window">
+				<a href="index.html">
+					<div class="jp-nav-btn">
+						<p>HOME</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Announcements</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Text Wall</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Help List</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Places &amp; Events</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Group Purchase</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Workshop &amp; Tutorial</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		
+		<!-- navigation window / navigation fenetre -->
+		<!--
+		<div id="navigation_wrapper" class="jp-winhandle-left">
+			<div id="navigation_window" class="jp-window-left">
+				<a href="index.html">
+					<div class="jp-nav-btn">
+						<p>HOME</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Announcements</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Text Wall</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Help List</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Places &amp; Events</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Group Purchase</p>
+					</div>
+				</a>
+				<a href="#">
+					<div class="jp-nav-btn">
+						<p>Workshop &amp; Tutorial</p>
+					</div>
+				</a>
+			</div>
+		</div>-->
+		
+		<!-- copyright window / copyright fenetre -->
+		<!--
+		<div id="copyright_wrapper" class="jp-winhandle-left jp-wrapper">
+			<div id="copyright_window" class="jp-window-left">
+				<div id="copyright">
+					copyright &copy; 2012 JackPoint<br/>
+					Your name here
+				</div>
+			</div>
+		</div>
+		-->
+		
+		<div id="copyright_compact">
+			<p class="vcenter">copyright &copy; 2012 JackPoint</p>
+		</div>
+		
+		<!-- request help window / demande aide fenetre -->
+		<div id="skill_wrapper" class="jp-winhandle">
+			<div id="skill_progress_window">
+				<div id="skill_percentage_wrapper" class="jp-winhandle-top">
+					<div id="skill_percentage">
+						<p>0%</p>
+					</div>
+				</div>
+				<div id="skill_navigation_wrapper" class="jp-winhandle-top">
+					<div class="nav-btn nav-btn-current">
+						<p>1: Description</p>
+					</div>
+					<div class="nav-btn">
+						<p>2: Minimal</p>
+					</div>
+					<div class="nav-btn">
+						<p>3: Compétence</p>
+					</div>
+					<div class="nav-btn">
+						<p>4: Objets</p>
+					</div>
+					<div class="nav-btn">
+						<p>5: Confirmer</p>
+					</div>
+				</div>
+				<div id="skill_nextback_wrapper">
+					<div id="skill_next_btn" class="jp-custom-btn">
+						<p>NEXT</p>
+					</div>
+					<div id="skill_back_btn" class="jp-custom-btn">
+						<p>BACK</p>
+					</div>
+				</div>
+			</div>
+			<div id="skill_window" class="jp-window" style="background-color: transparent">
+				
+			</div>
+		</div>
+		
+		<div id="sidebar" class="jp-winhandle-top">
+			<div id="sidebar_window" class="jp-window-top">
+				placeholder
+			</div>
+		</div>
+		
+		<div id="tip_of_the_day">
+			<span>JackPoint Tip:</span><br/><br/>Always keep an old mobile phone in your car.
+		</div>
+	
+	<script>
+		var GLOBAL_PAGE = 'HELP_1';
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+	
+	<script src="js/jquery.mousewheel.js"></script>
+	<script src="js/mwheelIntent.js"></script>
+	<script src="js/jquery.jscrollpane.min.js"></script>
+	<!--
+	<script src="js/raphael-min.js"></script>
+	-->
+	<script src="js/jackpoint.js"></script>
+</body>
+</html>
