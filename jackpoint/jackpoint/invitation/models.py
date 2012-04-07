@@ -25,13 +25,24 @@ class Invitation(models.Model):
     Used = models.BooleanField(default=False, blank=True)
     SendTo = models.EmailField(null=True, blank=True)
     # a revoir
-    def post_save(self, model_instance, add):
-        if self.Code.__len__() == 0 :
+    def save(self, *args, **kwargs):
+        if not self.Code:
             self.Code = generate_invitation(1)[0]
-            self.save()
-    
+            super(Invitation, self).save(*args, **kwargs)
+
+class InvitationUsed(models.Model):   
+    #other fields here
+    Code = models.CharField(max_length=128, null=True, blank=True)
+    Tags = models.ManyToManyField("CategorieInvitation", null=True, blank=True)
+    Tags = models.ManyToManyField("Usage", null=True, blank=True)
+    Note = models.CharField(max_length=128, null=True, blank=True)
+    SendTo = models.EmailField(null=True, blank=True)
+    Receveur = models.ManyToManyField("jack.UserProfile", related_name="ReceveurINvit",null=True, blank=True)
+    Donneur =  models.ManyToManyField("jack.UserProfile", related_name="DonneurINvit", null=True, blank=True)
+    # a revoir
 
 
+       
 
 def generate_invitation(number,word=4,num=1,numdigit=5):
     code = [
