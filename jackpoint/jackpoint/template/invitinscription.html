@@ -1,5 +1,10 @@
 <html>
 <body>
 poutou
+<form action="../" method="post">{% csrf_token %}
+{% for carac in Caracs %}
+    <li>{{ carac }}</li>
+{% endfor %}
+</form>
 </body>
 </html>

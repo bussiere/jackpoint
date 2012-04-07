@@ -9,6 +9,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib import auth
+from jackpoint.skill.models import Skill
+from jackpoint.carac.models import Carac
+from jackpoint.item.models import Item
+from django import forms
 
 def index(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -42,7 +46,16 @@ def index(request):
 def invitation_inscription(request):
     user = request.user
     if user.get_profile().Finished  == False :
-        return render_to_response('invitinscription.html',RequestContext(request))
+        Caracs = Carac.objects.all()
+        Skills = Skill.objects.all()
+        Items = Item.objects.all()
+        temp = []
+        for carac in Caracs :
+            f = forms.CharField()
+            temp.append(f)
+        Caracs = temp
+        temp = []
+        return render_to_response('invitinscription.html',{"Caracs":Caracs},RequestContext(request))
     else :
         return HttpResponseRedirect('../')
     
