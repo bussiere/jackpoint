@@ -8,6 +8,9 @@ class Skill(models.Model):
     Child = models.ManyToManyField("self",blank=True, null=True)
     Level = models.IntegerField()
     Nom = models.CharField(max_length=128)
+    def __unicode__(self):
+        return self.Nom
+
     
     
 # Create your models here.

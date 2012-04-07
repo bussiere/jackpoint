@@ -49,12 +49,13 @@ def invitation_inscription(request):
         Caracs = Carac.objects.all()
         Skills = Skill.objects.all()
         Items = Item.objects.all()
-        temp = []
+        temp = forms.Form()
         for carac in Caracs :
             f = forms.CharField()
-            temp.append(f)
+            f.label = carac.Nom
+            temp.add_prefix(f)
         Caracs = temp
-        temp = []
+        temp = forms.Form()
         return render_to_response('invitinscription.html',{"Caracs":Caracs},RequestContext(request))
     else :
         return HttpResponseRedirect('../')
