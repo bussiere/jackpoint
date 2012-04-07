@@ -13,6 +13,10 @@ from jackpoint.skill.models import Skill
 from jackpoint.carac.models import Carac
 from jackpoint.item.models import Item
 from django import forms
+from django.forms.formsets import BaseFormSet
+from django.forms.fields import DateField, ChoiceField, MultipleChoiceField
+from django.forms.widgets import RadioSelect, CheckboxSelectMultiple
+from django.forms.extras.widgets import SelectDateWidget
 
 def index(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -49,13 +53,19 @@ def invitation_inscription(request):
         Caracs = Carac.objects.all()
         Skills = Skill.objects.all()
         Items = Item.objects.all()
-        temp = forms.Form()
+        temp = BaseFormSet
+        CARAC_CHOICES = (('1', 'Nul'), ('2', 'Bof'),('3', 'Moyen'),('4', 'Bon'),('5', 'Excellent'))
+        PRIVATE = (('0', 'Private'), ('1', 'Public'))
+        i = 0
         for carac in Caracs :
-            f = forms.CharField()
-            f.label = carac.Nom
-            temp.add_prefix(f)
+            eval1= "%s = ChoiceField(label='%s :',widget=RadioSelect, choices=CARAC_CHOICES)"%(carac.Nom,carac.Nom)
+            exec(eval1)
+            eval1 = "%s_private = ChoiceField(label='Visibility : ',widget=RadioSelect, choices=PRIVATE)"%carac.Nom
+            exec(eval1)
+            temp.add_fields(eval("%s"%carac.Nom),i)
+            temp.add_fields(eval("%s_private"%carac.Nom),i+1)
+            i += 1
         Caracs = temp
-        temp = forms.Form()
         return render_to_response('invitinscription.html',{"Caracs":Caracs},RequestContext(request))
     else :
         return HttpResponseRedirect('../')

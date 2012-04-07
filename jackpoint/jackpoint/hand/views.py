@@ -16,7 +16,7 @@ def index(request):
     else:
         form = LoginForm() # An unbound form
 
-    return render_to_response('index.html', {
+    return render_to_response('questions.html', {
         'form': form
     },RequestContext(request))# Create
 
@@ -34,10 +34,10 @@ def ask(request):
     else:
         form = LoginForm() # An unbound form
 
-    return render_to_response('index.html', {
+    return render_to_response('ask.html', {
         'form': form
     },RequestContext(request))# Create your views here.
     
 
- your views here.
+
 
