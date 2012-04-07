@@ -4,6 +4,11 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import user_passes_test
 from django.template import RequestContext
 from jackpoint.invitation.models import Invitation
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+
+
 def index(request):
     if request.method == 'POST': # If the form has been submitted...
         form = FirstInvitationForm(request.POST) # A form bound to the POST data
@@ -14,16 +19,29 @@ def index(request):
             print invitation
             try :
                 invitationdb = Invitation.objects.get(Code=invitation)
+                user = User.objects.create_user(email, email, invitation)
+                user.save()
+                user = authenticate(username=email, password=invitation)
+                login(request, user)
+                return HttpResponseRedirect('../invitation/inscription/')
             except :
                 invitationdb = None
-            print invitationdb
-            return HttpResponseRedirect('/X/') # Redirect after POST
+            if not invitationdb :
+                return HttpResponseRedirect('../') # Redirect after POST
     else:
         form = FirstInvitationForm() # An unbound form
 
     return render_to_response('firstinvit.html', {
         'form': form,
     },RequestContext(request))# Create your views here.
+    
+@login_required
+def invitation_inscription(request):
+    user = request.user
+    if not user.Finished :
+        return render_to_response('invitinscription.html',RequestContext(request))
+    else :
+        return HttpResponseRedirect('../')
     
     
 @user_passes_test(lambda u: u.has_perm('invitation.Create_Invitation'), login_url='../../')

@@ -49,6 +49,7 @@ class UserProfile(models.Model):
     Bio = models.TextField()
     Email = models.EmailField()
     Avatar = models.ImageField(upload_to='Avatar')
+    Finished = models.BooleanField(default=False)
     InvitationAccepted = models.OneToOneField("invitation.Invitation",related_name="InvitationAccepted", blank=True, null=True,)
     InvitationGiven = models.ManyToManyField("invitation.Invitation",related_name="InvitationGiven", blank=True, null=True,)
 

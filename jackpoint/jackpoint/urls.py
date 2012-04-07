@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     
     url(r'^invitation/create_invitation/$', 'jackpoint.invitation.views.create_invitation'),
-
+    url(r'^/invitation/inscription/$', 'jackpoint.invitation.views.create_invitation'),
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )
