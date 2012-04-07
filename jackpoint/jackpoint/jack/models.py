@@ -46,6 +46,7 @@ class UserProfile(models.Model):
     TagsPrivate = models.ManyToManyField("TagPrivate", blank=True, null=True)
     Items = models.ManyToManyField("ItemUser", blank=True, null=True)
     Caracs = models.ManyToManyField("CaracUser", blank=True, null=True)
+    Pseudo = models.CharField(max_length=64)
     Bio = models.TextField()
     Email = models.EmailField()
     Avatar = models.ImageField(upload_to='Avatar')

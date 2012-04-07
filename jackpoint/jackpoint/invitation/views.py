@@ -7,7 +7,8 @@ from jackpoint.invitation.models import Invitation
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import logout
+from django.contrib import auth
 
 def index(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -18,11 +19,13 @@ def index(request):
             print email
             print invitation
             try :
+
                 invitationdb = Invitation.objects.get(Code=invitation)
                 user = User.objects.create_user(email, email, invitation)
+                user.InvitationAccepted = invitationdb
                 user.save()
                 user = authenticate(username=email, password=invitation)
-                login(request, user)
+                auth.login(request, user)
                 return HttpResponseRedirect('../invitation/inscription/')
             except :
                 invitationdb = None
@@ -38,7 +41,7 @@ def index(request):
 @login_required
 def invitation_inscription(request):
     user = request.user
-    if not user.Finished :
+    if user.get_profile().Finished  == False :
         return render_to_response('invitinscription.html',RequestContext(request))
     else :
         return HttpResponseRedirect('../')
