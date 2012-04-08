@@ -14,6 +14,7 @@ class SkillForm(forms.Form):
     parent = forms.CharField(widget=forms.HiddenInput())
     child = forms.CharField(widget=forms.HiddenInput())
     niveau = forms.CharField(widget=forms.HiddenInput())
+    type = forms.CharField(widget=forms.HiddenInput(),default="skill")
     CARAC_CHOICES = (('1', 'Ne la possede pas'),('1', 'Nul'), ('2', 'Bof'),('3', 'Moyen'),('4', 'Bon'),('5', 'Excellent'))
     PRIVATE_CHOICES = (('0', 'Private'), ('1', 'Public'))
     level = ChoiceField(label='Niveau : ',widget=RadioSelect, choices=CARAC_CHOICES)
