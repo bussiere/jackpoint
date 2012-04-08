@@ -10,86 +10,46 @@
 <body>
 	<div id="wrapper">
 		
-		<div id="jackpoint_banner_wrapper" class="jp-winhandle-left">
-			<div id="jackpoint_banner_window" class="jp-window-left">
-				<a href="main.html">
-					<svg xmlns="http://www.w3.org/2000/svg" id="logosvg" version="1.1">
-						<path style="fill-opacity: 0.75;" fill="#00ff32" stroke="none" d="M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7" fill-opacity="0.5" transform="matrix(1,0,0,1,0,0)" stroke-width="0.09051724137931035">
-					</svg>
-				</a>
+		<div id="banner_wrapper" style="width:100%;left:0;top:0;">
+			<div id="userbox">
+				<div id="avatarbox">
+					<img src="gfx/avatar.png" style="width:100%;height:100%;"/>
+				</div>
+				<div id="usernamebox">
+					<div>
+						<p class="vcenter">Adam Jenson</p>
+					</div>
+				</div>
 			</div>
 		</div>
-		<!--
-		<div id="jackpoint_banner_window">
-				<div id="jackpoint_logo">
-					<div style="float:left;width:7%;height:100%;">
-						<svg xmlns="http://www.w3.org/2000/svg" id="logosvg" version="1.1">
-							<path style="fill-opacity: 0.75;" fill="#00ff32" stroke="none" d="M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7" fill-opacity="0.5" transform="matrix(1,0,0,1,0,0)" stroke-width="0.09051724137931035">
-						</svg>
-					</div>
-					<div id="jackpoint_word">
-						<p><a href="index.html">JackPoint</a></p>
-					</div>
-				</div>
-			</div>
-					<div id="user_wrapper">
-					<div id="user_image">
-						<img src="gfx/avatar.png" width="100%" height="100%"/>
-					</div>
-					<div id="user_choice">
-						<div>Adam Jenson</div>
-					</div>
-				</div>
 		
-		-->
-
-		<!-- navigation window / navigation fenetre -->
-		<div id="navigation_wrapper" class="jp-winhandle-left">
-			<div id="navigation_window">
-				<a href="index.html">
-					<div class="jp-nav-btn">
-						<p>HOME</p>
-					</div>
-				</a>
-				<a href="#">
-					<div class="jp-nav-btn">
-						<p>Announcements</p>
-					</div>
-				</a>
-				<a href="#">
-					<div class="jp-nav-btn">
-						<p>Text Wall</p>
-					</div>
-				</a>
-				<a href="#">
-					<div class="jp-nav-btn">
-						<p>Help List</p>
-					</div>
-				</a>
-				<a href="#">
-					<div class="jp-nav-btn">
-						<p>Places &amp; Events</p>
-					</div>
-				</a>
-				<a href="#">
-					<div class="jp-nav-btn">
-						<p>Group Purchase</p>
-					</div>
-				</a>
-				<a href="#">
-					<div class="jp-nav-btn">
-						<p>Workshop &amp; Tutorial</p>
-					</div>
-				</a>
+		<div id="navigation_wrapper">
+			<!-- A lot of code for navigation, load external -->
+		</div>
+		
+		<div id="news_border">
+		
+		</div>
+		
+		<div id="news_wrapper">
+			<!-- news is loaded from external source -->
+		</div>
+		
+		<div id="news_button_wrapper">
+			<div id="news_main_button" class="jp-custom-btn">
+				<p>Nouvelles</p>
 			</div>
+			<div id="news_tag_button" class="jp-custom-btn">
+				<p>Tag</p>
+			</div>
+		</div>
+		
+		<div id="notification_wrapper">
+			
 		</div>
 		
 		<div id="copyright_compact">
-			<p class="vcenter">copyright &copy; 2012 JackPoint</p>
-		</div>
-		
-		<div id="tip_of_the_day">
-			<span>JackPoint Tip:</span><br/><br/>Always keep an old mobile phone in your car.
+			<p class="vcenter">Copyright &copy; 2012 JackPoint</p>
 		</div>
 	
 	<script>
@@ -101,9 +61,9 @@
 	<script src="js/jquery.mousewheel.js"></script>
 	<script src="js/mwheelIntent.js"></script>
 	<script src="js/jquery.jscrollpane.min.js"></script>
-	<!--
+	
 	<script src="js/raphael-min.js"></script>
-	-->
+	
 	<script src="js/jackpoint.js"></script>
 </body>
 </html>

@@ -2,7 +2,11 @@
 <body>
 poutou
 <form action="../" method="post">{% csrf_token %}
-{{ Caracs.as_p }}
+{% for carac in CaracFormSet %}
+{{ carac.carac.value }} :
+{{ carac.as_p }}
+
+{% endfor %}
 </form>
 </body>
 </html>

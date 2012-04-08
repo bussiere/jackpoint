@@ -12,6 +12,8 @@ from jackpoint.skill.models import Skill
 from jackpoint.carac.models import Carac
 from jackpoint.item.models import Item
 from jackpoint.carac.forms import CaracForm
+from jackpoint.skill.forms import SkillForm
+from jackpoint.item.forms import ItemForm
 from django.forms.formsets import formset_factory
 
 
@@ -52,8 +54,24 @@ def invitation_inscription(request):
         Caracs = Carac.objects.all()
         Skills = Skill.objects.all()
         Items = Item.objects.all()
-        CaracFormSet = formset_factory(CaracForm)
-        return render_to_response('invitinscription.html',{"CaracFormSet":CaracFormSet},RequestContext(request))
+        initial = []
+        for carac in Caracs :
+            initial.append({'carac': carac.Nom,'id':carac.id})
+        CaracFormSet = formset_factory(CaracForm, extra=0)
+        CaracFormSet = CaracFormSet(initial=initial)
+        initial = []
+        for skill in Skills :
+            initial.append({'skill': skill.Nom,'id':skill.id})
+        SkillFormSet = formset_factory(SkillForm, extra=0)
+        SkillFormSet = SkillFormSet(initial=initial)
+        initial = []
+        for item in Items :
+            initial.append({'Item': item.Nom,'id':item.id})
+        ItemFormSet = formset_factory(ItemForm, extra=0)
+        ItemFormSet = ItemFormSet(initial=initial)
+
+        
+        return render_to_response('invitinscription.html',{"CaracFormSet":CaracFormSet,'SkillFormSet':SkillFormSet},RequestContext(request))
     else :
         return HttpResponseRedirect('../')
     

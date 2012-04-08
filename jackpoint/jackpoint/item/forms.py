@@ -8,10 +8,8 @@ from django.forms.extras.widgets import SelectDateWidget
 
 
 
-class CaracForm(forms.Form):
-    carac = forms.CharField(widget=forms.HiddenInput())
-    id = forms.CharField(widget=forms.HiddenInput())
-    CARAC_CHOICES = (('1', 'Nul'), ('2', 'Bof'),('3', 'Moyen'),('4', 'Bon'),('5', 'Excellent'))
+class ItemForm(forms.Form):
+   
     PRIVATE_CHOICES = (('0', 'Private'), ('1', 'Public'))
-    level = ChoiceField(label='Niveau : ',widget=RadioSelect, choices=CARAC_CHOICES)
+    Possede = ChoiceField(label='Possede : ',widget=CheckboxSelectMultiple)
     private = ChoiceField(label='Visibility : ',widget=RadioSelect, choices=PRIVATE_CHOICES)

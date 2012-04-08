@@ -1,0 +1,50 @@
+<svg id="hexNav" height="100%" version="1.1" width="100%"  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: absolute; left: 0; top: 0;">
+	<desc>Created with Raphaël 2.0.1</desc>
+	<path style="fill-opacity: 0.75;" fill="#00ff32" stroke="none" d="M0,40V90H10V50L50,10H230V0H40ZM230,497V447H220V487L180,527H0V537H190Z" fill-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	<path style="" fill="none" stroke="#009619" d="M230,30H110M230,55H180M230,80H175M0,515H100M0,495H40" stroke-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	<text style="text-anchor: start; font: 14px Verdana;" x="47" y="29" text-anchor="start" font="10px Arial" stroke="none" fill="#009619" fill-opacity="0.75" font-family="Verdana" font-size="14px" transform="matrix(1,0,0,1,0,0)">
+		<tspan dy="5.5">φ0xFFFF</tspan>
+	</text>
+	<text style="text-anchor: start; font: 14px Verdana;" x="112" y="54" text-anchor="start" font="10px Arial" stroke="none" fill="#009619" fill-opacity="0.75" font-family="Verdana" font-size="14px" transform="matrix(1,0,0,1,0,0)">
+		<tspan dy="5.5">λ0x0AE5</tspan>
+	</text>
+	<text style="text-anchor: start; font: 14px Verdana;" x="135" y="79" text-anchor="start" font="10px Arial" stroke="none" fill="#009619" fill-opacity="0.75" font-family="Verdana" font-size="14px" transform="matrix(1,0,0,1,0,0)">
+		<tspan dy="5.5">Σ0x0</tspan>
+	</text>
+	<text style="text-anchor: start; font: 14px Verdana;" x="48" y="494" text-anchor="start" font="10px Arial" stroke="none" fill="#009619" fill-opacity="0.75" font-family="Verdana" font-size="14px" transform="matrix(1,0,0,1,0,0)">
+		<tspan dy="5.5">Δ0111001</tspan>
+	</text>
+	<text style="text-anchor: start; font: 14px Verdana;" x="108" y="513" text-anchor="start" font="10px Arial" stroke="none" fill="#009619" fill-opacity="0.75" font-family="Verdana" font-size="14px" transform="matrix(1,0,0,1,0,0)">
+		<tspan dy="5.5">Ω99%</tspan>
+	</text>
+	<a xlink:href="main.html">
+		<path class="navhexagon hexagon" style="cursor: pointer;" fill="#009619" stroke="none" d="M60,70H105L128,110L105,150H60L37,111Z" fill-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	</a>
+	<a xlink:href="sms.html">
+		<path class="navhexagon hexagon" style="cursor: pointer;" fill="#009619" stroke="none" d="M130,110H175L198,150L175,190H130L107,151Z" fill-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	</a>
+	<a xlink:href="help.html">
+		<path class="navhexagon hexagon" style="cursor: pointer;" fill="#009619" stroke="none" d="M60,152H105L128,192L105,232H60L37,193Z" fill-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	</a>
+	<path class="navhexagon hexagon" style="cursor: pointer;" fill="#009619" stroke="none" d="M130,192H175L198,232L175,272H130L107,233Z" fill-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	<path class="navhexagon hexagon" style="cursor: pointer;" fill="#009619" stroke="none" d="M60,234H105L128,274L105,314H60L37,275Z" fill-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	<path class="navhexagon hexagon" style="cursor: pointer;" fill="#009619" stroke="none" d="M130,274H175L198,314L175,354H130L107,315Z" fill-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	<path class="hexagon" style="" fill="none" stroke="#009619" d="M60,317H105L128,357L105,397H60L37,358Z" stroke-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	<path class="hexagon" style="" fill="none" stroke="#009619" d="M130,357H175L198,397L175,437H130L107,398Z" stroke-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	<path class="hexagon" style="" fill="none" stroke="#009619" d="M60,400H105L128,440L105,480H60L37,441Z" stroke-opacity="0.75" transform="matrix(1,0,0,1,0,0)"/>
+	<a xlink:href="main.html">
+		<text class="navlink" style="text-anchor: end; font: 14px DX;" x="115" y="108" text-anchor="end" font="10px Arial" stroke="none" fill="#000000" font-family="DX" font-size="14px" transform="matrix(1,0,0,1,0,0)">
+			<tspan dy="5.5">MAIN</tspan>
+		</text>
+	</a>
+	<a xlink:href="sms.html">
+		<text class="navlink" style="text-anchor: end; font: 14px DX;" x="185" y="149" text-anchor="end" font="10px Arial" stroke="none" fill="#000000" font-family="DX" font-size="14px" transform="matrix(1,0,0,1,0,0)">
+			<tspan dy="5.5">SMS</tspan>
+		</text>
+	</a>
+	<a xlink:href="help.html">
+		<text class="navlink" style="text-anchor: end; font: 14px DX;" x="115" y="190" text-anchor="end" font="10px Arial" stroke="none" fill="#000000" font-family="DX" font-size="14px" transform="matrix(1,0,0,1,0,0)">
+			<tspan dy="5.5">HELP</tspan>
+		</text>
+	</a>
+</svg>
