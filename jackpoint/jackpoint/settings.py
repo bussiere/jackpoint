@@ -101,7 +101,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 
-AUTH_PROFILE_MODULE = 'jack.UserProfile'
+AUTH_PROFILE_MODULE = 'jackpoint.jack.UserProfile'
 
 ROOT_URLCONF = 'jackpoint.urls'
 
@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'jackpoint.carac',
+    'jackpoint.engine',
     'jackpoint.hand',
     'jackpoint.invitation',
     'jackpoint.item',
