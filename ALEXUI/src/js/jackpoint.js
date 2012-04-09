@@ -46,12 +46,13 @@ function upkeep() {
 	DRAW.simpleBanner($('#banner_wrapper'));
 	
 	// Raphael Version
-	//DRAW.navigation2($('#navigation_wrapper'));
+	DRAW.navigation2($('#navigation_wrapper'));
 	
 	// external/externe version
-	$('#navigation_wrapper').load('gfx/navigation.svg', initializeNavigation);
+	//$('#navigation_wrapper').load('gfx/navigation.svg', initializeNavigation);
 }
 
+/*
 function initializeNavigation() {
 	var a = $('#navigation_wrapper');
 	var b = a.width() / 230;
@@ -59,7 +60,7 @@ function initializeNavigation() {
 	
 	// Not using raphael so we have to scale the svg the hard way
 	// pas raphael, redimensionner et joindre événement dure-chemin
-	$('#hexNav path,text').attr('transform', 'matrix('+b+',0,0,'+c+',0,0)');
+	$('#hexNav path,text').attr('transform', 'matrix('+c+',0,0,'+c+',0,0)');
 	var d = $('#hexNav path.navhexagon');
 	d.hover(function() {
 		$(this).attr('fill', '#00ff32');
@@ -84,6 +85,7 @@ function initializeNavigation() {
 		d.eq(2).attr('fill', '#009619');
 	});
 }
+*/
 
 
 
@@ -204,6 +206,14 @@ function setupMain() {
 	// Button event and load initial news
 	$('#news_main_button').click(loadNews).click();
 	$('#news_tag_button').click(loadNews);
+	
+	// Draw the list window
+	DRAW.notifications($('#notification_wrapper'));
+	
+	// Scale Bar
+	var r1 = $('#news_button_wrapper').width() / 627;
+	var r2 = $('#news_button_wrapper').height()/ 67;
+	$('#mainBar path:first').attr('transform', 'matrix('+r1+',0,0,'+r2+',0,0)');
 }
 
 
@@ -1097,24 +1107,23 @@ var DRAW = {
 		}
 	},
 	
-	createHexGroup: function(hex, line, text) {
+	createHexGroup: function(hex, text) {
 		var a = hex.p.path(hex.path).attr(hex.at)
 		.hover(function() {
-			this.attr('fill', 'rgba(0, 255, 50, 0.75)');
+			this.attr('fill', '#00ff32');
 		}, function() {
-			this.attr('fill', 'rgba(0, 150, 25, 0.5)');
+			this.attr('fill', 'rgba(0, 150, 25, 0.75)');
 		});;
 		
-		var b = hex.p.path(line.path).attr(line.at);
 		var c = hex.p.text(text.x, text.y, text.word).attr(text.at)
 		.hover(function() {
-			a.attr('fill', 'rgba(0, 255, 50, 0.75)');
+			a.attr('fill', '#00ff32');
 		}, function() {
-			a.attr('fill', 'rgba(0, 150, 25, 0.5)');
+			a.attr('fill', 'rgba(0, 150, 25, 0.75)');
 		});
 		
 		var d = hex.p.set();
-		d.push(a, b, c);
+		d.push(a, c);
 		
 		return d;
 	},
@@ -1257,9 +1266,9 @@ var DRAW = {
 		var dtext 	= p.set().push(phi, lambda, sigma, delta, omega);
 		
 		// Hexagon
-		var hex1 = p.path('m60,70h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr).attr('href', 'main.html');
-		var hex2 = p.path('m130,110h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr).attr('href', 'sms.html');
-		var hex3 = p.path('m60,152h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr).attr('href', 'help.html');
+		var hex1 = DRAW.createHexGroup({p: p, path: 'm60,70h45l23,40l-23,40h-45l-23,-39z', at: hex_attr}, {x:115, y: 108, word: $('#hexagon_main').text(), at: t2_attr}).attr('href', 'main.html');
+		var hex2 = DRAW.createHexGroup({p: p, path: 'm130,110h45l23,40l-23,40h-45l-23,-39z', at: hex_attr}, {x:185, y: 149, word: $('#hexagon_sms').text(), at: t2_attr}).attr('href', 'sms.html');
+		var hex3 = DRAW.createHexGroup({p: p, path: 'm60,152h45l23,40l-23,40h-45l-23,-39z', at: hex_attr}, {x:115, y: 190, word: $('#hexagon_help').text(), at: t2_attr}).attr('href', 'help.html');
 		var hex4 = p.path('m130,192h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr);
 		var hex5 = p.path('m60,234h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr);
 		var hex6 = p.path('m130,274h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr);
@@ -1267,20 +1276,12 @@ var DRAW = {
 		var hex8 = p.path('m130,357h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr_e);
 		var hex9 = p.path('m60,400h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr_e);
 		var h = p.set().push(hex1, hex2, hex3, hex4, hex5, hex6, hex7, hex8, hex9);
-		var i = p.set().push(hex1, hex2, hex3, hex4, hex5, hex6).hover(function() {
-			this.attr('fill', '#00ff32');
-		}, function() {
-			this.attr('fill', 'rgba(0, 150, 25, 0.75)');
-		});
 		
-		// Hexagon Text
-		var hex1T = p.text(115, 108, $('#hexagon_main').text()).attr(t2_attr).attr('href', 'main.html');
-		var hex2T = p.text(185, 149, $('#hexagon_sms').text()).attr(t2_attr).attr('href', 'sms.html');
-		var hex3T = p.text(115, 190, $('#hexagon_help').text()).attr(t2_attr).attr('href', 'help.html');
-		var hText = p.set().push(hex1T, hex2T, hex3T);
-		
-		var set = p.set().push(c, d, dtext, h, hText).transform('s'+rh+','+rh+',0,0');
+		var set = p.set().push(c, d, dtext, h).transform('s'+rh+','+rh+',0,0');
 	},
+	
+	// =================================================================
+	// MAIN DRAWING
 	
 	newsBorder: function(a) {
 		var b = a.offset();
@@ -1291,7 +1292,37 @@ var DRAW = {
 		var border = p.path('m26,1h589v410l-24,24h-589v-410z').attr({fill: 'rgba(0,0,0,0.65)', stroke: '#00ff32'});
 		border.scale(r1, r2, 0, 0);
 		$(border.node).parent().css({'z-index': '-1' });
+	},
+	
+	notifications: function(a) {
+		var b = a.offset();
+		var p = Raphael(b.left, b.top, a.width(), a.height());
+
+		var r1 = a.width() / 294;
+		var r2 = a.height()/ 537;
+		
+		var border = p.path('m1,21l20,-20h272v40l-20,20H1zM24,61V70M72,61V70M120,61V70M168,61V70M216,61V70M264,61V70')
+		.attr({fill: 'rgba(0,0,0,0.65)', stroke: '#00ff32'});
+		
+		var title = p.text(50, 30, 'NOTIFICATIONS')
+		.attr({fill: 'white', stroke: 'none', 'text-anchor': 'start', 'font-family':'DX', 'font-size': 26});
+		
+		var s = p.set().push(border, title).transform('s'+r1+','+r2+',0,0');
 	}
+	
+	/*
+	mainBars: function(a) {
+		var b = a.offset();
+		var p = Raphael(b.left, b.top, a.width(), a.height());
+		
+		var r1 = a.width() / 627;
+		var r2 = a.height()/ 67;
+		
+		var bar = p.path('m230,6h140v13h-140m0,5h300v14h-300m0,5h200v13h-200v-50h-2v50h2')
+		.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none'})
+		.transform('s'+r1+','+r2+',0,0');
+	}
+	*/
 };
 
 
