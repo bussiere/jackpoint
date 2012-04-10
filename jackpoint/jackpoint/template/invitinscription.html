@@ -1,12 +1,29 @@
 <html>
 <body>
 poutou
-<form action="../" method="post">{% csrf_token %}
+<form action="validation" method="post">{% csrf_token %}
+
+Caracteristique :<br><br>
 {% for carac in CaracFormSet %}
 {{ carac.carac.value }} :
 {{ carac.as_p }}
 
 {% endfor %}
+
+Skill :<br><br>
+{% for skill in SkillFormSet %}
+{{ skill.skill.value }} :
+{{ skill.as_p }}
+{% endfor %}
+
+Item :<br><br>
+
+{% for item in ItemFormSet %}
+{{ item.item.value }} :
+{{ item.as_p }}
+{% endfor %}
+
+<input type="submit">
 </form>
 </body>
 </html>

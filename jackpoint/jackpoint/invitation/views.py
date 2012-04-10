@@ -58,23 +58,27 @@ def invitation_inscription(request):
         for carac in Caracs :
             initial.append({'carac': carac.Nom,'id':carac.id})
         CaracFormSet = formset_factory(CaracForm, extra=0)
-        CaracFormSet = CaracFormSet(initial=initial)
+        CaracFormSet = CaracFormSet(prefix='carac',initial=initial)
         initial = []
+        # algo de skills a revoir pour le classement
         for skill in Skills :
             initial.append({'skill': skill.Nom,'id':skill.id})
         SkillFormSet = formset_factory(SkillForm, extra=0)
-        SkillFormSet = SkillFormSet(initial=initial)
+        SkillFormSet = SkillFormSet(prefix='skill',initial=initial)
         initial = []
         for item in Items :
-            initial.append({'Item': item.Nom,'id':item.id})
+            initial.append({'item': item.Nom,'id':item.id})
         ItemFormSet = formset_factory(ItemForm, extra=0)
-        ItemFormSet = ItemFormSet(initial=initial)
-
+        ItemFormSet = ItemFormSet(prefix='item',initial=initial)
         
-        return render_to_response('invitinscription.html',{"CaracFormSet":CaracFormSet,'SkillFormSet':SkillFormSet},RequestContext(request))
+        print CaracFormSet
+        return render_to_response('invitinscription.html',{"CaracFormSet":CaracFormSet,'SkillFormSet':SkillFormSet,'ItemFormSet':ItemFormSet},RequestContext(request))
     else :
         return HttpResponseRedirect('../')
-    
+@login_required
+def validation_inscription(request):
+     Carac = FirstInvitationForm(request.POST) # A form bound to the POST data
+        
     
 @user_passes_test(lambda u: u.has_perm('invitation.Create_Invitation'), login_url='../../')
 def create_invitation(request):

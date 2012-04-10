@@ -101,7 +101,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 
-AUTH_PROFILE_MODULE = 'jackpoint.jack.UserProfile'
+AUTH_PROFILE_MODULE = 'jack.UserProfile'
 
 ROOT_URLCONF = 'jackpoint.urls'
 
@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'jackpoint.invitation',
     'jackpoint.item',
     'jackpoint.jack',
+    'jackpoint.notification',
     'jackpoint.skill',
     'jackpoint.tag',
     # Uncomment the next line to enable the admin:
