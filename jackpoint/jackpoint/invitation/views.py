@@ -14,9 +14,9 @@ from jackpoint.item.models import Item
 from jackpoint.carac.forms import CaracForm
 from jackpoint.skill.forms import SkillForm
 from jackpoint.item.forms import ItemForm
+from jackpoint.jack.forms import JackRegisterForm
 from django.forms.formsets import formset_factory
-
-
+from django.forms.formsets import BaseFormSet
 
 
 def index(request):
@@ -49,6 +49,8 @@ def index(request):
     
 @login_required
 def invitation_inscription(request):
+    #TODO
+    # A REVOIR CRADE
     user = request.user
     if user.get_profile().Finished  == False :
         Caracs = Carac.objects.all()
@@ -71,19 +73,49 @@ def invitation_inscription(request):
         ItemFormSet = formset_factory(ItemForm, extra=0)
         ItemFormSet = ItemFormSet(prefix='item',initial=initial)
         
-        print CaracFormSet
-        return render_to_response('invitinscription.html',{"CaracFormSet":CaracFormSet,'SkillFormSet':SkillFormSet,'ItemFormSet':ItemFormSet},RequestContext(request))
+        print CaracFormSet.management_form
+        formJack = JackRegisterForm()
+        return render_to_response('invitinscription.html',{"CaracFormSet":CaracFormSet,'SkillFormSet':SkillFormSet,'ItemFormSet':ItemFormSet,'formJack':formJack},RequestContext(request))
     else :
         return HttpResponseRedirect('../')
 @login_required
 def validation_inscription(request):
-     Carac = FirstInvitationForm(request.POST) # A form bound to the POST data
+    #TODO
+    # crade a revoir
+    # passer par un base formset plutot qu'un truc crade comme ca.
+    jack_username = request.POST['jack_username']
+    jack_email = request.POST['jack_email']
+    jack_password1 = request.POST['jack_password1']
+    jack_password2 = request.POST['jack_password2']
+    jack_Bio = request.POST['jack_Bio']
+    
+    nbre_carac = request.POST['carac-TOTAL_FORMS']
+    nbre_initial_carac = request.POST['carac-INITIAL_FORMS']
+    levelcarac="carac-#-carac_level"
+    namecarac = "carac-#-carac"
+    privatecarac = "carac-0-carac_private"
+    
+    nbr_skills = request.POST['skill-TOTAL_FORMS']
+    nbr_initial_skills = request.POST['skill-INITIAL_FORMS']
+    levelskill = "skill-#-skill_level"
+    nameskill = "skill-#-skill"
+    privateskill = "skill-#-skill_private"
+    
+    
+    
+    
+    #TODO
+    # a revoir ici 
+    #Upload de file foireux
+    jack_Avatar = request.FILES
+
+    return HttpResponseRedirect('../../../X/')
         
     
 @user_passes_test(lambda u: u.has_perm('invitation.Create_Invitation'), login_url='../../')
 def create_invitation(request):
     if request.method == 'POST': # If the form has been submitted...
-        form = CreateInvitationForm(request.POST) # A form bound to the POST data
+        form = BaseFormSet(request.POST) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             nombre = form.cleaned_data['NbreInvite']
             return HttpResponseRedirect('/admin/') # Redirect after POST
