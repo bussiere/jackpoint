@@ -71,6 +71,13 @@ a:visited {
 	color: #29dbe8;
 }
 
+.box {
+	-moz-box-sizing: 	border-box;
+	-ms-box-sizing: 	border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: 		border-box;
+}
+
 /*=====================================================================================*/
 
 .vcenter {
@@ -91,6 +98,10 @@ a:visited {
 
 .jp-winhandle-left {
 	border-left: 10px solid rgba(0, 255, 50, 0.75);
+}
+
+.jp-winhandle-left-blue {
+	border-left: 10px solid rgba(251,227,43,0.75);
 }
 
 .jp-winhandle-top {
@@ -719,6 +730,7 @@ a:visited {
     left: 21.5%;
     position: absolute;
     width: 49%;
+	z-index: 5;
 }
 
 #news_button_wrapper > div {
@@ -747,37 +759,42 @@ a:visited {
 #notification_list {
 	border: 1px solid rgba(0, 255, 50, 0.75);
 	width: 100%;
-	height: 86%;
+	height: 72%;
 	top: 1%;
 	position: relative;
 }	
 
 .notif-entry {
 	position: relative;
-    top: 1%;
 	width: 100%;
 	height: 18%;
-	margin-bottom: 10px;
+	top: 1%;
+}
+
+.notif-avatar-wrapper {
+	position:relative;
+	left: 1%;
+	width: 22%;
+	height: 100%;
+	float: left;
 }
 
 .notif-avatar {
+	width: 100%;
 	height: 100%;
-	float: left;
-	position:relative;
-	left: 1%;
+}
+
+.notif-entry-inner {
+	width: 100%;
+	height: 95%;
 }
 
 .notif-descript-c {
-	float: right;
+	float: left;
     height: 100%;
     position: relative;
-    right: 1%;
-    width: 69%;
-	
-	-moz-box-sizing: 	border-box;
-	-ms-box-sizing: 	border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: 		border-box;
+	left: 2%;
+    width: 75%;
 }
 
 .notif-descript-c:hover {
@@ -785,11 +802,6 @@ a:visited {
 }
 
 .notif-descript-title {
-	-moz-box-sizing: 	border-box;
-	-ms-box-sizing: 	border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: 		border-box;
-	
     background-color: rgba(0, 255, 50, 0.75);
     color: black;
     height: 30%;
@@ -801,23 +813,44 @@ a:visited {
 .notif-descript {
 	border-left: 1px solid #00ff32;
 	border-bottom: 1px solid #00ff32;
+	border-right: 1px solid #00FF32;
     height: 70%;
     overflow: hidden;
     position: relative;
     width: 100%;
 	padding: 5px 0 0 10px;
-	
-	-moz-box-sizing: 	border-box;
-	-ms-box-sizing: 	border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: 		border-box;
 }
 
 .notif-descript a {
-	color: #00ff32;
 	text-decoration: underline;
 }
 
+#notify_btn_wrapper {
+    height: 10%;
+    position: relative;
+    top: 3%;
+    width: 100%;
+}
+
+#notify_btn_wrapper div {
+	float: left;
+	width: 33%;
+	/*border: 1px solid black;*/
+	height: 100%;
+	margin-right: 10px;
+	background-color: rgba(0, 255, 50, 0.5);
+	color: black;
+	border-radius: 4px;
+	display: table;
+	text-align: center;
+	cursor: pointer;
+}
+
+#notify_btn_wrapper div:hover {
+	background-color: rgba(41, 219, 232, 0.75);
+}
+
+/*
 .notif-selected {
 	background-color: rgba(255,255,255,0.85);
 	color: black;
@@ -826,6 +859,259 @@ a:visited {
 .notif-selected a {
 	color: black;
 	text-decoration: underline;
+}
+*/
+
+
+
+/*================================================================================================*/
+/* SMS Page */
+
+#sms_title {
+    height: 10%;
+    left: 22%;
+    position: absolute;
+    top: 12.5%;
+    width: 55%;
+}
+
+#sms_container {
+	/*
+    height: 80%;
+    left: 22%;
+    position: absolute;
+    top: 13%;
+    width: 55%;
+	border: 1px solid black;
+	overflow: auto;
+	*/
+    height: 68%;
+    left: 22%;
+    overflow: auto;
+    position: absolute;
+    top: 25%;
+    width: 55%;
+	z-index: 5;
+	border-bottom: 5px solid rgba(0, 255, 50, 0.75);
+}
+
+.sms-wrapper {
+	/*
+    height: 15%;
+    width: 55%;
+	*/
+	border: 1px solid rgba(0, 255, 50, 0.75);
+    /*height: 100px;*/
+	height: 22%;
+    width: 56.8%;
+	background-color: rgba(0,0,0,0.65);
+}
+
+.sms-wrapper2 {
+	 bottom: 0;
+    height: 95%;
+    position: absolute;
+    width: 87%;
+	 background-color: rgba(0,0,0,0.65);
+	 border: 1px solid rgba(0, 255, 50, 0.75);
+}
+
+.sms-wrapper2 .sms-avatar-c {
+	width: 25%;
+}
+
+.sms-reply-wrapper {
+    /*height: 104px;
+    width: 455px;*/
+	height: 22%;
+	width: 64%;
+	position: relative;
+	left: 50px;
+}
+
+.sms-reply2-wrapper {
+	/*
+    height: 104px;
+    width: 455px;
+	*/
+	height: 22%;
+	width: 64%;
+	position: relative;
+	left: 150px;
+}
+
+.sms-line {
+	border-bottom: 1px solid;
+    border-left: 1px solid;
+    display: inline-block;
+    float: left;
+    height: 50px;
+    width: 50px;
+}
+
+.sms-line-none {
+	border-bottom: 0;
+    border-left: 0;
+	display: inline-block;
+    float: left;
+    height: 50px;
+    margin-left: 1px;
+    width: 50px;
+}
+
+.sms-filler {
+	width: 100%;
+	height: 100px;
+}
+
+.sms-avatar-c {
+	border-right: 1px solid;
+    float: left;
+    height: 90%;
+    left: 2%;
+    position: relative;
+    top: 5%;
+    /*width: 100px;*/
+	width: 27%;
+}
+
+.sms-avatar {
+	height:100%;
+}
+
+.sms-descript {
+	display: inline-block;
+    height: 100%;
+    left: 5%;
+    position: relative;
+    width: 65%;
+	padding-top: 5px;
+}
+
+.sms-descript a {
+	text-decoration: underline;
+}
+
+#sms_options {
+	border: 1px solid #00ff32;
+	background-color: rgba(0,0,0,0.65);
+    height: 69%;
+    left: 78%;
+    position: absolute;
+    top: 25%;
+    width: 21%;
+	padding: 10px 10px 0 10px;
+}
+
+#sms_option_title {
+    height: 10%;
+    left: 78%;
+    position: absolute;
+    top: 12.5%;
+    width: 21%;
+}
+
+
+
+/*================================================================================================*/
+/* Help Main Page */
+
+#help_title {
+	height: 10%;
+    left: 22%;
+    position: absolute;
+    top: 12.5%;
+    width: 55%;
+}
+
+#help_wrapper {
+    height: 58%;
+    left: 22%;
+    position: absolute;
+    top: 25%;
+    width: 54%;
+}
+
+#help_btn_wrapper {
+    height: 9%;
+    left: 22%;
+    position: absolute;
+    top: 85%;
+    width: 54%;
+	border-top: 5px solid rgba(0, 255, 50, 0.75);
+}
+
+#help_btn_wrapper div {
+	float: left;
+	margin-right: 10px;
+	top: 8px;
+	margin-left: 0;
+	width: 15.9%;
+	height: 80.6%;
+}
+
+#help_preview {
+    height: 73%;
+    left: 78%;
+    position: absolute;
+    top: 12.5%;
+    width: 21%;
+	z-index: 5;
+}
+
+#help_preview_content {
+	left: 5%;
+    position: relative;
+    top: 6%;
+    width: 90%;
+}
+
+.help-item-outer {
+	width: 100%;
+	height: 9%;
+	cursor: pointer;
+	position: relative;
+}
+
+.help-item-inner {
+	width: 100%;
+	height: 90%;
+	position: relative;
+	top: 0px;
+	border-left: 10px solid rgba(0, 255, 50, 0.75);
+	/*border-left: 10px solid rgba(248, 181, 0, 0.75);*/
+}
+
+.help-item-content {
+	background-color: rgba(0, 0, 0, 0.65);
+    float: right;
+    height: 100%;
+    width: 99%;
+}
+
+.help-item-content > div {
+	display: table;
+	height: 100%;
+}
+
+.help-item-datedesc {
+	float: left;
+	margin-left: 10px;
+	
+}
+
+.help-item-author {
+	float: right;
+	margin-right: 10px;
+}
+
+#help_decoration {
+    height: 9%;
+    left: 50%;
+    position: absolute;
+    top: 85%;
+    width: 49%;
+    z-index: -1;
 }
 
 
@@ -930,17 +1216,13 @@ a:visited {
 }
 
 #skill_title {
-	-moz-box-sizing: 	border-box;
-	-ms-box-sizing: 	border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: 		border-box;
-	
     background-color: rgba(0, 0, 0, 0.65);
     display: table;
     font-size: 24px;
     height: 10%;
     padding-left: 5%;
     width: 100%;
+	border: 1px solid;
 }
 
 #skill_title p {

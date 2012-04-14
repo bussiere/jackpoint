@@ -19,6 +19,14 @@ function initializePage() {
 			setupMain();
 			break;
 			
+		case 'SMS':
+			setupSMS();
+			break;
+			
+		case 'HELP_MAIN':
+			setupHelpMain();
+			break;
+			
 		case 'HELP_1':
 			setupHelp();
 			break;
@@ -200,20 +208,102 @@ function setupMain() {
 	};
 	
 	// Button font scale
-	var b = $('#news_button_wrapper');
-	b.css('font-size', b.height()*0.20);
+	//var b = $('#news_button_wrapper');
+	//b.css('font-size', b.height()*0.20);
+	
+	var c = $('#notification_list');
+	c.css('font-size', c.children('div.notif-entry:first').height()*0.125);
 	
 	// Button event and load initial news
 	$('#news_main_button').click(loadNews).click();
 	$('#news_tag_button').click(loadNews);
+	$('#notify_btn_refresh').click(function() {
+		alert('refresh');
+	});
+	$('#notify_btn_eraseall').click(function() {
+		alert('remove all');
+	});
 	
 	// Draw the list window
 	DRAW.notifications($('#notification_wrapper'));
+	DRAW.mainBars($('#news_button_wrapper'));
 	
+	// Event for clicking on notification
+	//$('#notification_list').on
 	// Scale Bar
-	var r1 = $('#news_button_wrapper').width() / 627;
-	var r2 = $('#news_button_wrapper').height()/ 67;
-	$('#mainBar path:first').attr('transform', 'matrix('+r1+',0,0,'+r2+',0,0)');
+	//var r1 = $('#news_button_wrapper').width() / 627;
+	//var r2 = $('#news_button_wrapper').height()/ 67;
+	//$('#mainBar path:first').attr('transform', 'matrix('+r1+',0,0,'+r2+',0,0)');
+}
+
+
+
+/*================================================================================================*/
+/* SMS Page */
+
+function setupSMS() {
+	upkeep();
+	
+	// convert to pixel height for scrollbar
+	var a = $('#sms_container div.sms-wrapper');
+	a.height(a.height());
+	var b = $('#sms_container div.sms-reply-wrapper,div.sms-reply2-wrapper');
+	b.height(b.height());
+	
+	var c = $('#sms_container div.sms-descript');
+	c.css({'font-size':c.height()*0.1});
+	
+	var d = $('#sms_options');
+	d.css({'font-size':d.height()*0.025});
+	
+	$('#sms_container').jScrollPane({verticalGutter: 10});
+	
+	DRAW.smsborder($('#sms_title'));
+	DRAW.smsOption($('#sms_option_title'));
+	//DRAW.smsDecoration($('#sms_container'));
+	//console.log($('#sms_container').height());
+}
+
+
+
+/*================================================================================================*/
+/* Help Page */
+
+function setupHelpMain() {
+	upkeep();
+	
+	// scale font
+	var a = $('#help_wrapper div.help-item-content');
+	a.css('font-size', a.height()*0.35);
+	
+	// hover event
+	$('#help_wrapper').on({
+		click: function() {
+			
+		},
+		mouseenter: function() {
+			//$(this).children('img').attr("src", "");
+			$(this).css({'background-color': 'rgba(0, 255, 50, 0.75)', 'color': 'black'});
+			$(this).closest('div.help-item-outer').css({'left':'10px'});
+		},
+		mouseleave: function() {
+			//$(this).children('img').attr("src", "")	
+			$(this).css({'background-color': 'rgba(0, 0, 0, 0.65)', 'color': '#00ff32'});
+			$(this).closest('div.help-item-outer').css({'left':'0'});			
+		}
+	}, 'div.help-item-content');
+	
+	// do some custom drawing
+	DRAW.helpBorder($('#help_title'));
+	DRAW.previewBorder($('#help_preview'));
+	DRAW.helpDeco($('#help_decoration'));
+	
+	// convert to pixel height
+	var b = $('#help_wrapper div.help-item-outer');
+	b.height(b.height());
+	
+	// initialize custom scrollbar
+	$('#help_wrapper').jScrollPane({'verticalGutter': 15});
 }
 
 
@@ -986,9 +1076,11 @@ var DRAW = {
 	
 		var logobox = paper.path('m-1,-1h379v53l-20,20h-379')
 		.attr({fill: 'rgba(0,0,0,0.65)', stroke: 'rgba(0, 255, 50, 0.75)'});
+		
 		var logo	= paper.path('M7,7L27,7V18H19V28H7V24H15V18H7V14H15M19,14H23V11H19V14M15,14V11H7V7')
 		.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none', cursor: 'pointer', href: 'main.html'})
 		.transform('t-7,-7s'+(2*rw)+','+(2*rw)+',0,0');
+		
 		var logotex = paper.text(87, 27, 'JackPoint')
 		.attr({'text-anchor': 'start', 'font-family': 'loaded', 'font-size': 38, stroke: 'none', fill: 'rgba(0, 255, 50, 0.75)', href: 'main.html'})
 		.transform('s'+rw+','+rw+',0,0');
@@ -996,6 +1088,8 @@ var DRAW = {
 		
 		// Extra Line
 		var line1	= paper.path('m379,33h420v-9l20,-21h460v50l-20,20h-460v-40').attr({fill: 'none', stroke: 'rgba(0, 255, 50, 0.75)'});
+		var context = paper.text(390, 17, 'Connection Established; Database Online; Hydra Encryption Enabled')
+		.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none', 'font-family': 'DX', 'font-size': 11, 'text-anchor': 'start'});
 		
 		// UserBox
 		var uBox	= paper.path('M803,34v-8l19,-19h452v45l-17,17h-454z').attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none'});
@@ -1005,7 +1099,7 @@ var DRAW = {
 		
 		var settings = paper.path('M17.41,20.395l-0.778-2.723c0.228-0.2,0.442-0.414,0.644-0.643l2.721,0.778c0.287-0.418,0.534-0.862,0.755-1.323l-2.025-1.96c0.097-0.288,0.181-0.581,0.241-0.883l2.729-0.684c0.02-0.252,0.039-0.505,0.039-0.763s-0.02-0.51-0.039-0.762l-2.729-0.684c-0.061-0.302-0.145-0.595-0.241-0.883l2.026-1.96c-0.222-0.46-0.469-0.905-0.756-1.323l-2.721,0.777c-0.201-0.228-0.416-0.442-0.644-0.643l0.778-2.722c-0.418-0.286-0.863-0.534-1.324-0.755l-1.96,2.026c-0.287-0.097-0.581-0.18-0.883-0.241l-0.683-2.73c-0.253-0.019-0.505-0.039-0.763-0.039s-0.51,0.02-0.762,0.039l-0.684,2.73c-0.302,0.061-0.595,0.144-0.883,0.241l-1.96-2.026C7.048,3.463,6.604,3.71,6.186,3.997l0.778,2.722C6.736,6.919,6.521,7.134,6.321,7.361L3.599,6.583C3.312,7.001,3.065,7.446,2.844,7.907l2.026,1.96c-0.096,0.288-0.18,0.581-0.241,0.883l-2.73,0.684c-0.019,0.252-0.039,0.505-0.039,0.762s0.02,0.51,0.039,0.763l2.73,0.684c0.061,0.302,0.145,0.595,0.241,0.883l-2.026,1.96c0.221,0.46,0.468,0.905,0.755,1.323l2.722-0.778c0.2,0.229,0.415,0.442,0.643,0.643l-0.778,2.723c0.418,0.286,0.863,0.533,1.323,0.755l1.96-2.026c0.288,0.097,0.581,0.181,0.883,0.241l0.684,2.729c0.252,0.02,0.505,0.039,0.763,0.039s0.51-0.02,0.763-0.039l0.683-2.729c0.302-0.061,0.596-0.145,0.883-0.241l1.96,2.026C16.547,20.928,16.992,20.681,17.41,20.395zM11.798,15.594c-1.877,0-3.399-1.522-3.399-3.399s1.522-3.398,3.399-3.398s3.398,1.521,3.398,3.398S13.675,15.594,11.798,15.594zM27.29,22.699c0.019-0.547-0.06-1.104-0.23-1.654l1.244-1.773c-0.188-0.35-0.4-0.682-0.641-0.984l-2.122,0.445c-0.428-0.364-0.915-0.648-1.436-0.851l-0.611-2.079c-0.386-0.068-0.777-0.105-1.173-0.106l-0.974,1.936c-0.279,0.054-0.558,0.128-0.832,0.233c-0.257,0.098-0.497,0.22-0.727,0.353L17.782,17.4c-0.297,0.262-0.568,0.545-0.813,0.852l0.907,1.968c-0.259,0.495-0.437,1.028-0.519,1.585l-1.891,1.06c0.019,0.388,0.076,0.776,0.164,1.165l2.104,0.519c0.231,0.524,0.541,0.993,0.916,1.393l-0.352,2.138c0.32,0.23,0.66,0.428,1.013,0.6l1.715-1.32c0.536,0.141,1.097,0.195,1.662,0.15l1.452,1.607c0.2-0.057,0.399-0.118,0.596-0.193c0.175-0.066,0.34-0.144,0.505-0.223l0.037-2.165c0.455-0.339,0.843-0.747,1.152-1.206l2.161-0.134c0.152-0.359,0.279-0.732,0.368-1.115L27.29,22.699zM23.127,24.706c-1.201,0.458-2.545-0.144-3.004-1.345s0.143-2.546,1.344-3.005c1.201-0.458,2.547,0.144,3.006,1.345C24.931,22.902,24.328,24.247,23.127,24.706z')
 		.attr({fill: 'black', stroke: 'none', cursor: 'pointer'})
-		.transform('s'+(1.6+rw-1)+','+(1.6+rw-1)+',0,0T'+(1070*rw)+','+(10*rh));
+		.transform('s'+(1.6*rh)+','+(1.6*rh)+',0,0T'+(1070*rw)+','+(10*rh));
 		
 		var settingsText = paper.text(1110, 20, 'Settings')
 		.attr(IconTextAttr);
@@ -1013,13 +1107,13 @@ var DRAW = {
 		// Logout Area
 		var logout = paper.path('M25.542,8.354c-1.47-1.766-2.896-2.617-3.025-2.695c-0.954-0.565-2.181-0.241-2.739,0.724c-0.556,0.961-0.24,2.194,0.705,2.763c0,0,0.001,0,0.002,0.001c0.001,0,0.002,0.001,0.003,0.002c0.001,0,0.003,0.001,0.004,0.001c0.102,0.062,1.124,0.729,2.08,1.925c1.003,1.261,1.933,3.017,1.937,5.438c-0.001,2.519-1.005,4.783-2.64,6.438c-1.637,1.652-3.877,2.668-6.368,2.669c-2.491-0.001-4.731-1.017-6.369-2.669c-1.635-1.654-2.639-3.919-2.64-6.438c0.005-2.499,0.995-4.292,2.035-5.558c0.517-0.625,1.043-1.098,1.425-1.401c0.191-0.152,0.346-0.263,0.445-0.329c0.049-0.034,0.085-0.058,0.104-0.069c0.005-0.004,0.009-0.006,0.012-0.008s0.004-0.002,0.004-0.002l0,0c0.946-0.567,1.262-1.802,0.705-2.763c-0.559-0.965-1.785-1.288-2.739-0.724c-0.128,0.079-1.555,0.93-3.024,2.696c-1.462,1.751-2.974,4.511-2.97,8.157C2.49,23.775,8.315,29.664,15.5,29.667c7.186-0.003,13.01-5.892,13.012-13.155C28.516,12.864,27.005,10.105,25.542,8.354zM15.5,17.523c1.105,0,2.002-0.907,2.002-2.023h-0.001V3.357c0-1.118-0.896-2.024-2.001-2.024s-2.002,0.906-2.002,2.024V15.5C13.498,16.616,14.395,17.523,15.5,17.523z')
 		.attr({fill: 'black', stroke: 'none', cursor: 'pointer'})
-		.transform('s'+(1.4+rw-1)+','+(1.4+rw-1)+',0,0T'+(1170*rw)+','+(15*rh));
+		.transform('s'+(1.4*rh)+','+(1.4*rh)+',0,0T'+(1170*rw)+','+(15*rh));
 		
 		var logoutText = paper.text(1215, 20, 'Logout')
 		.attr(IconTextAttr);
 		
 		var s = paper.set();
-		s.push(logobox, line1, uBox, settingsText, logoutText).scale(rw, rh, 0, 0);
+		s.push(logobox, line1, context, uBox, settingsText, logoutText).scale(rw, rh, 0, 0);
 	},
 
 	banner: function(a) {
@@ -1128,116 +1222,6 @@ var DRAW = {
 		return d;
 	},
 	
-	/*
-	navigation: function(a) {
-		if ( a.length == 0 )
-			return;
-	
-		var h 		= $('#navigation_window').outerHeight();
-		var b 		= a.offset();
-		var paper 	= Raphael(b.left, b.top, a.width(), h);
-		var r		= h/530;
-		var t_attr	= { 'font-family': "DX", fill: '#29DBE8', 'fill-opacity': 0.8, stroke: 'none', 'text-anchor': 'start', 'font-size': 14 };
-		var h_attr  = { fill: 'rgba(0, 150, 25, 0.75)', stroke: 'none' };
-		var l_attr	= { fill: 'none', stroke: 'rgba(0, 255, 50, 0.75)' };
-		var total	= new Array();
-
-		/* HOME /
-		/*======================================================================/
-		
-		var set1 = DRAW.createHexGroup(
-		{p: paper, path: 'm28,40h45l23,40l-23,40h-45l-23,-40z', at: h_attr},			// Hexagon
-		{path: 'm84,60l35,-35h25m-58,73l15,12m-50,10v16', at: l_attr},	// Line m93,-118v15
-		//		^				^			 ^		   ^
-		{x: 150, y: 24, word: $('#hexagon_main').html(), at: t_attr});										// Text
-		
-		set1.attr({cursor: 'pointer', href: 'main.html'});
-		total.push(set1);
-		
-		/* POST /
-		/*======================================================================/
-		
-		var set2 = DRAW.createHexGroup(
-		{p: paper, path: 'm111,93h45l23,40l-23,40h-45l-23,-40z', at: h_attr},	// Hexagon
-		{path: 'm130,93l20,-20h7', at: l_attr},						// Line m0,-9v15
-		//		^				^
-		{x: 160, y: 72, word: 'Posts', at: t_attr});							// Text
-		
-		set2.attr({cursor: 'pointer', href: 'main.html'});
-		total.push(set2);
-		
-		/* SMS /
-		/*======================================================================/
-		
-		var set3 = DRAW.createHexGroup(
-		{p: paper, path: 'm28,136h45l23,40l-23,40h-45l-23,-40z', at: h_attr},	// Hexagon
-		{path: 'm85,195l20,15h25m-79,6v16', at: l_attr},						// Line
-		//		^				^
-		{x: 135, y: 208, word: 'SMS', at: t_attr});								// Text
-		
-		set3.attr({cursor: 'pointer', href: 'sms.html'});
-		total.push(set3);
-		
-		/* HELP /
-		/*======================================================================/
-		
-		var set4 = DRAW.createHexGroup(
-		{p: paper, path: 'm28,232h45l23,40l-23,40h-45l-23,-40z', at: h_attr},
-		{path: 'm85,252l20,-15h25m-78,75v16m34,-37l15,12', at: l_attr},
-		//		^				 ^		   ^
-		{x: 135, y: 236, word: 'Help', at: t_attr});
-		
-		set4.attr({cursor: 'pointer', href: 'help.html'});
-		total.push(set4);
-		
-		/* EVENT /
-		/*======================================================================/
-		
-		var set5 = DRAW.createHexGroup(
-		{p: paper, path: 'm111,286h45l23,40l-23,40h-45l-23,-40z', at: h_attr},
-		{path: 'm140,286l10,-15h15', at: l_attr},
-		{x: 170, y: 270, word: 'Event', at: t_attr});
-		
-		set5.attr({cursor: 'pointer', href: 'events.html'});
-		total.push(set5);
-		
-		/* GROUP /
-		/*======================================================================/
-		
-		var set6 = DRAW.createHexGroup(
-		{p: paper, path: 'm28,328h45l23,40l-23,40h-45l-23,-40z', at: h_attr},
-		{path: 'm84,390l35,35h25m-92,-16v16', at: l_attr},
-		//		^				^
-		{x: 150, y: 424, word: 'Group', at: t_attr});
-		
-		set6.attr({cursor: 'pointer', href: 'group.html'});
-		total.push(set6);
-		
-		/ TUTORIAL & WORKSHOP
-		/*======================================================================/
-		
-		var set7 = DRAW.createHexGroup(
-		{p: paper, path: 'm28,426h45l23,40l-23,40h-45l-23,-40z', at: h_attr},
-		{path: 'm85,485l15,15h15', at: l_attr},
-		{x: 120, y: 498, word: 'Tutorial', at: t_attr});
-		
-		set7.attr({cursor: 'pointer', href: 'tutorial.html'});
-		total.push(set7);
-		
-		/* EXTRA /
-		/*======================================================================/
-		var extra = paper.path('M'+$('#navigation_window').width()+','+(h-9.5)+'v-'+(36*r)+'l'+(39*-r)+','+(36*r)+'z')
-		.attr({fill: 'rgba(0, 255, 50, 0.75)',stroke:'none'});
-		var extra2 = paper.path('M0,9.7v36l39-36z')
-		.attr({fill: 'rgba(0, 255, 50, 0.75)',stroke:'none'})
-		.scale(r, r, 0, 10);
-		
-		// Scale all hexagon
-		var l = total.length;
-		for ( var i = 0; i < l; ++i ) {
-			total[i].scale(r, r, 0, 0);
-		}
-	},*/
 	navigation2: function(a) {
 		if ( a.length == 0 )
 			return;
@@ -1257,7 +1241,8 @@ var DRAW = {
 		.attr({fill: '#00ff32', stroke: 'none', 'fill-opacity': 0.75});
 		
 		// Decoration
-		var d 		= p.path('m230,30h-120M230,55h-50M230,80h-55M0,515h100M0,495h40').attr({fill: 'none', stroke: 'rgba(0, 150, 25, 0.75)'});
+		var d 		= p.path('m230,30h-120M230,55h-50M230,80h-55M0,515h100M0,495h40')
+		.attr({fill: 'none', stroke: 'rgba(0, 150, 25, 0.75)'});
 		var phi 	= p.text(47, 29, 'φ0xFFFF').attr(t1_attr);
 		var lambda 	= p.text(112, 54, 'λ0x0AE5').attr(t1_attr);
 		var sigma	= p.text(135, 79, 'Σ0x0').attr(t1_attr);
@@ -1269,15 +1254,15 @@ var DRAW = {
 		var hex1 = DRAW.createHexGroup({p: p, path: 'm60,70h45l23,40l-23,40h-45l-23,-39z', at: hex_attr}, {x:115, y: 108, word: $('#hexagon_main').text(), at: t2_attr}).attr('href', 'main.html');
 		var hex2 = DRAW.createHexGroup({p: p, path: 'm130,110h45l23,40l-23,40h-45l-23,-39z', at: hex_attr}, {x:185, y: 149, word: $('#hexagon_sms').text(), at: t2_attr}).attr('href', 'sms.html');
 		var hex3 = DRAW.createHexGroup({p: p, path: 'm60,152h45l23,40l-23,40h-45l-23,-39z', at: hex_attr}, {x:115, y: 190, word: $('#hexagon_help').text(), at: t2_attr}).attr('href', 'help.html');
-		var hex4 = p.path('m130,192h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr);
-		var hex5 = p.path('m60,234h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr);
-		var hex6 = p.path('m130,274h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr);
+		var hex4 = DRAW.createHexGroup({p: p, path: 'm130,192h45l23,40l-23,40h-45l-23,-39z', at: hex_attr}, {x:185, y: 230, word: $('#hexagon_event').text(), at: t2_attr}).attr('href', 'add_event.html');
+		var hex5 = DRAW.createHexGroup({p: p, path: 'm60,234h45l23,40l-23,40h-45l-23,-39z', at: hex_attr}, {x:115, y: 275, word: $('#hexagon_place').text(), at: t2_attr}).attr('href', 'add_place.html');
+		var hex6 = DRAW.createHexGroup({p: p, path: 'm130,274h45l23,40l-23,40h-45l-23,-39z', at: hex_attr}, {x:185, y: 312, word: $('#hexagon_msg').text(), at: t2_attr}).attr('href', 'msg.html');
 		var hex7 = p.path('m60,317h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr_e);
 		var hex8 = p.path('m130,357h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr_e);
 		var hex9 = p.path('m60,400h45l23,40l-23,40h-45l-23,-39z').attr(hex_attr_e);
 		var h = p.set().push(hex1, hex2, hex3, hex4, hex5, hex6, hex7, hex8, hex9);
 		
-		var set = p.set().push(c, d, dtext, h).transform('s'+rh+','+rh+',0,0');
+		var set = p.set().push(c, d, dtext, h).transform('S'+rh+','+rh+',0,0');
 	},
 	
 	// =================================================================
@@ -1301,16 +1286,142 @@ var DRAW = {
 		var r1 = a.width() / 294;
 		var r2 = a.height()/ 537;
 		
-		var border = p.path('m1,21l20,-20h272v40l-20,20H1zM24,61V70M72,61V70M120,61V70M168,61V70M216,61V70M264,61V70')
+		var border = p.path('m1,21l20,-20h272v40l-20,20H1z')
 		.attr({fill: 'rgba(0,0,0,0.65)', stroke: '#00ff32'});
 		
-		var title = p.text(50, 30, 'NOTIFICATIONS')
-		.attr({fill: 'white', stroke: 'none', 'text-anchor': 'start', 'font-family':'DX', 'font-size': 26});
+		var icon = p.path('M29.225,23.567l-3.778-6.542c-1.139-1.972-3.002-5.2-4.141-7.172l-3.778-6.542c-1.14-1.973-3.003-1.973-4.142,0L9.609,9.853c-1.139,1.972-3.003,5.201-4.142,7.172L1.69,23.567c-1.139,1.974-0.207,3.587,2.071,3.587h23.391C29.432,27.154,30.363,25.541,29.225,23.567zM16.536,24.58h-2.241v-2.151h2.241V24.58zM16.428,20.844h-2.023l-0.201-9.204h2.407L16.428,20.844z')
+		.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none'})
+		.transform('S1.3,1.3,0,0T23,10S'+r2+','+r2+',0,0');
 		
-		var s = p.set().push(border, title).transform('s'+r1+','+r2+',0,0');
-	}
+		var title = p.text(73, 30, 'NOTIFICATIONS')
+		.attr({fill: '#00ff32', stroke: 'none', 'text-anchor': 'start', 'font-family':'DX', 'font-size': 26});
+		
+		var s = p.set().push(border, title).transform('S'+r1+','+r2+',0,0');
+	},
 	
-	/*
+	// =================================================================
+	// SMS PAGE
+	
+	smsborder: function(a) {
+		var b = a.offset();
+		var p = Raphael(b.left, b.top, a.width(), a.height());
+		var r1 = a.width() / 704;
+		var r2 = a.height()/ 67;
+		
+		var border = p.path('M1,21l20,-20h430v45l-20,20H1zM485,21l20,-20h70v45l-20,20h-70zM600,21l20,-20h70v45l-20,20h-70z')
+		.attr({fill: 'rgba(0,0,0,0.65)', stroke: '#00ff32'});
+		
+		var smsicon = p.path('m40,20h40l-20,10zm0,2v24h40v-24l-20,10z')
+		.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none'});
+		
+		var title = p.text(100, 31, 'SMS MESSAGES')
+		.attr({fill: '#00ff32', stroke: 'none', 'font-family': 'DX', 'font-size': 24, 'text-anchor': 'start'});
+		
+		var refresh = p.path('M19.275,3.849l1.695,8.56l1.875-1.642c2.311,3.59,1.72,8.415-1.584,11.317c-2.24,1.96-5.186,2.57-7.875,1.908l-0.84,3.396c3.75,0.931,7.891,0.066,11.02-2.672c4.768-4.173,5.521-11.219,1.94-16.279l2.028-1.775L19.275,3.849zM8.154,20.232c-2.312-3.589-1.721-8.416,1.582-11.317c2.239-1.959,5.186-2.572,7.875-1.909l0.842-3.398c-3.752-0.93-7.893-0.067-11.022,2.672c-4.765,4.174-5.519,11.223-1.939,16.283l-2.026,1.772l8.26,2.812l-1.693-8.559L8.154,20.232z')
+		.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none', href: '#', title: 'Refresh'})
+		.transform('s1.5,1.5,0,0T506,10S'+r1+','+r2+',0,0');
+		
+		var unanswered = p.path('m639,15h12.5v12.5h12.5v12.5h-12.5v12.5h-12.5v-12.5h-12.5v-12.5h12.5z')
+		.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none', href: '#'});
+
+		var s = p.set().push(border, smsicon, unanswered, title).transform('s'+r1+','+r2+',0,0');
+	},
+	
+	smsOption: function(a) {
+		var b = a.offset();
+		var p = Raphael(b.left, b.top, a.width(), a.height());
+		
+		var r1 = a.width() / 269;
+		var r2 = a.height()/ 67;
+		
+		var border = p.path('M1,1h266v65H21l-20,-20z')
+		.attr({fill: 'rgba(0,0,0,0.65)', stroke: '#00ff32'});
+		
+		var t = p.text(70, 30, 'PLACEHOLDER')
+		.attr({fill: '#00ff32', stroke: 'none', 'font-family': 'DX', 'font-size': 24, 'text-anchor': 'start'});
+		
+		var s = p.set().push(border,t).transform('s'+r1+','+r2+',0,0');
+	},
+	
+	smsDecoration: function(a) {
+		var b = a.offset();
+		var p = Raphael(b.left, b.top, a.width(), a.height());
+		var r1 = a.width() / 704;
+		var r2 = a.height()/ 456;
+		
+		var node = p.path('m6,381l41,-23l39,23l-40,23zm-1,48v-46l40,23v45zm42,22l41,-24v-44l-41,23z')
+		//m0-120v-100m50,120l152,-152m0,0v34l41,11v-96l-41,9zm41,-51l12,2v90l-12,4zm12,5l5,-2l8,2v83l-7,2l-6,0zm13,60h200m0,0v50m-266,-106l-80,-80
+		.attr({fill: 'rgba(0, 150, 25, 0.25)', stroke: 'rgba(0, 150, 25, 0.25)'})
+		.transform('T575,350');
+		var s = p.set().push(node).transform('s'+r1+','+r2+',0,0');
+	},
+	
+	// =================================================================
+	// Help Main Page
+	
+	helpBorder: function(a) {
+		var b = a.offset();
+		var p = Raphael(b.left, b.top, a.width(), a.height());
+		var r1 = a.width() / 704;
+		var r2 = a.height()/ 67;
+		
+		var border = p.path('M1,21l20,-20h670v45l-20,20H1z')
+		.attr({fill: 'rgba(0,0,0,0.65)', stroke: '#00ff32'});
+		
+		var smsicon = p.path('M16,4.938c-7.732,0-14,4.701-14,10.5c0,1.981,0.741,3.833,2.016,5.414L2,25.272l5.613-1.44c2.339,1.316,5.237,2.106,8.387,2.106c7.732,0,14-4.701,14-10.5S23.732,4.938,16,4.938zM16.982,21.375h-1.969v-1.889h1.969V21.375zM16.982,17.469v0.625h-1.969v-0.769c0-2.321,2.641-2.689,2.641-4.337c0-0.752-0.672-1.329-1.553-1.329c-0.912,0-1.713,0.672-1.713,0.672l-1.12-1.393c0,0,1.104-1.153,3.009-1.153c1.81,0,3.49,1.121,3.49,3.009C19.768,15.437,16.982,15.741,16.982,17.469z')
+		.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none'})
+		.transform('s1.8,1.8,0,0T28,5S'+r2+','+r2+',0,0');
+		
+		var title = p.text(100, 32, 'AIDE NÉCESSAIRE')
+		.attr({fill: '#00ff32', stroke: 'none', 'font-family': 'DX', 'font-size': 24, 'text-anchor': 'start'});
+		
+		//var refresh = p.path('M19.275,3.849l1.695,8.56l1.875-1.642c2.311,3.59,1.72,8.415-1.584,11.317c-2.24,1.96-5.186,2.57-7.875,1.908l-0.84,3.396c3.75,0.931,7.891,0.066,11.02-2.672c4.768-4.173,5.521-11.219,1.94-16.279l2.028-1.775L19.275,3.849zM8.154,20.232c-2.312-3.589-1.721-8.416,1.582-11.317c2.239-1.959,5.186-2.572,7.875-1.909l0.842-3.398c-3.752-0.93-7.893-0.067-11.022,2.672c-4.765,4.174-5.519,11.223-1.939,16.283l-2.026,1.772l8.26,2.812l-1.693-8.559L8.154,20.232z')
+		//.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none', href: '#', title: 'Refresh'})
+		//.transform('s1.5,1.5,0,0T506,10S'+r1+','+r2+',0,0');
+		
+		//var unanswered = p.path('m639,15h12.5v12.5h12.5v12.5h-12.5v12.5h-12.5v-12.5h-12.5v-12.5h12.5z')
+		//.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none', href: '#'});
+
+		var s = p.set().push(border, title).transform('s'+r1+','+r2+',0,0');
+	},
+	
+	previewBorder: function(a) {
+		var b = a.offset();
+		var p = Raphael(b.left, b.top, a.width(), a.height());
+		var r1 = a.width() / 269;
+		var r2 = a.height()/ 463;
+		
+		var border = p.path('M1,31l30,-30h237v431l-30,30H1z')
+		.attr({fill: 'rgba(0,0,0,0.65)', stroke: '#00ff32'})
+		.transform('s'+r1+','+r2+',0,0');
+		
+		//var title = p.text(110, 30, 'PREVIEW')
+		//.attr({fill: '#00ff32', stroke: 'none', 'font-family': 'DX', 'font-size': 24, 'text-anchor': 'start'});
+	},
+	
+	helpDeco: function(a) {
+		var b = a.offset();
+		var p = Raphael(b.left, b.top, a.width(), a.height());
+		var r1 = a.width() / 627;
+		var r2 = a.height()/ 60;
+
+		var ico = p.path('m0,0l41,-23l39,23l-40,23zm-1,48v-46l40,23v45zm42,22l41,-24v-44l-41,23z')
+		.attr({fill: 'rgba(0, 150, 25, 0.25)', stroke: 'rgba(0, 150, 25, 0.25)'})
+		.transform('s0.5,0.5,0,0T25,25S'+r2+','+r2+',0,0');
+		
+		var ico2 = ico.clone().transform('s0.5,0.5,0,0T100,23S'+r2+','+r2+',0,0');
+		var ico3 = p.path('m0,0l41,-23l39,23l-40,23zm-1,48v-46l40,23v45zm42,22l41,-24v-44l-41,23zm40,-40h330m0,0v45h90v-80l-20,-20h-70zm90,0h40m0,-40v80')
+		.attr({fill: 'rgba(0, 150, 25, 0.25)', stroke: 'rgba(0, 150, 25, 0.25)'})
+		.transform('s0.5,0.5,0,0T175,25S'+r2+','+r2+',0,0');
+		
+		var dtext = p.text(455, 35, '58902394773762029387\n06934045409442756849\n24442614769918725065\n13466864096638051527')
+		.attr({fill: 'rgba(0, 150, 25, 0.25)', stroke: 'none', 'font-family': 'DX', 'font-size': 11, 'text-anchor': 'start'})
+		.transform('s'+r2+','+r2+',0,0');
+		
+		
+	},
+	
+	
 	mainBars: function(a) {
 		var b = a.offset();
 		var p = Raphael(b.left, b.top, a.width(), a.height());
@@ -1320,9 +1431,13 @@ var DRAW = {
 		
 		var bar = p.path('m230,6h140v13h-140m0,5h300v14h-300m0,5h200v13h-200v-50h-2v50h2')
 		.attr({fill: 'rgba(0, 255, 50, 0.75)', stroke: 'none'})
-		.transform('s'+r1+','+r2+',0,0');
+		.transform('S'+r2+','+r2+',0,0');
+		
+		//var t = p.text(555, 33, '2548184317\n5375124182\n3786850786\n3445011020')
+		//.attr({fill: 'rgba(0, 150, 25, 0.25)', stroke: 'none', 'font-family': 'DX', 'font-size': 11, 'text-anchor': 'start'})
+		//.transform('S'+r2+','+r2+',0,0');
 	}
-	*/
+	
 };
 
 

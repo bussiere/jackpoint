@@ -89,19 +89,36 @@ def validation_inscription(request):
     jack_password2 = request.POST['jack_password2']
     jack_Bio = request.POST['jack_Bio']
     
-    nbre_carac = request.POST['carac-TOTAL_FORMS']
+    nbre_carac = int(request.POST['carac-TOTAL_FORMS'])
     nbre_initial_carac = request.POST['carac-INITIAL_FORMS']
     levelcarac="carac-#-carac_level"
     namecarac = "carac-#-carac"
-    privatecarac = "carac-0-carac_private"
+    privatecarac = "carac-#-carac_private"
+    compteur_carac = 0
+    caracs = {}
+    while compteur_carac < nbre_carac :
+        caracs[request.POST["carac-%d-carac"%compteur_carac]] = [request.POST["carac-%d-carac_level"%compteur_carac],request.POST["carac-%d-carac_private"%compteur_carac]]
+        compteur_carac += 1
+        
     
-    nbr_skills = request.POST['skill-TOTAL_FORMS']
-    nbr_initial_skills = request.POST['skill-INITIAL_FORMS']
+    
+    nbr_skills = int(request.POST['item-TOTAL_FORMS'])
+    nbr_initial_skills = request.POST['item-INITIAL_FORMS']
     levelskill = "skill-#-skill_level"
     nameskill = "skill-#-skill"
     privateskill = "skill-#-skill_private"
+    compteur_skill = 0
+    skills = {}
     
-    
+    while compteur_skill < nbr_skills :
+        skills[request.POST["skill-%d-skill"%compteur_skill]] = [request.POST["skill-%d-skill_level"%compteur_carac],request.POST["skill-%d-skill_private"%compteur_carac]]
+        compteur_skill += 1
+        
+    nbre_carac = int(request.POST['carac-TOTAL_FORMS'])
+    nbre_initial_carac = request.POST['carac-INITIAL_FORMS']
+    levelcarac="carac-#-carac_level"
+    namecarac = "carac-#-carac"
+    privatecarac = "carac-#-carac_private"
     
     
     #TODO
