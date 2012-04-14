@@ -111,14 +111,24 @@ def validation_inscription(request):
     skills = {}
     
     while compteur_skill < nbr_skills :
-        skills[request.POST["skill-%d-skill"%compteur_skill]] = [request.POST["skill-%d-skill_level"%compteur_carac],request.POST["skill-%d-skill_private"%compteur_carac]]
+        if int(request.POST["skill-%d-skill_level"%compteur_carac]) > 0 :
+            skills[request.POST["skill-%d-skill"%compteur_skill]] = [request.POST["skill-%d-skill_level"%compteur_carac],request.POST["skill-%d-skill_private"%compteur_carac]]
         compteur_skill += 1
         
-    nbre_carac = int(request.POST['carac-TOTAL_FORMS'])
-    nbre_initial_carac = request.POST['carac-INITIAL_FORMS']
-    levelcarac="carac-#-carac_level"
-    namecarac = "carac-#-carac"
-    privatecarac = "carac-#-carac_private"
+    nbre_item = int(request.POST['item-TOTAL_FORMS'])
+    nbre_initial_item = request.POST['item-INITIAL_FORMS']
+    Possede = "item-#-item_Possede"
+    nameitem = "item-#-item"
+    privatecarac = "item-#-item_private"
+    compteur_item = 0
+    items = {}
+    while compteur_item < nbre_item :
+        
+    
+    
+    
+    
+    
     
     
     #TODO
