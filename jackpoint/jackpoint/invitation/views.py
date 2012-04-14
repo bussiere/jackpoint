@@ -102,8 +102,8 @@ def validation_inscription(request):
         
     
     
-    nbr_skills = int(request.POST['item-TOTAL_FORMS'])
-    nbr_initial_skills = request.POST['item-INITIAL_FORMS']
+    nbr_skills = int(request.POST['skill-TOTAL_FORMS'])
+    nbr_initial_skills = request.POST['skill-INITIAL_FORMS']
     levelskill = "skill-#-skill_level"
     nameskill = "skill-#-skill"
     privateskill = "skill-#-skill_private"
@@ -111,8 +111,8 @@ def validation_inscription(request):
     skills = {}
     
     while compteur_skill < nbr_skills :
-        if int(request.POST["skill-%d-skill_level"%compteur_carac]) > 0 :
-            skills[request.POST["skill-%d-skill"%compteur_skill]] = [request.POST["skill-%d-skill_level"%compteur_carac],request.POST["skill-%d-skill_private"%compteur_carac]]
+        if int(request.POST["skill-%d-skill_level"%compteur_skill]) > 0 :
+            skills[request.POST["skill-%d-skill"%compteur_skill]] = [request.POST["skill-%d-skill_level"%compteur_skill],request.POST["skill-%d-skill_private"%compteur_skill]]
         compteur_skill += 1
         
     nbre_item = int(request.POST['item-TOTAL_FORMS'])
@@ -123,12 +123,13 @@ def validation_inscription(request):
     compteur_item = 0
     items = {}
     while compteur_item < nbre_item :
-        
-    
-    
-    
-    
-    
+        if int(request.POST["item-%d-item_Possede"%compteur_item]) > 0 :
+            items[request.POST['item-%d-item'%compteur_item]] = request.POST["item-%d-item_private"%compteur_item]
+        compteur_item += 1
+    print caracs
+    print skills
+    print items
+
     
     
     #TODO
