@@ -128,9 +128,7 @@ INSTALLED_APPS = (
     'jackpoint.notification',
     'jackpoint.skill',
     'jackpoint.tag',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'south',
 )

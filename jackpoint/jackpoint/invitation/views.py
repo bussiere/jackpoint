@@ -17,6 +17,7 @@ from jackpoint.item.forms import ItemForm
 from jackpoint.jack.forms import JackRegisterForm
 from django.forms.formsets import formset_factory
 from django.forms.formsets import BaseFormSet
+from jackpoint.jack.views import enregistrementJack
 
 
 def index(request):
@@ -88,7 +89,13 @@ def validation_inscription(request):
     jack_password1 = request.POST['jack_password1']
     jack_password2 = request.POST['jack_password2']
     jack_Bio = request.POST['jack_Bio']
-    
+    jack = {}
+    jack["jack_username"]=jack_username
+    jack["jack_email"] = jack_email
+    jack["jack_password1"]= jack_password1
+    jack["jack_password2"]=jack_password2
+    jack["jack_Bio"]=jack_Bio
+
     nbre_carac = int(request.POST['carac-TOTAL_FORMS'])
     nbre_initial_carac = request.POST['carac-INITIAL_FORMS']
     levelcarac="carac-#-carac_level"
@@ -129,15 +136,17 @@ def validation_inscription(request):
     print caracs
     print skills
     print items
-
-    
-    
+    print jack
+    retour = enregistrementJack(request,jack,caracs,skills,items)  
     #TODO
     # a revoir ici 
     #Upload de file foireux
     jack_Avatar = request.FILES
-
-    return HttpResponseRedirect('../../../X/')
+    if retour :
+        return HttpResponseRedirect('../../../X/')
+    else :
+        return HttpResponseRedirect('../../../invitation/')
+        
         
     
 @user_passes_test(lambda u: u.has_perm('invitation.Create_Invitation'), login_url='../../')
