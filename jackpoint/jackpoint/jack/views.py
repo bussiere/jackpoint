@@ -58,18 +58,27 @@ def enregistrementJack(request,jack,caracs,skills,items):
         private = False
         if skills[skill][1] == "1" :
             private = True 
-        result = SkillUser.objects.filter( Skills=skilldb,Level=int(skills[skill][0]),Private=private)
-        if result == None :
-            result = SkillUser.objects.create( Skills=skilldb,Level=int(skills[skill][0]),Private=private)
+        try :
+            result = SkillUser.objects.get( Skills=skilldb,Level=int(skills[skill][0]),Private=private)
+        except :
+            result = SkillUser.objects.create(Level=0)
+            result.Skills =  skilldb
+            result.Private = private
+            result.Level = int(skills[skill][0])
+            result.save()
         u.get_profile().Skills.add(result)
     for item in items.keys():
         itemdb  = Item.objects.filter(Nom=item)
         private = False
         if items[item][0] == "1" :
             private = True 
-        result = ItemUser.objects.filter(Item=itemdb,Private=private)
-        if result == None :
-            result = ItemUser.objects.create(Item=itemdb,Private=private)
+        try :
+            result = ItemUser.objects.get(Item=itemdb,Private=private)
+        except :
+            result = ItemUser.objects.create()
+            result.Item = itemdb
+            result.Private = private
+            result.save()
         u.get_profile().Items.add(result)
     u.save()
     #faire la verif des mdps
