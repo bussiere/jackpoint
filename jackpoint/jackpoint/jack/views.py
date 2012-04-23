@@ -25,7 +25,7 @@ from jackpoint.skill.models import Skill
 @login_required
 def enregistrementJack(request,jack,caracs,skills,items):
     retour = True
-    u = User.objects.get(request.user)
+    u = User.objects.get(id=request.user.id)
 #    jack["jack_username"]=jack_username
 #    jack["jack_email"] = jack_email
 #    jack["jack_password1"]= jack_password1
@@ -34,9 +34,9 @@ def enregistrementJack(request,jack,caracs,skills,items):
     u.Pseudo = jack["jack_username"]
     u.email = jack["jack_email"]
     u.Bio = jack["jack_Bio"]
-    u.Caracs.clear()
-    u.Skills.clear()
-    u.Items.clear()
+    u.get_profile().Caracs.clear()
+    u.get_profile().Skills.clear()
+    u.get_profile().Items.clear()
     #TODO
     #crade a revoir
     for carac in caracs.keys():
@@ -44,10 +44,15 @@ def enregistrementJack(request,jack,caracs,skills,items):
         private = False
         if caracs[carac][1] == "1" :
             private = True 
-        result = CaracUser.objects.filter(carac=caracdb,Level=int(caracs[carac][0]),Private=private)
-        if result == None :
-            result = CaracUser.objects.create(carac=caracdb,Level=int(caracs[carac][0]),Private=private)
-        u.Caracs.add(result)
+        try :
+            result = CaracUser.objects.get(carac=caracdb,Level=int(caracs[carac][0]),Private=private)
+        except :
+            result = CaracUser.objects.create(Level=0)
+            result.carac = caracdb
+            result.Level = int(caracs[carac][0])
+            result.Private = private
+            result.save()
+        u.get_profile().Caracs.add(result)
     for skill in skills.keys():
         skilldb  = Skill.objects.filter(Nom=skill)
         private = False
@@ -56,7 +61,7 @@ def enregistrementJack(request,jack,caracs,skills,items):
         result = SkillUser.objects.filter( Skills=skilldb,Level=int(skills[skill][0]),Private=private)
         if result == None :
             result = SkillUser.objects.create( Skills=skilldb,Level=int(skills[skill][0]),Private=private)
-        u.Skills.add(result)
+        u.get_profile().Skills.add(result)
     for item in items.keys():
         itemdb  = Item.objects.filter(Nom=item)
         private = False
@@ -65,7 +70,7 @@ def enregistrementJack(request,jack,caracs,skills,items):
         result = ItemUser.objects.filter(Item=itemdb,Private=private)
         if result == None :
             result = ItemUser.objects.create(Item=itemdb,Private=private)
-        u.Items.add(result)
+        u.get_profile().Items.add(result)
     u.save()
     #faire la verif des mdps
     if (jack["jack_password1"]==jack["jack_password2"] and jack["jack_password1"] != ""):

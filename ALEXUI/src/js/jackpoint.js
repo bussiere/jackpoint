@@ -395,7 +395,7 @@ var help_description = {
 		if ( help_description.description == '' || help_description.tag == '' ) {
 			return false;
 		}
-		console.log(this);
+		//console.log(this);
 		return true;
 	},
 	
@@ -792,7 +792,7 @@ var place_address = {
 					this.hours == '' || 
 					this.tags == '';
 		
-		console.log(this);
+		//console.log(this);
 		
 		return !test;
 	},
@@ -957,6 +957,7 @@ function setupAddEvent() {
 			case 'HELP_4':
 			if ( help_object.save() ) place_confirm.load(function() {
 				$('#skill_title').html('<p>Ajout d\'evenment - Confirmer</p>');
+				GLOBAL_PAGE = 'ADDEVENT_2';
 				createScrollBar();
 			});
 			break;
