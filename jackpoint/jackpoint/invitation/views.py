@@ -17,7 +17,7 @@ from jackpoint.item.forms import ItemForm
 from jackpoint.jack.forms import JackRegisterForm
 from django.forms.formsets import formset_factory
 from django.forms.formsets import BaseFormSet
-from jackpoint.jack.views import enregistrementJack
+from jackpoint.jack.scripts import enregistrementJack
 
 
 def index(request):

@@ -22,72 +22,28 @@ from jackpoint.jack.models import CaracUser,SkillUser,ItemUser
 from jackpoint.carac.models import Carac
 from jackpoint.skill.models import Skill
 
-@login_required
-def enregistrementJack(request,jack,caracs,skills,items):
-    retour = True
-    u = User.objects.get(id=request.user.id)
-#    jack["jack_username"]=jack_username
-#    jack["jack_email"] = jack_email
-#    jack["jack_password1"]= jack_password1
-#    jack["jack_password2"]=jack_password2
-#    jack["jack_Bio"]=jack_Bio
-    u.Pseudo = jack["jack_username"]
-    u.email = jack["jack_email"]
-    u.Bio = jack["jack_Bio"]
-    u.get_profile().Caracs.clear()
-    u.get_profile().Skills.clear()
-    u.get_profile().Items.clear()
-    #TODO
-    #crade a revoir
-    for carac in caracs.keys():
-        caracdb  = Carac.objects.filter(Nom=carac)
-        private = False
-        if caracs[carac][1] == "1" :
-            private = True 
-        try :
-            result = CaracUser.objects.get(carac=caracdb,Level=int(caracs[carac][0]),Private=private)
-        except :
-            result = CaracUser.objects.create(Level=0)
-            result.carac = caracdb
-            result.Level = int(caracs[carac][0])
-            result.Private = private
-            result.save()
-        u.get_profile().Caracs.add(result)
-    for skill in skills.keys():
-        skilldb  = Skill.objects.filter(Nom=skill)
-        private = False
-        if skills[skill][1] == "1" :
-            private = True 
-        try :
-            result = SkillUser.objects.get( Skills=skilldb,Level=int(skills[skill][0]),Private=private)
-        except :
-            result = SkillUser.objects.create(Level=0)
-            result.Skills =  skilldb
-            result.Private = private
-            result.Level = int(skills[skill][0])
-            result.save()
-        u.get_profile().Skills.add(result)
-    for item in items.keys():
-        itemdb  = Item.objects.filter(Nom=item)
-        private = False
-        if items[item][0] == "1" :
-            private = True 
-        try :
-            result = ItemUser.objects.get(Item=itemdb,Private=private)
-        except :
-            result = ItemUser.objects.create()
-            result.Item = itemdb
-            result.Private = private
-            result.save()
-        u.get_profile().Items.add(result)
-    u.save()
-    #faire la verif des mdps
-    if (jack["jack_password1"]==jack["jack_password2"] and jack["jack_password1"] != ""):
-        u.set_password(jack["jack_password1"])               
-    else :
-        retour = False
-    u.save()
-    # faire la verif pour l'invitation et la passer a used.
-        
+
+def editJack(request):
+    Caracs = Carac.objects.all()
+    Skills = Skill.objects.all()
+    Items = Item.objects.all()
+    initial = []
+    for carac in Caracs :
+        initial.append({'carac': carac.Nom, 'id':carac.id})
+    CaracFormSet = formset_factory(CaracForm, extra=0)
+    CaracFormSet = CaracFormSet(prefix='carac', initial=initial)
+    initial = []
+    # algo de skills a revoir pour le classement
+    for skill in Skills :
+        initial.append({'skill': skill.Nom, 'id':skill.id})
+    SkillFormSet = formset_factory(SkillForm, extra=0)
+    SkillFormSet = SkillFormSet(prefix='skill', initial=initial)
+    initial = []
+    for item in Items :
+        initial.append({'item': item.Nom, 'id':item.id})
+    ItemFormSet = formset_factory(ItemForm, extra=0)
+    ItemFormSet = ItemFormSet(prefix='item', initial=initial)
     
-    return retour
+    print CaracFormSet.management_form
+    formJack = JackRegisterForm()
+    return render_to_response('invitinscription.html', {"CaracFormSet":CaracFormSet, 'SkillFormSet':SkillFormSet, 'ItemFormSet':ItemFormSet, 'formJack':formJack}, RequestContext(request))

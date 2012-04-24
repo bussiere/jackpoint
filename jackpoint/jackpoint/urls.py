@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^invitation/inscription/$', 'jackpoint.invitation.views.invitation_inscription'),
     url(r'^invitation/inscription/validation/$', 'jackpoint.invitation.views.validation_inscription'),
     url(r'^hand/$', 'jackpoint.hand.views.index'),
+    url(r'^X/$', 'jackpoint.X.views.index'),
     url(r'^hand/ask/$', 'jackpoint.hand.views.ask'),
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
