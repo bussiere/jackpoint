@@ -21,9 +21,10 @@ from django.forms.formsets import BaseFormSet
 from jackpoint.jack.models import CaracUser,SkillUser,ItemUser
 from jackpoint.carac.models import Carac
 from jackpoint.skill.models import Skill
+from jackpoint.invitation.script import classer_invitation
 
 @login_required
-def enregistrementJack(request,jack,caracs,skills,items):
+def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
     retour = True
     u = User.objects.get(id=request.user.id)
 #    jack["jack_username"]=jack_username
@@ -83,7 +84,9 @@ def enregistrementJack(request,jack,caracs,skills,items):
     u.save()
     #faire la verif des mdps
     if (jack["jack_password1"]==jack["jack_password2"] and jack["jack_password1"] != ""):
-        u.set_password(jack["jack_password1"])               
+        u.set_password(jack["jack_password1"])
+        u.get_profile().Finished = True;
+        classer_invitation(u.get_profile().InvitationAccepted)            
     else :
         retour = False
     u.save()

@@ -1,4 +1,5 @@
 import random
+from jackpoint.invitation.models import Invitation,InvitationUsed
 def generate_invitation(number,word=4,num=1,numdigit=5):
     code = [
 ['BELCHER', 'FIX', 'EEL', 'PANZERBOY', 'DESK_JOCKEY', 'CHILLED', 'ENFORCER', 'CHERRY_PICKING', 'COUNTRY_CLUB', 'BOMBSHELL', 'PLUGGED_IN', 'FINI', 'LEGIT', 'JAM', 'BONED_OUT', 'BLADE', 'ROUST', 'SAMURAI', 'DISK', 'INPUT', 'POST_TIME', 'SOUNDS', 'SKIP', 'FLATBACKER', 'WILSON', 'SHOEMAKER', 'DELTA_SIERRA', 'HEART', 'CROAK', 'HEAD_HUNTER', 'HOSHO_KAISHA', "DELTA'D", "FACE_FACE_EYE_FACE_I_FACE", 'WEEFLE', 'DIRTGIRL', 'KEYBOARD', 'BRAIN_BUCKET', 'DRYING_OUT', 'OVERCOOK', 'PIG', 'COLD_TEA', 'RECONFIG', 'PAD', 'LIT_UP', 'WRAITH', 'HANDLE', 'L.P.', 'PINCH', 'TAKE_A_CAB', 'SPILL', 'ACE_KOOL', 'DO', 'BIZ', 'BROWNIE', 'CANDLE_AND_BLOOD', 'BLUEBOY', 'UP_ON_IT', 'BURN', 'USER_INTERFACE', 'HOB', 'GYRO', 'STUFFIT', 'THATCH', 'ICEBREAKER', 'ZIP_GUN', 'PETERMAN', 'PLAY_DOUGH', 'TREY-EIGHT', 'SETTLE', "CHIPPIN'_IN", 'MEATBALL', 'RAFFLES', 'YUBITSUME', 'CROAKER', 'SUCKER_POCKETS', 'L.A.M.A.', 'GEEK', 'BUTTONHEAD'],
@@ -33,6 +34,19 @@ def randomdig(number):
     rand = str(rand)
     rand = "0"*(number-len(rand))+rand
     return rand
+
+
+def classer_invitation(invitation,user=None):
+    invitation = Invitation.objects.get(Code=invitation)
+    invitation.Used = True
+    invitation.save()
+    if user != None :
+        invitationused = InvitationUsed.objects.create(Code=invitation) 
+        invitationused.Donneur = user
+        invitationused.save()
+    
+    
+
 
 if __name__ == '__main__':
     print randomdig(5)
