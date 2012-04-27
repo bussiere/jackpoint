@@ -23,7 +23,7 @@ class Invitation(models.Model):
     Tags = models.ManyToManyField("Usage", null=True, blank=True)
     Note = models.TextField(max_length=256, null=True, blank=True)
     Used = models.BooleanField(default=False, blank=True)
-    Donneur =  models.ManyToManyField("jack.UserProfile", related_name="DonneurINvit", null=True, blank=True)
+    Donneur =  models.ManyToManyField("jack.UserProfile", related_name="DonneurInvit", null=True, blank=True)
     SendTo = models.EmailField(null=True, blank=True)
     # a revoir
     def save(self, *args, **kwargs):
@@ -41,7 +41,7 @@ class InvitationUsed(models.Model):
     Note = models.TextField(max_length=256, null=True, blank=True)
     SendTo = models.EmailField(null=True, blank=True)
     Receveur = models.ManyToManyField("jack.UserProfile", related_name="ReceveurINvit",null=True, blank=True)
-    Donneur =  models.ManyToManyField("jack.UserProfile", related_name="DonneurINvit", null=True, blank=True)
+    Donneur =  models.ManyToManyField("jack.UserProfile", related_name="DonneurINvitUsed", null=True, blank=True)
     def __unicode__(self):
         return self.Code
     # a revoir
