@@ -7,7 +7,6 @@ class TagPrivate(models.Model):
    
 class ItemUser(models.Model):
     Item = models.ManyToManyField("item.Item")
-    Level = models.IntegerField()
     Private = models.BooleanField()
 
 LevelSkill = (
