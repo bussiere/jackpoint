@@ -95,7 +95,7 @@ def validation_inscription(request):
     jack["jack_password1"]= jack_password1
     jack["jack_password2"]=jack_password2
     jack["jack_Bio"]=jack_Bio
-
+    print jack["jack_username"]
     nbre_carac = int(request.POST['carac-TOTAL_FORMS'])
     nbre_initial_carac = request.POST['carac-INITIAL_FORMS']
     levelcarac="carac-#-carac_level"

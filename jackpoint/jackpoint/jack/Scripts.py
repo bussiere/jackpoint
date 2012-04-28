@@ -32,9 +32,12 @@ def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
 #    jack["jack_password1"]= jack_password1
 #    jack["jack_password2"]=jack_password2
 #    jack["jack_Bio"]=jack_Bio
+    print jack["jack_username"]
     u.get_profile().Pseudo = jack["jack_username"]
     u.get_profile().Email = jack["jack_email"]
     u.get_profile().Bio = jack["jack_Bio"]
+    u.save()
+    u.get_profile().save()
     u.get_profile().Caracs.clear()
     u.get_profile().Skills.clear()
     u.get_profile().Items.clear()
@@ -81,6 +84,7 @@ def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
             result.Private = private
             result.save()
         u.get_profile().Items.add(result)
+    u.get_profile().save()
     u.save()
     #faire la verif des mdps
     if (jack["jack_password1"]==jack["jack_password2"] and jack["jack_password1"] != ""):
