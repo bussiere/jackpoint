@@ -33,6 +33,7 @@ def index(request):
                 invitationdb = Invitation.objects.get(Code=invitation)
                 user = User.objects.create_user(email, email, invitation)
                 user.get_profile().InvitationAccepted = invitationdb
+                user.get_profile().save()
                 user.save()
                 user = authenticate(username=email, password=invitation)
                 auth.login(request, user)

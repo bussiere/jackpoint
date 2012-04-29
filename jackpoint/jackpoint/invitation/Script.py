@@ -38,13 +38,18 @@ def randomdig(number):
 
 def classer_invitation(invitation,user=None):
     from jackpoint.invitation.models import Invitation,InvitationUsed
-    invitation = Invitation.objects.get(Code=invitation)
-    invitation.Used = True
-    invitation.save()
+    # ca merde ici
+    invitationget = Invitation.objects.get(Code=invitation)
+    invitationget.Used = True
+    invitationget.save()
     if user != None :
         invitationused = InvitationUsed.objects.create(Code=invitation) 
         invitationused.Donneur = user
         invitationused.save()
+    else :
+        invitationused = InvitationUsed.objects.create(Code=invitation) 
+        invitationused.save()
+        
     
     
 
