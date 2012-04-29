@@ -37,7 +37,10 @@ def index(request):
                 user = authenticate(username=email, password=invitation)
                 auth.login(request, user)
                 return HttpResponseRedirect('../invitation/inscription/')
-            except :
+            except Exception as inst:
+                print type(inst)     # the exception instance
+                print inst.args      # arguments stored in .args
+                print inst 
                 invitationdb = None
             if not invitationdb :
                 return HttpResponseRedirect('../') # Redirect after POST
