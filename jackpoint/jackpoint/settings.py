@@ -132,7 +132,7 @@ INSTALLED_APPS = (
     'jackpoint.X',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'south',
+    #'south',
 )
 
 # A sample logging configuration. The only tangible logging

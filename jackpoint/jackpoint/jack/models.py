@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.db import models
 
 class TagPrivate(models.Model):
-    Tags = models.ManyToManyField("tag.Tag", blank=True, null=True,)
+    Tags = models.ManyToManyField("tag.Tag", blank=True, null=True)
    
 class ItemUser(models.Model):
     Item = models.ManyToManyField("item.Item")
@@ -36,7 +36,10 @@ class CaracUser(models.Model):
     Level = models.IntegerField(choices=LevelCarac)
     Private = models.BooleanField()
     
-
+class NotificationUser(models.Model):
+    Seen = models.BooleanField(default=False)
+    Notification = models.OneToOneField("engine.Notification",related_name="NotificationUser", blank=True, null=True)
+    
 class UserProfile(models.Model):  
     user = models.OneToOneField(User)  
     #other fields here
@@ -49,9 +52,10 @@ class UserProfile(models.Model):
     Bio = models.TextField()
     Email = models.EmailField()
     Avatar = models.ImageField(upload_to='Avatar')
+    Notifications = models.ManyToManyField("NotificationUser", blank=True, null=True)
     Finished = models.BooleanField(default=False)
-    InvitationAccepted = models.OneToOneField("invitation.Invitation",related_name="InvitationAccepted", blank=True, null=True,)
-    InvitationGiven = models.ManyToManyField("invitation.Invitation",related_name="InvitationGiven", blank=True, null=True,)
+    InvitationAccepted = models.OneToOneField("invitation.Invitation",related_name="InvitationAccepted", blank=True, null=True)
+    InvitationGiven = models.ManyToManyField("invitation.Invitation",related_name="InvitationGiven", blank=True, null=True)
 
     def __str__(self):  
           return "%s's profile" % self.user  

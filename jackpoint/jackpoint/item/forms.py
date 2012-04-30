@@ -15,3 +15,10 @@ class ItemForm(forms.Form):
     item_type = forms.CharField(widget=forms.HiddenInput(),initial="item")
     item_Possede = ChoiceField(label='Possede : ',widget=RadioSelect, choices=POSSEDE_CHOICES,initial=0)
     item_private = ChoiceField(label='Visibility : ',widget=RadioSelect, choices=PRIVATE_CHOICES,initial=1)
+    
+
+class ItemFormChoice(forms.Form):
+    item = forms.CharField(widget=forms.HiddenInput())
+    POSSEDE_CHOICES = (('0', 'Non'), ('1', 'Oui'))
+    item_type = forms.CharField(widget=forms.HiddenInput(),initial="item")
+    item_Possede = ChoiceField(label='Possede : ',widget=RadioSelect, choices=POSSEDE_CHOICES,initial=0)

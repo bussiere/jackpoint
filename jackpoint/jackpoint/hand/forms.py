@@ -1,8 +1,13 @@
-from django.db import models
-
 from django import forms
 
 class AskForm(forms.Form):
-    Description = forms.CharField(widget=forms.Textarea)
-    Tags = forms.CharField(widget=forms.TextInput(attrs={'size':'40'}))
+    Intitule = forms.CharField(label='Intitule',widget=forms.TextInput(attrs={'size':'512'}))
+    Description = forms.CharField(label='Demande',widget=forms.Textarea)
+    Tags = forms.CharField(label='Tags (doit commencer par #)',widget=forms.TextInput(attrs={'size':'512'}))
+    
+
+class AnswerForm(forms.Form):
+    Description = forms.CharField(label='Reponse',widget=forms.Textarea)
+    Tags = forms.CharField(label='Tags (doit commencer par #)',widget=forms.TextInput(attrs={'size':'512'}))
+    ThreadEngineId = carac_type = forms.CharField(widget=forms.HiddenInput(),initial="0")
     

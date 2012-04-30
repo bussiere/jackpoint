@@ -1,0 +1,19 @@
+{% for question in ThreadEngine.Question.all() %}
+{{ question.id }}
+{{ question.user }}
+{{ question.Intitule }}
+{{ question.Text }}
+{{ question.Tags }}
+{{ question.Skills }}
+{{ question.Caracs }}
+{{ question.Items }}
+{% for  answer in ThreadEngine.Answer.all() %}
+{{ answer.id }}
+{{ answer.user }}
+{{ answer.Text }}
+{{ answer.Tags }}
+ {% endfor %}
+{% endfor %}
+<form action="../../hand/answer/" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" /><br>
