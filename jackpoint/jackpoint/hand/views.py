@@ -15,18 +15,20 @@ from jackpoint.hand.scripts import enregistrementAsk
 from jackpoint.hand.forms import AskForm,AnswerForm
 
 
+
+
 @login_required
 def viewid(request,id):
     try :
-        ThreadEngine = ThreadEngine.objects.get(id=id)
+        threadengine = ThreadEngine.objects.get(id=id)
     except :
         #Todo
         #renvoyer une 404
-        ThreadEngine = None
+        threadengine = None
         pass
     form = AnswerForm()
-    form.ThreadEngineId = ThreadEngine.id
-    return render_to_response('handviewid.html', {ThreadEngine:ThreadEngine,form:form
+    form.ThreadEngineId = threadengine.id
+    return render_to_response('handviewid.html', {'threadengine':threadengine,form:form
     },RequestContext(request))# Create
 
 
@@ -34,22 +36,22 @@ def viewid(request,id):
 @login_required
 def vieweditid(request,id):
     try :
-        ThreadEngine = ThreadEngine.objects.get(id=id)
+        threadengine = ThreadEngine.objects.get(id=id)
     except :
         #Todo
         #renvoyer une 404
-        ThreadEngine = None
+        threadengine = None
         pass
     form = AnswerForm()
-    form.ThreadEngineId = ThreadEngine.id
-    return render_to_response('handviewid.html', {ThreadEngine:ThreadEngine,form:form
+    form.ThreadEngineId = threadengine.id
+    return render_to_response('handviewid.html', {'threadengine':threadengine,'form':form
     },RequestContext(request))# Create
 
 
 @login_required
 def index(request):
-    questions = Question.objects.all()
-    return render_to_response('handview.html', {questions:questions
+    threadengine = ThreadEngine.objects.all()
+    return render_to_response('handview.html', {'threadengine':threadengine
     },RequestContext(request))# Create
 
 
