@@ -1,0 +1,19 @@
+{{ profile.pseudo }}
+{% for  skill in profile.skills.all() %}
+{% if skill.private == false %}
+{{ skill  }}
+{{ skill.level }}
+{% endif }
+ {% endfor %}
+ {% for  carac in profile.caracs.all() %}
+{% if carac.private == false %}
+{{ carac  }}
+{{ carac.level }}
+{% endif }
+ {% endfor %}
+  {% for  item in profile.items.all() %}
+{% if item.private == false %}
+{{ item  }}
+{{ item.level }}
+{% endif }
+{% endfor %}

@@ -16,8 +16,10 @@ from django.http import HttpResponseRedirect
 
 
 @login_required
-def vieweditid(request):
-    return render_to_response('jackviewid.html', {},RequestContext(request))# Create
+def viewid(request):
+    user = User.objects.get(id=request.user.id)
+    profile = user.get_profile()
+    return render_to_response('jackviewid.html', {'profile':profile},RequestContext(request))# Create
 
 @login_required
 def editJack(request):
@@ -105,4 +107,4 @@ def editJack(request):
         
         print CaracFormSet.management_form
         formJack = JackRegisterForm()
-        return render_to_response('jackedit.html', {"CaracFormSet":CaracFormSet, 'SkillFormSet':SkillFormSet, 'ItemFormSet':ItemFormSet, 'formJack':formJack}, RequestContext(request))
+        return render_to_response('invitinscription.html', {"CaracFormSet":CaracFormSet, 'SkillFormSet':SkillFormSet, 'ItemFormSet':ItemFormSet, 'formJack':formJack}, RequestContext(request))
