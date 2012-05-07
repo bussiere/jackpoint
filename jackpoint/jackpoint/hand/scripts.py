@@ -30,6 +30,8 @@ from jackpoint.engine.script import sendnotification
 #TODO
 # A factyoriser enregistrement skills carac items
 
+
+
 def enregistrementAsk(request,caracs,skills,items,intitule,description,tags) :
     question = Question.objects.create() 
     question.save()
