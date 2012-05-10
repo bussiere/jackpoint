@@ -4,6 +4,8 @@ from django.db import models
 
 class TagPrivate(models.Model):
     Tags = models.ManyToManyField("tag.Tag", blank=True, null=True)
+    def __unicode__(self):
+        return self.Tags
    
 class ItemUser(models.Model):
     Item = models.ManyToManyField("item.Item")
@@ -22,6 +24,8 @@ class SkillUser(models.Model):
     Skills = models.ManyToManyField("skill.Skill")
     Level = models.IntegerField(choices=LevelSkill)
     Private = models.BooleanField()
+    def __unicode__(self):
+        return "%s %d %r"%(self.Skills,self.Level,self.Private)
 
 LevelCarac = (
     (1, 'Bof'),
@@ -35,6 +39,12 @@ class CaracUser(models.Model):
     carac = models.ManyToManyField("carac.Carac")
     Level = models.IntegerField(choices=LevelCarac)
     Private = models.BooleanField()
+    def __unicode__(self):
+        #TODO
+        #crade a revoir
+        for c in self.carac.all() :
+            t = c 
+        return "%s %d %r"%(c.Nom,self.Level,self.Private)
     
 class NotificationUser(models.Model):
     Seen = models.BooleanField(default=False)

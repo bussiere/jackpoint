@@ -21,8 +21,8 @@ urlpatterns = patterns('',
     url(r'^X/$', 'jackpoint.X.views.index'),
     url(r'^hand/ask/$', 'jackpoint.hand.views.ask'),
     url(r'^hand/view/$','jackpoint.hand.views.index'),
-    url(r'^jack/view/(?P<id>\d+)/$','jackpoint.hand.views.viewid'),
-    url(r'^jack/viewedit/$','jackpoint.hand.views.vieweditid'),
+    url(r'^jack/view/(?P<id>\d+)/$','jackpoint.jack.views.viewid'),
+    url(r'^jack/edit/$','jackpoint.jack.views.editJack'),
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -107,4 +107,4 @@ def editJack(request):
         
         print CaracFormSet.management_form
         formJack = JackRegisterForm()
-        return render_to_response('invitinscription.html', {"CaracFormSet":CaracFormSet, 'SkillFormSet':SkillFormSet, 'ItemFormSet':ItemFormSet, 'formJack':formJack}, RequestContext(request))
+        return render_to_response('jackedit.html', {"CaracFormSet":CaracFormSet, 'SkillFormSet':SkillFormSet, 'ItemFormSet':ItemFormSet, 'formJack':formJack}, RequestContext(request))
