@@ -53,25 +53,19 @@ def enregistrementAsk(request,caracs,skills,items,intitule,description,tags) :
     question.save()
     for carac in caracs.keys():
         caracdb  = Carac.objects.filter(Nom=carac)
-        private = False
-        if caracs[carac][1] == "1" :
-            private = True 
         try :
-            result = CaracUser.objects.get(carac=caracdb,Level=int(caracs[carac][0]),Private=private)
+            result = CaracUser.objects.get(carac=caracdb,Level=int(caracs[carac][0]))
         except :
             result = CaracUser.objects.create(Level=0)
             result.carac = caracdb
             result.Level = int(caracs[carac][0])
-            result.Private = private
             result.save()
         question.Caracs.add(result)
     for skill in skills.keys():
         skilldb  = Skill.objects.filter(Nom=skill)
         private = False
-        if skills[skill][1] == "1" :
-            private = True 
         try :
-            result = SkillUser.objects.get( Skills=skilldb,Level=int(skills[skill][0]),Private=private)
+            result = SkillUser.objects.get( Skills=skilldb,Level=int(skills[skill][0]))
         except :
             result = SkillUser.objects.create(Level=0)
             result.Skills =  skilldb
@@ -81,11 +75,8 @@ def enregistrementAsk(request,caracs,skills,items,intitule,description,tags) :
         question.Skills.add(result)
     for item in items.keys():
         itemdb  = Item.objects.filter(Nom=item)
-        private = False
-        if items[item][0] == "1" :
-            private = True 
         try :
-            result = ItemUser.objects.get(Item=itemdb,Private=private)
+            result = ItemUser.objects.get(Item=itemdb)
         except :
             result = ItemUser.objects.create()
             result.Item = itemdb
