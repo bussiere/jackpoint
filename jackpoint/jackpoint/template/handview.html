@@ -13,11 +13,28 @@
 <br>
 <-- #TODO -->
 <-- faire le for pour tout afficher -->
-{{ question.Tags }}
+
+{% for tag in question.Tags.all %}
+{{ tag.Nom }}
+{% endfor %}
 <br>
-{{ question.Skills }}
+
+{% for skill in question.Skills.all %}
+{% for sk in  skill.Skills.all %}
+{{ sk.Nom }}
+{% endfor %}
+{{ skill.Level }}<br>
+{% endfor %}
+
 <br>
-{{ question.Caracs }}
+{% for carac in question.Caracs.all %}
+{% for ca in  carac.carac.all %}
+{{ ca.Nom }}
+{% endfor %}
+{{ carac.Level }}<br>
+{% endfor %}
+
+
 <br>
 {{ question.Items }}
 <br>
