@@ -13,12 +13,13 @@ from jackpoint.item.forms import ItemFormChoice
 from django.forms.formsets import formset_factory
 from jackpoint.hand.scripts import enregistrementAsk
 from jackpoint.hand.forms import AskForm,AnswerForm
-
+from django.contrib.auth.models import User
 
 
 
 @login_required
 def viewid(request,id):
+    
     try :
         threadengine = ThreadEngine.objects.get(id=id)
     except :
@@ -26,9 +27,15 @@ def viewid(request,id):
         #renvoyer une 404
         threadengine = None
         pass
+    if request.method == 'POST':
+        user = User.objects.get(id=request.user.id)
+        reponse  = request.POST['Reponse']
+        tags  = request.POST['Tags']
+        threadengineid  = int(request.POST['ThreadEngineId'])
     form = AnswerForm()
     form.ThreadEngineId = threadengine.id
-    return render_to_response('handviewid.html', {'threadengine':threadengine,form:form
+    print form
+    return render_to_response('handviewid.html', {'threadengine':threadengine,'form':form
     },RequestContext(request))# Create
 
 
@@ -44,6 +51,9 @@ def vieweditid(request,id):
         pass
     form = AnswerForm()
     form.ThreadEngineId = threadengine.id
+    print form
+    print "titi"
+    form.save()
     return render_to_response('handviewid.html', {'threadengine':threadengine,'form':form
     },RequestContext(request))# Create
 

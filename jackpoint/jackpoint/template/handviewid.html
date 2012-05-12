@@ -1,4 +1,4 @@
-{% for question in ThreadEngine.Question.all() %}
+{% for question in threadengine.Question.all %}
 {{ question.id }}
 {{ question.user }}
 {{ question.Intitule }}
@@ -7,7 +7,9 @@
 {{ question.Skills }}
 {{ question.Caracs }}
 {{ question.Items }}
-{% for  answer in ThreadEngine.Answer.all() %}
+{% for  answer in threadengine.Answer.all %}
+<-- #TODO -->
+<-- faire le for proprement -->
 {{ answer.id }}
 {{ answer.user }}
 {{ answer.Text }}
@@ -16,4 +18,6 @@
 {% endfor %}
 <form action="../../hand/answer/" method="post">{% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Submit" /><br>
+<input type="submit" value="Submit" />
+</form>
+<br>

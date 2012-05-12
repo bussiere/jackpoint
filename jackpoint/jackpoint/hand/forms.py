@@ -7,7 +7,7 @@ class AskForm(forms.Form):
     
 
 class AnswerForm(forms.Form):
-    Description = forms.CharField(label='Reponse',widget=forms.Textarea)
+    Reponse = forms.CharField(label='Reponse',widget=forms.Textarea)
     Tags = forms.CharField(label='Tags (doit commencer par #)',widget=forms.TextInput(attrs={'size':'512'}))
-    ThreadEngineId = carac_type = forms.CharField(widget=forms.HiddenInput(),initial="0")
+    ThreadEngineId  = forms.CharField(widget=forms.HiddenInput(),initial="0")
     
