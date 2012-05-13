@@ -18,7 +18,7 @@ class Question(models.Model):
     Url = models.TextField(null=True, blank=True)
 
 class Answer(models.Model):  
-    user = user = models.ForeignKey(User, unique=False, null=True, blank=True)  
+    user  = models.ForeignKey(User, unique=False, null=True, blank=True)  
     Tags = models.ManyToManyField("tag.Tag", null=True, blank=True)
     Text = models.TextField(null=True, blank=True)
     Url = models.TextField(null=True, blank=True)

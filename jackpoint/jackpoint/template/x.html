@@ -1,7 +1,38 @@
 <a href="../hand/">Demande d'aide en cour</a><br>
 <a href="../hand/ask/">Demander de l'aide</a><br>
 <a href="../jack/edit/">Modifier sa fiche</a><br>
-
+Votre Fiche :
+{{ profile.pseudo }}
+{% for  skill in profile.skills.all %}
+{% if skill.private == false %}
+{{ skill  }}:
+{{ skill.level }}<br>
+{% else %}
+Prive :<br>
+{{ skill  }}:
+{{ skill.level }}<br>
+{% endif %}
+ {% endfor %}
+ {% for  carac in profile.caracs.all %}
+{% if carac.private == false %}
+{{ carac  }} :
+{{ carac.level }}<br>
+{% else %}
+Prive :<br>
+{{ carac  }} :
+{{ carac.level }}<br>
+{% endif %}
+ {% endfor %}
+  {% for  item in profile.items.all %}
+{% if item.private == false %}
+{{ item  }}<br>
+{% else %}
+Prive :<br>
+{{ item  }}<br>
+{% endif %}
+{% endfor %}
+<br>
+Notifications :
 {% for notification in notifications %}
 
 {{ notification.Texte }}
@@ -19,4 +50,15 @@
 {% endfor %}
 <a href="{{ notification.Url }}">ici</a>
 <br>
+{% endfor %}
+<br>
+Message recus :<br>
+{% for  message in messagerecus %}
+{{ message.Sender }} &nbsp;<a href="../../mp/{{message.Sender.id}}/">MP</a><br>
+{{ message.Texte }}<br>
+{% endfor %}
+Message envoyes :<br>
+{% for  message in messageenvoyes %}
+{{ message.Receiver }} &nbsp;<a href="../../mp/{{message.Receiver.id}}/">MP</a><br>
+{{ message.Texte }}<br>
 {% endfor %}

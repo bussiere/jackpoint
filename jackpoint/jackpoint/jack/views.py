@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from jackpoint.skill.models import Skill
 from jackpoint.carac.models import Carac
 from jackpoint.item.models import Item
+from jackpoint.jack.models import UserProfile
 from jackpoint.carac.forms import CaracForm
 from jackpoint.skill.forms import SkillForm
 from jackpoint.item.forms import ItemForm
@@ -16,10 +17,10 @@ from django.http import HttpResponseRedirect
 
 
 @login_required
-def viewid(request):
+def viewid(request,id):
     user = User.objects.get(id=request.user.id)
-    profile = user.get_profile()
-    return render_to_response('jackviewid.html', {'profile':profile},RequestContext(request))# Create
+    profile = UserProfile.objects.get(user=user)
+    return render_to_response('jackviewid.html', {'profile':profile,'user':user},RequestContext(request))# Create
 
 @login_required
 def editJack(request):

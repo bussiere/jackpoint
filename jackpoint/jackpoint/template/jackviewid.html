@@ -1,19 +1,23 @@
-{{ profile.pseudo }}
-{% for  skill in profile.skills.all() %}
-{% if skill.private == false %}
-{{ skill  }}
-{{ skill.level }}
-{% endif }
+{{ profile.id }}<br>
+{{ user.username }}<br>
+{% for  skill in profile.Skills.all %}
+{% for  sk in  skill.Skill.all %}
+{{ sk.Nom  }}:
+{{ skill.Level }}<br>
+{% if skill.Private == False %}
+{{ skill  }}:
+{{ skill.Level }}<br>
+{% endif %}
  {% endfor %}
- {% for  carac in profile.caracs.all() %}
-{% if carac.private == false %}
-{{ carac  }}
-{{ carac.level }}
-{% endif }
  {% endfor %}
-  {% for  item in profile.items.all() %}
-{% if item.private == false %}
-{{ item  }}
-{{ item.level }}
-{% endif }
+ {% for  carac in profile.Caracs.all %}
+{% if carac.Private == false %}
+{{ carac  }} :
+{{ carac.level }}<br>
+{% endif %}
+ {% endfor %}
+  {% for  item in profile.Items.all %}
+{% if item.Private == false %}
+{{ item  }}<br>
+{% endif %}
 {% endfor %}

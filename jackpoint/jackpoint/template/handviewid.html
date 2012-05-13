@@ -1,9 +1,9 @@
 {% for question in threadengine.Question.all %}
 
-{{ question.id }}
-{{ question.user }}
-{{ question.Intitule }}
-{{ question.Text }}
+{{ question.id }}<br>
+{{ question.user }}&nbsp;<a href="../../mp/{{question.user.id}}/">MP</a><br>
+{{ question.Intitule }}<br>
+{{ question.Text }}<br>
 {% for tag in question.Tags.all %}
 {{ tag.Nom }}
 {% endfor %}
