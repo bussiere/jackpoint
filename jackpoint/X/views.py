@@ -22,5 +22,5 @@ def index(request):
     notifications = Notification.objects.filter(User=user)
     messagerecus = MP.objects.filter(Receiver=user)
     messageenvoyes = MP.objects.filter(Sender=user)
-    return render_to_response('x.html', {'notifications':notifications,'messagerecus':messagerecus,'messageenvoyes':messageenvoyes,'profile':profile
+    return render_to_response('x.html', {'notifications':notifications,'messagerecus':messagerecus,'messageenvoyes':messageenvoyes,'profile':profile,'user':user
     },RequestContext(request))

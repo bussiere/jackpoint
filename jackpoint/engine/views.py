@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from jackpoint.engine.forms import LoginForm
+from engine.forms import LoginForm
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login
