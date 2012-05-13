@@ -2,21 +2,21 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from jackpoint.skill.models import Skill
-from jackpoint.carac.models import Carac
-from jackpoint.item.models import Item
-from jackpoint.carac.forms import CaracFormChoice
-from jackpoint.skill.forms import SkillForm
-from jackpoint.item.forms import ItemForm
-from jackpoint.jack.forms import JackRegisterForm
+from skill.models import Skill
+from carac.models import Carac
+from item.models import Item
+from carac.forms import CaracFormChoice
+from skill.forms import SkillForm
+from item.forms import ItemForm
+from jack.forms import JackRegisterForm
 from django.forms.formsets import formset_factory
 from django.forms.formsets import BaseFormSet
-from jackpoint.hand.forms import AskForm
-from jackpoint.hand.models import Question,Answer
-from jackpoint.jack.models import CaracUser,SkillUser,ItemUser
-from jackpoint.tag.models import Tag
-from jackpoint.engine.models import ThreadEngine
-from jackpoint.engine.script import sendnotification
+from hand.forms import AskForm
+from hand.models import Question,Answer
+from jack.models import CaracUser,SkillUser,ItemUser
+from tag.models import Tag
+from engine.models import ThreadEngine
+from engine.script import sendnotification
 #TODO
 # A factyoriser enregistrement skills carac items
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from jackpoint.invitation.models import Invitation,CategorieInvitation,Usage,InvitationUsed
+from invitation.models import Invitation,CategorieInvitation,Usage,InvitationUsed
 
 admin.site.register(Invitation)
 admin.site.register(InvitationUsed)

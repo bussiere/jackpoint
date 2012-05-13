@@ -1,6 +1,6 @@
 from django.db import models
 import random
-from jackpoint.invitation.script import generate_invitation
+from invitation.script import generate_invitation
 # Create your models here.
 class Task(models.Model):
     class Meta:

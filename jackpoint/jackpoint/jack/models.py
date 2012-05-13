@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.db import models
-from jackpoint.skill.models import Skill
+from skill.models import Skill
 class TagPrivate(models.Model):
     Tags = models.ManyToManyField("tag.Tag", blank=True, null=True)
     def __unicode__(self):

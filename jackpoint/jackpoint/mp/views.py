@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
-from jackpoint.mp.scripts import SendMP
-from jackpoint.mp.forms import  MPForm
+from mp.scripts import SendMP
+from mp.forms import  MPForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 

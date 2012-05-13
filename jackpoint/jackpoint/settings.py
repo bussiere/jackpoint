@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'jackpoint.db',                      # Or path to database file if using sqlite3.
+        'NAME': 'db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -103,7 +103,7 @@ MIDDLEWARE_CLASSES = (
 
 AUTH_PROFILE_MODULE = 'jack.UserProfile'
 
-ROOT_URLCONF = 'jackpoint.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
                  'jackpoint/template',
@@ -119,17 +119,17 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jackpoint.carac',
-    'jackpoint.engine',
-    'jackpoint.hand',
-    'jackpoint.invitation',
-    'jackpoint.item',
-    'jackpoint.jack',
-    'jackpoint.mp',
-    'jackpoint.notification',
-    'jackpoint.skill',
-    'jackpoint.tag',
-    'jackpoint.X',
+    'carac',
+    'engine',
+    'hand',
+    'invitation',
+    'item',
+    'jack',
+    'mp',
+    'notification',
+    'skill',
+    'tag',
+    'X',
     'django.contrib.admin',
     'django.contrib.admindocs',
     #'south',

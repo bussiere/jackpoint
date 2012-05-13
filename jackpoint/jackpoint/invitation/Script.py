@@ -37,7 +37,7 @@ def randomdig(number):
 
 
 def classer_invitation(invitation,user=None):
-    from jackpoint.invitation.models import Invitation,InvitationUsed
+    from invitation.models import Invitation,InvitationUsed
     # ca merde ici
     invitationget = Invitation.objects.get(Code=invitation)
     invitationget.Used = True

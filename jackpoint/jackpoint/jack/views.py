@@ -2,17 +2,17 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
-from jackpoint.skill.models import Skill
-from jackpoint.carac.models import Carac
-from jackpoint.item.models import Item
-from jackpoint.jack.models import UserProfile
-from jackpoint.carac.forms import CaracForm
-from jackpoint.skill.forms import SkillForm
-from jackpoint.item.forms import ItemForm
-from jackpoint.jack.forms import JackRegisterForm
+from skill.models import Skill
+from carac.models import Carac
+from item.models import Item
+from jack.models import UserProfile
+from carac.forms import CaracForm
+from skill.forms import SkillForm
+from item.forms import ItemForm
+from jack.forms import JackRegisterForm
 from django.forms.formsets import formset_factory
 from django.contrib.auth.models import User
-from jackpoint.jack.scripts import enregistrementJack
+from jack.scripts import enregistrementJack
 from django.http import HttpResponseRedirect
 
 

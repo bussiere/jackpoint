@@ -1,3 +1,3 @@
 from django.contrib import admin
-from jackpoint.tag.models import Tag
+from tag.models import Tag
 admin.site.register(Tag)

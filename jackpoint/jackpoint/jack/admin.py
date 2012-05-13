@@ -1,5 +1,5 @@
 from django.contrib import admin
-from jackpoint.jack.models import TagPrivate,ItemUser,SkillUser,CaracUser,UserProfile
+from jack.models import TagPrivate,ItemUser,SkillUser,CaracUser,UserProfile
 admin.site.register(TagPrivate)
 admin.site.register(ItemUser)
 admin.site.register(SkillUser)

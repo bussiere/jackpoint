@@ -1,4 +1,4 @@
-from jackpoint.mp.models import MP
+from mp.models import MP
 
 
 def SendMP(message,sender,receiver):
