@@ -24,10 +24,13 @@ def viewid(request,id):
         #renvoyer une 404
         threadengine = None
     if request.method == 'POST':
-
         enregistrementAnswer(request)
-    form = AnswerForm()
-    form.ThreadEngineId = threadengine.id
+    qs= threadengine.Question.all()
+    for q in qs :
+        print q
+        print q.id
+        id = q.id
+    form = AnswerForm(initial={'ThreadEngineId': threadengine.id,'QuestionId':id})
     print form
     return render_to_response('handviewid.html', {'threadengine':threadengine,'form':form
     },RequestContext(request))# Create

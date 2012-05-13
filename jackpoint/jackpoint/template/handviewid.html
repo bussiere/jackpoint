@@ -1,4 +1,5 @@
 {% for question in threadengine.Question.all %}
+
 {{ question.id }}
 {{ question.user }}
 {{ question.Intitule }}
@@ -31,16 +32,25 @@
 {% endfor %}
 {% endfor %}
 <br>
+{% for tag in  question.Tags.all %}
+#{{ tag.Name }} &nbsp;
+{% endfor %}
+{% endfor %}<br><br>
+
 {% for  answer in threadengine.Answer.all %}
 <-- #TODO -->
 <-- faire le for proprement -->
 {{ answer.id }}
 {{ answer.user }}
 {{ answer.Text }}
-{{ answer.Tags }}
- {% endfor %}
+{% for tag in  answer.Tags.all %}
+#{{ tag.Name }} &nbsp;
 {% endfor %}
-<form action="../../hand/view/{{ threadengine.id }}/" method="post">{% csrf_token %}
+<br><br>
+{% endfor %}
+
+
+<form action="../../../hand/view/{{ threadengine.id }}/" method="post">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>

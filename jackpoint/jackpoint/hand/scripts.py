@@ -37,8 +37,12 @@ def enregistrementAnswer(request):
         reponse  = request.POST['Reponse']
         tags  = request.POST['Tags']
         threadengineid  = int(request.POST['ThreadEngineId'])
+        threadengine = ThreadEngine.objects.get(id=threadengineid)
+        questionid = int(request.POST['QuestionId'])
         tags = tags.split("#")
+        question = Question.objects.get(id=questionid)
         answer = Answer.objects.create(user=user,Text=reponse)
+        answer.Question.add(question)
         #TODO
         # a factoriser
         for tag in tags :
@@ -50,6 +54,8 @@ def enregistrementAnswer(request):
             result.save()
         answer.Tags.add(result)
         answer.save()
+        threadengine.Answer.add(answer)
+        threadengine.save()
 
 def enregistrementAsk(request,caracs,skills,items,intitule,description,tags) :
     question = Question.objects.create() 

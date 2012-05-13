@@ -12,6 +12,8 @@ class Url(models.Model):
 class ThreadEngine(models.Model):
     Question = models.ManyToManyField('hand.Question',related_name="QuestionToThreadEngine", null=True, blank=True)
     Answer = models.ManyToManyField('hand.Answer',related_name="AnswerToThreadEngine", null=True, blank=True)
+    def __unicode__(self):
+        return str(self.id)
 
 
 class Notification(models.Model):  
