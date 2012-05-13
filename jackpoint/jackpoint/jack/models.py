@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.db import models
-
+from jackpoint.skill.models import Skill
 class TagPrivate(models.Model):
     Tags = models.ManyToManyField("tag.Tag", blank=True, null=True)
     def __unicode__(self):
@@ -25,7 +25,10 @@ class SkillUser(models.Model):
     Level = models.IntegerField(choices=LevelSkill)
     Private = models.BooleanField()
     def __unicode__(self):
-        return "%s %d %r"%(self.Skills,self.Level,self.Private)
+        Nom = ""
+        for sk in self.Skill.all() :
+            Nom = sk.id
+        return "%s %d %r"%(Nom,self.Level,self.Private)
 
 LevelCarac = (
     (1, 'Bof'),

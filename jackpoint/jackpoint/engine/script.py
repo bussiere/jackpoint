@@ -1,4 +1,4 @@
-from jackpoint.jack.models import CaracUser,SkillUser,ItemUser,UserProfile,NotificationUser
+from jackpoint.jack.models import CaracUser,SkillUser,ItemUser,UserProfile
 from jackpoint.hand.models import Question
 from jackpoint.engine.models import Notification
 from django.contrib.auth.models import User
@@ -13,7 +13,20 @@ def sendnotification(question,threadEngine):
     tags =  question.Tags.all()
     user = {}
     for skill in skills :
-        jacks = UserProfile.objects.get(Q(Skills__id__icontains = skill.id),Q(Skills__Level__gte = skill.Level))
+        #TODO
+        #Crade j'ai honte
+        id = 0
+        print "toto"
+        print skill.Level
+        print skill.Skill.all()
+        for sk in skill.Skill.all() :
+            print "toto"
+            print sk
+            id = sk.id
+        print "sportid"
+        print sk.id
+        jacks = UserProfile.objects.get(Q(Skills__Skill__id__contains = id))#,Q(Skills__Level__gte = skill.Level)
+        print jacks
         #TODO
         #A optimiser
         for jack in jacks :
@@ -83,10 +96,5 @@ def sendnotification(question,threadEngine):
         for carac in user[jack.id]['carac'] :
             notification.Carac.add(carac)
         notification.Texte = text    
+        notification.User = user
         notification.save()
-        notificationuser = NotificationUser.objects.create(Notification=notification)
-        notificationuser.save()
-        u.get_profile().Notifications.add(notificationuser)
-        u.get_profile().save()
-        u.save()
-        

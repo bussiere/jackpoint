@@ -1,13 +1,3 @@
-from django.http import HttpResponse,HttpResponseRedirect
-from jackpoint.engine.forms import LoginForm
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.http import HttpResponseRedirect
-from jackpoint.invitation.forms import FirstInvitationForm,CreateInvitationForm
-from django.shortcuts import render_to_response
-from django.contrib.auth.decorators import user_passes_test
-from django.template import RequestContext
-from jackpoint.invitation.models import Invitation
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
@@ -79,34 +69,36 @@ def enregistrementAsk(request,caracs,skills,items,intitule,description,tags) :
         question.Tags.add(result)
     question.save()
     for carac in caracs.keys():
-        caracdb  = Carac.objects.filter(Nom=carac)
+        caracdb  = Carac.objects.get(Nom=carac)
         try :
             result = CaracUser.objects.get(carac=caracdb,Level=int(caracs[carac][0]))
         except :
             result = CaracUser.objects.create(Level=0)
-            result.carac = caracdb
+            result.Carac.add(caracdb)
             result.Level = int(caracs[carac][0])
             result.save()
         question.Caracs.add(result)
     for skill in skills.keys():
-        skilldb  = Skill.objects.filter(Nom=skill)
+        skilldb  = Skill.objects.get(Nom=skill)
+        print "nomSki"
+        print skilldb.Nom
         private = False
         try :
-            result = SkillUser.objects.get( Skills=skilldb,Level=int(skills[skill][0]))
+            result = SkillUser.objects.get(Skills=skilldb,Level=int(skills[skill][0]))
         except :
             result = SkillUser.objects.create(Level=0)
-            result.Skills =  skilldb
+            result.Skill.add(skilldb)
             result.Private = private
             result.Level = int(skills[skill][0])
             result.save()
         question.Skills.add(result)
     for item in items.keys():
-        itemdb  = Item.objects.filter(Nom=item)
+        itemdb  = Item.objects.get(Nom=item)
         try :
             result = ItemUser.objects.get(Item=itemdb)
         except :
             result = ItemUser.objects.create()
-            result.Item = itemdb
+            result.Item.add(itemdb)
             result.Private = private
             result.save()
         question.Items.add(result)

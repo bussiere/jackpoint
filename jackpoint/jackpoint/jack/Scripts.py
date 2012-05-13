@@ -32,7 +32,6 @@ def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
 #    jack["jack_password1"]= jack_password1
 #    jack["jack_password2"]=jack_password2
 #    jack["jack_Bio"]=jack_Bio
-    print jack["jack_username"]
     u.get_profile().Pseudo = jack["jack_username"]
     u.get_profile().Email = jack["jack_email"]
     u.get_profile().Bio = jack["jack_Bio"]
@@ -52,7 +51,7 @@ def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
             result = CaracUser.objects.get(carac=caracdb,Level=int(caracs[carac][0]),Private=private)
         except :
             result = CaracUser.objects.create(Level=0)
-            result.carac = caracdb
+            result.Carac.add(caracdb)
             result.Level = int(caracs[carac][0])
             result.Private = private
             result.save()
@@ -66,7 +65,7 @@ def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
             result = SkillUser.objects.get( Skills=skilldb,Level=int(skills[skill][0]),Private=private)
         except :
             result = SkillUser.objects.create(Level=0)
-            result.Skills =  skilldb
+            result.Skill.add(skilldb)
             result.Private = private
             result.Level = int(skills[skill][0])
             result.save()
@@ -80,7 +79,7 @@ def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
             result = ItemUser.objects.get(Item=itemdb,Private=private)
         except :
             result = ItemUser.objects.create()
-            result.Item = itemdb
+            result.Item.add(itemdb)
             result.Private = private
             result.save()
         u.get_profile().Items.add(result)
