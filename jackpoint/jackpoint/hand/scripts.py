@@ -22,7 +22,7 @@ from jackpoint.jack.forms import JackRegisterForm
 from django.forms.formsets import formset_factory
 from django.forms.formsets import BaseFormSet
 from jackpoint.hand.forms import AskForm
-from jackpoint.hand.models import Question
+from jackpoint.hand.models import Question,Answer
 from jackpoint.jack.models import CaracUser,SkillUser,ItemUser
 from jackpoint.tag.models import Tag
 from jackpoint.engine.models import ThreadEngine
@@ -31,6 +31,25 @@ from jackpoint.engine.script import sendnotification
 # A factyoriser enregistrement skills carac items
 
 
+
+def enregistrementAnswer(request):
+        user = User.objects.get(id=request.user.id)
+        reponse  = request.POST['Reponse']
+        tags  = request.POST['Tags']
+        threadengineid  = int(request.POST['ThreadEngineId'])
+        tags = tags.split("#")
+        answer = Answer.objects.create(user=user,Text=reponse)
+        #TODO
+        # a factoriser
+        for tag in tags :
+            tag = tag.strip()
+            try :
+                result = Tag.objects.get(Name=tag)
+            except :
+                result = Tag.objects.create(Name=tag)
+            result.save()
+        answer.Tags.add(result)
+        answer.save()
 
 def enregistrementAsk(request,caracs,skills,items,intitule,description,tags) :
     question = Question.objects.create() 
@@ -42,6 +61,8 @@ def enregistrementAsk(request,caracs,skills,items,intitule,description,tags) :
     #TODO
     #Factoriser et expliquer les tags
     tags = tags.split('#')
+    # TODO
+    # A factoriser
     for tag in tags :
         tag = tag.strip()
         try :

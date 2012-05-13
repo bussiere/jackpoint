@@ -3,10 +3,34 @@
 {{ question.user }}
 {{ question.Intitule }}
 {{ question.Text }}
-{{ question.Tags }}
-{{ question.Skills }}
-{{ question.Caracs }}
-{{ question.Items }}
+{% for tag in question.Tags.all %}
+{{ tag.Nom }}
+{% endfor %}
+<br>
+
+{% for skill in question.Skills.all %}
+{% for sk in  skill.Skills.all %}
+{{ sk.Nom }}
+{% endfor %}
+{{ skill.Level }}<br>
+{% endfor %}
+
+<br>
+{% for carac in question.Caracs.all %}
+{% for ca in  carac.carac.all %}
+{{ ca.Nom }}
+{% endfor %}
+{{ carac.Level }}<br>
+{% endfor %}
+
+
+<br>
+{% for item in question.Item.all %}
+{% for it in  carac.Item.all %}
+{{ it.Nom }}<br>
+{% endfor %}
+{% endfor %}
+<br>
 {% for  answer in threadengine.Answer.all %}
 <-- #TODO -->
 <-- faire le for proprement -->
@@ -16,7 +40,7 @@
 {{ answer.Tags }}
  {% endfor %}
 {% endfor %}
-<form action="../../hand/answer/" method="post">{% csrf_token %}
+<form action="../../hand/view/{{ threadengine.id }}/" method="post">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>

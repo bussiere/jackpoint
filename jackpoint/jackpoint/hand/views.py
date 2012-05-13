@@ -6,32 +6,26 @@ from jackpoint.skill.models import Skill
 from jackpoint.engine.models import ThreadEngine
 from jackpoint.carac.models import Carac
 from jackpoint.item.models import Item
-from jackpoint.hand.models import Question
 from jackpoint.carac.forms import CaracFormChoice
 from jackpoint.skill.forms import SkillFormChoice
 from jackpoint.item.forms import ItemFormChoice
 from django.forms.formsets import formset_factory
-from jackpoint.hand.scripts import enregistrementAsk
+from jackpoint.hand.scripts import enregistrementAsk,enregistrementAnswer
 from jackpoint.hand.forms import AskForm,AnswerForm
-from django.contrib.auth.models import User
 
 
 
 @login_required
 def viewid(request,id):
-    
     try :
         threadengine = ThreadEngine.objects.get(id=id)
     except :
         #Todo
         #renvoyer une 404
         threadengine = None
-        pass
     if request.method == 'POST':
-        user = User.objects.get(id=request.user.id)
-        reponse  = request.POST['Reponse']
-        tags  = request.POST['Tags']
-        threadengineid  = int(request.POST['ThreadEngineId'])
+
+        enregistrementAnswer(request)
     form = AnswerForm()
     form.ThreadEngineId = threadengine.id
     print form
@@ -76,8 +70,9 @@ def ask(request):
         compteur_carac = 0
         caracs = {}
         while compteur_carac < nbre_carac :
-            caracs[request.POST["carac-%d-carac"%compteur_carac]] = [request.POST["carac-%d-carac_level"%compteur_carac]]
-            compteur_carac += 1
+            if int(request.POST["carac-%d-carac_level"%compteur_carac]) >= 0 :
+                caracs[request.POST["carac-%d-carac"%compteur_carac]] = [request.POST["carac-%d-carac_level"%compteur_carac]]
+                compteur_carac += 1
         nbr_skills = int(request.POST['skill-TOTAL_FORMS'])
         nbr_initial_skills = request.POST['skill-INITIAL_FORMS']
         levelskill = "skill-#-skill_level"
@@ -87,7 +82,7 @@ def ask(request):
         skills = {}
         
         while compteur_skill < nbr_skills :
-            if int(request.POST["skill-%d-skill_level"%compteur_skill]) > 0 :
+            if int(request.POST["skill-%d-skill_level"%compteur_skill]) >= 0 :
                 skills[request.POST["skill-%d-skill"%compteur_skill]] = [request.POST["skill-%d-skill_level"%compteur_skill]]
             compteur_skill += 1
             

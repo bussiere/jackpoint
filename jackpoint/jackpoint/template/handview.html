@@ -2,7 +2,7 @@
 {{ t }}
 {% for question in t.Question.all %}
 <br>
-<a href="../../hand/view/{{ question.id }}/">{{ question.Intitule }} : {{ question.user }}</a><br>
+<a href="../../hand/view/{{ t.id }}/">{{ question.Intitule }} : {{ question.user }}</a><br>
 {{ question.id }}
 <br>
 {{ question.user }}
@@ -36,7 +36,11 @@
 
 
 <br>
-{{ question.Items }}
+{% for item in question.Item.all %}
+{% for it in  carac.Item.all %}
+{{ it.Nom }}<br>
+{% endfor %}
+{% endfor %}
 <br>
 <br>
 {% for  answer in ThreadEngine.Answer.all %}
