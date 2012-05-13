@@ -21,7 +21,7 @@ LevelSkill = (
 )
 
 class SkillUser(models.Model):
-    Skills = models.ManyToManyField("skill.Skill")
+    Skill = models.ManyToManyField("skill.Skill")
     Level = models.IntegerField(choices=LevelSkill)
     Private = models.BooleanField()
     def __unicode__(self):
@@ -36,7 +36,7 @@ LevelCarac = (
 )
 
 class CaracUser(models.Model):
-    carac = models.ManyToManyField("carac.Carac")
+    Carac = models.ManyToManyField("carac.Carac")
     Level = models.IntegerField(choices=LevelCarac)
     Private = models.BooleanField()
     def __unicode__(self):
@@ -46,9 +46,6 @@ class CaracUser(models.Model):
             t = c 
         return "%s %d %r"%(c.Nom,self.Level,self.Private)
     
-class NotificationUser(models.Model):
-    Seen = models.BooleanField(default=False)
-    Notification = models.OneToOneField("engine.Notification",related_name="NotificationUser", blank=True, null=True)
     
 class UserProfile(models.Model):  
     user = models.OneToOneField(User)  
@@ -62,7 +59,6 @@ class UserProfile(models.Model):
     Bio = models.TextField()
     Email = models.EmailField()
     Avatar = models.ImageField(upload_to='Avatar')
-    Notifications = models.ManyToManyField("NotificationUser", blank=True, null=True)
     Finished = models.BooleanField(default=False)
     InvitationAccepted = models.OneToOneField("invitation.Invitation",related_name="InvitationAccepted", blank=True, null=True)
     InvitationGiven = models.ManyToManyField("invitation.Invitation",related_name="InvitationGiven", blank=True, null=True)
