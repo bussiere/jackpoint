@@ -25,7 +25,7 @@ class Notification(models.Model):
     Tags = models.ManyToManyField("tag.Tag", null=True, blank=True)
     Items = models.ManyToManyField("jack.ItemUser", null=True, blank=True)
     Caracs = models.ManyToManyField("jack.CaracUser", null=True, blank=True)
-    User = models.OneToOneField(User,related_name="UserNotification") 
+    User = models.OneToOneField(User,related_name="UserNotification",unique=False) 
     Seen = models.BooleanField(default=False)
     #TODO
     # Why not faire le save et ecrire le texte en fonciton de la langue ?

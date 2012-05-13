@@ -106,6 +106,6 @@ def enregistrementAsk(request,caracs,skills,items,intitule,description,tags) :
     threadengine = ThreadEngine.objects.create()
     threadengine.Question.add(question)
     threadengine.save()
-    sendnotification(question,ThreadEngine)
+    sendnotification(question,threadengine)
 
     

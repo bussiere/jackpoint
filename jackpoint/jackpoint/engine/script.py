@@ -25,7 +25,8 @@ def sendnotification(question,threadEngine):
             id = sk.id
         print "sportid"
         print sk.id
-        jacks = UserProfile.objects.get(Q(Skills__Skill__id__contains = id))#,Q(Skills__Level__gte = skill.Level)
+        jacks = UserProfile.objects.filter(Q(Skills__Skill__id__contains = id),Q(Skills__Level__gte = skill.Level))
+        
         print jacks
         #TODO
         #A optimiser
@@ -81,7 +82,7 @@ def sendnotification(question,threadEngine):
         try :
             notification = Notification.objects.get(ThreadEngine__id_icontains = threadEngine.id)
         except :
-            notification =  Notification.objects.create()
+            notification =  Notification.objects.create(User=u)
             notification.ThreadEngine.add(threadEngine)
         notification.url = "../../../hand/view/%d/"%threadEngine.id
         text = "Vous pouvez aider car vous avez : <br>"
@@ -96,5 +97,4 @@ def sendnotification(question,threadEngine):
         for carac in user[jack.id]['carac'] :
             notification.Carac.add(carac)
         notification.Texte = text    
-        notification.User = user
         notification.save()
