@@ -1,3 +1,22 @@
 <a href="../hand/">Demande d'aide en cour</a><br>
 <a href="../hand/ask/">Demander de l'aide</a><br>
 <a href="../jack/edit/">Modifier sa fiche</a><br>
+
+{% for notification in notifications %}
+
+{{ notification.Texte }}
+{{ notification.id }}
+{% for  skill in notification.Skills.all %}
+{% for  sk in skill.Skill.all %}
+{{ sk.Nom  }} &lt;= {{ skill.Level }}
+ {% endfor %}
+ {% endfor %}
+ {% for  carac in notification.Caracs.all %}
+{{ carac.Nom  }} &lt;= {{ carac.level }}
+{% endfor %}
+  {% for  item in profile.Items.all %}
+{{ item  }}
+{% endfor %}
+<a href="{{ notification.Url }}">ici</a>
+<br>
+{% endfor %}

@@ -43,7 +43,7 @@ def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
     #TODO
     #crade a revoir
     for carac in caracs.keys():
-        caracdb  = Carac.objects.filter(Nom=carac)
+        caracdb  = Carac.objects.get(Nom=carac)
         private = False
         if caracs[carac][1] == "1" :
             private = True 
@@ -57,7 +57,7 @@ def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
             result.save()
         u.get_profile().Caracs.add(result)
     for skill in skills.keys():
-        skilldb  = Skill.objects.filter(Nom=skill)
+        skilldb  = Skill.objects.get(Nom=skill)
         private = False
         if skills[skill][1] == "1" :
             private = True 
@@ -71,7 +71,7 @@ def enregistrementJack(request,jack,caracs,skills,items,invitation=None):
             result.save()
         u.get_profile().Skills.add(result)
     for item in items.keys():
-        itemdb  = Item.objects.filter(Nom=item)
+        itemdb  = Item.objects.get(Nom=item)
         private = False
         if items[item][0] == "1" :
             private = True 

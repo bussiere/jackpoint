@@ -80,21 +80,31 @@ def sendnotification(question,threadEngine):
         #a verifier fait a l'arrache
         u = User.objects.get(id=id)
         try :
-            notification = Notification.objects.get(ThreadEngine__id_icontains = threadEngine.id)
+            notification = Notification.objects.get(ThreadEngine__id_icontains = threadEngine.id,User=u)
         except :
             notification =  Notification.objects.create(User=u)
             notification.ThreadEngine.add(threadEngine)
-        notification.url = "../../../hand/view/%d/"%threadEngine.id
+        notification.Url = "../../../hand/view/%d/"%threadEngine.id
         text = "Vous pouvez aider car vous avez : <br>"
         #TODO
         # Optimiser le double parcour
+        
         for tag in tags :
             notification.Tags.add(tag)
-        for skill in user[jack.id]['skill'] :
-              notification.Skill.add(skill)
-        for item in user[jack.id]['item'] :
-              notification.Item.add(item)
-        for carac in user[jack.id]['carac'] :
-            notification.Carac.add(carac)
+        try:
+            for skill in user[jack.id]['skill'] :
+                notification.Skills.add(skill)
+        except :
+            pass
+        try :      
+            for item in user[jack.id]['item'] :
+                notification.Items.add(item)
+        except :
+            pass
+        try :
+            for carac in user[jack.id]['carac'] :
+                notification.Caracs.add(carac)
+        except :
+            pass
         notification.Texte = text    
         notification.save()

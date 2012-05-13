@@ -12,6 +12,7 @@ from django.contrib import auth
 from jackpoint.skill.models import Skill
 from jackpoint.carac.models import Carac
 from jackpoint.item.models import Item
+from jackpoint.engine.models import Notification
 from jackpoint.carac.forms import CaracForm
 from jackpoint.skill.forms import SkillForm
 from jackpoint.item.forms import ItemForm
@@ -25,5 +26,7 @@ from django.forms.formsets import BaseFormSet
 
 @login_required
 def index(request):
-    return render_to_response('x.html', {
+    u = User.objects.get(id=request.user.id)
+    notifications = Notification.objects.filter(User=u)
+    return render_to_response('x.html', {'notifications':notifications
     },RequestContext(request))

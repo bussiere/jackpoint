@@ -20,15 +20,15 @@ class Notification(models.Model):
     Categorie = models.ManyToManyField('CategorieNotification', null=True, blank=True)
     ThreadEngine =  models.ManyToManyField('ThreadEngine',related_name="NotificationThreadEngine", null=True, blank=True)
     Texte = models.TextField(max_length=1024, null=True, blank=True)
-    Url = models.ManyToManyField('Url',null=True, blank=True)
+    Url = models.TextField(max_length=1024, null=True, blank=True)
     Skills = models.ManyToManyField("jack.SkillUser", null=True, blank=True)
     Tags = models.ManyToManyField("tag.Tag", null=True, blank=True)
     Items = models.ManyToManyField("jack.ItemUser", null=True, blank=True)
     Caracs = models.ManyToManyField("jack.CaracUser", null=True, blank=True)
-    User = models.OneToOneField(User,related_name="UserNotification",unique=False) 
+    User = models.ForeignKey(User, unique=False, null=True, blank=True,related_name="UserNotification") 
     Seen = models.BooleanField(default=False)
     #TODO
     # Why not faire le save et ecrire le texte en fonciton de la langue ?
     def __unicode__(self):
-        return self.Nom
+        return str(self.User.id)
     
