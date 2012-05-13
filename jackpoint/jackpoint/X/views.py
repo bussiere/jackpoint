@@ -10,17 +10,17 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from jackpoint.engine.models import Notification
 from jackpoint.mp.models import MP
-
+from jackpoint.jack.models import UserProfile
 
 
 
 
 @login_required
 def index(request):
-    u = User.objects.get(id=request.user.id)
-    
-    notifications = Notification.objects.filter(User=u)
-    messagerecus = MP.objects.filter(Receiver=u)
-    messageenvoyes = MP.objects.filter(Sender=u)
-    return render_to_response('x.html', {'notifications':notifications,'messagerecus':messagerecus,'messageenvoyes':messageenvoyes
+    user = User.objects.get(id=request.user.id)
+    profile = UserProfile.objects.get(user=user)
+    notifications = Notification.objects.filter(User=user)
+    messagerecus = MP.objects.filter(Receiver=user)
+    messageenvoyes = MP.objects.filter(Sender=user)
+    return render_to_response('x.html', {'notifications':notifications,'messagerecus':messagerecus,'messageenvoyes':messageenvoyes,'profile':profile
     },RequestContext(request))

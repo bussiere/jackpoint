@@ -18,7 +18,7 @@ from django.http import HttpResponseRedirect
 
 @login_required
 def viewid(request,id):
-    user = User.objects.get(id=request.user.id)
+    user = User.objects.get(id=id)
     profile = UserProfile.objects.get(user=user)
     return render_to_response('jackviewid.html', {'profile':profile,'user':user},RequestContext(request))# Create
 

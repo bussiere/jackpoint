@@ -1,7 +1,7 @@
 {% for question in threadengine.Question.all %}
 
 {{ question.id }}<br>
-{{ question.user }}&nbsp;<a href="../../mp/{{question.user.id}}/">MP</a><br>
+<a href="../../../jack/view/{{ question.user.id }}/">{{ question.user }}</a>&nbsp;<a href="../../../mp/{{question.user.id}}/">MP</a><br>
 {{ question.Intitule }}<br>
 {{ question.Text }}<br>
 {% for tag in question.Tags.all %}
@@ -40,8 +40,7 @@
 {% for  answer in threadengine.Answer.all %}
 <-- #TODO -->
 <-- faire le for proprement -->
-{{ answer.id }}
-{{ answer.user }}
+<a href="../../../jack/view/{{ answer.user.id }}/">{{ answer.user }}</a>&nbsp;<a href="../../../mp/{{answer.user.id}}/">MP</a><br>
 {{ answer.Text }}
 {% for tag in  answer.Tags.all %}
 #{{ tag.Name }} &nbsp;
