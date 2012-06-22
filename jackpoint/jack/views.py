@@ -14,7 +14,7 @@ from django.forms.formsets import formset_factory
 from django.contrib.auth.models import User
 from jack.scripts import enregistrementJack
 from django.http import HttpResponseRedirect
-
+from jack.models import CaracUser,SkillUser,ItemUser
 
 @login_required
 def viewid(request,id):
@@ -91,21 +91,42 @@ def editJack(request):
         Items = Item.objects.all()
         initial = []
         for carac in Caracs :
-            initial.append({'carac': carac.Nom, 'id':carac.id})
+            level = 0
+            try :
+                caracdb  = Carac.objects.get(Nom=carac.Nom)
+                result = user.get_profile().Caracs.get(Carac=caracdb)
+                level = result.Level
+            except :
+                pass
+            initial.append({'carac': carac.Nom, 'id':carac.id,'carac_level':level})
         CaracFormSet = formset_factory(CaracForm, extra=0)
         CaracFormSet = CaracFormSet(prefix='carac', initial=initial)
         initial = []
         # algo de skills a revoir pour le classement
         for skill in Skills :
-            initial.append({'skill': skill.Nom, 'id':skill.id})
+            level = 0
+            try :
+                skilldb  = Skill.objects.get(Nom=carac.Nom)
+                result = user.get_profile().Skills.get(Skill=skilldb)
+                level = result.Level
+            except :
+                pass
+            initial.append({'skill': skill.Nom, 'id':skill.id,'skill_level ':level})
         SkillFormSet = formset_factory(SkillForm, extra=0)
         SkillFormSet = SkillFormSet(prefix='skill', initial=initial)
         initial = []
         for item in Items :
-            initial.append({'item': item.Nom, 'id':item.id})
+            level = 0
+            try :
+                itemdb  = Item.objects.get(Nom=Item.Nom)
+                result = user.get_profile().Items.get(Item=itemdb)
+                level = result.Level
+            except :
+                pass
+            initial.append({'item': item.Nom, 'id':item.id,'item_Possede':level})
         ItemFormSet = formset_factory(ItemForm, extra=0)
         ItemFormSet = ItemFormSet(prefix='item', initial=initial)
         
         print CaracFormSet.management_form
-        formJack = JackRegisterForm()
+        formJack = JackRegisterForm({'jack_email': item.Nom, 'jack_username':item.id,'jack_Avatar':level,'jack_Bio':level})
         return render_to_response('jackedit.html', {"CaracFormSet":CaracFormSet, 'SkillFormSet':SkillFormSet, 'ItemFormSet':ItemFormSet, 'formJack':formJack}, RequestContext(request))

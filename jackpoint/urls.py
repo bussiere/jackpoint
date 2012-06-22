@@ -24,7 +24,8 @@ urlpatterns = patterns('',
     url(r'^hand/view/(?P<id>\d+)/$','hand.views.viewid'),
     url(r'^mp/(?P<id>\d+)/$','mp.views.index'),
     url(r'^jack/view/(?P<id>\d+)/$','jack.views.viewid'),
-    url(r'^jack/edit/$','jack.views.editJack'),
+    url(r'^place/view/(?P<id>\d+)/$','place.views.viewid'),
+    url(r'^place/add/$','place.views.editJack'),
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )
