@@ -1,0 +1,54 @@
+{% for t in threadengine %}
+{{ t }}
+{% for question in t.Question.all %}
+<br>
+<a href="../../hand/view/{{ t.id }}/">{{ question.Intitule }} : {{ question.user }}</a><br>
+{{ question.id }}
+<br>
+<a href="../../jack/view/{{ question.user.id }}/">{{ question.user }}</a>
+&nbsp;<a href="../../mp/{{question.user.id}}/">MP</a><br>
+<br>
+{{ question.Intitule }}
+<br>
+{{ question.Text }}
+<br>
+<-- #TODO -->
+<-- faire le for pour tout afficher -->
+
+{% for tag in question.Tags.all %}
+{{ tag.Nom }}
+{% endfor %}
+<br>
+
+{% for skill in question.Skills.all %}
+{% for sk in  skill.Skill.all %}
+{{ sk.Nom }}
+{% endfor %}
+{{ skill.Level }}<br>
+{% endfor %}
+
+<br>
+{% for carac in question.Caracs.all %}
+{% for ca in  carac.Carac.all %}
+{{ ca.Nom }}
+{% endfor %}
+{{ carac.Level }}<br>
+{% endfor %}
+
+
+<br>
+{% for item in question.Item.all %}
+{% for it in  carac.Item.all %}
+{{ it.Nom }}<br>
+{% endfor %}
+{% endfor %}
+<br>
+<br>
+{% for  answer in ThreadEngine.Answer.all %}
+{{ answer.id }}
+{{ answer.user }}
+{{ answer.Text }}
+{{ answer.Tags }}
+ {% endfor %}
+{% endfor %}
+{% endfor %}

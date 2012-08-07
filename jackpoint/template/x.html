@@ -1,0 +1,81 @@
+<a href="../hand/">Demande d'aide en cour</a><br>
+<a href="../hand/ask/">Demander de l'aide</a><br>
+<a href="../jack/edit/">Modifier sa fiche</a><br>
+<a href="../place/add/">Rajouter un lieu</a><br>
+<a href="../place/view/">Voir un lieu</a><br>
+<a href="../mp/0/">Envoyer un mp a quelqu un (id)</a><br>
+Votre Fiche :<br>
+{{ profile.pseudo }}
+Votre Id pour les MP : {{ user.id }}<br>
+{% for  skill in profile.Skills.all %}
+{% for  sk in  skill.Skill.all %}
+{% if not skill.Private  %}
+
+{{ sk.Nom  }}:
+{{ skill.Level }}<br>
+{% else %}
+Prive : <br>
+{{ sk.Nom  }}:
+{{ skill.Level }}<br>
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+ {% for  carac in profile.Caracs.all %}
+
+{% for  ca in  carac.Carac.all %}
+{% if not carac.Private %}
+{{ ca.Nom  }}:
+{{ carac.Level }}<br>
+{% else %}
+Prive : <br>
+{{ ca.Nom  }}:
+{{ carac.Level }}<br>
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+  {% for  item in profile.Items.all %}
+
+{% for  it in  item.Item.all %}
+{% if not item.Private %}
+{{ it.Nom  }}<br>
+{% else %}
+Prive : <br>
+{{ it.Nom  }}<br>
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+
+<br>
+Notifications :
+{% for notification in notifications %}
+
+{{ notification.Texte }}
+{{ notification.id }}
+{% for  skill in notification.Skills.all %}
+{% for  sk in skill.Skill.all %}
+{{ sk.Nom  }} &lt;= {{ skill.Level }}
+ {% endfor %}
+ {% endfor %}
+ {% for  carac in notification.Caracs.all %}
+{{ carac.Nom  }} &lt;= {{ carac.level }}
+{% endfor %}
+  {% for  item in profile.Items.all %}
+{{ item  }}
+{% endfor %}
+<a href="{{ notification.Url }}">ici</a>
+<br>
+{% endfor %}
+<br>
+Message recus :<br>
+{% for  message in messagerecus %}
+<a href="../../jack/view/{{ message.Sender.id }}/">{{ message.Sender }}</a> &nbsp;<a href="../../mp/{{message.Sender.id}}/">MP</a><br>
+{{ message.Texte }}<br>
+{% endfor %}
+Message envoyes :<br>
+{% for  message in messageenvoyes %}
+<a href="../../jack/view/{{ message.Receiver.id }}/">{{ message.Receiver }}</a> &nbsp;<a href="../../mp/{{message.Receiver.id}}/">MP</a><br>
+{{ message.Texte }}<br>
+{% endfor %}
