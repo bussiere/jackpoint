@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <script>window.serq=[];StackExchange={ready:function(f){serq.push(f)}}</script>
+    
+    
+    <title>authentication - Extending the User model with custom fields in Django - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico">
+    <link rel="apple-touch-icon" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="http://cdn.sstatic.net/stackoverflow/all.css?v=5062486c254d">
+    
+    <link rel="canonical" href="http://stackoverflow.com/questions/44109/extending-the-user-model-with-custom-fields-in-django">
+    <link rel="alternate" type="application/atom+xml" title="Feed for question 'Extending the User model with custom fields in Django'" href="/feeds/question/44109">
+    <meta name="title" content="authentication - Extending the User model with custom fields in Django - Stack Overflow">
+    <link rel="image_src" href="http://sstatic.net/stackoverflow/img/apple-touch-icon.png">
+
+
+
+    
+
+</head>
+<body class="question-page">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+    <div class="container">
+        <div id="header">
+            <div id="portalLink">
+                <a class="genu" href="http://stackexchange.com" onclick="StackExchange.ready(function(){genuwine.click();});return false;">Stack Exchange</a>
+            </div>
+            <div id="topbar">
+                <div id="hlinks">
+                    <span id="hlinks-user">
+                  
+                  </span>
+                  <span id="hlinks-nav">
+                  <a href="/users/login?returnurl=%2fquestions%2f44109%2fextending-the-user-model-with-custom-fields-in-django">log in</a>
+ <span class="lsep">|</span>
+<a href="http://careers.stackoverflow.com">careers</a>
+ <span class="lsep">|</span>
+
+                  </span>
+                  <span id="hlinks-custom">
+                  <a href="http://chat.stackoverflow.com">chat</a>
+ <span class="lsep">|</span>
+<a href="http://meta.stackoverflow.com">meta</a>
+ <span class="lsep">|</span>
+<a href="/about">about</a>
+ <span class="lsep">|</span>
+<a href="/faq">faq</a>
+                  </span>
+                </div>
+                <div id="hsearch">
+                    <form id="search" action="/search" method="get" autocomplete="off">
+                    <div>
+                        <input autocomplete="off" name="q" class="textbox" placeholder="search" tabindex="1" type="text" maxlength="140" size="28" value="">
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/" >Stack Overflow</a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="/tags">Tags</a></li>
+                        <li><a id="nav-users" href="/users">Users</a></li>
+                        <li><a id="nav-badges" href="/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+        <div id="content">
+            
+            
+
+
+<div itemscope itemtype="http://schema.org/Article">
+<link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+<div id="question-header">
+    <h1 itemprop="name"><a href="/questions/44109/extending-the-user-model-with-custom-fields-in-django" class="question-hyperlink">Extending the User model with custom fields in Django</a></h1>
+</div>
+<div id="mainbar">
+
+
+<div class="question" id="question" data-questionid="44109">
+
+    <div class="everyonelovesstackoverflow" id="adzerk1">
+    </div>
+
+    
+    <table>
+    <tr>
+    <td class="votecell">
+        
+
+<div class="vote">
+    <input type="hidden" value="44109">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear (click again to undo)">up vote</a>
+    <span class="vote-count-post">56</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful (click again to undo)">down vote</a>
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>42</b></div>   
+ 
+    <a id="gp-share-44109" class="gp-share" title="share link to this question on Google+">share [g+]</a>
+    <a id="fb-share-44109" class="fb-share" title="share link to this question on Facebook">share [fb]</a>
+    <a id="twitter-share-44109" class="twitter-share" title="share link to this question on Twitter">share [tw]</a>    
+</div>
+
+    </td>
+<td class="postcell">
+<div>          
+    <div class="post-text" itemprop="description">
+        <p>What's the best way to extend the User model (bundled with Django's authentication app) with custom fields? I would also possibly like to use the email as the username (for authentication purposes).</p>
+
+<p>I've already seen a <a href="http://scottbarnham.com/blog/2008/08/21/extending-the-django-user-model-with-inheritance/" rel="nofollow">few</a> <a href="http://www.b-list.org/weblog/2006/jun/06/django-tips-extending-user-model/" rel="nofollow">ways</a> to do it, but can't decide on which one is the best.</p>
+
+    </div>            
+    <div class="post-taglist">
+        <a href="/questions/tagged/django" class="post-tag" title="show questions tagged 'django'" rel="tag">django</a> <a href="/questions/tagged/authentication" class="post-tag" title="show questions tagged 'authentication'" rel="tag">authentication</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+        <div class="post-menu"><a href="/q/44109" title="short permalink to this question" id="link-post-44109">link</a><span class="lsep">|</span><a href="/posts/44109/edit" >improve this question</a></div>
+    </td>
+    <td class="post-signature owner">
+    <div class="user-info"><div class="user-action-time">asked <span title="2008-09-04 16:19:49Z" class="relativetime">Sep 4 '08 at 16:19</span></div><div class="user-gravatar32"><a href="/users/2841/farinha"><div class=""><img src="http://www.gravatar.com/avatar/7ef637bfe1467faf361c768e9e6894f5?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/2841/farinha">Farinha</a><br><span class="reputation-score" title="reputation score" dir="ltr">2,873</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="24 silver badges"><span class="badge2"></span><span class="badgecount">24</span></span><span title="44 bronze badges"><span class="badge3"></span><span class="badgecount">44</span></span></div></div>
+        <br class="cbt">
+        <div class="accept-rate accept-answer-link" title="this user has accepted an answer for 38 of 47 eligible questions">81% accept rate</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>    </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-44109" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>    </table>    
+</div>
+
+
+
+<div id="answers">
+
+    <a name="tab-top"></a>
+    <div id="answers-header">
+        <div class="subheader answers-subheader">
+            <h2>5 Answers</h2>
+            <div id="tabs">
+                <a href="/questions/44109/extending-the-user-model-with-custom-fields-in-django?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+<a href="/questions/44109/extending-the-user-model-with-custom-fields-in-django?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+<a class="youarehere" href="/questions/44109/extending-the-user-model-with-custom-fields-in-django?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+
+            </div>
+        </div>    
+    </div>    
+
+
+  
+    <a name="44178"></a>
+    <div id="answer-44178" class="answer"  data-answerid="44178">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="44178">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post">31</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+<span class="vote-accepted-on" title="The question owner accepted this as the best answer Sep 6 '08 at 14:23">accepted</span> 
+</div>
+
+        </td>
+
+
+<td class="answercell">
+    <div class="post-text"><p>The least painful and indeed Django-recommended way of doing this is through a OneToOneField(User) property.</p>
+
+<p>That said, extending django.contrib.auth.models.User also works better now -- ever since the refactoring of Django's inheritance code in the models API.</p>
+
+<p>I would definitely stay away from changing the actual User class in your Django source tree and/or copying and altering the auth module.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/44178" title="short permalink to this answer" id="link-post-44178">link</a><span class="lsep">|</span><a href="/posts/44178/edit" >improve this answer</a></div>    </td>
+    <td align="right" class="post-signature">
+<div class="user-info"><div class="user-action-time">edited <a href="/posts/44178/revisions" title="show all edits to this post"><span title="2011-08-17 13:31:15Z" class="relativetime">Aug 17 '11 at 13:31</span></a></div><div class="user-gravatar32"><a href="/users/243157/jonatan-littke"><div class=""><img src="http://www.gravatar.com/avatar/ba562cd92771c4206da230c69f410301?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/243157/jonatan-littke">Jonatan Littke</a><br><span class="reputation-score" title="reputation score" dir="ltr">1,038</span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="15 bronze badges"><span class="badge3"></span><span class="badgecount">15</span></span></div></div>    </td>
+            
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover"><div class="user-action-time">answered <span title="2008-09-04 17:02:18Z" class="relativetime">Sep 4 '08 at 17:02</span></div><div class="user-gravatar32"><a href="/users/2696/ryan-duffield"><div class=""><img src="http://www.gravatar.com/avatar/f153e55c1044cd4df496005f2ab97ae8?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/2696/ryan-duffield">Ryan Duffield</a><br><span class="reputation-score" title="reputation score" dir="ltr">4,463</span><span title="16 silver badges"><span class="badge2"></span><span class="badgecount">16</span></span><span title="24 bronze badges"><span class="badge3"></span><span class="badgecount">24</span></span></div></div>
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-44178" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-2847042" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">With this solution should you ForeignKey to User or Profile?</span> &ndash;&nbsp;<a href="/users/432/superjoe30" title="4061 reputation" class="comment-user">superjoe30</a> <span class="comment-date" dir="ltr"><span title="2010-05-11 06:52:12Z">May 11 '10 at 6:52</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-4554447" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'great comment' votes received" class="warm">9</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">FYI the new (1.0+) recommended method is OneToOneField(User) <a href="http://docs.djangoproject.com/en/dev/topics/auth/#storing-additional-information-about-users" rel="nofollow">docs.djangoproject.com/en/dev/topics/auth/&hellip;</a></span> &ndash;&nbsp;<a href="/users/47472/dave-forgac" title="678 reputation" class="comment-user">Dave Forgac</a> <span class="comment-date" dir="ltr"><span title="2010-11-18 01:39:16Z">Nov 18 '10 at 1:39</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-5179137" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'great comment' votes received" class="cool">1</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Shawn Rider of PBS gave some really good reasons why you should <i>not</i> extend django.contrib.auth.models.User. Use OneToOneField(User) instead.</span> &ndash;&nbsp;<a href="/users/93270/pydanny" title="387 reputation" class="comment-user">pydanny</a> <span class="comment-date" dir="ltr"><span title="2011-01-14 18:38:58Z">Jan 14 '11 at 18:38</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-6598994" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy"><code>user = models.ForeignKey(User, unique=True)</code> is this the same as <code>user = models.OneToOneField(User)</code> ? I would think the end effect is the same? But maybe the implementation in the backend is different.</span> &ndash;&nbsp;<a href="/users/376445/sam-stoelinga" title="395 reputation" class="comment-user">Sam Stoelinga</a> <span class="comment-date" dir="ltr"><span title="2011-04-23 06:04:41Z">Apr 23 '11 at 6:04</span></span><span class="edited-yes" title="this comment was edited 2 times"></span></div></td>
+    </tr>
+            
+    <tr id="comment-9726037" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">@pydanny: actually he gave an argument for not <i>overriding</i> the user model</span> &ndash;&nbsp;<a href="/users/487598/roald" title="130 reputation" class="comment-user">Roald</a> <span class="comment-date" dir="ltr"><span title="2011-10-31 16:18:22Z">Oct 31 '11 at 16:18</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    <a id="comments-link-44178" class="comments-link" data-comments-count="1" title="expand to show all comments on this post">show <b>1</b> more comment</a>
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>    </table>
+</div>
+
+    <div class="everyonelovesstackoverflow" id="adzerk3">
+    </div>
+
+    
+  
+    <a name="965883"></a>
+    <div id="answer-965883" class="answer"  data-answerid="965883">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="965883">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post">57</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+ 
+</div>
+
+        </td>
+
+
+<td class="answercell">
+    <div class="post-text"><p>This is how I do it.</p>
+
+<pre><code>#in models.py
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+
+class UserProfile(models.Model):  
+    user = models.OneToOneField(User)  
+    #other fields here
+
+    def __str__(self):  
+          return "%s's profile" % self.user  
+
+def create_user_profile(sender, instance, created, **kwargs):  
+    if created:  
+       profile, created = UserProfile.objects.get_or_create(user=instance)  
+
+post_save.connect(create_user_profile, sender=User) 
+
+#in settings.py
+AUTH_PROFILE_MODULE = 'YOURAPP.UserProfile'
+</code></pre>
+
+<p>This will create a userprofile each time a user is saved if it is created. 
+You can then use</p>
+
+<pre><code>  user.get_profile().whatever
+</code></pre>
+
+<p>Here is some more info from the docs</p>
+
+<p><a href="http://docs.djangoproject.com/en/dev/topics/auth/#storing-additional-information-about-users" rel="nofollow">http://docs.djangoproject.com/en/dev/topics/auth/#storing-additional-information-about-users</a></p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/965883" title="short permalink to this answer" id="link-post-965883">link</a><span class="lsep">|</span><a href="/posts/965883/edit" >improve this answer</a></div>    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover"><div class="user-action-time">edited <a href="/posts/965883/revisions" title="show all edits to this post"><span title="2011-04-26 20:11:43Z" class="relativetime">Apr 26 '11 at 20:11</span></a></div><div class="user-gravatar32"><a href="/users/21245/chris-lawlor"><div class=""><img src="http://www.gravatar.com/avatar/77a3d97a2dab188e5a351bfbd4482912?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/21245/chris-lawlor">Chris Lawlor</a><br><span class="reputation-score" title="reputation score" dir="ltr">3,787</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="14 silver badges"><span class="badge2"></span><span class="badgecount">14</span></span><span title="26 bronze badges"><span class="badge3"></span><span class="badgecount">26</span></span></div></div>    </td>
+            
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info"><div class="user-action-time">answered <span title="2009-06-08 16:53:14Z" class="relativetime">Jun 8 '09 at 16:53</span></div><div class="user-gravatar32"><a href="/users/75803/raisins"><div class=""><img src="http://www.gravatar.com/avatar/f6b566677f63df15b0b3c014b35f46c6?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/75803/raisins">Raisins</a><br><span class="reputation-score" title="reputation score" dir="ltr">730</span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span></div></div>
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-965883" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-2570189" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'great comment' votes received" class="cool">1</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Thanks for the clear example, note that def create_user.... is not part of the UserProfile class and should be aligned left.</span> &ndash;&nbsp;<a href="/users/126795/phoebeb" title="1003 reputation" class="comment-user">PhoebeB</a> <span class="comment-date" dir="ltr"><span title="2010-04-02 09:31:20Z">Apr 2 '10 at 9:31</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-2847044" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'great comment' votes received" class="cool">2</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">With this solution should other models ForeignKey to User or UserProfile?</span> &ndash;&nbsp;<a href="/users/432/superjoe30" title="4061 reputation" class="comment-user">superjoe30</a> <span class="comment-date" dir="ltr"><span title="2010-05-11 06:52:42Z">May 11 '10 at 6:52</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-3622108" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'great comment' votes received" class="cool">2</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Other models should use <code>user = models.ForeignKey( User )</code>, and retrieve the profile object via <code>user.get_profile()</code>.  Remember to <code>from django.contrib.admin.models import User</code>.</span> &ndash;&nbsp;<a href="/users/12895/craig-trader" title="6538 reputation" class="comment-user">Craig Trader</a> <span class="comment-date" dir="ltr"><span title="2010-08-12 20:01:52Z">Aug 12 '10 at 20:01</span></span><span class="edited-yes" title="this comment was edited 3 times"></span></div></td>
+    </tr>
+            
+    <tr id="comment-4718092" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">By using this method, I need to separate when I retrieve usual information (name, password) and custom one or is there a way to do it at once ? Same for the creation a new user ?</span> &ndash;&nbsp;<a href="/users/147904/martin-trigaux" title="419 reputation" class="comment-user">Martin Trigaux</a> <span class="comment-date" dir="ltr"><span title="2010-12-02 20:29:22Z">Dec 2 '10 at 20:29</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>    </table>
+</div>
+
+  
+    <a name="44133"></a>
+    <div id="answer-44133" class="answer"  data-answerid="44133">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="44133">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post">23</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+ 
+</div>
+
+        </td>
+
+
+<td class="answercell">
+    <div class="post-text"><p>There is an official recommendation on <a href="http://docs.djangoproject.com/en/dev/topics/auth/#storing-additional-information-about-users" rel="nofollow">storing additional information about users</a>.
+The Django Book also discusses this problem in section <a href="http://www.djangobook.com/en/1.0/chapter12/#cn222" rel="nofollow">Profiles</a>.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/44133" title="short permalink to this answer" id="link-post-44133">link</a><span class="lsep">|</span><a href="/posts/44133/edit" >improve this answer</a></div>    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover"><div class="user-action-time">edited <a href="/posts/44133/revisions" title="show all edits to this post"><span title="2010-05-17 13:52:24Z" class="relativetime">May 17 '10 at 13:52</span></a></div><div class="user-gravatar32"><a href="/users/73603/torok-gabor"><div class=""><img src="http://www.gravatar.com/avatar/a73599568e9ab3c8db26a80b810f6af3?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/73603/torok-gabor">T&#246;r&#246;k G&#225;bor</a><br><span class="reputation-score" title="reputation score" dir="ltr">8,044</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="17 silver badges"><span class="badge2"></span><span class="badgecount">17</span></span><span title="33 bronze badges"><span class="badge3"></span><span class="badgecount">33</span></span></div></div>    </td>
+            
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info"><div class="user-action-time">answered <span title="2008-09-04 16:35:39Z" class="relativetime">Sep 4 '08 at 16:35</span></div><div class="user-gravatar32"><a href="/users/3448/mojo"><div class=""><img src="http://www.gravatar.com/avatar/d64a65ec9c8d9798474f4387dd5a8354?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/3448/mojo">mojo</a><br><span class="reputation-score" title="reputation score" dir="ltr">571</span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="16 bronze badges"><span class="badge3"></span><span class="badgecount">16</span></span></div></div>
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-44133" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>    </table>
+</div>
+
+  
+    <a name="705389"></a>
+    <div id="answer-705389" class="answer"  data-answerid="705389">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="705389">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post">8</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+ 
+</div>
+
+        </td>
+
+
+<td class="answercell">
+    <div class="post-text"><p>The below one is another approach to extend an User.
+I feel it is more clear,easy,readable  then above two approaches.</p>
+
+<p><a href="http://scottbarnham.com/blog/2008/08/21/extending-the-django-user-model-with-inheritance/" rel="nofollow">http://scottbarnham.com/blog/2008/08/21/extending-the-django-user-model-with-inheritance/</a></p>
+
+<p>Using above approach:</p>
+
+<ol>
+<li>you don't need to use
+*user.get_profile().newattribute* to access the additional information
+related to the user</li>
+<li>you can just directly access
+additional new attributes via 
+<em>user.newattribute</em></li>
+</ol>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/705389" title="short permalink to this answer" id="link-post-705389">link</a><span class="lsep">|</span><a href="/posts/705389/edit" >improve this answer</a></div>    </td>
+            
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info"><div class="user-action-time">answered <span title="2009-04-01 13:01:09Z" class="relativetime">Apr 1 '09 at 13:01</span></div><div class="user-gravatar32"><a href="/users/270442/rama-vadakattu"><div class=""><img src="http://www.gravatar.com/avatar/cf092cb752b73418a4987202121b9228?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/270442/rama-vadakattu">Rama Vadakattu</a><br><span class="reputation-score" title="reputation score" dir="ltr">282</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="12 bronze badges"><span class="badge3"></span><span class="badgecount">12</span></span></div></div>
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-705389" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-2495360" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'great comment' votes received" class="cool">1</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">I like Scott&#39;s approach much better, based on the inheritance of the User object rather than directly off the model.   Can anyone say if this approach is not wise?</span> &ndash;&nbsp;<a href="/users/38461/bozojoe" title="411 reputation" class="comment-user">BozoJoe</a> <span class="comment-date" dir="ltr"><span title="2010-03-23 14:55:49Z">Mar 23 '10 at 14:55</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-12602769" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">@BozoJoe - I just ran into this issue importing dump data, which appears to be a consequence of using this method: <a href="http://stackoverflow.com/questions/8840068/duplicate-key-value-error-when-running-django-tests-on-auth" title="duplicate key value error when running django tests on auth">stackoverflow.com/questions/8840068/&hellip;</a></span> &ndash;&nbsp;<a href="/users/69697/ben" title="3412 reputation" class="comment-user">Ben</a> <span class="comment-date" dir="ltr"><span title="2012-03-26 23:27:55Z">Mar 26 at 23:27</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>    </table>
+</div>
+
+  
+    <a name="965859"></a>
+    <div id="answer-965859" class="answer"  data-answerid="965859">
+        <table>
+        <tr>
+        <td class="votecell">
+            
+
+<div class="vote">
+    <input type="hidden" value="965859">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post">-2</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+ 
+</div>
+
+        </td>
+
+
+<td class="answercell">
+    <div class="post-text"><p>Sometimes, this is all you need : <a href="http://www.alrond.com/en/2008/may/03/monkey-patching-in-django/" rel="nofollow">http://www.alrond.com/en/2008/may/03/monkey-patching-in-django/</a></p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="/a/965859" title="short permalink to this answer" id="link-post-965859">link</a><span class="lsep">|</span><a href="/posts/965859/edit" >improve this answer</a></div>    </td>
+            
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info"><div class="user-action-time">answered <span title="2009-06-08 16:48:41Z" class="relativetime">Jun 8 '09 at 16:48</span></div><div class="user-gravatar32"><a href="/users/8482/interstar"><div class=""><img src="http://www.gravatar.com/avatar/248a3c4ba8f2972427222d46954f9c1c?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a></div><div class="user-details"><a href="/users/8482/interstar">interstar</a><br><span class="reputation-score" title="reputation score" dir="ltr">2,338</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="19 silver badges"><span class="badge2"></span><span class="badgecount">19</span></span><span title="63 bronze badges"><span class="badge3"></span><span class="badgecount">63</span></span></div></div>
+    </td>
+    </tr>
+    </table>
+</td>        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-965859" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-1066566" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">Terrible approach.</span> &ndash;&nbsp;<a href="/users/89373/aehlke" title="2118 reputation" class="comment-user">aehlke</a> <span class="comment-date" dir="ltr"><span title="2009-08-06 17:49:02Z">Aug 6 '09 at 17:49</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-1078278" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'great comment' votes received" class="cool">2</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Maybe, but you want to say why? I had to do this, simply because none of the other options worked for me.</span> &ndash;&nbsp;<a href="/users/8482/interstar" title="2338 reputation" class="comment-user">interstar</a> <span class="comment-date" dir="ltr"><span title="2009-08-09 14:30:39Z">Aug 9 '09 at 14:30</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-1082037" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'great comment' votes received" class="cool">1</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Monkey patching is never a good solution. That&#39;s even worse than subclassing the User model. Just use a foreign key relationship. If you couldn&#39;t get it working, it&#39;s your problem, since this is how everyone else does it (and how Django core developers, and John Bennet, recommend it as well)</span> &ndash;&nbsp;<a href="/users/89373/aehlke" title="2118 reputation" class="comment-user">aehlke</a> <span class="comment-date" dir="ltr"><span title="2009-08-10 14:21:03Z">Aug 10 '09 at 14:21</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-1758245" class="comment">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">That still doesn&#39;t answer anything Wahnfrieden.</span> &ndash;&nbsp;<a href="/users/65387/mark" title="19797 reputation" class="comment-user">Mark</a> <span class="comment-date" dir="ltr"><span title="2009-12-07 19:28:09Z">Dec 7 '09 at 19:28</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-3622192" class="comment">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'great comment' votes received" class="warm">13</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">It&#39;s a bad solution because it breaks the developer&#39;s view of Django code.  You&#39;re adding additional fields to an object that are not defined with the object itself.  The next developer who comes along who needs to deal with your fields is going to look at the User model definition <b>and NOT find them</b> and then will have to search the codebase to find them.  Worse, the Django developers could modify the User model and add new fields with the same name as yours, and then with the next release of Django your code breaks.  That&#39;s what <b>terrible approach</b> means.</span> &ndash;&nbsp;<a href="/users/12895/craig-trader" title="6538 reputation" class="comment-user">Craig Trader</a> <span class="comment-date" dir="ltr"><span title="2010-08-12 20:09:43Z">Aug 12 '10 at 20:09</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    
+    
+    <div class="was-this-helpful">
+        feedback
+    </div>
+    
+</td>
+</tr>    </table>
+</div>
+<div class="question-status">
+                    <h2><b>protected</b> by <a href="/users/23649/jtbandes">jtbandes</a> <span title="2011-10-30 23:35:34Z" class="relativetime">Oct 30 '11 at 23:35</span></h2>
+                    <p>This question is protected to prevent "thanks!", "me too!", or spam answers by new users. To answer it, you must have earned at least 10 <a href="/faq#reputation">reputation</a> on this site.</p>
+                  </div>
+
+
+
+        <h2 class="bottom-notice">
+                Not the answer you're looking for? 
+            Browse other questions tagged <a href="/questions/tagged/django" class="post-tag" title="show questions tagged 'django'" rel="tag">django</a> <a href="/questions/tagged/authentication" class="post-tag" title="show questions tagged 'authentication'" rel="tag">authentication</a> 
+                or <a href="/questions/ask">ask your own question</a>.
+        </h2>
+</div>
+</div>
+<div id="sidebar">
+
+
+
+     <script type="text/javascript">
+        window.showNewUser = true;
+            
+                (function(){
+                    var cs = window.sessionStorage && window.sessionStorage['tNewsletter'];
+                    var m = /:\/\/([^\/]*)/.exec(document.referrer);
+                    var h = {'www.reddit.com':1,'news.ycombinator.com':1};
+                    if(window.sessionStorage && (cs || (m && m.length == 2 && h[m[1]]))){
+                        showNewUser = false;
+                        StackExchange.ready(function(){
+                            StackExchange.newsletterAd.loader(m[1], cs);
+                        });
+                    }
+                    if (window.localStorage && showNewUser){
+                        var c = parseInt(localStorage['nuCounter'],10); 
+                        c = isNaN(c) ? 1 : c+1;
+                        window.localStorage['nuCounter'] = c; 
+                        showNewUser = c < 10;
+                    }
+                })()
+            
+     </script>
+    <div class="module newuser newuser-greeting" id="newuser-box" style="display:none;">
+        <h4>Hello World!</h4>
+        <div>
+            <p><p>This is a collaboratively edited question and answer site for <b>professional and enthusiast programmers</b>. It's 100% free, no registration required.</p></p>
+            <p class="ar"><a href="/about?mnu=1">about &raquo;</a>&nbsp;&nbsp;&nbsp;<a href="/faq?mnu=1">faq &raquo;</a>
+            </p>
+        </div>
+    </div>
+     <script type="text/javascript">
+        if (showNewUser) {
+            document.getElementById('newuser-box').style.display = '';
+        }
+     </script>
+    <div class="module question-stats">
+        <p class="label-key">tagged</p>
+        <div class="tagged"><a href="/questions/tagged/django" class="post-tag" title="show questions tagged 'django'" rel="tag">django</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">30622</span></span><br>
+<a href="/questions/tagged/authentication" class="post-tag" title="show questions tagged 'authentication'" rel="tag">authentication</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">7520</span></span><br>
+</div>
+        <table id="qinfo">
+            <tr>
+                <td><p class="label-key">asked</p></td>
+                <td style="padding-left:10px"><p class="label-key" title="2008-09-04 16:19:49Z"><b>3 years ago</b></p></td>
+            </tr>
+            <tr>
+                <td><p class="label-key">viewed</p></td>
+
+                <td style="padding-left:10px"><p class="label-key"><b>22,411 times</b></p></td>
+            </tr>
+            <tr>
+                <td><p class="label-key">active</p></td>
+                <td style="padding-left:10px"><p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2011-08-17 13:31:15Z">7 months ago</a></b></p></td>
+            </tr>
+        </table>
+    </div>
+    
+        <script type="text/javascript">
+            var scriptSrc = "http://engine2.adzerk.net/z/8277/adzerk1_2_4_43,adzerk2_2_17_45,adzerk3_2_4_44?keywords=django,authentication";
+            if (document.referrer) {
+                if (/\?/.test(scriptSrc))
+                    scriptSrc += "&";
+                else
+                    scriptSrc += "?";
+                scriptSrc += "xReferrer=" + document.referrer;
+            }
+            StackExchange.ready(function(){var z = document.createElement("script"); z.type = "text/javascript"; z.async = "true"; z.src = scriptSrc; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);});
+        </script>
+    
+    <div class="everyonelovesstackoverflow" id="adzerk2">
+    </div>
+
+    
+    <div id="hireme">
+        <script type="text/javascript">
+            var careers_adurl="http://careers.stackoverflow.com/ad/js",careers_cssurl="http://cdn.sstatic.net/careers/ads/sidebar.min.css?36387d",careers_leaderboardcssurl="http://cdn.sstatic.net/careers/ads/ninja.min.css?36387c",careers_companycssurl="http://cdn.sstatic.net/careers/ads/company",careers_adselector="div.hireme, div#hireme";StackExchange.ready(function(){$.ajax({url:"http://cdn.sstatic.net/careers/ads/adloader.min.js?36387c",dataType:"script",cache:true})});
+        </script>
+    </div>
+
+      
+
+    <div class="module">
+    <h4 id="h-linked">Linked</h4>
+    <div class="linked">
+    <div class="spacer">
+<a href="/questions/2758137/extending-user-object-in-django-user-model-inheritance-or-use-userprofile" class="question-hyperlink">Extending User object in Django: User model inheritance or use UserProfile?</a>
+</div>
+<div class="spacer">
+<a href="/questions/964569/django-adding-a-property-to-the-user-class-changing-it-at-runtime-and-userman" class="question-hyperlink">Django : Adding a property to the User class. Changing it at runtime and UserManager.create_user</a>
+</div>
+<div class="spacer">
+<a href="/questions/2813189/django-userprofile-with-unique-foreign-key-in-django-admin" class="question-hyperlink">Django: UserProfile with Unique Foreign Key in Django Admin</a>
+</div>
+<div class="spacer">
+<a href="/questions/2939941/django-user-model-adding-function" class="question-hyperlink">Django User model, adding function</a>
+</div>
+<div class="spacer">
+<a href="/questions/4197389/overriding-authenticate-method-django-admin" class="question-hyperlink">Overriding authenticate method - Django admin</a>
+</div>
+<div class="spacer">
+<a href="/questions/2887333/extending-the-user-model-with-custom-fields-in-django" class="question-hyperlink">Extending the User model with custom fields in Django</a>
+</div>
+<div class="spacer">
+<a href="/questions/2982160/extending-django-usermodel" class="question-hyperlink">extending django usermodel</a>
+</div>
+<div class="spacer">
+<a href="/questions/6086184/adding-custom-profile-field-in-django-registration" class="question-hyperlink">Adding custom profile field in django-registration</a>
+</div>
+<div class="spacer">
+<a href="/questions/8464229/why-didnt-auth-user-check-for-required-fields" class="question-hyperlink">Why didn&#39;t auth.User check for required fields?</a>
+</div>
+<div class="spacer">
+<a href="/questions/4001281/built-in-django-contrib-auth-models-user-vs-own-user-model" class="question-hyperlink">built-in django.contrib.auth.models.User VS own User model?</a>
+</div>
+<div class="spacer">
+<a href="/questions/6702299/django-dividing-functionality-into-apps" class="question-hyperlink">Django - dividing functionality into apps</a>
+</div>
+<div class="spacer">
+<a href="/questions/8012151/django-websites-and-changing-currency" class="question-hyperlink">django websites and changing currency</a>
+</div>
+<div class="spacer">
+<a href="/questions/8441956/in-django-extending-user-form-for-custom-user" class="question-hyperlink">In Django Extending User Form for Custom User</a>
+</div>
+<div class="spacer">
+<a href="/questions/6846868/changing-django-prebuild-form-to-add-new-user" class="question-hyperlink">Changing Django prebuild form to add new user</a>
+</div>
+<div class="spacer">
+<a href="/questions/9571624/how-do-i-get-the-password-in-django" class="question-hyperlink">How do I get the password in django?</a>
+</div>
+<div class="spacer">
+<a href="/questions/8840068/duplicate-key-value-error-when-running-django-tests-on-auth" class="question-hyperlink">&ldquo;Duplicate key value&rdquo; error when running Django tests on auth</a>
+</div>
+<div class="spacer">
+<a href="/questions/7131667/django-registration-combine-databases" class="question-hyperlink">Django-registration combine databases</a>
+</div>
+
+    </div>
+    </div>
+    <div class="module">
+    <h4 id="h-related">Related</h4>
+    <div class="related">
+    <div class="spacer">
+<a href="/questions/923135/does-custom-user-class-break-applications-in-django" class="question-hyperlink">does custom user class break applications in django?</a>
+</div>
+<div class="spacer">
+<a href="/questions/1338236/django-applying-mutilple-access-control-decorators-to-a-view" class="question-hyperlink">Django: Applying mutilple access control decorators to a view</a>
+</div>
+<div class="spacer">
+<a href="/questions/1782407/custom-authentication-with-django" class="question-hyperlink">Custom authentication with django?</a>
+</div>
+<div class="spacer">
+<a href="/questions/2216945/find-out-the-currently-logged-in-user-in-django" class="question-hyperlink">Find out the currently logged in user in Django</a>
+</div>
+<div class="spacer">
+<a href="/questions/2296753/anonymous-user-in-django" class="question-hyperlink">Anonymous user in Django</a>
+</div>
+<div class="spacer">
+<a href="/questions/2440603/django-last-login-attribute-in-auth-user-model" class="question-hyperlink">Django &ldquo;last_login&rdquo; attribute in auth_user model</a>
+</div>
+<div class="spacer">
+<a href="/questions/2887333/extending-the-user-model-with-custom-fields-in-django" class="question-hyperlink">Extending the User model with custom fields in Django</a>
+</div>
+<div class="spacer">
+<a href="/questions/3488307/how-to-access-the-request-in-a-django-custom-authentication-backend" class="question-hyperlink">how to access the request in a django custom authentication backend?</a>
+</div>
+<div class="spacer">
+<a href="/questions/4056803/django-authentication-middleware-denies-login-consistently" class="question-hyperlink">Django authentication middleware denies login consistently</a>
+</div>
+<div class="spacer">
+<a href="/questions/5089092/post-request-from-django-to-authenticate-an-application-with-django" class="question-hyperlink">POST request from Django to authenticate an application with Django</a>
+</div>
+<div class="spacer">
+<a href="/questions/5348349/extending-the-user-model-in-django" class="question-hyperlink">Extending the User model in django</a>
+</div>
+<div class="spacer">
+<a href="/questions/5484077/django-user-authentication-how-to-do" class="question-hyperlink">django user authentication how to do?</a>
+</div>
+<div class="spacer">
+<a href="/questions/5610690/add-auth-validation-in-django" class="question-hyperlink">add auth validation in Django</a>
+</div>
+<div class="spacer">
+<a href="/questions/6237793/extending-django-user-model" class="question-hyperlink">extending django user model</a>
+</div>
+<div class="spacer">
+<a href="/questions/6364542/extending-the-user-model-in-django" class="question-hyperlink">Extending the User model in Django</a>
+</div>
+<div class="spacer">
+<a href="/questions/6653406/modifying-django-user-model-fields" class="question-hyperlink">Modifying Django User Model Fields</a>
+</div>
+<div class="spacer">
+<a href="/questions/6832339/django-associations-with-the-user-model" class="question-hyperlink">Django Associations with the user model</a>
+</div>
+<div class="spacer">
+<a href="/questions/7796708/user-context-in-django" class="question-hyperlink">User Context in Django</a>
+</div>
+<div class="spacer">
+<a href="/questions/7999032/using-built-in-django-authentication-user-model-with-mongodb" class="question-hyperlink">Using built in Django authentication/User model with Mongodb</a>
+</div>
+<div class="spacer">
+<a href="/questions/8038562/django-mongodb-engine-authentication-sessions-ans-user-model" class="question-hyperlink">Django Mongodb Engine : Authentication, Sessions ans User Model</a>
+</div>
+<div class="spacer">
+<a href="/questions/8441956/in-django-extending-user-form-for-custom-user" class="question-hyperlink">In Django Extending User Form for Custom User</a>
+</div>
+<div class="spacer">
+<a href="/questions/8466851/making-first-name-last-name-a-required-attribute-rather-than-an-optional-one-in" class="question-hyperlink">Making first name, last name a required attribute rather than an optional one in django&#39;s auth User model</a>
+</div>
+<div class="spacer">
+<a href="/questions/9008087/authentication-app-for-django" class="question-hyperlink">Authentication app for Django</a>
+</div>
+<div class="spacer">
+<a href="/questions/9185238/validation-of-username-with-django-authenticate" class="question-hyperlink">Validation of username with Django authenticate</a>
+</div>
+<div class="spacer">
+<a href="/questions/9671266/adding-custom-fields-to-auth-user-table-in-django" class="question-hyperlink">Adding custom fields to auth_user table in Django</a>
+</div>
+
+    </div>
+    </div>
+</div>
+
+<div id="feed-link">
+    <div id="feed-link-text"><a href="/feeds/question/44109" title="feed of this question and its answers"><span class="feed-icon"></span>question feed</a></div>
+</div>
+
+<noscript>
+    <div><img src="/posts/44109/ivc/91fb" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <a href="/about">about</a> |
+                <a href="/faq">faq</a> |
+                <a href="http://blog.stackexchange.com?blb=1">blog</a> |
+                    <a href="http://chat.stackoverflow.com">chat</a> |
+                <a href="http://data.stackexchange.com">data</a> |
+                <a href="http://blog.stackoverflow.com/category/podcasts/">podcast</a> |
+                <a href="http://shop.stackexchange.com/">shop</a> |
+                <a href="http://stackexchange.com/legal">legal</a> |
+                <a href="http://engine.adzerk.net/redirect/0/2776/2751/0/4de3c60f719c4dfcb1a57531c7050090/0">advertising info</a> |
+
+                <a onclick="StackExchange.switchMobile('on', '/questions/44109/extending-the-user-model-with-custom-fields-in-django')">mobile</a> |
+
+                <b><a href="mailto:team@stackoverflow.com">contact us</a></b>
+                  | <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                <div id="footer-sites">
+                    
+                        <span style="color:#FE7A15;font-size:140%">&#9632;</span>&nbsp;<a href="http://stackoverflow.com">stackoverflow.com</a>&nbsp; 
+                        <span style="color:#FE7A15;font-size:140%">&#9632;</span>&nbsp;<a href="http://stackapps.com">api/apps</a>&nbsp; 
+                        <span style="color:#FE7A15;font-size:140%">&#9632;</span>&nbsp;<a href="http://careers.stackoverflow.com">careers</a>&nbsp; 
+                        <span style="color:#E8272C;font-size:140%">&#9632;</span>&nbsp;<a href="http://serverfault.com">serverfault.com</a>&nbsp; 
+                        <span style="color:#00AFEF;font-size:140%">&#9632;</span>&nbsp;<a href="http://superuser.com">superuser.com</a>&nbsp; 
+                        <span style="color:#969696;font-size:140%">&#9632;</span>&nbsp;<a href="http://meta.stackoverflow.com">meta</a>&nbsp; 
+                        <span style="color:#46937D;font-size:140%">&#9632;</span>&nbsp;<a href="http://area51.stackexchange.com">area&nbsp;51</a>&nbsp; 
+                        <span style="color:#C0D0DC;font-size:140%">&#9632;</span>&nbsp;<a href="http://webapps.stackexchange.com">webapps</a>&nbsp; 
+                        <span style="color:#000000;font-size:140%">&#9632;</span>&nbsp;<a href="http://gaming.stackexchange.com">gaming</a>&nbsp; 
+                        <span style="color:#dd4814;font-size:140%">&#9632;</span>&nbsp;<a href="http://askubuntu.com">ubuntu</a>&nbsp; 
+                        <span style="color:#9ce4fe;font-size:140%">&#9632;</span>&nbsp;<a href="http://webmasters.stackexchange.com">webmasters</a>&nbsp; 
+                        <span style="color:#cf4d3f;font-size:140%">&#9632;</span>&nbsp;<a href="http://cooking.stackexchange.com">cooking</a>&nbsp; 
+                        <span style="color:#f4f28d;font-size:140%">&#9632;</span>&nbsp;<a href="http://gamedev.stackexchange.com">game development</a>&nbsp; 
+                        <span style="color:#0f3559;font-size:140%">&#9632;</span>&nbsp;<a href="http://math.stackexchange.com">math</a>&nbsp; 
+                        <span style="color:#f2f2f2;font-size:140%">&#9632;</span>&nbsp;<a href="http://photo.stackexchange.com">photography</a>&nbsp; 
+                        <span style="color:#037187;font-size:140%">&#9632;</span>&nbsp;<a href="http://stats.stackexchange.com">stats</a>&nbsp; 
+                        <span style="color:#f1e7cc;font-size:140%">&#9632;</span>&nbsp;<a href="http://tex.stackexchange.com">tex</a>&nbsp; 
+                        <span style="color:#e1cdae;font-size:140%">&#9632;</span>&nbsp;<a href="http://english.stackexchange.com">english</a>&nbsp; 
+                        <span style="color:#a2d9f6;font-size:140%">&#9632;</span>&nbsp;<a href="http://cstheory.stackexchange.com">theoretical cs</a>&nbsp; 
+                        <span style="color:#1b3e6c;font-size:140%">&#9632;</span>&nbsp;<a href="http://programmers.stackexchange.com">programmers</a>&nbsp; 
+                        <span style="color:#293a5d;font-size:140%">&#9632;</span>&nbsp;<a href="http://unix.stackexchange.com">unix</a>&nbsp;
+                        <span style="color:#bec0cb;font-size:140%">&#9632;</span>&nbsp;<a href="http://apple.stackexchange.com">apple</a>&nbsp;
+                        <span style="color:#939185;font-size:140%">&#9632;</span>&nbsp;<a href="http://wordpress.stackexchange.com">wordpress</a>&nbsp;
+                        <span style="color:#ebf5f5;font-size:140%">&#9632;</span>&nbsp;<a href="http://physics.stackexchange.com">physics</a>&nbsp;
+                        <span style="color:#4176ab;font-size:140%">&#9632;</span>&nbsp;<a href="http://diy.stackexchange.com">home&nbsp;improvement</a>&nbsp;
+                        <span style="color:#d1d8d7;font-size:140%">&#9632;</span>&nbsp;<a href="http://gis.stackexchange.com">gis</a>&nbsp;
+                        <span style="color:#e5e2d3;font-size:140%">&#9632;</span>&nbsp;<a href="http://electronics.stackexchange.com">electronics</a>&nbsp;
+                        <span style="color:#a4c639;font-size:140%">&#9632;</span>&nbsp;<a href="http://android.stackexchange.com">android</a>&nbsp;
+                        <span style="color:#2e4e60;font-size:140%">&#9632;</span>&nbsp;<a href="http://security.stackexchange.com">security</a>&nbsp;
+                        <span style="color:#45bcb5;font-size:140%">&#9632;</span>&nbsp;<a href="http://bicycles.stackexchange.com">bicycles</a>&nbsp;
+                        <span style="color:#00adee;font-size:140%">&#9632;</span>&nbsp;<a href="http://dba.stackexchange.com">dba</a>&nbsp;
+                        <span style="color:#2edaf0;font-size:140%">&#9632;</span>&nbsp;<a href="http://drupal.stackexchange.com">drupal</a>&nbsp;
+                        <span style="color:#213951;font-size:140%">&#9632;</span>&nbsp;<a href="http://sharepoint.stackexchange.com">sharepoint</a>&nbsp;
+                        <span style="color:#73abb3;font-size:140%">&#9632;</span>&nbsp;<a href="http://scifi.stackexchange.com">scifi &amp; fantasy</a>&nbsp;
+                        <span style="color:#23629F;font-size:140%">&#9632;</span>&nbsp;<a href="http://ux.stackexchange.com">user experience</a>&nbsp;
+                        <span style="color:#faff72;font-size:140%">&#9632;</span>&nbsp;<a href="http://skeptics.stackexchange.com">skeptics</a>&nbsp;
+                </div>
+            </div>
+            <div id="footer-flair">
+                <a class="peer1" href="http://www.peer1.com/stackoverflow"></a>  
+	            <a href="http://creativecommons.org/licenses/by-sa/3.0/" class="cc-wiki-link"></a>
+                <div id="svnrev">rev 2012.4.5.2127</div>
+            </div>
+            <div id="copyright">
+                site design / logo &copy; 2012 stack exchange inc; 
+                user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc-wiki</a> with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            
+
+        </div>
+    </div>
+    
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+    <script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-5620270-1']);
+        _gaq.push(['_setCustomVar', 1, 'tags', '|django|authentication|']); 
+_gaq.push(['_trackPageview']);
+    var _qevents = _qevents || [];
+    (function(){
+        var s=document.getElementsByTagName('script')[0];
+        var ga=document.createElement('script');
+        ga.type='text/javascript';
+        ga.async=true;
+        ga.src='http://www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(ga,s);
+        var sc=document.createElement('script');
+        sc.type='text/javascript';
+        sc.async=true;
+        sc.src='http://edge.quantserve.com/quant.js'; 
+        s.parentNode.insertBefore(sc,s);
+    })();
+    </script>
+    <script type="text/javascript">
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>    
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><script type="text/javascript" src="http://cdn.sstatic.net/js/stub.js?v=413a329cd1df"></script>    <script type="text/javascript">
+        
+        StackExchange.ready(function () {
+
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:44109});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '44109');
+        });
+    </script>    <script type="text/javascript">
+        StackExchange.init({"stackAuthUrl":"https://stackauth.com","serverTime":1333700221,"styleCode":true,"enableUserHovercards":true,"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers"},"user":{"isAnonymous":true,"fkey":"f069512b6fdd2b7a13aad7ab5d509a4b","inboxUnviewedCount":-1}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.js":"4ed9aa4b8d0e","js/moderator.js":"f57f00dcb1ac","js/full-anon.js":"9266c7a2f4a9","js/full.js":"3d5a64d5d0e5","js/wmd.js":"78027d6539c8","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/mobile.js":"3b13ff9fd1f2","js/help.js":"fc9fb0517db2","js/tageditor.js":"c1ba807b32aa","js/tageditornew.js":"bd66fabe1c71","js/inline-tag-editing.js":"be882e188985","js/revisions.js":"8c6bcd93b7fe","js/suggested-edits.js":"7f24e342d359","js/probes.js":"beb933322ff0"});
+        
+    </script>    <script type="text/javascript">
+        StackExchange.ready(function () {
+            var shareUrl = 'http%3a%2f%2fstackoverflow.com%2fq%2f44109';
+            var shareMsg = 'Extending+the+User+model+with+custom+fields+in+Django';
+            
+            StackExchange.share.gplus($('#gp-share-44109'), shareUrl, shareMsg) ;
+            StackExchange.share.facebook($('#fb-share-44109'), shareUrl, shareMsg);
+            StackExchange.share.twitter($('#twitter-share-44109'), shareUrl, shareMsg);
+        });
+    </script><script type="text/javascript">
+StackExchange.ready(function(){$.get('/posts/44109/ivc/91fb');});
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,657 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"b",
+				"body	Tag"
+			],
+			[
+				"bod",
+				"BODY	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "settings.py",
+			"settings":
+			{
+				"buffer_size": 6035,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "template/addplace.html",
+			"settings":
+			{
+				"buffer_size": 567,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "place/views.py",
+			"settings":
+			{
+				"buffer_size": 15193,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "place/script.py",
+			"settings":
+			{
+				"buffer_size": 15416,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "place/models.py",
+			"settings":
+			{
+				"buffer_size": 3423,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lieu/models.py",
+			"settings":
+			{
+				"buffer_size": 3049,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "script/encapencore.py",
+			"settings":
+			{
+				"buffer_size": 870,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "jack/models.py",
+			"settings":
+			{
+				"buffer_size": 2894,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "script/result.txt",
+			"settings":
+			{
+				"buffer_size": 4284,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "engine/script.py",
+			"settings":
+			{
+				"buffer_size": 7169,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/Documents/GitHub/JackPointFInal/jackpoint/script/encaptryexcept.py",
+		"/D/Documents/GitHub/JackPointFInal/jackpoint/script/encapsbis.py",
+		"/D/Documents/GitHub/JackPointFInal/jackpoint/script/encaps.py",
+		"/D/Documents/GitHub/JackPointFInal/jackpoint/script/lit.txt",
+		"/D/Documents/GitHub/JackPointFInal/jackpoint/date/models.py",
+		"/D/Documents/GitHub/JackPointFInal/jackpoint/event/models.py",
+		"/D/Documents/GitHub/JackPointFInal/jackpoint/place/models.py",
+		"/D/Documents/GitHub/JackPointFInal/jackpoint/jack/models.py",
+		"/D/Documents/GitHub/JackPointFInal/jackpoint/hand/models.py",
+		"/D/Documents/GitHub/PersoStats/index.html",
+		"/D/Documents/autheil.txt",
+		"/D/Documents/GitHub/Scripts/shutdown.py",
+		"/C/Program Files/Apache Directory Studio/launch.bat",
+		"/D/Documents/GitHub/Ecrits/anais.html",
+		"/D/Documents/GitHub/Scripts/Commit.py",
+		"/D/Documents/GitHub/Scripts/Startcomputer.py",
+		"/C/Program Files/Apache Directory Studio/Apache Directory Studio.ini",
+		"/C/Documents and Settings/Micro/Bureau/savappdebian.ldif",
+		"/C/AtelierSODA/workspaceSODA/madrhas/test.txt",
+		"/D/Documents/test.txt",
+		"/C/AtelierSODA/IDE/eclipse/debugg.txt",
+		"/C/AtelierSODA/IDE/eclipse/eclipse.ini",
+		"/D/Documents/GitHub/PersoStats/dojo/dojo.js",
+		"/C/AtelierSODA/workspaceSODA/madrhas/test/JavaSource/fr/gouv/finances/madrhas/bean/Enumeration/rename.py",
+		"/D/Documents/GitHub/Ecrits/interestingtimes.txt",
+		"/D/Documents/GitHub/Yuki/README",
+		"/D/Documents/GitHub/PersoStats/Weight.html",
+		"/C/Documents and Settings/Micro/Application Data/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Documents and Settings/Micro/Application Data/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/D/Documents/tes2t.py",
+		"/D/Documents/Downloads/pgmodeler-pgmodeler-v0.3.1-0-gd93aac6/pgmodeler-pgmodeler-d93aac6/start-pgmodeler.bat",
+		"/C/AtelierSODA/workspaceSODA/erreur4.txt",
+		"/C/AtelierSODA/workspaceSODA/erreur3.txt",
+		"/C/AtelierSODA/workspaceSODA/erreur2.txt",
+		"/C/AtelierSODA/workspaceSODA/erreur.txt",
+		"/C/Documents and Settings/Micro/Bureau/rose.html",
+		"/D/Documents/GitHub/Satsuki/person/models.py",
+		"/D/Documents/GitHub/Satsuki/note/models.py",
+		"/C/Documents and Settings/Micro/Bureau/divers/quote.txt",
+		"/C/AtelierSODA/workspaceSODA/madrhas/.cvsignore",
+		"/C/Documents and Settings/Micro/.ssh/github_rsa",
+		"/C/Documents and Settings/Micro/.ssh/id_rsa",
+		"/C/Documents and Settings/Micro/.ssh/github_rsa.pub",
+		"/C/Documents and Settings/Micro/Bureau/divers/testcontact.py",
+		"/C/Documents and Settings/Micro/Bureau/anno.py",
+		"/D/cb_tutorial/src/controller/cb_tutorial_controller.erl",
+		"/D/cb_tutorial/src/controller/cb_tutorial_greeting_controller.erl",
+		"/D/cb_tutorial/priv/cb_tutorial.routes",
+		"/D/cb_tutorial/src/controller/cb_tutoria.erl",
+		"/D/Documents/boulot/hello.erl",
+		"/C/Documents and Settings/Micro/Application Data/Sublime Text 2/Packages/User/erlang.sublime-build",
+		"/D/ChicagoBoss/windows-make.bat",
+		"/D/ChicagoBoss/rebar.config",
+		"/D/ChicagoBoss/ebin/boss_db_test.app",
+		"/D/ChicagoBoss/src/boss.app.src",
+		"/C/Documents and Settings/Micro/Bureau/note",
+		"/D/ChicagoBoss/result.txt",
+		"/D/.lighttable/lein.bat",
+		"/D/Documents/Google Drive/MadhrasBis/jackpoint/jackpoint/template/ask.html",
+		"/C/Documents and Settings/Micro/Bureau/tt.usql.sql",
+		"/C/WINDOWS/system32/drivers/etc/hosts",
+		"/D/Documents/Téléchargements/SUPPRESSIONAPPLICATION_20120411_143953.log",
+		"/D/Documents/Downloads/oubiwann-django-riak-engine-cd4adc6/oubiwann-django-riak-engine-cd4adc6/docs/INSTALL.rst",
+		"/C/Documents and Settings/Micro/Bureau/TMPpourABussiere(1)/Acceuil.htm",
+		"/D/Documents/Workspace/Riak/test.html",
+		"/C/AtelierSODA/workspaceSODA/madrhas/madrhasweb/BatchContent/fichiersBatch/fichiersentreeimportcsv/input2.csv",
+		"/C/AtelierSODA/workspaceSODA/madrhas/madrhasweb/BatchContent/fichiersBatch/fichiersentreeimportcsv/input.csv",
+		"/C/Documents and Settings/Micro/Bureau/pièce-jointe/TraitementChargementCodesPostauxImpl/TraitementChargementCodesPostauxImpl/TraitementChargementCodesPostauxImpl.java",
+		"/C/Documents and Settings/Micro/Bureau/pièce-jointe/attribution metier_echantillon-20-03-2012.csv",
+		"/D/Documents/Projets_Perso/jackpoint/oldjackpoint/manage.py",
+		"/D/Documents/Projets_Perso/jackpoint/oldjackpoint/__init__.py",
+		"/C/AtelierSODA/workspaceSODA/madrhas/test/intput.csv",
+		"/C/Documents and Settings/Micro/Bureau/temp.txt",
+		"/C/Documents and Settings/Micro/Bureau/temp.sql",
+		"/C/AtelierSODA/workspaceSODA/madrhas/madrhasweb/JavaSource/input2.csv",
+		"/D/Documents/Workspace/Jack/web2py/applications/init/controllers/default.py",
+		"/D/Documents/Workspace/Jack/web2py/applications/init/models/db.py",
+		"/D/Documents/GITS/.gitignore",
+		"/C/Documents and Settings/Micro/Bureau/asciiart.txt",
+		"/C/Documents and Settings/Micro/Bureau/madbasefull.sql",
+		"/C/Documents and Settings/Micro/Bureau/madbase.sql",
+		"/C/Documents and Settings/Micro/Bureau/BAGAD.sql",
+		"/D/Documents/GITSBOULOT/.gitignore",
+		"/C/Documents and Settings/Micro/Bureau/result.txt",
+		"/C/Documents and Settings/Micro/Bureau/backupstructurepostgresmadbaselibelle200.sql",
+		"/C/Documents and Settings/Micro/Bureau/temp/temphibernatemappingtypestructure.hbm",
+		"/C/Documents and Settings/Micro/Bureau/bidouille.py",
+		"/C/wamp/www/index.php",
+		"/C/wamp/www/DX/js/dx2.js",
+		"/C/wamp/www/DX/define_email.php",
+		"/C/wamp/www/DX/README.TXT",
+		"/D/Documents/Git/.gitignore",
+		"/C/cygwin/Cygwin.bat",
+		"/C/Users/Bussiere/.profile",
+		"/C/AtelierSODA/workspaceSODA/Test2/web2py/Git/applications/slang.py",
+		"/C/AtelierSODA/workspaceSODA/Test2/web2py/Git/randomdigit.py",
+		"/C/Users/Bussiere/.bashrc",
+		"/C/Documents and Settings/Micro/Bureau/joke.py",
+		"/D/Documents/Projets_Perso/jackpoint/web2py/applications/init/views/default/oldfaq.html",
+		"/D/Documents/Projets_Perso/jackpoint/web2py/miseenpagefaq.py",
+		"/D/Documents/Projets_Perso/jackpoint/web2py/applications/init/views/default/user.html",
+		"/D/Documents/Projets_Perso/jackpoint/web2py/applications/init/views/default/faq.html",
+		"/C/Documents and Settings/Micro/Bureau/testgen4j.0.1.4-alpha/README",
+		"/D/Documents/Projets_Perso/jackpoint/web2py/applications/init/models/db.py",
+		"/D/Documents/Projets_Perso/jackpoint/web2py/applications/init/controllers/default.py",
+		"/D/Documents/Projets_Perso/jackpoint/asciiartrecherche.txt",
+		"/D/Documents/Projets_Perso/jackpoint/web2py/applications/init/views/default/index.html",
+		"/D/Documents/Projets_Perso/jackpoint/web2py/applications/init/views/default/register.html",
+		"/D/Documents/Projets_Perso/jackpoint/web2py/applications/init/views/generic.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"(",
+			" (",
+			", ",
+			"jar",
+			"	",
+			"300",
+			"application",
+			"600m",
+			"Code",
+			"CORRESPONDANCE",
+			"CODE_CORRESPONDANCE",
+			"middle",
+			"midlle",
+			"filtre",
+			"git:",
+			"https",
+			"\\.java",
+			".java",
+			"/madrhas/madrhasweb/",
+			"/madrhas/",
+			"ApplicationWeb",
+			"ServiceGestionnaire",
+			"ServiceBase",
+			"auditeur",
+			"Madrhas",
+			"CONTR",
+			"ALTER",
+			"madbase.",
+			"		",
+			"__3._An_Orbital_fellow-traveller.",
+			"whip"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"",
+			":",
+			"    ",
+			"400",
+			"center",
+			"middle",
+			"http:",
+			".java\":\"\",",
+			"\"/madrhas/madrhasweb/",
+			"\"/madrhas/",
+			"Cds",
+			"",
+			"*		"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 9,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "settings.py",
+					"settings":
+					{
+						"buffer_size": 6035,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								350,
+								350
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "template/addplace.html",
+					"settings":
+					{
+						"buffer_size": 567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								543,
+								543
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "place/views.py",
+					"settings":
+					{
+						"buffer_size": 15193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13862,
+								13862
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 11633.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "place/script.py",
+					"settings":
+					{
+						"buffer_size": 15416,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								970,
+								970
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2485.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "place/models.py",
+					"settings":
+					{
+						"buffer_size": 3423,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1505,
+								1498
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 936.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "lieu/models.py",
+					"settings":
+					{
+						"buffer_size": 3049,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1993,
+								1986
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1152.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "script/encapencore.py",
+					"settings":
+					{
+						"buffer_size": 870,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								870,
+								870
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "jack/models.py",
+					"settings":
+					{
+						"buffer_size": 2894,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								464,
+								464
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 72.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "script/result.txt",
+					"settings":
+					{
+						"buffer_size": 4284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3,
+								4284
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1767.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "engine/script.py",
+					"settings":
+					{
+						"buffer_size": 7169,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6414,
+								6414
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3600.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 222.0
+	},
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 347.0,
+	"status_bar_visible": true
+}

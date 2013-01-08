@@ -1,0 +1,30 @@
+{{ profile.id }}<br>
+{{ profile.Bio }}<br>
+<a href="../../mp/{{user.id}}/">MP</a><br>
+{{ user.username }}<br>
+{% for  skill in profile.Skills.all %}
+{% if not skill.Private  %}
+{% for  sk in  skill.Skill.all %}
+{{ sk.Nom  }}:
+{{ skill.Level }}<br>
+{% endfor %}
+{% endif %}
+ 
+ {% endfor %}
+ {% for  carac in profile.Caracs.all %}
+{% if not carac.Private %}
+{% for  ca in  carac.Carac.all %}
+{{ ca.Nom  }}:
+{{ carac.Level }}<br>
+{% endfor %}
+{% endif %}
+
+
+ {% endfor %}
+  {% for  item in profile.Items.all %}
+{% if not item.Private %}
+{% for  it in  item.Item.all %}
+{{ it.Nom  }}:
+{% endfor %}
+{% endif %}
+{% endfor %}

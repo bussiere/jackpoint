@@ -1,0 +1,32 @@
+<html>
+<body>
+poutou
+<form action="validation/" method="post">{% csrf_token %}
+
+{{ formJack.as_p }}
+Caracteristique :<br><br>
+{{ CaracFormSet.management_form }}
+{% for carac in CaracFormSet %}
+{{ carac.carac.value }} :
+{{ carac.as_p }}
+
+{% endfor %}
+
+Skill :<br><br>
+{{ SkillFormSet.management_form }}
+{% for skill in SkillFormSet %}
+{{ skill.skill.value }} :
+{{ skill.as_p }}
+{% endfor %}
+
+Item :<br><br>
+{{ ItemFormSet.management_form }}
+{% for item in ItemFormSet %}
+{{ item.item.value }} :
+{{ item.as_p }}
+{% endfor %}
+
+<input type="submit">
+</form>
+</body>
+</html>
