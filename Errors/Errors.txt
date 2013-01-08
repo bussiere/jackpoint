@@ -1,0 +1,23 @@
+TICKET ID
+127.0.0.1.2012-03-14.21-08-53.761f298a-c74a-45dc-8d7b-c42f3e2cbb51
+
+missing "pass" in view
+VERSION
+web2py™	(1, 99, 7, datetime.datetime(2012, 3, 4, 22, 12, 8), 'stable')
+Python	Python 2.5.4: C:\Users\Bussiere\Dropbox\projets\jackpoint\web2py\web2py.exe
+TRACEBACK
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+Traceback (most recent call last):
+  File "gluon/rocket.py", line 1302, in run
+  File "gluon/rocket.py", line 1986, in run_app
+  File "gluon/rocket.py", line 1807, in build_environ
+  File "gluon/rocket.py", line 1376, in read_request_line
+SocketTimeout: Socket timed out before request.
+ERROR SNAPSHOT  
+<class 'gluon.rocket.SocketTimeout'>(Socket timed out before request.)
